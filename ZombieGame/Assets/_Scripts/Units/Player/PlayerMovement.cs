@@ -16,7 +16,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext ctx) { 
         move = ctx.ReadValue<Vector2>(); 
-    
     }
     public void OnLook(InputAction.CallbackContext ctx) {
         look = ctx.ReadValue<Vector2>();

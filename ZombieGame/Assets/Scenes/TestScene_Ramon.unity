@@ -479,7 +479,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1016241675642822250, guid: b920d24107256cf49883c937584633d2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.273
+      value: 1.02
       objectReference: {fileID: 0}
     - target: {fileID: 1016241675642822250, guid: b920d24107256cf49883c937584633d2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -519,7 +519,7 @@ PrefabInstance:
       objectReference: {fileID: 1139333355}
     - target: {fileID: 1669306891729754267, guid: b920d24107256cf49883c937584633d2, type: 3}
       propertyPath: Speed
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1669306891729754267, guid: b920d24107256cf49883c937584633d2, type: 3}
       propertyPath: MaxForce
@@ -532,14 +532,34 @@ PrefabInstance:
     - target: {fileID: 1669306891729754267, guid: b920d24107256cf49883c937584633d2, type: 3}
       propertyPath: playerCamera
       value: 
-      objectReference: {fileID: 963194225}
+      objectReference: {fileID: 1923193699}
     - target: {fileID: 2167065651827109592, guid: b920d24107256cf49883c937584633d2, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4874402164307182387, guid: b920d24107256cf49883c937584633d2, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4874402164307182387, guid: b920d24107256cf49883c937584633d2, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4874402164307182387, guid: b920d24107256cf49883c937584633d2, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnMove
+      objectReference: {fileID: 0}
+    - target: {fileID: 4874402164307182387, guid: b920d24107256cf49883c937584633d2, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnLook
+      objectReference: {fileID: 0}
     - target: {fileID: 8976675151120757415, guid: b920d24107256cf49883c937584633d2, type: 3}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 8976675151120757415, guid: b920d24107256cf49883c937584633d2, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
