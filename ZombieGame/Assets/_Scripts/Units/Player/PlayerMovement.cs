@@ -9,10 +9,10 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody rb;
-    public GameObject playerCamera;
-    public float Speed, Sensitivity, MaxForce;
+    public GameObject CameraHolder;
+    public float speed, sensitivity,maxForce;
     private Vector2 move, look;
-    private float _lookRotation;
+    private float lookRotation;
 
     public void OnMove(InputAction.CallbackContext ctx) { 
         move = ctx.ReadValue<Vector2>(); 
@@ -24,21 +24,24 @@ public class PlayerMovement : MonoBehaviour
     public void Movement()
     {
         Vector3 currentVelocity = rb.velocity;
-        Vector3 targetVelocity = new Vector3(move.x, 0, move.y);
-        targetVelocity *= Speed;
+        Vector3 targetVelocity = new Vector3(move.x,0,move.y);
+        targetVelocity *= speed;
 
         targetVelocity = transform.TransformDirection(targetVelocity);
+        Vector3 velocityChange = (targetVelocity - currentVelocity);
 
-        Vector3 velocityChange = currentVelocity - targetVelocity;
-
-        Vector3.ClampMagnitude(velocityChange,MaxForce);
+        Vector3.ClampMagnitude(velocityChange,maxForce);
 
         rb.AddForce(velocityChange,ForceMode.VelocityChange);
 
     }
     public void Look()
     {
-      
+        transform.Rotate(Vector3.up*look.x*sensitivity);
+        lookRotation += (-look.y * sensitivity);
+        lookRotation = Mathf.Clamp(lookRotation,-90,90);
+        CameraHolder.transform.eulerAngles = new Vector3(lookRotation,CameraHolder.transform.eulerAngles.y, CameraHolder.transform.eulerAngles.z);
+
     }
     public void Jump()
     {
@@ -48,13 +51,12 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void FixedUpdate() //todo lo relacionado con fisicas siempre en fixed update
     {
         Movement();
-        Jump();
     }
     private void LateUpdate() //el movimiento de la camara deberia ser aqui, no se porque no me pregunten pero se que es asi
     {
