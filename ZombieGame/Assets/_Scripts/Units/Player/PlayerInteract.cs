@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInteract : MonoBehaviour
 {
@@ -23,9 +24,12 @@ public class PlayerInteract : MonoBehaviour
         }
     }
 
-    public void OnInteract()
+    public void OnInteract(InputAction.CallbackContext ctx)
     {
-        _interactable?.Interact();
-        Debug.Log("estas interactuando con un interactable");
+        if (ctx.performed)
+        {
+            _interactable?.Interact();
+            Debug.Log("estas interactuando");
+        }
     }
 }
