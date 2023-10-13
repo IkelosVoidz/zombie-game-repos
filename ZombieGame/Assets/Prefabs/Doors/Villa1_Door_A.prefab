@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8093846459207537257
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -5800393602354169661, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7a8d6bb394f243445b9377162ba792a8, type: 2}
+    - target: {fileID: -849736524416140873, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
+      propertyPath: m_Size.x
+      value: 1.6095188
+      objectReference: {fileID: 0}
+    - target: {fileID: -849736524416140873, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
+      propertyPath: m_Size.y
+      value: 4.0621204
+      objectReference: {fileID: 0}
+    - target: {fileID: -849736524416140873, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
+      propertyPath: m_Size.z
+      value: 0.30403447
+      objectReference: {fileID: 0}
+    - target: {fileID: -849736524416140873, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
+      propertyPath: m_Center.x
+      value: -0.7799727
+      objectReference: {fileID: 0}
+    - target: {fileID: -849736524416140873, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
+      propertyPath: m_Center.y
+      value: 2.0310602
+      objectReference: {fileID: 0}
+    - target: {fileID: -849736524416140873, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
+      propertyPath: m_Center.z
+      value: -0.0065680817
+      objectReference: {fileID: 0}
+    - target: {fileID: 2344320786704682931, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300002, guid: 6a1cbdbcd9f735f45beaa6e43bf6255e, type: 3}
+    - target: {fileID: 6216398600482075729, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
+      propertyPath: m_Name
+      value: Villa1_Door_A
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152945538558401631, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152945538558401631, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152945538558401631, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152945538558401631, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152945538558401631, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152945538558401631, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152945538558401631, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152945538558401631, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152945538558401631, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152945538558401631, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
