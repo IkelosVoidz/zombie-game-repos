@@ -11,7 +11,7 @@ public class DoorController : MonoBehaviour , IInteractable
     [SerializeField] private bool _opensOutwards = false;
     [SerializeField] private float _degToTurn = 160f;
 
-    private int _speed = 100;
+    private int _speed = 1;
     private bool _hasToMove = false;
 
 
@@ -55,10 +55,11 @@ public class DoorController : MonoBehaviour , IInteractable
     {
         if (_hasToMove)
         {
-            if (this.transform.rotation.y < _degToTurn && this.transform.rotation.y > 0) {
+            if (this.transform.eulerAngles.y < _degToTurn && this.transform.rotation.y >= 0) {
                 //If the rotation of the door is not bigger than the total rotation it has to do to open or close itself.
 
                 this.transform.Rotate(Vector3.up, _degToTurn * Time.deltaTime * _speed);
+                Debug.Log("ESTA ROTANDO");
             }
             else _hasToMove = false;
             
