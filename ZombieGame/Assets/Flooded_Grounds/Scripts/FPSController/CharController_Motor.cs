@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CharController_Motor : MonoBehaviour {
 
@@ -22,7 +23,7 @@ public class CharController_Motor : MonoBehaviour {
 			webGLRightClickRotation = false;
 			sensitivity = sensitivity * 1.5f;
 		}
-	}
+    }
 
 
 	void CheckForWaterHeight(){
