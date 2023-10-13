@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -5800393602354169661}
   - component: {fileID: -849736524416140873}
   - component: {fileID: -8457801170432650954}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: _DoorBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,3 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c779a93f4ab483147a670a6ee969b95d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isBlocked: 0
+  _isOpen: 0
+  _opensOutwards: 0
+  _degToTurn: 160
