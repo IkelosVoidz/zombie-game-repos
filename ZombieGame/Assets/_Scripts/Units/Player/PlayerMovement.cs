@@ -8,15 +8,34 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class PlayerMovement : MonoBehaviour
 {
-    
-    private Vector2 _moveAxis, _lookAxis;
+    public Rigidbody rb;
+    public GameObject playerCamera;
+    public float Speed, Sensitivity, MaxForce;
+    private Vector2 move, look;
+    private float _lookRotation;
 
-    public void OnMove(InputAction.CallbackContext ctx) { _moveAxis = ctx.ReadValue<Vector2>(); }
-    public void OnLook(InputAction.CallbackContext ctx) { _lookAxis = ctx.ReadValue<Vector2>(); }
+    public void OnMove(InputAction.CallbackContext ctx) { 
+        move = ctx.ReadValue<Vector2>(); 
+    
+    }
+    public void OnLook(InputAction.CallbackContext ctx) {
+        look = ctx.ReadValue<Vector2>();
+    }
 
     public void Movement()
     {
-        //buenas tardes roman
+        Vector3 currentVelocity = rb.velocity;
+        Vector3 targetVelocity = new Vector3(move.x, 0, move.y);
+        targetVelocity *= Speed;
+
+        targetVelocity = transform.TransformDirection(targetVelocity);
+
+        Vector3 velocityChange = currentVelocity - targetVelocity;
+
+        Vector3.ClampMagnitude(velocityChange,MaxForce);
+
+        rb.AddForce(velocityChange,ForceMode.VelocityChange);
+
     }
     public void Look()
     {
