@@ -35,6 +35,13 @@ public class PlayerMovement : MonoBehaviour
         move = ctx.ReadValue<Vector2>();
     }
 
+    public void OnJump(InputAction.CallbackContext ctx) {
+        Debug.Log("SALTAR");
+        if (ctx.performed)
+        {
+            Jump();
+        }
+    }
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
