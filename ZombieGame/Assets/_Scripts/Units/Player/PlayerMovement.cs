@@ -8,70 +8,82 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class PlayerMovement : MonoBehaviour
 {
-    public Rigidbody rb;
-    public GameObject Camera;
-    public float speed, sensitivity,maxForce;
-    private Vector2 move, look;
-    private float lookRotation;
+    [Header("Movement")]
+    public float moveSpeed;
 
-    public void OnMove(InputAction.CallbackContext ctx) { 
-        move = ctx.ReadValue<Vector2>(); 
-    }
-    public void OnLook(InputAction.CallbackContext ctx) {
-        look = ctx.ReadValue<Vector2>();
-    }
+    public float jumpForce;
+    public float jumpCooldown;
+    public float airMultiplier;
+    bool readyToJump;
 
-    public void Movement()
+
+    //public float groundDrag;
+
+    [Header("Movement")]
+    //public float playerHeight;
+    //public LayerMask whatIsGround;
+    //bool grounded;
+
+
+    public Transform orientation;
+    private Vector2 move;
+
+    Vector3 moveDirection;
+    Rigidbody rb;
+    public void OnMove(InputAction.CallbackContext ctx)
     {
-        //Creamos el vector de Velocidad del personage
-        Vector3 currentVelocity = rb.velocity;
-        Vector3 targetVelocity = new Vector3(move.x,0,move.y);
-        targetVelocity *= speed; //Capo la velocidad del personage al valor de "speed"
-
-
-        //Alinear Direccion
-        targetVelocity = transform.TransformDirection(targetVelocity); //Sin esto el Player solo se mueve WASD en un mismo eje. No acompaña al movimiento de la camara.
-
-
-        //Calcular fuerzas
-        Vector3 velocityChange = (targetVelocity - currentVelocity);
-        velocityChange = new Vector3 (velocityChange.x, 0, velocityChange.z); //Delimito la "velocityChange.y" a 0 para que el "player" caiga. Si no es igual a 0 el player simplemente se comoporta como si no tubiese gravedad.
-
-        //Limitar Fuerza (Entiendo que maxForce siempre es igual a 1)
-        Vector3.ClampMagnitude(velocityChange,maxForce);
-
-
-        //Aplicar movimiento al RB
-        rb.AddForce(velocityChange,ForceMode.VelocityChange);
-
-    }
-    public void Look()
-    {
-   
-        transform.Rotate(Vector3.up * look.x * sensitivity); //La camara se mueve acorde a la sensivilidad.
-        lookRotation += (-look.y * sensitivity);
-        lookRotation = Mathf.Clamp(lookRotation,-90,90); //Delimito la camara para que se mueva 90 grados arriba y abajo
-        Camera.transform.eulerAngles = new Vector3(lookRotation,Camera.transform.eulerAngles.y, Camera.transform.eulerAngles.z); //Asignar rotaciones
-
-    }
-    public void Jump()
-    {
-
+        move = ctx.ReadValue<Vector2>();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
     }
 
-    private void FixedUpdate() //todo lo relacionado con fisicas siempre en fixed update
+    private void Update()
     {
-        Movement();
+        //grounded = Physics.Raycast(transform.position,Vector3.down,playerHeight*0.5f+0.2f,whatIsGround);
+        
+        SpeedControl();
+
+        /*if (grounded)
+            rb.drag = groundDrag;
+        else
+            rb.drag = 0;*/
         
     }
-    private void LateUpdate() //el movimiento de la camara deberia ser aqui, no se porque no me pregunten pero se que es asi
+    private void FixedUpdate()
     {
-        Look();
+        MovePlayer();
+    }
+    private void MovePlayer()
+    {
+        moveDirection = orientation.forward * move.y + orientation.right * move.x;
+
+        rb.AddForce(moveDirection.normalized*moveSpeed*10f, ForceMode.Force);
+    }
+
+    private void SpeedControl()
+    {
+        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        if(flatVel.magnitude > moveSpeed)
+        {
+            Vector3 limitedVel = flatVel.normalized * moveSpeed;
+            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+        }
+    }
+
+    //ACABAR
+    private void Jump()
+    {
+        rb.velocity = new Vector3(rb.velocity.x,0f,rb.velocity.z);
+        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+    }
+
+    private void ResetJump()
+    {
+        readyToJump = true;
     }
 }
