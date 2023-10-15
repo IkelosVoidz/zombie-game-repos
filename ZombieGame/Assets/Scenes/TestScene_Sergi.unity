@@ -133,7 +133,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1105304961687440950, guid: 571270486ce4665408aabcf328bf3ec3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.986904
+      value: -25.05
       objectReference: {fileID: 0}
     - target: {fileID: 1105304961687440950, guid: 571270486ce4665408aabcf328bf3ec3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1105304961687440950, guid: 571270486ce4665408aabcf328bf3ec3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.633436
+      value: 11.22
       objectReference: {fileID: 0}
     - target: {fileID: 1105304961687440950, guid: 571270486ce4665408aabcf328bf3ec3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1389,11 +1389,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1750323924914834605, guid: b920d24107256cf49883c937584633d2, type: 3}
       propertyPath: _moveSpeed
-      value: 100
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2167065651827109592, guid: b920d24107256cf49883c937584633d2, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4494851504185158169, guid: b920d24107256cf49883c937584633d2, type: 3}
+      propertyPath: m_Drag
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
