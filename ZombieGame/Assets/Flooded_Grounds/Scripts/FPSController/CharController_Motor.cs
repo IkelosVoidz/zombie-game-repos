@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class CharController_Motor : MonoBehaviour {
@@ -10,13 +11,24 @@ public class CharController_Motor : MonoBehaviour {
 	public float WaterHeight = 15.5f;
 	CharacterController character;
 	public GameObject cam;
-	float moveFB, moveLR;
+	//float moveFB, moveLR;
 	float rotX, rotY;
 	public bool webGLRightClickRotation = true;
 	float gravity = -9.8f;
 
 
-	void Start(){
+    private Vector2 moveAxis, lookAxis , moveVect, lookVect;
+    public void OnMove(InputAction.CallbackContext ctx)
+    {
+        moveAxis = ctx.ReadValue<Vector2>();
+    }
+    public void OnLook(InputAction.CallbackContext ctx)
+    {
+        lookAxis = ctx.ReadValue<Vector2>();
+    }
+
+
+    void Start(){
 		//LockCursor ();
 		character = GetComponent<CharacterController> ();
 		if (Application.isEditor) {
@@ -37,11 +49,15 @@ public class CharController_Motor : MonoBehaviour {
 
 
 	void Update(){
-		moveFB = Input.GetAxis ("Horizontal") * speed;
-		moveLR = Input.GetAxis ("Vertical") * speed;
+		moveVect = moveAxis * speed;
 
-		rotX = Input.GetAxis ("Mouse X") * sensitivity;
-		rotY = Input.GetAxis ("Mouse Y") * sensitivity;
+		lookVect = lookAxis * sensitivity;
+
+		/*moveFB = Input.GetAxis("Horizontal") * speed;
+		moveLR = Input.GetAxis("Vertical") * speed;*/
+		/*rotX = Input.GetAxis("Mouse X") * sensitivity;
+		rotY = Input.GetAxis("Mouse Y") * sensitivity;*/
+
 
 		//rotX = Input.GetKey (KeyCode.Joystick1Button4);
 		//rotY = Input.GetKey (KeyCode.Joystick1Button5);
@@ -49,16 +65,18 @@ public class CharController_Motor : MonoBehaviour {
 		CheckForWaterHeight ();
 
 
-		Vector3 movement = new Vector3 (moveFB, gravity, moveLR);
+		Vector3 movement = new Vector3 (moveVect.x, gravity, moveVect.y);
+        //Vector3 movement = new Vector3(moveFB, gravity, moveLR);
 
 
 
-		if (webGLRightClickRotation) {
+        if (webGLRightClickRotation) {
 			if (Input.GetKey (KeyCode.Mouse0)) {
 				CameraRotation (cam, rotX, rotY);
 			}
 		} else if (!webGLRightClickRotation) {
-			CameraRotation (cam, rotX, rotY);
+			CameraRotation (cam, lookVect.x, lookVect.y);
+			//CameraRotation (cam, rotX, rotY);
 		}
 
 		movement = transform.rotation * movement;
@@ -71,7 +89,8 @@ public class CharController_Motor : MonoBehaviour {
 		cam.transform.Rotate (-rotY * Time.deltaTime, 0, 0);
 	}
 
-
-
-
+    private void LateUpdate()
+    {
+        
+    }
 }
