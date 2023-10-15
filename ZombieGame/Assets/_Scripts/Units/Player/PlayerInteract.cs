@@ -1,24 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerInteract : MonoBehaviour
 {
     [SerializeField] private float _interactionRange;
-    [SerializeField] private LayerMask _interactlayerMask;
+    [SerializeField] private LayerMask _interactLayerMask;
+    [SerializeField] private Transform _orientation;
     private IInteractable _interactable;
-    [SerializeField] private Camera _cam;
-  
+
     private void FixedUpdate()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(_cam.transform.position, _cam.transform.forward, out hit, _interactionRange, _interactlayerMask)){
+        if (Physics.Raycast(_orientation.position, _orientation.forward, out RaycastHit hit, _interactionRange, _interactLayerMask))
+        {
             _interactable = hit.transform.gameObject.GetComponent<IInteractable>();
             Debug.Log("estas mirando un interactable");
         }
-        else{
-            _interactable=null;
+        else
+        {
+            _interactable = null;
             Debug.Log("ya no estas mirando un interactable");
         }
     }

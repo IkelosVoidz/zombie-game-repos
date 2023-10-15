@@ -1,14 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerCam : MonoBehaviour
 {
-    public float sensX;
-    public float sensY;
-
-    public Transform orientation;
+    [SerializeField] private float sensX;
+    [SerializeField] private float sensY;
+    [SerializeField] private Transform orientation;
 
     float xRotation;
     float yRotation;
@@ -19,7 +16,6 @@ public class PlayerCam : MonoBehaviour
     {
         look = ctx.ReadValue<Vector2>();
     }
-
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -39,5 +35,4 @@ public class PlayerCam : MonoBehaviour
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
 
     }
-
 }
