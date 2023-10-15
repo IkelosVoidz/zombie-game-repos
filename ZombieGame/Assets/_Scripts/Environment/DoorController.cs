@@ -7,10 +7,11 @@ using UnityEngine.InputSystem.Processors;
 
 public class DoorController : MonoBehaviour , IInteractable
 {
-    [SerializeField] private bool _isBlocked = false;
-    [SerializeField] private bool _opensOutwards = true;
-    [SerializeField] private float _degToTurn = 120f;
-    [SerializeField] private int _speed = 200;
+
+    [SerializeField, Tooltip("Wether the door can be opened or not by default")] private bool _isBlocked = false;
+    [SerializeField, Tooltip("Wether the door will open towards the player when seen from the outside")] private bool _opensOutwards = true;
+    [SerializeField , Range(0,180), Tooltip("How much the door will rotate, in degrees")] private float _degToTurn = 120f;
+    [SerializeField, Tooltip("Speed of the open and close animation")] private int _speed = 200;
 
     private const float LERP_TIME = 0.01f;
     private float t = 0f;

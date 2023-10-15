@@ -1,0 +1,56 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+
+public class HealthComponent : MonoBehaviour
+{
+    /// <summary>
+    /// Param 1 : current Health
+    /// Param2 : Position of the attacker
+    /// </summary>
+    public UnityEvent<int, Vector3> OnHealthChange; 
+    /// <summary>
+    /// Param1 : Position of death
+    /// Param 2 : Position of attacker
+    /// </summary>
+    public UnityEvent<Vector3> OnObjectDeath;
+
+    [Tooltip("Health at the start of the object's life")]
+    [SerializeField] private int _baseHealth = 100;
+    [Tooltip("Max health that the obect can have (if it can be healed)")]
+    [SerializeField] private int _maxHealth = 100;
+    [Tooltip("Current Health of the object")]
+    [SerializeField] private int _health = 0;
+
+    private void Start()
+    {
+        _health = _baseHealth;
+    }
+
+    /// <summary>
+    /// The object's health will decrease by the amount defined in "dmg" and will call an OnHealthChange event.
+    /// <br></br>
+    /// If health reaches 0 it will call a OnObjectDeath event
+    /// </summary>
+    /// <param name="dmg">Damage taken</param>
+    /// <param name="attackerPos">Position of the actor that inflicts the damage</param>
+    public void TakeDamage(int dmg, Vector3 attackerPos) //muy provisional esto 
+    {
+        _health -= dmg;
+        OnHealthChange?.Invoke(_health, attackerPos);
+        if (_health <= 0) OnObjectDeath?.Invoke(attackerPos);
+    }
+
+    /// <summary>
+    /// This object's health will increase by the amount defined in "healAmount" and will call an OnHealthChange event.
+    /// </summary>
+    /// <param name="healAmount">The amount that this object will heal</param>
+    public void Heal(int healAmount)
+    {
+        _health += healAmount;
+        OnHealthChange?.Invoke(_health, Vector3.zero);
+        if (_health > _maxHealth) _health = _maxHealth;
+    }
+}

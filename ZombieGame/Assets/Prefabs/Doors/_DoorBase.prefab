@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: -5800393602354169661}
   - component: {fileID: -849736524416140873}
   - component: {fileID: -8457801170432650954}
+  - component: {fileID: 900407272468163279}
+  - component: {fileID: 2222864221022930631}
   m_Layer: 3
   m_Name: _DoorBase
   m_TagString: Untagged
@@ -119,6 +121,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isBlocked: 0
-  _isOpen: 0
   _opensOutwards: 0
-  _degToTurn: 160
+  _degToTurn: 90
+  _speed: 150
+--- !u!114 &900407272468163279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6216398600482075729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 835fd10b76ae9534b962a7cca93440f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnHealthChange:
+    m_PersistentCalls:
+      m_Calls: []
+  OnObjectDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2222864221022930631}
+        m_TargetAssemblyTypeName: MeshDestroy, Assembly-CSharp
+        m_MethodName: DestroyMesh
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _baseHealth: 1
+  _maxHealth: 100
+  _health: 0
+--- !u!114 &2222864221022930631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6216398600482075729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 748f910ee9fe9114f95a3e2d79443e94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CutCascades: 5
+  ExplodeForce: 500
+  _maxDestroyLevel: 1
+  _destroyTime: 5
+  _fadeDuration: 5
