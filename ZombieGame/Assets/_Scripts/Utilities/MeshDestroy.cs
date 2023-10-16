@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +7,7 @@ using UnityEngine;
 //added these requirements so that we dont get unnecessary errors
 
 [RequireComponent(typeof(MeshFilter))]
-[RequireComponent (typeof(MeshRenderer))]
+[RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(HealthComponent))]
 public class MeshDestroy : MonoBehaviour
 {
@@ -23,7 +21,7 @@ public class MeshDestroy : MonoBehaviour
 
 
     //our modifications
-    [SerializeField, Tooltip("Specifies how many times a destroyable object can be divided before the fragments get destroyed from the world" )]
+    [SerializeField, Tooltip("Specifies how many times a destroyable object can be divided before the fragments get destroyed from the world")]
     private int _maxDestroyLevel = 1;
     [SerializeField, Tooltip("Specifies how long the destroyed fragments will stay in the world before they start to fade")]
     private float _destroyTime;
@@ -165,7 +163,7 @@ public class MeshDestroy : MonoBehaviour
                                         original.UV[triangles[j + singleIndex]],
                                         Vector2.Lerp(original.UV[triangles[j + singleIndex]], original.UV[triangles[j + ((singleIndex + 1) % 3)]], lerp1),
                                         Vector2.Lerp(original.UV[triangles[j + singleIndex]], original.UV[triangles[j + ((singleIndex + 2) % 3)]], lerp2));
-                    
+
                     continue;
                 }
 
@@ -296,10 +294,10 @@ public class MeshDestroy : MonoBehaviour
             mesh.vertices = Vertices;
             mesh.normals = Normals;
             mesh.uv = UV;
-            for(var i = 0; i < Triangles.Length; i++)
+            for (var i = 0; i < Triangles.Length; i++)
                 mesh.SetTriangles(Triangles[i], i, true);
             Bounds = mesh.bounds;
-            
+
             var renderer = GameObject.AddComponent<MeshRenderer>();
             renderer.materials = original.GetComponent<MeshRenderer>().materials;
 
@@ -318,6 +316,7 @@ public class MeshDestroy : MonoBehaviour
             meshDestroy._fadeDuration = original._destroyTime;
 
             FadeAndDestroyMesh fadeScript = GameObject.AddComponent<FadeAndDestroyMesh>();
+            fadeScript._type = FadeType.FADE;
             fadeScript.StartFade(meshDestroy._destroyTime, meshDestroy._fadeDuration);
         }
     }

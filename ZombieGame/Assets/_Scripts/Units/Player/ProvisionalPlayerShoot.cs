@@ -12,7 +12,7 @@ public class ProvisionalPlayerShoot : MonoBehaviour
             if (Physics.Raycast(_orientation.position, _orientation.forward, out RaycastHit hit, 1000f, _shootLayerMask))
             {
                 HealthComponent attackedObjectHP;
-                if (hit.transform.gameObject.TryGetComponent<HealthComponent>(out attackedObjectHP))
+                if (hit.transform.gameObject.TryGetComponent(out attackedObjectHP))
                 {
                     attackedObjectHP.TakeDamage(1, _orientation.transform.forward); //this is very much a test
                     Debug.Log("hit on object with health");
