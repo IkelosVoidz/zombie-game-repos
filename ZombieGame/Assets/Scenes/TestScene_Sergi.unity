@@ -1343,10 +1343,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1100720593}
     m_Modifications:
-    - target: {fileID: 617032224958209753, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: m_DefaultControlScheme
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1016241675642822250, guid: b920d24107256cf49883c937584633d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.1622212
@@ -1387,17 +1383,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1750323924914834605, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: _moveSpeed
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 2167065651827109592, guid: b920d24107256cf49883c937584633d2, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4494851504185158169, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: m_Drag
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
