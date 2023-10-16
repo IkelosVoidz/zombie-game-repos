@@ -186,7 +186,7 @@ Rigidbody:
   m_GameObject: {fileID: 2167065651827109592}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 3
+  m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -218,9 +218,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 7
   _orientation: {fileID: 5411456757662403627}
-  _jumpForce: 0
-  _jumpCooldown: 0
-  _airMultiplier: 0
+  _jumpForce: 12
+  _jumpCooldown: 0.25
+  _airMultiplier: 0.4
+  _groundDrag: 3
+  _playerHeight: 2
 --- !u!114 &617032224958209753
 MonoBehaviour:
   m_ObjectHideFlags: 0

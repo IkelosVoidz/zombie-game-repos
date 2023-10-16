@@ -19,12 +19,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Tooltip("")] private float _jumpForce;
     [SerializeField, Tooltip("")] private float _jumpCooldown;
     [SerializeField, Tooltip("")] private float _airMultiplier;
-    bool _readyToJump;
 
-    //[SerializeField, Tooltip("")] private float groundDrag;
-    //[SerializeField, Tooltip("")] private float playerHeight;
+    [SerializeField, Tooltip("")] private float _groundDrag;
+    [SerializeField, Tooltip("")] private float _playerHeight;
     //[SerializeField, Tooltip("")] private LayerMask whatIsGround;
-    //bool grounded;
+    bool _grounded;
 
     Rigidbody rb;
     public void OnMove(InputAction.CallbackContext ctx)
@@ -33,8 +32,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void OnJump(InputAction.CallbackContext ctx)
     {
-        Debug.Log("SALTAR");
-        if (ctx.performed) //buena esa ramon asi me gusta aprendiendo de nuestros errores 
+        if (ctx.performed && _grounded) //buena esa ramon asi me gusta aprendiendo de nuestros errores 
         {
             Jump();
         }
@@ -43,17 +41,17 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        
     }
     private void Update()
     {
-        //grounded = Physics.Raycast(transform.position,Vector3.down,playerHeight*0.5f+0.2f,whatIsGround);
-
+        _grounded = Physics.Raycast(transform.position,Vector3.down,_playerHeight*0.5f+0.2f); //SI ESTOY EN EL AIRE grunded = FALSE
         SpeedControl();
 
-        /*if (grounded)
-            rb.drag = groundDrag;
+        if (_grounded)
+            rb.drag = _groundDrag;
         else
-            rb.drag = 0;*/
+            rb.drag = 0;
 
     }
     private void FixedUpdate()
@@ -63,7 +61,12 @@ public class PlayerMovement : MonoBehaviour
     private void MovePlayer()
     {
         moveDirection = _orientation.forward * _moveAxis.y + _orientation.right * _moveAxis.x;
-        rb.AddForce(moveDirection.normalized * _moveSpeed * 10f, ForceMode.Force);
+
+        if (_grounded)
+            rb.AddForce(moveDirection.normalized * _moveSpeed * 10f, ForceMode.Force);
+        
+        else if (!_grounded)
+            rb.AddForce(moveDirection.normalized * _moveSpeed * 10f * _airMultiplier, ForceMode.Force);
     }
 
     private void SpeedControl()
@@ -80,12 +83,8 @@ public class PlayerMovement : MonoBehaviour
     //ACABAR
     private void Jump()
     {
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        rb.velocity = new Vector3(rb.velocity.x * 0.2f, 0f, rb.velocity.z * 0.2f);
         rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
-    }
-
-    private void ResetJump()
-    {
-        _readyToJump = true;
+        Physics.gravity = new Vector3(0, -15, 0);
     }
 }

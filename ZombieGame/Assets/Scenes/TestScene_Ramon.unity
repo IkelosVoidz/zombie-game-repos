@@ -708,8 +708,28 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1750323924914834605, guid: b920d24107256cf49883c937584633d2, type: 3}
+      propertyPath: _jumpForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750323924914834605, guid: b920d24107256cf49883c937584633d2, type: 3}
+      propertyPath: _moveSpeed
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750323924914834605, guid: b920d24107256cf49883c937584633d2, type: 3}
+      propertyPath: playerHeight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750323924914834605, guid: b920d24107256cf49883c937584633d2, type: 3}
+      propertyPath: _jumpCooldown
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750323924914834605, guid: b920d24107256cf49883c937584633d2, type: 3}
       propertyPath: airMultiplier
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750323924914834605, guid: b920d24107256cf49883c937584633d2, type: 3}
+      propertyPath: _airMultiplier
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 2167065651827109592, guid: b920d24107256cf49883c937584633d2, type: 3}
       propertyPath: m_Name
@@ -717,7 +737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4494851504185158169, guid: b920d24107256cf49883c937584633d2, type: 3}
       propertyPath: m_Drag
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4494851504185158169, guid: b920d24107256cf49883c937584633d2, type: 3}
       propertyPath: m_Mass
