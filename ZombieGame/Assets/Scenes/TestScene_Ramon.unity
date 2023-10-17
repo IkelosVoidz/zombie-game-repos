@@ -271,6 +271,10 @@ PrefabInstance:
       propertyPath: orientation
       value: 
       objectReference: {fileID: 1010234115}
+    - target: {fileID: 7307627162148683086, guid: 0fd96ef882f01214986452587ab43bd8, type: 3}
+      propertyPath: field of view
+      value: 90
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

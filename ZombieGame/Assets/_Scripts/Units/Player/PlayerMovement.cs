@@ -1,4 +1,6 @@
+using UnityEditor;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.InputSystem;
 
 
@@ -24,8 +26,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Tooltip("")] private float _playerHeight;
     //[SerializeField, Tooltip("")] private LayerMask whatIsGround;
     bool _grounded;
-
+    //private Vector3 _smoothJumpVel;
     Rigidbody rb;
+    //public float duration = 3;
     public void OnMove(InputAction.CallbackContext ctx)
     {
         _moveAxis = ctx.ReadValue<Vector2>();
@@ -41,13 +44,12 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-        
+
     }
     private void Update()
     {
         _grounded = Physics.Raycast(transform.position,Vector3.down,_playerHeight*0.5f+0.2f); //SI ESTOY EN EL AIRE grunded = FALSE
         SpeedControl();
-
         if (_grounded)
             rb.drag = _groundDrag;
         else
@@ -65,15 +67,35 @@ public class PlayerMovement : MonoBehaviour
         //ESTO ES PARA EVITAR QUE SE DESLICE
         if (_grounded)
         {
-            Vector3 vel = new Vector3(moveDirection.x*_moveSpeed*1f, rb.velocity.y, moveDirection.z*_moveSpeed * 1f);
+            Vector3 vel = new Vector3(moveDirection.x * _moveSpeed * 1f, rb.velocity.y, moveDirection.z * _moveSpeed * 1f);
             rb.velocity = vel;
+
             //rb.AddForce(moveDirection.normalized * _moveSpeed * 10f, ForceMode.Force); ///ESTO ES LO DE ANTES
+            /*if (_moveAxis.magnitude == 0 ) {
+                StartCoroutine(LerpSlide());
+            }
+            */
         }
-
-
         else if (!_grounded)
+        {
             rb.AddForce(moveDirection.normalized * _moveSpeed * 10f * _airMultiplier, ForceMode.Force);
+            //_smoothJumpVel = rb.velocity;
+        }
     }
+
+    //DEJAR APARTE
+
+    /*IEnumerator LerpSlide() {
+        float timeElapsed = 0;
+        while (timeElapsed < duration) {
+            Debug.Log("ES ESTE: " + rb.velocity);
+            float t = timeElapsed / duration;
+            rb.velocity = new Vector3(Mathf.Lerp(_smoothJumpVel.x, 0f, t), rb.velocity.y, Mathf.Lerp(_smoothJumpVel.z,0f, t));
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+    }
+    */
 
     private void SpeedControl()
     {
