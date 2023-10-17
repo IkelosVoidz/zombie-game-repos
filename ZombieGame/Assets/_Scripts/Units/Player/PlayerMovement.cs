@@ -65,13 +65,12 @@ public class PlayerMovement : MonoBehaviour
         //ESTO ES PARA EVITAR QUE SE DESLICE
         if (_grounded)
         {
-            Vector3 vel = new Vector3(_moveAxis.y*10, rb.velocity.y, _moveAxis.x*10); //AREGLAR QUE EL VECTOR DE VELOCITY IGNORA LA ROTACION DEL PLAYER
+            Vector3 vel = new Vector3(moveDirection.x*_moveSpeed*1f, rb.velocity.y, moveDirection.z*_moveSpeed * 1f);
             rb.velocity = vel;
-            // PONER UN LERP DE LA VELOCIDAD PARA QUE CUANDA CAIGA DESLIZE UN POCO???
-            //rb.AddForce(moveDirection.normalized * _moveSpeed * 5f , ForceMode.Force);
-        }
             //rb.AddForce(moveDirection.normalized * _moveSpeed * 10f, ForceMode.Force); ///ESTO ES LO DE ANTES
-        
+        }
+
+
         else if (!_grounded)
             rb.AddForce(moveDirection.normalized * _moveSpeed * 10f * _airMultiplier, ForceMode.Force);
     }
