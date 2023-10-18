@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Tooltip("")] private float _groundDrag;
     bool _grounded;
 
-    private Vector2 _moveAxis;
+    public Vector2 _moveAxis;
     Vector3 moveDirection;
 
     [Header("Jump")]

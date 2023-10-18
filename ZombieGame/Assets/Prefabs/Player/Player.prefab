@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 225351742981961667}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.369, z: 0}
+  m_LocalScale: {x: 1, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1016241675642822250}
@@ -132,7 +132,7 @@ Transform:
   m_GameObject: {fileID: 953451214381623330}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.75, z: 0}
+  m_LocalPosition: {x: 0, y: 1.332, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -152,6 +152,7 @@ GameObject:
   - component: {fileID: 617032224958209753}
   - component: {fileID: 2227531222587488755}
   - component: {fileID: 5052162235247771355}
+  - component: {fileID: 4142171329647377186}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -217,15 +218,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerHeight: 2
-  _walkSpeed: 0
-  _sprintSpeed: 0
+  _walkSpeed: 7
+  _sprintSpeed: 12
   _orientation: {fileID: 5411456757662403627}
   _groundDrag: 3
-  _jumpForce: 5
+  _moveAxis: {x: 0, y: 0}
+  _jumpForce: 6
   _jumpCooldown: 0.25
   _airMultiplier: 0.01
-  _crouchSpeed: 0
-  _crouchYScale: 0
+  _crouchSpeed: 3.5
+  _crouchYScale: 0.5
 --- !u!114 &617032224958209753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,13 +362,53 @@ MonoBehaviour:
     m_ActionId: 45cef11d-7465-4b05-abaa-10acc7cef7ac
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1750323924914834605}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnSprint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e6865c22-896f-4f9d-a4ea-e56e945c68d9
     m_ActionName: Player/Sprint[/Keyboard/leftShift]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1750323924914834605}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnCrouch
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 1f4f48ed-bcd7-43cc-badf-62785515b899
     m_ActionName: Player/Crouch[/Keyboard/leftCtrl]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4142171329647377186}
+        m_TargetAssemblyTypeName: SlideMovement, Assembly-CSharp
+        m_MethodName: OnSlide
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 15cdf6f0-98e2-41a0-beaf-773ab85d4ba2
+    m_ActionName: Player/Slide[/Keyboard/leftCtrl]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -405,6 +447,23 @@ MonoBehaviour:
   _shootLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4142171329647377186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2167065651827109592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2aa8a46bb8438b479f59248b6f208b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _orientation: {fileID: 5411456757662403627}
+  _playerObj: {fileID: 748373002772672993}
+  _maxSlideTime: 0.75
+  _slideForce: 200
+  _slideYScale: 0.5
 --- !u!1 &4944365162150985330
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,7 +489,7 @@ Transform:
   m_GameObject: {fileID: 4944365162150985330}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.621, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

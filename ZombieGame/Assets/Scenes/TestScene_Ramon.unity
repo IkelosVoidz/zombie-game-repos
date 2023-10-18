@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &123444993 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1750323924914834605, guid: b920d24107256cf49883c937584633d2, type: 3}
-  m_PrefabInstance: {fileID: 1698981690}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 207cf85ad9ccc644c8241fce709af910, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &233579182
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,7 +233,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6043798592998260879, guid: 0fd96ef882f01214986452587ab43bd8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.596
+      value: 2.397
       objectReference: {fileID: 0}
     - target: {fileID: 6043798592998260879, guid: 0fd96ef882f01214986452587ab43bd8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -284,7 +273,7 @@ PrefabInstance:
       objectReference: {fileID: 1010234115}
     - target: {fileID: 7307627162148683086, guid: 0fd96ef882f01214986452587ab43bd8, type: 3}
       propertyPath: field of view
-      value: 90
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -650,82 +639,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 617032224958209753, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: m_ActionEvents.Array.size
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 617032224958209753, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_ActionId
-      value: e6865c22-896f-4f9d-a4ea-e56e945c68d9
-      objectReference: {fileID: 0}
-    - target: {fileID: 617032224958209753, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[16].m_ActionId
-      value: 1f4f48ed-bcd7-43cc-badf-62785515b899
-      objectReference: {fileID: 0}
-    - target: {fileID: 617032224958209753, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_ActionName
-      value: Player/Sprint[/Keyboard/leftShift]
-      objectReference: {fileID: 0}
-    - target: {fileID: 617032224958209753, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[16].m_ActionName
-      value: Player/Crouch[/Keyboard/leftCtrl]
-      objectReference: {fileID: 0}
-    - target: {fileID: 617032224958209753, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 617032224958209753, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 617032224958209753, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 617032224958209753, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 617032224958209753, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 123444993}
-    - target: {fileID: 617032224958209753, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 123444993}
-    - target: {fileID: 617032224958209753, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 617032224958209753, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 617032224958209753, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnSprint
-      objectReference: {fileID: 0}
-    - target: {fileID: 617032224958209753, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnCrouch
-      objectReference: {fileID: 0}
-    - target: {fileID: 617032224958209753, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerMovement, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 617032224958209753, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerMovement, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 617032224958209753, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 617032224958209753, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 1016241675642822250, guid: b920d24107256cf49883c937584633d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -766,25 +679,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1750323924914834605, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: _walkSpeed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1750323924914834605, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: _crouchSpeed
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1750323924914834605, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: _sprintSpeed
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1750323924914834605, guid: b920d24107256cf49883c937584633d2, type: 3}
-      propertyPath: _crouchYScale
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2167065651827109592, guid: b920d24107256cf49883c937584633d2, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4142171329647377186, guid: b920d24107256cf49883c937584633d2, type: 3}
+      propertyPath: _slideYScale
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4142171329647377186, guid: b920d24107256cf49883c937584633d2, type: 3}
+      propertyPath: _maxSlideTime
+      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
