@@ -1,5 +1,5 @@
 {
-    "name": "ZombieGameInput",
+    "name": "Controlls",
     "maps": [
         {
             "name": "Player",
@@ -45,6 +45,24 @@
                     "name": "Interact",
                     "type": "Button",
                     "id": "5f17a1ab-a049-42df-a3b2-f040f2a59ff0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "e6865c22-896f-4f9d-a4ea-e56e945c68d9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Crouch",
+                    "type": "Button",
+                    "id": "1f4f48ed-bcd7-43cc-badf-62785515b899",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -313,6 +331,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a2673fa3-eab6-4b4d-b996-b4990fa4d6aa",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5c42ec26-dc6a-423d-a765-4d8340d73f13",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

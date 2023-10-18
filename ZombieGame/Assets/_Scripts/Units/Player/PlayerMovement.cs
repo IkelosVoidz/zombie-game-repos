@@ -11,9 +11,19 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(InputSystem))]
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Movement")]
-    [SerializeField, Tooltip("Speed at which the player will move")] private float _moveSpeed;
+    [Header("Player")]
+    [SerializeField, Tooltip("")] private float _playerHeight;
+    Rigidbody rb;
+
+
+    [Header("Movement/Sprint")]
+    private float _moveSpeed;
+    [SerializeField, Tooltip("Speed at which the player will move")] private float _walkSpeed;
+    [SerializeField, Tooltip("Speed at which the player will run")] private float _sprintSpeed;
     [SerializeField, Tooltip("Reference to the transform that determines the orientation of the player")] private Transform _orientation;
+    [SerializeField, Tooltip("")] private float _groundDrag;
+    bool _grounded;
+
     private Vector2 _moveAxis;
     Vector3 moveDirection;
 
@@ -22,28 +32,61 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Tooltip("")] private float _jumpCooldown;
     [SerializeField, Tooltip("")] private float _airMultiplier;
 
-    [SerializeField, Tooltip("")] private float _groundDrag;
-    [SerializeField, Tooltip("")] private float _playerHeight;
-    //[SerializeField, Tooltip("")] private LayerMask whatIsGround;
-    bool _grounded;
+    [Header("Crouching")]
+    
+    [SerializeField, Tooltip("Speed at which the player will crouch")] private float _crouchSpeed;
+    [SerializeField, Tooltip("")] private float _crouchYScale;
+    private float _startYScale;
+
+
+
     //private Vector3 _smoothJumpVel;
-    Rigidbody rb;
     //public float duration = 3;
+
+
+    //---------------INPUTS FUNCTIONS---------------//
     public void OnMove(InputAction.CallbackContext ctx)
     {
         _moveAxis = ctx.ReadValue<Vector2>();
     }
     public void OnJump(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && _grounded) //buena esa ramon asi me gusta aprendiendo de nuestros errores 
+        if (ctx.performed && _grounded)
         {
             Jump();
         }
     }
-    private void Start()
+    public void OnSprint(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed /*&& _grounded*/) 
+        {
+            _moveSpeed = _sprintSpeed;
+        }
+        else
+        {
+            _moveSpeed = _walkSpeed;
+        }
+    }
+
+    public void OnCrouch(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            StartCoroutine(CrouchSmoothly(_crouchYScale, _crouchSpeed)); //FLIPA SERGI COMO APLICO ESTA MIERDA CHAVAL
+        }
+        else
+        {
+            StartCoroutine(CrouchSmoothly(_startYScale, _walkSpeed));
+        }
+    }
+
+//---------------EVENT FUNCTIONS---------------//
+private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        _moveSpeed = _walkSpeed;
+        _startYScale = transform.localScale.y;
 
     }
     private void Update()
@@ -51,7 +94,9 @@ public class PlayerMovement : MonoBehaviour
         _grounded = Physics.Raycast(transform.position,Vector3.down,_playerHeight*0.5f+0.2f); //SI ESTOY EN EL AIRE grunded = FALSE
         SpeedControl();
         if (_grounded)
+        {
             rb.drag = _groundDrag;
+        }
         else
             rb.drag = 0;
 
@@ -60,6 +105,9 @@ public class PlayerMovement : MonoBehaviour
     {
         MovePlayer();
     }
+
+
+    //---------------MOVEMENT FUNCTIONS---------------//
     private void MovePlayer()
     {
         moveDirection = _orientation.forward * _moveAxis.y + _orientation.right * _moveAxis.x;
@@ -83,6 +131,24 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void SpeedControl()
+    {
+        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        if (flatVel.magnitude > _moveSpeed)
+        {
+            Vector3 limitedVel = flatVel.normalized * _moveSpeed;
+            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+        }
+    }
+
+    private void Jump()
+    {
+        rb.velocity = new Vector3(rb.velocity.x * 0.2f, 0f, rb.velocity.z * 0.2f);
+        rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
+        Physics.gravity = new Vector3(0, -15, 0);
+    }
+
     //DEJAR APARTE
 
     /*IEnumerator LerpSlide() {
@@ -97,22 +163,24 @@ public class PlayerMovement : MonoBehaviour
     }
     */
 
-    private void SpeedControl()
-    {
-        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        if (flatVel.magnitude > _moveSpeed)
+    private IEnumerator CrouchSmoothly(float targetYScale, float targetMoveSpeed)
+    {
+        float duration = 0.2f;  // DURACION DE LA TRANSICION
+        Vector3 startScale = transform.localScale;
+        float startTime = Time.time;
+
+        while (Time.time < startTime + duration)
         {
-            Vector3 limitedVel = flatVel.normalized * _moveSpeed;
-            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+            float t = (Time.time - startTime) / duration;
+            transform.localScale = Vector3.Lerp(startScale, new Vector3(startScale.x, targetYScale, startScale.z), t);
+            _moveSpeed = Mathf.Lerp(_moveSpeed, targetMoveSpeed, t);
+            yield return null;
         }
+
+       
+        transform.localScale = new Vector3(startScale.x, targetYScale, startScale.z); //(RIGID BODY.SCALE/2)
+        _moveSpeed = targetMoveSpeed; //CROUCHING VELOCITY
     }
 
-    //ACABAR
-    private void Jump()
-    {
-        rb.velocity = new Vector3(rb.velocity.x * 0.2f, 0f, rb.velocity.z * 0.2f);
-        rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
-        Physics.gravity = new Vector3(0, -15, 0);
-    }
 }

@@ -216,13 +216,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 207cf85ad9ccc644c8241fce709af910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 7
+  _playerHeight: 2
+  _walkSpeed: 0
+  _sprintSpeed: 0
   _orientation: {fileID: 5411456757662403627}
+  _groundDrag: 3
   _jumpForce: 5
   _jumpCooldown: 0.25
   _airMultiplier: 0.01
-  _groundDrag: 3
-  _playerHeight: 2
+  _crouchSpeed: 0
+  _crouchYScale: 0
 --- !u!114 &617032224958209753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,6 +359,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 45cef11d-7465-4b05-abaa-10acc7cef7ac
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e6865c22-896f-4f9d-a4ea-e56e945c68d9
+    m_ActionName: Player/Sprint[/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1f4f48ed-bcd7-43cc-badf-62785515b899
+    m_ActionName: Player/Crouch[/Keyboard/leftCtrl]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
