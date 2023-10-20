@@ -36,6 +36,14 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.0013451129
       objectReference: {fileID: 0}
+    - target: {fileID: 900407272468163279, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
+      propertyPath: _baseHealth
+      value: 100000
+      objectReference: {fileID: 0}
+    - target: {fileID: 900407272468163279, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
+      propertyPath: OnObjectDeath.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2344320786704682931, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -84,7 +92,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2222864221022930631, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
+    - {fileID: 900407272468163279, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

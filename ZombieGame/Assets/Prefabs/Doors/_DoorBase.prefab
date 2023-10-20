@@ -123,7 +123,7 @@ MonoBehaviour:
   _isBlocked: 0
   _opensOutwards: 0
   _degToTurn: 90
-  _speed: 150
+  _speed: 200
 --- !u!114 &900407272468163279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +154,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _baseHealth: 1
+  _baseHealth: 10
   _maxHealth: 100
   _health: 0
 --- !u!114 &2222864221022930631

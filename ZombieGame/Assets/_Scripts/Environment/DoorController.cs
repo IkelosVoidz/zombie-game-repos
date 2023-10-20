@@ -31,7 +31,7 @@ public class DoorController : MonoBehaviour, IInteractable
         else { } //play deny sound i guess
     }
 
-    public void changeBlockedStatus()
+    public void ChangeBlockedStatus()
     {
         _isBlocked = !_isBlocked;
     }

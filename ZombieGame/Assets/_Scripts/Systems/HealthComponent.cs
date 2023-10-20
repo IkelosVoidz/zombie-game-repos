@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,18 +7,18 @@ public class HealthComponent : MonoBehaviour
     /// Param 1 : current Health
     /// Param2 : Position of the attacker
     /// </summary>
-    public UnityEvent<int, Vector3> OnHealthChange; 
+    public UnityEvent<int, Vector3> OnHealthChange;
     /// <summary>
     /// Param1 : Position of death
     /// Param 2 : Position of attacker
     /// </summary>
-    public UnityEvent<Vector3> OnObjectDeath;
+    public UnityEvent<Vector3, Vector3> OnObjectDeath;
 
     [Tooltip("Health at the start of the object's life")]
     [SerializeField] private int _baseHealth = 100;
     [Tooltip("Max health that the obect can have (if it can be healed)")]
     [SerializeField] private int _maxHealth = 100;
-    [Tooltip("Current Health of the object")]
+    [Tooltip("Current Health of the object, READ ONLY!!!")]
     [SerializeField] private int _health = 0;
 
     private void Start()
@@ -40,7 +37,7 @@ public class HealthComponent : MonoBehaviour
     {
         _health -= dmg;
         OnHealthChange?.Invoke(_health, attackerPos);
-        if (_health <= 0) OnObjectDeath?.Invoke(attackerPos);
+        if (_health <= 0) OnObjectDeath?.Invoke(this.transform.position, attackerPos);
     }
 
     /// <summary>
@@ -50,7 +47,7 @@ public class HealthComponent : MonoBehaviour
     public void Heal(int healAmount)
     {
         _health += healAmount;
-        OnHealthChange?.Invoke(_health, Vector3.zero);
+        OnHealthChange?.Invoke(_health, Vector3.zero); //attack pos unused
         if (_health > _maxHealth) _health = _maxHealth;
     }
 }

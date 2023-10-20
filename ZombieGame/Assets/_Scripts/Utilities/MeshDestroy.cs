@@ -41,7 +41,7 @@ public class MeshDestroy : MonoBehaviour
     /// Will destroy the mesh in various triangles of various sizes and apply a force to them to the opposite direction of the destroyer position
     /// </summary>
     /// <param name="destroyDirection"> Direction from which the object is being destroyed from, used as we apply force to the destroyed fragments</param>
-    public void DestroyMesh(Vector3 destroyDirection)
+    public void DestroyMesh(Vector3 deathPos, Vector3 destroyDirection) //deathPos is not used, however it has to be there because the unity event needs to send it somewhere
     {
         var originalMesh = GetComponent<MeshFilter>().mesh;
         originalMesh.RecalculateBounds();
