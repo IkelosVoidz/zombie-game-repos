@@ -3155,6 +3155,7 @@ GameObject:
   - component: {fileID: 1891526301}
   - component: {fileID: 1891526300}
   - component: {fileID: 1891526299}
+  - component: {fileID: 1891526306}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -3174,9 +3175,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
   navMeshAgent: {fileID: 1891526301}
   target: {fileID: 2167065652368410655}
   animator: {fileID: 0}
+  healthComponent: {fileID: 1891526306}
 --- !u!208 &1891526300
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -3303,6 +3306,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1891526306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891526298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 835fd10b76ae9534b962a7cca93440f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnHealthChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1891526299}
+        m_TargetAssemblyTypeName: Zombie, Assembly-CSharp
+        m_MethodName: ChangeStateTo
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnObjectDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1891526299}
+        m_TargetAssemblyTypeName: Zombie, Assembly-CSharp
+        m_MethodName: ChangeStateTo
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _baseHealth: 100
+  _maxHealth: 100
+  _health: 0
 --- !u!1 &1921492374
 GameObject:
   m_ObjectHideFlags: 0

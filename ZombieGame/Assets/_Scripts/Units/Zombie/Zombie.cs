@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class Zombie : MonoBehaviour
 {
     const int SPAWN = 0;
@@ -17,19 +18,20 @@ public class Zombie : MonoBehaviour
     const float RUN = 1;
     */
 
-    int state = SPAWN;
-    int life = 100;
+    [SerializeField]int state = SPAWN;
 
     [SerializeField] NavMeshAgent navMeshAgent;     
     [SerializeField] GameObject target;
     [SerializeField] Animator animator;
+
+    [SerializeField] HealthComponent healthComponent;
 
     //float style = IDLE;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -66,15 +68,14 @@ public class Zombie : MonoBehaviour
     {
 
     }
-
     private void TakeDamage()
     {
-
+        //Animar TakeDamage
     }
 
     private void Die()
     {
-
+        //Animar Muerte
     }
 
     //Detecta si esta el Player  davant per atacarlo
@@ -97,19 +98,9 @@ public class Zombie : MonoBehaviour
 
     //----------------------[Public Methods]--------------------------
 
-    //Se supone que cuando el player dispara y hacierta desde el 
-    //player se obtiene el zombie acertado y se llama el metodo
-    //DecreaseLife() que se le passa por parametro el daño de
-    //la arma equipada (por si en algun momento metemos más
-    //armas)
-    public void DecreaseLife(int damage)
+    //Metodes per els events
+    public void ChangeStateTo(int _state)
     {
-        life -= damage;
-        if (life > 0)
-            state = TAKE_DAMAGE;
-        else
-            state = DIE;
+        state = _state;
     }
-
-
 }
