@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5623642764912626439}
   - component: {fileID: 3753581189259146832}
   - component: {fileID: 1245879489053481455}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerCam
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 127
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -240,10 +240,10 @@ MonoBehaviour:
   volumeTrigger: {fileID: 7201063374694263384}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
-  antialiasingMode: 0
+  antialiasingMode: 1
   temporalAntialiasing:
     jitterSpread: 0.75
     sharpness: 0.25
@@ -396,8 +396,8 @@ Camera:
   m_GameObject: {fileID: 7808585755036162784}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -464,7 +464,7 @@ MonoBehaviour:
     m_Bits: 128
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
-  antialiasingMode: 0
+  antialiasingMode: 1
   temporalAntialiasing:
     jitterSpread: 0.75
     sharpness: 0.25

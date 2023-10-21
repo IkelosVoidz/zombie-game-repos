@@ -1,5 +1,6 @@
-Shader "Outline"
+Shader "Hidden/Outline"
 {
+
     SubShader
     {
         HLSLINCLUDE
@@ -31,7 +32,6 @@ Shader "Outline"
             return o;
         };
 
-  
         ENDHLSL
 
         Cull Off
@@ -50,11 +50,11 @@ Shader "Outline"
                 o.vertex = float4(v.vertex.xy, 0.0, 1.0);
                 o.uv = TransformTriangleVertexToUV(v.vertex.xy);
                 o.screen_pos = ComputeScreenPos(o.vertex);
-        #if UNITY_UV_STARTS_AT_TOP
+#if UNITY_UV_STARTS_AT_TOP
                 o.uv = o.uv * float2(1.0, -1.0) + float2(0.0, 1.0);
-        #endif
+#endif
                 return o;
-            };
+            }
 
             float4 Frag(v2f i) : SV_Target
             {
