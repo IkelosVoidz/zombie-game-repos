@@ -1,17 +1,19 @@
-using System;
-
+using UnityEngine;
 public interface IInteractable
 {
+    /// <summary>
+    /// Reference to the game object on which this Interface is implemented on
+    /// </summary>
+    GameObject gameObject { get; }
     void Interact();
-
 
     void OnSelect()
     {
-        Console.WriteLine("Estas Mirando al objeto");
+        gameObject?.SwapLayer("Outline", true);
     }
 
     void OnDeselect()
     {
-        Console.WriteLine("Ya no estas mirando al objeto");
+        gameObject?.SwapLayer("Default", true);
     }
 }

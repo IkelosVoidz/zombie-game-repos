@@ -10,15 +10,15 @@ public class PlayerInteract : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Physics.Raycast(_orientation.position, _orientation.forward, out RaycastHit hit, _interactionRange, _interactLayerMask))
+        if (Physics.Raycast(_orientation.position, _orientation.forward, out RaycastHit hit, _interactionRange))
         {
-            _interactable = hit.transform.gameObject.GetComponent<IInteractable>();
-            Debug.Log("estas mirando un interactable");
+            hit.transform.gameObject.TryGetComponent(out _interactable); //intentamos pillar el interactable de lo que sea que estamos mirando
+            _interactable?.OnSelect();
         }
         else
         {
+            _interactable?.OnDeselect();
             _interactable = null;
-            Debug.Log("ya no estas mirando un interactable");
         }
     }
 
