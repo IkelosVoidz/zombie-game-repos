@@ -1,6 +1,5 @@
 using System;
 using UnityEngine.Rendering.PostProcessing;
-using PostProcessAttribute = UnityEngine.Rendering.PostProcessing.PostProcessAttribute;
 
 [Serializable]
 [PostProcess(typeof(PostProcessOutlineRenderer), PostProcessEvent.AfterStack, "Outline")]
