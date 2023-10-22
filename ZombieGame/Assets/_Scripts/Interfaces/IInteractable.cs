@@ -14,6 +14,6 @@ public interface IInteractable
 
     void OnDeselect()
     {
-        gameObject?.SwapLayer("Default", true);
+        gameObject?.SwapLayer("Interactable", true);
     }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6951392404142330193}
   - component: {fileID: 3363826842830671808}
   - component: {fileID: 6801640909303287053}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HealthPickablePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

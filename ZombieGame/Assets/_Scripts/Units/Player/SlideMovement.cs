@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,7 +5,8 @@ public class SlideMovement : MonoBehaviour
 {
     [Header("References")]
 
-    [SerializeField, Tooltip("")] private Transform _orientation;
+    [SerializeField, Tooltip("")] private Transform _lookOrientation;
+    private Transform _orientation;
     [SerializeField, Tooltip("")] private Transform _playerObj;
     private Rigidbody rb;
     private PlayerMovement _player;
@@ -25,7 +24,7 @@ public class SlideMovement : MonoBehaviour
 
     private bool _sliding;
 
-   
+
     public void OnSlide(InputAction.CallbackContext ctx)
     {
         if (ctx.performed && (_player._moveAxis.x != 0 || _player._moveAxis.y != 0))
@@ -47,20 +46,24 @@ public class SlideMovement : MonoBehaviour
         _startYScale = _playerObj.localScale.y;
     }
 
-  
-    private void FixedUpdate() 
+    private void Update()
+    {
+        _orientation = _lookOrientation;
+        _orientation.rotation = Quaternion.Euler(new Vector3(0, _lookOrientation.rotation.y, 0));
+    }
+
+    private void FixedUpdate()
     {
         if (_sliding)
             SlidingMovement();
-        
     }
 
     private void StartSlide()
     {
         _sliding = true;
 
-        _playerObj.localScale = new Vector3(_playerObj.localScale.x,_slideYScale, _playerObj.localScale.z);
-        rb.AddForce(Vector3.down*5f,ForceMode.Impulse);
+        _playerObj.localScale = new Vector3(_playerObj.localScale.x, _slideYScale, _playerObj.localScale.z);
+        rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
 
         _slideTimer = _maxSlideTime;
     }
@@ -69,7 +72,7 @@ public class SlideMovement : MonoBehaviour
     {
         Vector3 inputDirection = _orientation.forward * _player._moveAxis.y + _orientation.right * _player._moveAxis.x;
 
-        rb.AddForce(inputDirection.normalized*_slideForce,ForceMode.Force);
+        rb.AddForce(inputDirection.normalized * _slideForce, ForceMode.Force);
 
         _slideTimer -= Time.deltaTime;
 

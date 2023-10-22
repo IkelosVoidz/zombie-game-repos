@@ -1,6 +1,5 @@
-using UnityEditor;
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 
@@ -20,7 +19,8 @@ public class PlayerMovement : MonoBehaviour
     private float _moveSpeed;
     [SerializeField, Tooltip("Speed at which the player will move")] private float _walkSpeed;
     [SerializeField, Tooltip("Speed at which the player will run")] private float _sprintSpeed;
-    [SerializeField, Tooltip("Reference to the transform that determines the orientation of the player")] private Transform _orientation;
+    [SerializeField, Tooltip("Reference to the transform that determines the orientation of the player")] private Transform _lookOrientation;
+    private Transform _orientation;
     [SerializeField, Tooltip("")] private float _groundDrag;
     bool _grounded;
 
@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Tooltip("")] private float _airMultiplier;
 
     [Header("Crouching")]
-    
+
     [SerializeField, Tooltip("Speed at which the player will crouch")] private float _crouchSpeed;
     [SerializeField, Tooltip("")] private float _crouchYScale;
     private float _startYScale;
@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void OnSprint(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed /*&& _grounded*/) 
+        if (ctx.performed /*&& _grounded*/)
         {
             _moveSpeed = _sprintSpeed;
         }
@@ -80,18 +80,25 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-//---------------EVENT FUNCTIONS---------------//
-private void Start()
+    //---------------EVENT FUNCTIONS---------------//
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         _moveSpeed = _walkSpeed;
         _startYScale = transform.localScale.y;
 
+        _orientation = _lookOrientation;
+        _orientation.rotation = Quaternion.Euler(new Vector3(0, _lookOrientation.rotation.y, 0));
+
     }
     private void Update()
     {
-        _grounded = Physics.Raycast(transform.position,Vector3.down,_playerHeight*0.5f+0.2f); //SI ESTOY EN EL AIRE grunded = FALSE
+        _orientation = _lookOrientation;
+        _orientation.rotation = Quaternion.Euler(new Vector3(0, _lookOrientation.rotation.y, 0));
+
+
+        _grounded = Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + 0.2f); //SI ESTOY EN EL AIRE grunded = FALSE
         SpeedControl();
         if (_grounded)
         {
@@ -178,7 +185,7 @@ private void Start()
             yield return null;
         }
 
-       
+
         transform.localScale = new Vector3(startScale.x, targetYScale, startScale.z); //(RIGID BODY.SCALE/2)
         _moveSpeed = targetMoveSpeed; //CROUCHING VELOCITY
     }
