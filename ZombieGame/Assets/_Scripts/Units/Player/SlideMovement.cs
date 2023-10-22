@@ -5,8 +5,8 @@ public class SlideMovement : MonoBehaviour
 {
     [Header("References")]
 
-    [SerializeField, Tooltip("")] private Transform _lookOrientation;
-    private Transform _orientation;
+    [SerializeField, Tooltip("")] private Transform _orientation;
+    //private Transform _orientation;
     [SerializeField, Tooltip("")] private Transform _playerObj;
     private Rigidbody rb;
     private PlayerMovement _player;
@@ -46,11 +46,6 @@ public class SlideMovement : MonoBehaviour
         _startYScale = _playerObj.localScale.y;
     }
 
-    private void Update()
-    {
-        _orientation = _lookOrientation;
-        _orientation.rotation = Quaternion.Euler(new Vector3(0, _lookOrientation.rotation.y, 0));
-    }
 
     private void FixedUpdate()
     {

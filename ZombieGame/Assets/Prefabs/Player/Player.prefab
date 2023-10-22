@@ -220,7 +220,7 @@ MonoBehaviour:
   _playerHeight: 2
   _walkSpeed: 7
   _sprintSpeed: 12
-  _lookOrientation: {fileID: 5411456757662403627}
+  _orientation: {fileID: 5411456757662403627}
   _groundDrag: 3
   _moveAxis: {x: 0, y: 0}
   _jumpForce: 6
@@ -459,7 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2aa8a46bb8438b479f59248b6f208b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lookOrientation: {fileID: 5411456757662403627}
+  _orientation: {fileID: 5411456757662403627}
   _playerObj: {fileID: 748373002772672993}
   _maxSlideTime: 0.75
   _slideForce: 200

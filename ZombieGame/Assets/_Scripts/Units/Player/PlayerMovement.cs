@@ -19,8 +19,8 @@ public class PlayerMovement : MonoBehaviour
     private float _moveSpeed;
     [SerializeField, Tooltip("Speed at which the player will move")] private float _walkSpeed;
     [SerializeField, Tooltip("Speed at which the player will run")] private float _sprintSpeed;
-    [SerializeField, Tooltip("Reference to the transform that determines the orientation of the player")] private Transform _lookOrientation;
-    private Transform _orientation;
+    [SerializeField, Tooltip("Reference to the transform that determines the orientation of the player")] private Transform _orientation;
+    //private Transform _orientation;
     [SerializeField, Tooltip("")] private float _groundDrag;
     bool _grounded;
 
@@ -88,15 +88,9 @@ public class PlayerMovement : MonoBehaviour
         _moveSpeed = _walkSpeed;
         _startYScale = transform.localScale.y;
 
-        _orientation = _lookOrientation;
-        _orientation.rotation = Quaternion.Euler(new Vector3(0, _lookOrientation.rotation.y, 0));
-
     }
     private void Update()
     {
-        _orientation = _lookOrientation;
-        _orientation.rotation = Quaternion.Euler(new Vector3(0, _lookOrientation.rotation.y, 0));
-
 
         _grounded = Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + 0.2f); //SI ESTOY EN EL AIRE grunded = FALSE
         SpeedControl();
