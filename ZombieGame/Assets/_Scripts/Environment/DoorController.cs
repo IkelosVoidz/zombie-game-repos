@@ -5,30 +5,46 @@ using UnityEngine;
 public class DoorController : MonoBehaviour, IInteractable
 {
 
-    [SerializeField, Tooltip("Wether the door can be opened or not by default")] private bool _isBlocked = false;
-    [SerializeField, Tooltip("Wether the door will open towards the player when seen from the outside")] private bool _opensOutwards = true;
+    [SerializeField, Tooltip("Whether the door can be opened or not by default")] private bool _isBlocked = false;
+    [SerializeField, Tooltip("Whether the door will open towards the player when seen from the outside")] private bool _opensOutwards = true;
     [SerializeField, Range(0, 180), Tooltip("How much the door will rotate, in degrees")] private float _degToTurn = 120f;
-    [SerializeField, Tooltip("Speed of the open and close animation")] private int _speed = 200;
+    [SerializeField, Tooltip("Total time it takes to open/close the door")] private float _openTime = 0.5f;
 
-    private const float LERP_TIME = 0.01f;
-    private float t = 0f;
-    private float _startingAngle;
-    private bool _isOpen = false;
+    private Quaternion initialRotation;
+    private Quaternion openRotation;
+    private Quaternion actualRotation;
 
-    private void Start()
+    private bool isOpen = false;
+    private float currentTime = 0.0f;
+
+    void Start()
     {
-        _startingAngle = transform.localEulerAngles.y;
-        if (_opensOutwards) _degToTurn *= -1;
+        initialRotation = transform.rotation;
+        actualRotation = transform.rotation;
+
+        if (_opensOutwards)
+        {
+            openRotation = initialRotation * Quaternion.Euler(0, _degToTurn, 0);
+        }
+        else
+        {
+            openRotation = initialRotation * Quaternion.Euler(0, -_degToTurn, 0);
+        }
     }
 
     //interface method
     public void Interact()
     {
-        if (!_isBlocked)
+        if (_isBlocked)
         {
-            _isOpen = !_isOpen; //te he reducido dos funciones a una linea de codigo manin
+            //play deny sound i guess
         }
-        else { } //play deny sound i guess
+        else
+        {
+            actualRotation = transform.rotation;
+            isOpen = !isOpen;
+            currentTime = _openTime;
+        }
     }
 
     public void ChangeBlockedStatus()
@@ -38,23 +54,20 @@ public class DoorController : MonoBehaviour, IInteractable
 
     private void Update()
     {
-        if (_isOpen)
+        if (currentTime > 0.0f)
         {
-            Vector3 targetRotation = new Vector3(0, _degToTurn + _startingAngle, 0);
-            transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, targetRotation, LERP_TIME * Time.deltaTime * _speed);
-        }
-        else
-        {
-            Vector3 targetRotation = new Vector3(0, _startingAngle, 0);
-            transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, targetRotation, LERP_TIME * Time.deltaTime * _speed);
-        }
+            if (isOpen)
+            {
+                transform.rotation = Quaternion.Lerp(actualRotation, openRotation, 1.0f - (currentTime / _openTime));
+            }
+            else
+            {
+                transform.rotation = Quaternion.Lerp(actualRotation, initialRotation, 1.0f - (currentTime / _openTime));
+            }
 
-        t = Mathf.Lerp(t, LERP_TIME, Time.deltaTime * _speed);
-
-        if (t >= 1f)
-        {
-            t = 0f;
+            currentTime -= Time.deltaTime;
         }
     }
 }
+
 

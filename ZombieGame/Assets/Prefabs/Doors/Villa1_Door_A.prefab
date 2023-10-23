@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8457801170432650954, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
+      propertyPath: _openTime
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: -5800393602354169661, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -111,3 +115,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CutCascades: 5
   ExplodeForce: 20
+  _maxDestroyLevel: 1
+  _destroyTime: 0
+  _fadeDuration: 0

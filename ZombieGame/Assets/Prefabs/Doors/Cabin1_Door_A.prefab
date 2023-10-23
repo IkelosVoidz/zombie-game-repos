@@ -8,9 +8,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8457801170432650954, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
+      propertyPath: _openTime
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6216398600482075729, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
       propertyPath: m_Name
-      value: DoorBase
+      value: Cabin1_Door_A
       objectReference: {fileID: 0}
     - target: {fileID: 9152945538558401631, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
       propertyPath: m_LocalPosition.x
