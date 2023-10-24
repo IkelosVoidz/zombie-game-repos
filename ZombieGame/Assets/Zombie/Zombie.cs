@@ -23,15 +23,16 @@ public class Zombie : MonoBehaviour
     [SerializeField] NavMeshAgent navMeshAgent;     
     [SerializeField] GameObject target;
     [SerializeField] Animator animator;
-
     [SerializeField] HealthComponent healthComponent;
+
+    private float maxSpeed;
 
     //float style = IDLE;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        maxSpeed = navMeshAgent.speed;
     }
 
     // Update is called once per frame
@@ -40,7 +41,9 @@ public class Zombie : MonoBehaviour
         switch (state)
         {
             case SPAWN:
-                state = CHASE;
+                float time = Random.Range(2.0f, 100.0f);
+                Debug.Log(time);
+                Invoke("SpawnToChase", time);
                 break;
             case CHASE:
                 Chase();
@@ -78,12 +81,17 @@ public class Zombie : MonoBehaviour
         //Animar Muerte
     }
 
+    private void SpawnToChase()
+    {
+        state = CHASE;
+    }
+
     //Detecta si esta el Player  davant per atacarlo
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("PLAYER"))
         {
-            state = ATTACK;
+            //state = ATTACK;
         }
     }
 
@@ -92,7 +100,7 @@ public class Zombie : MonoBehaviour
     {
         if (other.CompareTag("PLAYER"))
         {
-            state = CHASE;
+            //state = CHASE;
         }
     }
 
@@ -102,5 +110,14 @@ public class Zombie : MonoBehaviour
     public void ChangeStateTo(int _state)
     {
         state = _state;
+    }
+
+    public void FootStepEvent()
+    {
+        Debug.Log("Pasiot Zombie");
+        if (navMeshAgent.speed > 0)
+            navMeshAgent.speed = 0;
+        else
+            navMeshAgent.speed = maxSpeed;
     }
 }
