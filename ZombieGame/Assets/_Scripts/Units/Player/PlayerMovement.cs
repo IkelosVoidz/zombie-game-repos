@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +14,14 @@ public class PlayerMovement : MonoBehaviour
     [Header("Player")]
     [SerializeField, Tooltip("")] private float _playerHeight;
     Rigidbody rb;
+
+    public MovementState stare;
+    public enum MovementState
+    {
+        walking,
+        sprinting,
+        air
+    }
 
 
     [Header("Movement/Sprint")]
@@ -144,12 +153,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void SpeedControl()
     {
-        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        if (OnSlope()){
+            if (rb.velocity.magnitude > _moveSpeed)
+            {
+                rb.velocity = rb.velocity.normalized * _moveSpeed;
+            }
+        }
+        else {
+            Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        if (flatVel.magnitude > _moveSpeed)
-        {
-            Vector3 limitedVel = flatVel.normalized * _moveSpeed;
-            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+            if (flatVel.magnitude > _moveSpeed)
+            {
+                Vector3 limitedVel = flatVel.normalized * _moveSpeed;
+                rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+            }
         }
     }
 
