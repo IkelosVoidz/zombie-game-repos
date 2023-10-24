@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Tooltip("")] private float _groundDrag;
     bool _grounded;
 
-    public Vector2 _moveAxis;
+    public Vector2 _moveAxis { get; private set; }
     Vector3 moveDirection;
 
     [Header("Jump")]
@@ -38,6 +38,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Tooltip("")] private float _crouchYScale;
     private float _startYScale;
 
+    [Header("Slope Handling")]
+    [SerializeField, Tooltip("")] private float _maxSlopeAngle;
+    private RaycastHit _slopeHit;
 
 
     //private Vector3 _smoothJumpVel;
@@ -112,24 +115,31 @@ public class PlayerMovement : MonoBehaviour
     private void MovePlayer()
     {
         moveDirection = _orientation.forward * _moveAxis.y + _orientation.right * _moveAxis.x;
-
+        bool exitedSlope = false;
         //ESTO ES PARA EVITAR QUE SE DESLICE
+
+        if (OnSlope())
+        {
+            
+            /*Vector3 vel = new Vector3(GetSlopeMoveDirection().x * _moveSpeed * 1f, rb.velocity.y, GetSlopeMoveDirection().z * _moveSpeed * 1f);
+            rb.velocity = vel;*/
+            rb.AddForce(GetSlopeMoveDirection() * _moveSpeed* 20f,ForceMode.Force);
+            if (rb.velocity.y > 0)
+                rb.AddForce(Vector3.down *80f,ForceMode.Force);
+        }
+
         if (_grounded)
         {
             Vector3 vel = new Vector3(moveDirection.x * _moveSpeed * 1f, rb.velocity.y, moveDirection.z * _moveSpeed * 1f);
             rb.velocity = vel;
-
-            //rb.AddForce(moveDirection.normalized * _moveSpeed * 10f, ForceMode.Force); ///ESTO ES LO DE ANTES
-            /*if (_moveAxis.magnitude == 0 ) {
-                StartCoroutine(LerpSlide());
-            }
-            */
         }
         else if (!_grounded)
         {
             rb.AddForce(moveDirection.normalized * _moveSpeed * 10f * _airMultiplier, ForceMode.Force);
             //_smoothJumpVel = rb.velocity;
         }
+
+        rb.useGravity = !OnSlope();
     }
 
     private void SpeedControl()
@@ -149,6 +159,23 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
         Physics.gravity = new Vector3(0, -15, 0);
     }
+
+    private bool OnSlope()
+    {
+        if (Physics.Raycast(transform.position,Vector3.down,out _slopeHit,_playerHeight* 0.5f+0.3f))
+        {
+            float angle = Vector3.Angle(Vector3.up,_slopeHit.normal);
+            return angle < _maxSlopeAngle && angle != 0;
+        }
+        return false;
+    }
+
+    private Vector3 GetSlopeMoveDirection()
+    {
+        return Vector3.ProjectOnPlane(moveDirection,_slopeHit.normal).normalized;
+    }
+
+
 
     //DEJAR APARTE
 
