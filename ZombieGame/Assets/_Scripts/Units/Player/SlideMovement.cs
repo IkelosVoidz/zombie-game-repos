@@ -6,7 +6,7 @@ public class SlideMovement : MonoBehaviour
     [Header("References")]
 
     [SerializeField, Tooltip("")] private Transform _orientation;
-    //private Transform _orientation;
+    //private Transform _lookOrientation;
     [SerializeField, Tooltip("")] private Transform _playerObj;
     private Rigidbody rb;
     private PlayerMovement _player;

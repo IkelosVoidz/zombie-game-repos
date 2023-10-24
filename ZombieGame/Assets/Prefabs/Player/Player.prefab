@@ -250,11 +250,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerHeight: 2
+  stare: 0
   _walkSpeed: 7
   _sprintSpeed: 12
   _orientation: {fileID: 5411456757662403627}
   _groundDrag: 3
-  _moveAxis: {x: 0, y: 0}
   _jumpForce: 6
   _jumpCooldown: 0.25
   _airMultiplier: 0.01
@@ -463,7 +463,7 @@ MonoBehaviour:
   _interactLayerMask:
     serializedVersion: 2
     m_Bits: 136
-  _orientation: {fileID: 5411456757662403627}
+  _lookOrientation: {fileID: 1786780782869078267}
 --- !u!114 &5052162235247771355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,7 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88960cee57026f14fbe136afbc088d17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _orientation: {fileID: 5411456757662403627}
+  _lookOrientation: {fileID: 1786780782869078267}
   _shootLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295

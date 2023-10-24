@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 public interface IInteractable
 {
@@ -9,11 +10,17 @@ public interface IInteractable
 
     void OnSelect()
     {
-        gameObject?.SwapLayer("Outline", true);
+        if (!gameObject.IsDestroyed())
+        {
+            gameObject.SwapLayer("Outline", true);
+        }
     }
 
     void OnDeselect()
     {
-        gameObject?.SwapLayer("Interactable", true);
+        if (!gameObject.IsDestroyed())
+        {
+            gameObject.SwapLayer("Interactable", true);
+        }
     }
 }
