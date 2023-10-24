@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -29,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Tooltip("Speed at which the player will move")] private float _walkSpeed;
     [SerializeField, Tooltip("Speed at which the player will run")] private float _sprintSpeed;
     [SerializeField, Tooltip("Reference to the transform that determines the orientation of the player")] private Transform _orientation;
-    //private Transform _orientation;
+    //private Transform _lookOrientation;
     [SerializeField, Tooltip("")] private float _groundDrag;
     bool _grounded;
 
@@ -129,12 +128,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (OnSlope())
         {
-            
+
             /*Vector3 vel = new Vector3(GetSlopeMoveDirection().x * _moveSpeed * 1f, rb.velocity.y, GetSlopeMoveDirection().z * _moveSpeed * 1f);
             rb.velocity = vel;*/
-            rb.AddForce(GetSlopeMoveDirection() * _moveSpeed* 20f,ForceMode.Force);
+            rb.AddForce(GetSlopeMoveDirection() * _moveSpeed * 20f, ForceMode.Force);
             if (rb.velocity.y > 0)
-                rb.AddForce(Vector3.down *80f,ForceMode.Force);
+                rb.AddForce(Vector3.down * 80f, ForceMode.Force);
         }
 
         if (_grounded)
@@ -153,13 +152,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void SpeedControl()
     {
-        if (OnSlope()){
+        if (OnSlope())
+        {
             if (rb.velocity.magnitude > _moveSpeed)
             {
                 rb.velocity = rb.velocity.normalized * _moveSpeed;
             }
         }
-        else {
+        else
+        {
             Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
             if (flatVel.magnitude > _moveSpeed)
@@ -179,9 +180,9 @@ public class PlayerMovement : MonoBehaviour
 
     private bool OnSlope()
     {
-        if (Physics.Raycast(transform.position,Vector3.down,out _slopeHit,_playerHeight* 0.5f+0.3f))
+        if (Physics.Raycast(transform.position, Vector3.down, out _slopeHit, _playerHeight * 0.5f + 0.3f))
         {
-            float angle = Vector3.Angle(Vector3.up,_slopeHit.normal);
+            float angle = Vector3.Angle(Vector3.up, _slopeHit.normal);
             return angle < _maxSlopeAngle && angle != 0;
         }
         return false;
@@ -189,7 +190,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 GetSlopeMoveDirection()
     {
-        return Vector3.ProjectOnPlane(moveDirection,_slopeHit.normal).normalized;
+        return Vector3.ProjectOnPlane(moveDirection, _slopeHit.normal).normalized;
     }
 
 

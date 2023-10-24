@@ -1,6 +1,9 @@
 using UnityEngine;
 
 
+/// <summary>
+/// Static class for methods that dont use monobehaviour functions
+/// </summary>
 public static class Helpers
 {
     /// <summary>
@@ -21,4 +24,16 @@ public static class Helpers
             }
         }
     }
+
+    /// <summary>
+    /// Will immediatly hide the object and will destroy it from the scene after the specified delay
+    /// <br></br>
+    /// Useful for when you need to wait a few frames for an object to finish doing something before being deleted
+    /// </summary>
+    public static void HideAndDestroyAfterDelay(this GameObject obj, float delay)
+    {
+        obj.SetActive(false);
+        Object.Destroy(obj, delay);
+    }
+
 }

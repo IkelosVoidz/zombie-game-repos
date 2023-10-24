@@ -29,14 +29,6 @@ public class MeshDestroy : MonoBehaviour
     private float _fadeDuration;
 
 
-    /*private void Update() //just for testing purposes
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            DestroyMesh(Vector3.zero);
-        }
-    }*/
-
     /// <summary>
     /// Will destroy the mesh in various triangles of various sizes and apply a force to them to the opposite direction of the destroyer position
     /// </summary>
@@ -88,7 +80,7 @@ public class MeshDestroy : MonoBehaviour
             parts[i].GameObject.GetComponent<Rigidbody>().AddForceAtPosition(destroyForce, transform.position);
         }
 
-        Destroy(gameObject);
+        gameObject.HideAndDestroyAfterDelay(1);
     }
 
     private PartMesh GenerateMesh(PartMesh original, Plane plane, bool left)
