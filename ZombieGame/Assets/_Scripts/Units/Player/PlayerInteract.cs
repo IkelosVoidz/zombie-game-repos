@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,26 +19,17 @@ public class PlayerInteract : MonoBehaviour
         {
             hit.transform.gameObject.TryGetComponent(out _newInteractable); //intentamos pillar el interactable de lo que sea que estamos mirando
 
-            if (_newInteractable != _interactable)
+            if (_newInteractable != _interactable) //si el interactable nuevo es diferente al anterior
             {
-                if (_interactable != null)
-                {
-                    if (!_interactable.gameObject.IsDestroyed())
-                        _interactable.OnDeselect();
-                }
-                _interactable = _newInteractable;
+                _interactable?.OnDeselect(); //de seleccionamos el anterior
+                _interactable = _newInteractable; //y seleccionamos el nuevo 
             }
             _interactable?.OnSelect();
         }
         else
         {
-            if (_interactable != null)
-            {
-                if (!_interactable.gameObject.IsDestroyed())
-                    _interactable.OnDeselect();
-            }
+            _interactable?.OnDeselect();
             _interactable = null;
-
         }
     }
 
@@ -52,7 +42,7 @@ public class PlayerInteract : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmos() //for debug purposes
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(_ray);
