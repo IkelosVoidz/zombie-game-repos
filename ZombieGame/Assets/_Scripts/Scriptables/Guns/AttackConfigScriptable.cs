@@ -10,7 +10,7 @@ public class AttackConfigScriptable : ScriptableObject
     public int _bulletsFired = 1; //esto probablemente no lo acabe haciendo asi pero es para tenerlo en mente 
 }
 
-public enum AttackType
+public enum AttackType //will change 
 {
     SemiAuto,
     FullAuto,
