@@ -11,6 +11,7 @@ public class Zombie : MonoBehaviour
     const int ATTACK = 2;
     const int TAKE_DAMAGE = 3;
     const int DIE = 4;
+    const int DANCE = 5;
 
     /* IGNORAR AIXO :D
     const float IDLE = 0;
@@ -35,12 +36,12 @@ public class Zombie : MonoBehaviour
         maxSpeed = navMeshAgent.speed;
         float time = Random.Range(2.0f, 5.0f);
         Debug.Log(time);
-        Invoke("SpawnToChase", time);
+        Invoke("ToChase", time);
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {   
         switch (state)
         {
             case SPAWN:
@@ -57,6 +58,9 @@ public class Zombie : MonoBehaviour
                 break;
             case DIE:
                 Die();
+                break;
+            case DANCE:
+                Dance();
                 break;
         }
     }
@@ -82,8 +86,15 @@ public class Zombie : MonoBehaviour
         //Animar Muerte
     }
 
-    private void SpawnToChase()
+    private void Dance()
     {
+        navMeshAgent.speed = 0;
+        animator.Play("Macarena_Dance");
+    }
+
+    private void ToChase()
+    {
+        navMeshAgent.speed = maxSpeed;
         state = CHASE;
     }
 
