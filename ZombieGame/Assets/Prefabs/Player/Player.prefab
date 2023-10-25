@@ -183,8 +183,8 @@ GameObject:
   - component: {fileID: 1750323924914834605}
   - component: {fileID: 617032224958209753}
   - component: {fileID: 2227531222587488755}
-  - component: {fileID: 5052162235247771355}
   - component: {fileID: 4142171329647377186}
+  - component: {fileID: 1113486439003376328}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -251,7 +251,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerHeight: 2
-  stare: 0
   _walkSpeed: 7
   _sprintSpeed: 12
   _orientation: {fileID: 5411456757662403627}
@@ -309,8 +308,8 @@ MonoBehaviour:
     m_ActionName: Player/Look[/Mouse/delta,/Pen/delta]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5052162235247771355}
-        m_TargetAssemblyTypeName: ProvisionalPlayerShoot, Assembly-CSharp
+      - m_Target: {fileID: 1113486439003376328}
+        m_TargetAssemblyTypeName: PlayerWeaponManager, Assembly-CSharp
         m_MethodName: OnFire
         m_Mode: 0
         m_Arguments:
@@ -465,22 +464,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 136
   _lookOrientation: {fileID: 1786780782869078267}
---- !u!114 &5052162235247771355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2167065651827109592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88960cee57026f14fbe136afbc088d17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _lookOrientation: {fileID: 1786780782869078267}
-  _shootLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &4142171329647377186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,6 +481,23 @@ MonoBehaviour:
   _maxSlideTime: 0.75
   _slideForce: 200
   _slideYScale: 0.2
+--- !u!114 &1113486439003376328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2167065651827109592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ae1a2ce50a4594cb4aa19c3bb326af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weapon: 0
+  _gunParent: {fileID: 7046083595582642283}
+  _weapons: []
+  _activeWeapon: {fileID: 0}
+  _lookOrientation: {fileID: 1786780782869078267}
 --- !u!1 &4944365162150985330
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,7 +539,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7046083595582642283}
   m_Layer: 0
-  m_Name: WeaponHolder
+  m_Name: WeaponHolder(esto van a ser los brazos cuando los pongamos)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

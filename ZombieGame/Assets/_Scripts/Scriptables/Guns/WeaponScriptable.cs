@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Pool;
 
 /// <summary>
@@ -40,7 +41,8 @@ public class WeaponScriptable : ScriptableObject
 
     public void SwapIn(Transform parent, Transform lookOrientation, MonoBehaviour activeMonoBehaviour)
     {
-        this._activeMonoBehaviour = activeMonoBehaviour;
+        _lookOrientation = lookOrientation;
+        _activeMonoBehaviour = activeMonoBehaviour;
         _lastAttackTime = 0;
         _trailPool = new ObjectPool<TrailRenderer>(CreateTrail);
 
@@ -58,7 +60,7 @@ public class WeaponScriptable : ScriptableObject
 
     public void UpdateLookOrientation(Transform orientation)
     {
-        _lookOrientation = orientation;
+        _lookOrientation.SetPositionAndRotation(orientation.position, orientation.rotation);
     }
 
 
@@ -81,8 +83,59 @@ public class WeaponScriptable : ScriptableObject
             shootDirection.Normalize();
 
 
-            //if (Physics.Raycast())
+            if (Physics.Raycast(
+                _shootSystem.transform.position,
+                shootDirection,
+                 out RaycastHit hit,
+                 float.MaxValue,
+                 _attackConfig._hitMask
+                ))
+            {
+                _activeMonoBehaviour.StartCoroutine(
+                    PlayTrail(_shootSystem.transform.position, hit.point, hit)
+                    );
+            }
+            else
+            {
+                _activeMonoBehaviour.StartCoroutine(
+                    PlayTrail(_shootSystem.transform.position, _shootSystem.transform.position + (shootDirection * _trailConfig._missDistance), new RaycastHit())
+                    );
+            }
         }
+    }
+
+    private IEnumerator PlayTrail(Vector3 startPoint, Vector3 endPoint, RaycastHit hit)
+    {
+        TrailRenderer instance = _trailPool.Get();
+        instance.gameObject.SetActive(true);
+        instance.transform.position = startPoint;
+        yield return null;
+
+        instance.emitting = true;
+        float distance = Vector3.Distance(startPoint, endPoint);
+        float remainingDistance = distance;
+        while (remainingDistance > 0)
+        {
+            instance.transform.position = Vector3.Lerp(
+                startPoint, endPoint,
+                Mathf.Clamp01(1 - (remainingDistance / distance)));
+            remainingDistance -= _trailConfig._simulationSpeed * Time.deltaTime;
+            yield return null;
+        }
+
+        instance.transform.position = endPoint;
+
+        if (hit.collider != null)
+        {
+            //cositas!!!
+            Debug.Log("HIT!!!");
+        }
+
+        yield return new WaitForSeconds(_trailConfig._duration);
+        yield return null;
+        instance.emitting = false;
+        instance.gameObject.SetActive(false);
+        _trailPool.Release(instance);
     }
 
 
