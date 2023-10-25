@@ -18,7 +18,7 @@ public class Zombie : MonoBehaviour
     const float RUN = 1;
     */
 
-    [SerializeField]int state = SPAWN;
+    [SerializeField]int state = 100;
 
     [SerializeField] NavMeshAgent navMeshAgent;     
     [SerializeField] GameObject target;
@@ -33,6 +33,9 @@ public class Zombie : MonoBehaviour
     void Start()
     {
         maxSpeed = navMeshAgent.speed;
+        float time = Random.Range(2.0f, 5.0f);
+        Debug.Log(time);
+        Invoke("SpawnToChase", time);
     }
 
     // Update is called once per frame
@@ -41,9 +44,7 @@ public class Zombie : MonoBehaviour
         switch (state)
         {
             case SPAWN:
-                float time = Random.Range(2.0f, 100.0f);
-                Debug.Log(time);
-                Invoke("SpawnToChase", time);
+                
                 break;
             case CHASE:
                 Chase();
