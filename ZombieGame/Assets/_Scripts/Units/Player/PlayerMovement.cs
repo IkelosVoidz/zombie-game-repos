@@ -14,14 +14,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Tooltip("")] private float _playerHeight;
     Rigidbody rb;
 
-    public MovementState stare;
-    public enum MovementState
-    {
-        walking,
-        sprinting,
-        air
-    }
-
 
     [Header("Movement/Sprint")]
     private float _moveSpeed;
@@ -51,14 +43,17 @@ public class PlayerMovement : MonoBehaviour
     private RaycastHit _slopeHit;
 
 
-    //private Vector3 _smoothJumpVel;
-    //public float duration = 3;
 
+
+    public bool _sprinting { get; private set; }
+
+    private Vector3 _airMoveDirection;
 
     //---------------INPUTS FUNCTIONS---------------//
     public void OnMove(InputAction.CallbackContext ctx)
     {
         _moveAxis = ctx.ReadValue<Vector2>();
+
     }
     public void OnJump(InputAction.CallbackContext ctx)
     {
@@ -69,24 +64,29 @@ public class PlayerMovement : MonoBehaviour
     }
     public void OnSprint(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed /*&& _grounded*/)
+        
+        if (ctx.performed)
         {
             _moveSpeed = _sprintSpeed;
+            _sprinting = true;
         }
         else
         {
             _moveSpeed = _walkSpeed;
+            _sprinting = false;
         }
     }
 
     public void OnCrouch(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed)
+        if (ctx.performed && !_sprinting)
         {
-            StartCoroutine(CrouchSmoothly(_crouchYScale, _crouchSpeed)); //FLIPA SERGI COMO APLICO ESTA MIERDA CHAVAL
+
+            StartCoroutine(CrouchSmoothly(_crouchYScale, _crouchSpeed));
         }
         else
         {
+
             StartCoroutine(CrouchSmoothly(_startYScale, _walkSpeed));
         }
     }
@@ -104,6 +104,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         _grounded = Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + 0.2f); //SI ESTOY EN EL AIRE grunded = FALSE
+
         SpeedControl();
         if (_grounded)
         {
@@ -128,10 +129,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (OnSlope())
         {
-
-            /*Vector3 vel = new Vector3(GetSlopeMoveDirection().x * _moveSpeed * 1f, rb.velocity.y, GetSlopeMoveDirection().z * _moveSpeed * 1f);
-            rb.velocity = vel;*/
-            rb.AddForce(GetSlopeMoveDirection() * _moveSpeed * 20f, ForceMode.Force);
+            rb.AddForce(GetSlopeMoveDirection() * _moveSpeed * 0f, ForceMode.Force);
             if (rb.velocity.y > 0)
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force);
         }
@@ -143,8 +141,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (!_grounded)
         {
-            rb.AddForce(moveDirection.normalized * _moveSpeed * 10f * _airMultiplier, ForceMode.Force);
-            //_smoothJumpVel = rb.velocity;
+            rb.AddForce(moveDirection.normalized * _moveSpeed * 1000f * _airMultiplier, ForceMode.Force);
         }
 
         rb.useGravity = !OnSlope();
@@ -193,8 +190,6 @@ public class PlayerMovement : MonoBehaviour
         return Vector3.ProjectOnPlane(moveDirection, _slopeHit.normal).normalized;
     }
 
-
-
     //DEJAR APARTE
 
     /*IEnumerator LerpSlide() {
@@ -208,7 +203,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     */
-
 
     private IEnumerator CrouchSmoothly(float targetYScale, float targetMoveSpeed)
     {
@@ -224,9 +218,7 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
         }
 
-
         transform.localScale = new Vector3(startScale.x, targetYScale, startScale.z); //(RIGID BODY.SCALE/2)
         _moveSpeed = targetMoveSpeed; //CROUCHING VELOCITY
     }
-
 }

@@ -71,7 +71,7 @@
                 {
                     "name": "Slide",
                     "type": "Button",
-                    "id": "15cdf6f0-98e2-41a0-beaf-773ab85d4ba2",
+                    "id": "af1b455a-319d-44f5-9c53-63b462effdd1",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -367,8 +367,8 @@
                 },
                 {
                     "name": "",
-                    "id": "783dfaa7-73bb-4f5b-8f10-be6d5cf09f49",
-                    "path": "<Keyboard>/leftCtrl",
+                    "id": "f860a4f9-3d85-47b3-af20-369ff093a101",
+                    "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

@@ -81,7 +81,7 @@ public class WeaponScriptable : ScriptableObject
             shootDirection.Normalize();
 
 
-            if (Physics.Raycast())
+            //if (Physics.Raycast())
         }
     }
 
