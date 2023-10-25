@@ -54,6 +54,7 @@ public class DoorController : MonoBehaviour, IInteractable
 
     private void Update()
     {
+        Debug.Log(_isBlocked);
         if (currentTime > 0.0f)
         {
             if (isOpen)

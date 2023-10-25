@@ -123,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
     private void MovePlayer()
     {
         moveDirection = _orientation.forward * _moveAxis.y + _orientation.right * _moveAxis.x;
-        bool exitedSlope = false;
+        //bool exitedSlope = false;
         //ESTO ES PARA EVITAR QUE SE DESLICE
 
         if (OnSlope())
