@@ -25,6 +25,7 @@ public class Zombie : MonoBehaviour
     [SerializeField] GameObject target;
     [SerializeField] Animator animator;
     [SerializeField] HealthComponent healthComponent;
+    private string[] attackAnimations = new string[] {"sergi","pau" };
 
     private float maxSpeed;
 
