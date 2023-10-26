@@ -116,6 +116,7 @@ public class WeaponScriptable : ScriptableObject
                 Mathf.Clamp01(1 - (remainingDistance / distance)));
             remainingDistance -= _trailConfig._simulationSpeed * Time.deltaTime;
             yield return null;
+
         }
 
         instance.transform.position = endPoint;
