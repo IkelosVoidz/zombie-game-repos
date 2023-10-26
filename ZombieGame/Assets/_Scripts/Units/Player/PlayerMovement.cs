@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Slope Handling")]
     [SerializeField, Tooltip("")] private float _maxSlopeAngle;
     private RaycastHit _slopeHit;
+    private bool _exitingSlope;
 
 
 
@@ -61,10 +62,14 @@ public class PlayerMovement : MonoBehaviour
         {
             Jump();
         }
+        else
+        {
+            _exitingSlope = false;
+        }
     }
     public void OnSprint(InputAction.CallbackContext ctx)
     {
-        
+
         if (ctx.performed)
         {
             _moveSpeed = _sprintSpeed;
@@ -127,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
         //bool exitedSlope = false;
         //ESTO ES PARA EVITAR QUE SE DESLICE
 
-        if (OnSlope())
+        if (OnSlope() && !_exitingSlope)
         {
             rb.AddForce(GetSlopeMoveDirection() * _moveSpeed * 0f, ForceMode.Force);
             if (rb.velocity.y > 0)
@@ -149,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void SpeedControl()
     {
-        if (OnSlope())
+        if (OnSlope() && !_exitingSlope)
         {
             if (rb.velocity.magnitude > _moveSpeed)
             {
@@ -170,6 +175,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
+        _exitingSlope = true;
+
         rb.velocity = new Vector3(rb.velocity.x * 0.2f, 0f, rb.velocity.z * 0.2f);
         rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
         Physics.gravity = new Vector3(0, -15, 0);
