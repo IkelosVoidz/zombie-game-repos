@@ -60,6 +60,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5668737097865011192, guid: 681356890776d674ba1e8ac89fddefde, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5668737097865011192, guid: 681356890776d674ba1e8ac89fddefde, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5668737097865011192, guid: 681356890776d674ba1e8ac89fddefde, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: -15798.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 5668737097865011192, guid: 681356890776d674ba1e8ac89fddefde, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 5.56e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 8660480914322485754, guid: 681356890776d674ba1e8ac89fddefde, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.369
+      objectReference: {fileID: 0}
+    - target: {fileID: 8660480914322485754, guid: 681356890776d674ba1e8ac89fddefde, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.762
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
