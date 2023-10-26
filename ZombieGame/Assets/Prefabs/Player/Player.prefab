@@ -495,7 +495,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weapon: 0
   _gunParent: {fileID: 7046083595582642283}
-  _weapons: []
+  _weapons:
+  - {fileID: 11400000, guid: 8345909c83e91474ab80f42c50552dc2, type: 2}
   _activeWeapon: {fileID: 0}
   _lookOrientation: {fileID: 1786780782869078267}
 --- !u!1 &4944365162150985330
