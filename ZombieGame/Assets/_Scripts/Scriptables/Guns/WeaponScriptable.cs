@@ -41,6 +41,7 @@ public class WeaponScriptable : ScriptableObject
 
     public void SwapIn(Transform parent, Transform lookOrientation, MonoBehaviour activeMonoBehaviour)
     {
+        //habra que hacer animacion y tal aqui pero ya se hara
         _lookOrientation = lookOrientation;
         _activeMonoBehaviour = activeMonoBehaviour;
         _lastAttackTime = 0;
@@ -57,12 +58,6 @@ public class WeaponScriptable : ScriptableObject
     {
         //delete weapon and other shit
     }
-
-    public void UpdateLookOrientation(Transform orientation)
-    {
-        _lookOrientation.SetPositionAndRotation(orientation.position, orientation.rotation);
-    }
-
 
     //encapsulate in AttackConfig children
     public void Attack()
