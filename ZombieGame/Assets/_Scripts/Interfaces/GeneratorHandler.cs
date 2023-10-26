@@ -8,8 +8,8 @@ public class GeneratorHandler : MonoBehaviour, IInteractable
     public void Interact()
     {
         controller.ChangeBlockedStatus();
-        /*controller.Interact();
-        controller.ChangeBlockedStatus();*/
+        controller.Interact();
+        controller.ChangeBlockedStatus();
     }
 
 }
