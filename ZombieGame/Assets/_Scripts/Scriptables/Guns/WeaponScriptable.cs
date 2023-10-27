@@ -67,7 +67,6 @@ public class WeaponScriptable : ScriptableObject
             _lastAttackTime = Time.time;
             _shootSystem.Play();
 
-
             Vector3 shootDirection = _shootSystem.transform.forward
                 + new Vector3(
                     Random.Range(-_attackConfig._spread.x, _attackConfig._spread.x),
@@ -77,7 +76,6 @@ public class WeaponScriptable : ScriptableObject
 
             shootDirection.Normalize();
 
-
             if (Physics.Raycast(
                 _shootSystem.transform.position,
                 shootDirection,
@@ -86,19 +84,17 @@ public class WeaponScriptable : ScriptableObject
                  _attackConfig._hitMask
                 ))
             {
-                _activeMonoBehaviour.StartCoroutine(
-                    PlayTrail(_shootSystem.transform.position, hit.point, hit)
-                    );
+
             }
             else
             {
-                _activeMonoBehaviour.StartCoroutine(
-                    PlayTrail(_shootSystem.transform.position, _shootSystem.transform.position + (shootDirection * _trailConfig._missDistance), new RaycastHit())
-                    );
+
             }
         }
     }
 
+
+    //por hacer!!
     private IEnumerator PlayTrail(Vector3 startPoint, Vector3 endPoint, RaycastHit hit)
     {
         TrailRenderer instance = _trailPool.Get();
