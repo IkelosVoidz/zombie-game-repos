@@ -135,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
         if (OnSlope() && !_exitingSlope)
         {
             rb.AddForce(GetSlopeMoveDirection() * _moveSpeed * 0f, ForceMode.Force);
-            if (rb.velocity.y > 0)
+            if (rb.velocity.y > 0 || rb.velocity.y < 0)
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force);
         }
 
@@ -146,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (!_grounded)
         {
-            rb.AddForce(moveDirection.normalized * _moveSpeed * 1000f * _airMultiplier, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * _moveSpeed * 200f * _airMultiplier, ForceMode.Force);
         }
 
         rb.useGravity = !OnSlope();
