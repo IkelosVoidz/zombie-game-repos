@@ -17,5 +17,6 @@ MonoBehaviour:
   _modelPrefab: {fileID: 4673013182551234489, guid: bdd7cbfd395a18c4689443c5b35a67d1, type: 3}
   _spawnPoint: {x: 0.97, y: -0.802, z: 1.553}
   _spawnRotation: {x: 0, y: 0, z: 0}
-  _attackConfig: {fileID: 11400000, guid: 1198c367622905349a65ed9223f945a2, type: 2}
+  _attackConfigs:
+  - {fileID: 11400000, guid: 1198c367622905349a65ed9223f945a2, type: 2}
   _trailConfig: {fileID: 11400000, guid: 9f8845043485bda40b100532b976fbd6, type: 2}

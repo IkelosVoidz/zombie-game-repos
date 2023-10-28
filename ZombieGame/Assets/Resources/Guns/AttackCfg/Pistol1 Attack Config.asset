@@ -18,4 +18,5 @@ MonoBehaviour:
     m_Bits: 4294967295
   _spread: {x: 0.03, y: 0.03, z: 0.03}
   _fireRate: 0.25
-  _bulletsFired: 1
+  _fullAuto: 1
+  _lastAttackTime: 12.076225
