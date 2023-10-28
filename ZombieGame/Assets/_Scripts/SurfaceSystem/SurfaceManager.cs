@@ -2,33 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SurfaceManager : MonoBehaviour
+/// <summary>
+/// Based on LlamAcademy's SurfaceManager
+/// <br></br>
+/// Slightly modified to modernize it and to fit our project better (as it was made in 2018 and a lot of things have been deprecated/improved since then)
+/// <br></br>
+/// Added : Object pooling to improve performance
+/// <br></br>
+/// A way to tell which material we've hit on meshes with multiple materials
+/// <br></br>
+/// A way to also play different sounds on impact instead of only just being able to spawn effects
+/// </summary>
+public class SurfaceManager : StaticSingleton<SurfaceManager>
 {
-    private static SurfaceManager _instance;
-    public static SurfaceManager Instance
-    {
-        get
-        {
-            return _instance;
-        }
-        private set
-        {
-            _instance = value;
-        }
-    }
-
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            Debug.LogError("More than one SurfaceManager active in the scene! Destroying latest one: " + name);
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-    }
-
     [SerializeField]
     private List<SurfaceType> Surfaces = new List<SurfaceType>();
     [SerializeField]
@@ -187,7 +173,7 @@ public class SurfaceManager : MonoBehaviour
             }
         }
 
-        foreach(PlayAudioEffect playAudioEffect in SurfaceEffect.PlayAudioEffects)
+        foreach (PlayAudioEffect playAudioEffect in SurfaceEffect.PlayAudioEffects)
         {
             AudioClip clip = playAudioEffect.AudioClips[Random.Range(0, playAudioEffect.AudioClips.Count)];
             ObjectPool pool = ObjectPool.CreateInstance(playAudioEffect.AudioSourcePrefab.GetComponent<PoolableObject>(), DefaultPoolSizes);

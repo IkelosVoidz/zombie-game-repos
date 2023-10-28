@@ -33,11 +33,11 @@ public class HealthComponent : MonoBehaviour
     /// </summary>
     /// <param name="dmg">Damage taken</param>
     /// <param name="attackerPos">Position of the actor that inflicts the damage</param>
-    public void TakeDamage(int dmg, Vector3 attackerPos) //muy provisional esto 
+    public void TakeDamage(int dmg, Vector3 attackDirection) //muy provisional esto 
     {
         _health -= dmg;
-        OnHealthChange?.Invoke(_health, attackerPos);
-        if (_health <= 0) OnObjectDeath?.Invoke(this.transform.position, attackerPos);
+        OnHealthChange?.Invoke(_health, attackDirection);
+        if (_health <= 0) OnObjectDeath?.Invoke(this.transform.position, attackDirection);
     }
 
     /// <summary>
