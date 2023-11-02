@@ -394,6 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 32424707}
   target: {fileID: 2167065652368410655}
@@ -511,6 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 33801022}
   target: {fileID: 2167065652368410655}
@@ -733,6 +735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 52236283}
   target: {fileID: 2167065652368410655}
@@ -850,6 +853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 63269542}
   target: {fileID: 2167065652368410655}
@@ -967,6 +971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 65773031}
   target: {fileID: 2167065652368410655}
@@ -1084,6 +1089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 68083713}
   target: {fileID: 2167065652368410655}
@@ -1274,6 +1280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 82154102}
   target: {fileID: 2167065652368410655}
@@ -1569,6 +1576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 123150431}
   target: {fileID: 2167065652368410655}
@@ -1896,6 +1904,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 152894985}
   target: {fileID: 2167065652368410655}
@@ -2086,6 +2095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 170635514}
   target: {fileID: 2167065652368410655}
@@ -2208,6 +2218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 172448944}
   target: {fileID: 2167065652368410655}
@@ -2386,6 +2397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 194072801}
   target: {fileID: 2167065652368410655}
@@ -2649,6 +2661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 212940217}
   target: {fileID: 2167065652368410655}
@@ -3080,6 +3093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 260477693}
   target: {fileID: 2167065652368410655}
@@ -3270,6 +3284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 268109658}
   target: {fileID: 2167065652368410655}
@@ -3670,6 +3685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 316156039}
   target: {fileID: 2167065652368410655}
@@ -3860,6 +3876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 328458661}
   target: {fileID: 2167065652368410655}
@@ -4333,6 +4350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 399778037}
   target: {fileID: 2167065652368410655}
@@ -4450,6 +4468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 425187580}
   target: {fileID: 2167065652368410655}
@@ -4640,6 +4659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 455275618}
   target: {fileID: 2167065652368410655}
@@ -4830,6 +4850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 482690855}
   target: {fileID: 2167065652368410655}
@@ -5093,6 +5114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 507641689}
   target: {fileID: 2167065652368410655}
@@ -5388,6 +5410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 518671255}
   target: {fileID: 2167065652368410655}
@@ -5578,6 +5601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 561690632}
   target: {fileID: 2167065652368410655}
@@ -5946,6 +5970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 622165313}
   target: {fileID: 2167065652368410655}
@@ -6063,6 +6088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 637968993}
   target: {fileID: 2167065652368410655}
@@ -6525,6 +6551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 711797497}
   target: {fileID: 2167065652368410655}
@@ -6914,6 +6941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 744593985}
   target: {fileID: 2167065652368410655}
@@ -7063,6 +7091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 780025856}
   target: {fileID: 2167065652368410655}
@@ -7358,6 +7387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 819386596}
   target: {fileID: 2167065652368410655}
@@ -7548,6 +7578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 840529558}
   target: {fileID: 2167065652368410655}
@@ -8116,6 +8147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 954763432}
   target: {fileID: 2167065652368410655}
@@ -8233,6 +8265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 990900653}
   target: {fileID: 2167065652368410655}
@@ -8788,6 +8821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1075897671}
   target: {fileID: 2167065652368410655}
@@ -8905,6 +8939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1080559301}
   target: {fileID: 2167065652368410655}
@@ -9304,6 +9339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1161762810}
   target: {fileID: 2167065652368410655}
@@ -9599,6 +9635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1192314906}
   target: {fileID: 2167065652368410655}
@@ -9716,6 +9753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1193227235}
   target: {fileID: 2167065652368410655}
@@ -10011,6 +10049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1211170071}
   target: {fileID: 2167065652368410655}
@@ -10420,6 +10459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1238381702}
   target: {fileID: 2167065652368410655}
@@ -10610,6 +10650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1252838864}
   target: {fileID: 2167065652368410655}
@@ -11260,6 +11301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1402326652}
   target: {fileID: 2167065652368410655}
@@ -11450,6 +11492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1419745006}
   target: {fileID: 2167065652368410655}
@@ -11567,6 +11610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1424608668}
   target: {fileID: 2167065652368410655}
@@ -11684,6 +11728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1435046971}
   target: {fileID: 2167065652368410655}
@@ -11905,6 +11950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1466467681}
   target: {fileID: 2167065652368410655}
@@ -12022,6 +12068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1495590721}
   target: {fileID: 2167065652368410655}
@@ -12447,6 +12494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1542791271}
   target: {fileID: 2167065652368410655}
@@ -12564,6 +12612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1547056755}
   target: {fileID: 2167065652368410655}
@@ -12827,6 +12876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1575037915}
   target: {fileID: 2167065652368410655}
@@ -13259,6 +13309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1682573474}
   target: {fileID: 2167065652368410655}
@@ -13376,6 +13427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1705796246}
   target: {fileID: 2167065652368410655}
@@ -13923,6 +13975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1756354111}
   target: {fileID: 2167065652368410655}
@@ -14040,6 +14093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1785671008}
   target: {fileID: 2167065652368410655}
@@ -14262,6 +14316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1792857739}
   target: {fileID: 2167065652368410655}
@@ -14557,6 +14612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1816647679}
   target: {fileID: 2167065652368410655}
@@ -14674,6 +14730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1818140445}
   target: {fileID: 2167065652368410655}
@@ -14791,6 +14848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1827272555}
   target: {fileID: 2167065652368410655}
@@ -14908,6 +14966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1829542665}
   target: {fileID: 2167065652368410655}
@@ -15098,6 +15157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1850168852}
   target: {fileID: 2167065652368410655}
@@ -15442,6 +15502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1875966493}
   target: {fileID: 2167065652368410655}
@@ -15559,6 +15620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1880705873}
   target: {fileID: 2167065652368410655}
@@ -15749,6 +15811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1888096478}
   target: {fileID: 2167065652368410655}
@@ -15838,6 +15901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 0
   navMeshAgent: {fileID: 1891526301}
   target: {fileID: 2167065652368410655}
@@ -16061,6 +16125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1903359507}
   target: {fileID: 2167065652368410655}
@@ -16429,6 +16494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1938837543}
   target: {fileID: 2167065652368410655}
@@ -16546,6 +16612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1946163190}
   target: {fileID: 2167065652368410655}
@@ -16663,6 +16730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1964593511}
   target: {fileID: 2167065652368410655}
@@ -16885,6 +16953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 1992348535}
   target: {fileID: 2167065652368410655}
@@ -17002,6 +17071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 2010482672}
   target: {fileID: 2167065652368410655}
@@ -17119,6 +17189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 2032753598}
   target: {fileID: 2167065652368410655}
@@ -17309,6 +17380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 2045827895}
   target: {fileID: 2167065652368410655}
@@ -17426,6 +17498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 2046626887}
   target: {fileID: 2167065652368410655}
@@ -17543,6 +17616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 2048872467}
   target: {fileID: 2167065652368410655}
@@ -18025,6 +18099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 2093187446}
   target: {fileID: 2167065652368410655}
@@ -18142,6 +18217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db99e21d9f1bb4fb7f506d007a9e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testState: 0
   state: 100
   navMeshAgent: {fileID: 2101468728}
   target: {fileID: 2167065652368410655}

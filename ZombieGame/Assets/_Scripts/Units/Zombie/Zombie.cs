@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class Zombie : MonoBehaviour
+public class Zombie : MonoBehaviour, IZombie
 {
     const int SPAWN = 0;
     const int CHASE = 1;
@@ -12,12 +12,9 @@ public class Zombie : MonoBehaviour
     const int TAKE_DAMAGE = 3;
     const int DIE = 4;
     const int DANCE = 5;
+    const int BUSY = 10;
 
-    /* IGNORAR AIXO :D
-    const float IDLE = 0;
-    const float WALK = 0.5f;
-    const float RUN = 1;
-    */
+    public int testState; //Fer Proves
 
     [SerializeField]int state = 100;
 
@@ -25,13 +22,12 @@ public class Zombie : MonoBehaviour
     [SerializeField] GameObject target;
     [SerializeField] Animator animator;
     [SerializeField] HealthComponent healthComponent;
-    private string[] attackAnimations = new string[] {"","" };
 
+    private bool dead = false;
     private float maxSpeed;
 
-    //float style = IDLE;
+    //----------------------[Private Methods]--------------------------//
 
-    // Start is called before the first frame update
     void Start()
     {
         maxSpeed = navMeshAgent.speed;
@@ -42,61 +38,44 @@ public class Zombie : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
-        switch (state)
+    {
+        if(state != BUSY)
         {
-            case SPAWN:
-                
-                break;
-            case CHASE:
-                Chase();
-                break;
-            case ATTACK:
-                Attack();
-                break;
-            case TAKE_DAMAGE:
-                TakeDamage();
-                break;
-            case DIE:
-                Die();
-                break;
-            case DANCE:
-                Dance();
-                break;
-        }
-    }
+            switch (state)
+            {
+                case SPAWN:
+                    break;
+                case CHASE:
+                    Chase();
+                    break;
+                case ATTACK:
+                    Attack();
+                    break;
+                case TAKE_DAMAGE:
+                    TakeDamage();
+                    break;
+                case DIE:
+                    Die();
+                    break;
+                case DANCE:
+                    Dance();
+                    break;
+            }
 
-    //----------------------[Private Methods]--------------------------//
-    private void Chase()
-    {
-        navMeshAgent.destination = target.transform.position;
-        animator.Play("Zombie_Walk");
-    }
-
-    private void Attack()
-    {
-
-    }
-    private void TakeDamage()
-    {
-        //Animar TakeDamage
-    }
-
-    private void Die()
-    {
-        //Animar Muerte
-    }
-
-    private void Dance()
-    {
-        navMeshAgent.speed = 0;
-        animator.Play("Macarena_Dance");
-    }
-
-    private void ToChase()
-    {
-        navMeshAgent.speed = maxSpeed;
-        state = CHASE;
+            switch (testState)
+            {
+                case 1:
+                    state = DIE;
+                    break;
+                case 2:
+                    state = TAKE_DAMAGE;
+                    break;
+                case 3:
+                    state = ATTACK;
+                    break;
+            }
+            testState = 100;
+        } 
     }
 
     //Detecta si esta el Player  davant per atacarlo
@@ -118,8 +97,46 @@ public class Zombie : MonoBehaviour
     }
 
     //----------------------[Public Methods]--------------------------
+    public void Chase()
+    {
+        navMeshAgent.destination = target.transform.position;
+        animator.Play("Zombie_Walk");
+    }
 
-    //Metodes per els events
+    public void Attack()
+    {
+        navMeshAgent.speed = 0;
+        animator.Play("ATTACK" + Random.Range(1, 6));
+        state = BUSY;
+    }
+    public void TakeDamage()
+    {
+        navMeshAgent.speed = 0;
+        animator.Play("GET_HIT" + Random.Range(1, 3));
+        state = BUSY;
+    }
+
+    public void Die()
+    {
+        //Animar Muerte
+        navMeshAgent.speed = 0;
+        animator.Play("DIE"+Random.Range(1,6));
+        dead = true;
+        state = BUSY;
+    }
+
+    public void Dance()
+    {
+        navMeshAgent.speed = 0;
+        animator.Play("Macarena_Dance");
+    }
+
+    public void ToChase()
+    {
+        navMeshAgent.speed = maxSpeed;
+        state = CHASE;
+    }
+
     public void ChangeStateTo(int _state)
     {
         state = _state;
@@ -132,5 +149,15 @@ public class Zombie : MonoBehaviour
             navMeshAgent.speed = 0;
         else
             navMeshAgent.speed = maxSpeed;
+    }
+
+    public void FinishAnimEvent()
+    {
+        if (!dead)
+            ToChase();
+        else
+        {
+            //Se queda muerto un saludo
+        }
     }
 }
