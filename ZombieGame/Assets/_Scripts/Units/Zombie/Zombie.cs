@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class Zombie : MonoBehaviour, IZombie
+public class Zombie : MonoBehaviour
 {
     const int SPAWN = 0;
     const int CHASE = 1;
