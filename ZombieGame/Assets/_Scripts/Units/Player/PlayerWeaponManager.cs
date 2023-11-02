@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 
 public class PlayerWeaponManager : MonoBehaviour
 {
@@ -9,13 +10,15 @@ public class PlayerWeaponManager : MonoBehaviour
     [SerializeField]
     private Transform _gunParent;
     [SerializeField]
-    private List<WeaponScriptable> _weapons;
+    private List<WeaponScriptable> _weapons; //inventario provisional
 
     public WeaponScriptable _activeWeapon;
     [SerializeField] private Transform _lookOrientation;
 
     private void Start()
     {
+
+        //probablemente acabe haciendo un string check porque habran multiples armas del mismo tipo supongo , la unica forma de diferenciarlas sera con string
         WeaponScriptable weapon = _weapons.Find(weapon => weapon._type == _weapon); //mega super hiper provisional pero para tener un arma funcional para ver si funciona todo el resto
         if (weapon == null)
         {
@@ -23,6 +26,7 @@ public class PlayerWeaponManager : MonoBehaviour
             return;
         }
 
+        //muy provisional
         _activeWeapon = weapon;
         weapon.SwapIn(_gunParent, _lookOrientation, this);
     }
@@ -31,7 +35,13 @@ public class PlayerWeaponManager : MonoBehaviour
     {
         if (ctx.performed)
         {
-            _activeWeapon.Attack();
+            if (ctx.interaction is HoldInteraction)
+            {
+                _activeWeapon.Attack(true);
+                Debug.Log("HOLD");
+            }
+            else
+                _activeWeapon.Attack(false);
         }
     }
 

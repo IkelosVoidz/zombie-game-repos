@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Pool;
 
 /// <summary>
-/// Loosely based on LLamAcademy's "ScriptableObject-Based Gun system on unity" series 
+/// Very loosely based on LLamAcademy's "ScriptableObject-Based Gun system on unity" series 
 /// <br></br>
 /// Heavily modified to fit our project 
 /// </summary>
@@ -21,7 +20,8 @@ public class WeaponScriptable : ScriptableObject
 
     [Header("Weapon configurations")]
 
-    public AttackConfigScriptable _attackConfig;
+    public AttackConfigScriptable[] _attackConfigs; //por si queremos hacer una arma que pueda hacer burst y full auto o algo asi
+    private AttackConfigScriptable _currentAttackConfig;
     [Tooltip("Only used if weapon is hitscan")]
     public TrailConfigScriptable _trailConfig;
 
@@ -30,13 +30,10 @@ public class WeaponScriptable : ScriptableObject
     private MonoBehaviour _activeMonoBehaviour;
     private GameObject _weaponModel;
     private Transform _lookOrientation;
-
-    //private variables exclusive to weapons that shoot bullets 
-    private float _lastAttackTime;
     /// <summary>
     /// Position of where the bullets should come out, also the ParticleSystem responsible of creating the muzzle flash
     /// </summary>
-    private ParticleSystem _shootSystem;
+    private ParticleSystem _gunTip;
     private ObjectPool<TrailRenderer> _trailPool; //to handle destruction of trails to avoid performance problems
 
     public void SwapIn(Transform parent, Transform lookOrientation, MonoBehaviour activeMonoBehaviour)
@@ -44,61 +41,44 @@ public class WeaponScriptable : ScriptableObject
         //habra que hacer animacion y tal aqui pero ya se hara
         _lookOrientation = lookOrientation;
         _activeMonoBehaviour = activeMonoBehaviour;
-        _lastAttackTime = 0;
-        _trailPool = new ObjectPool<TrailRenderer>(CreateTrail);
-
         //dinamico, no nos hace falta crear todas las armas en la escena, si queremos crear mas armas por alguna razon sera facilisimo
         _weaponModel = Instantiate(_modelPrefab);
         _weaponModel.transform.SetParent(parent, false);
         _weaponModel.transform.SetLocalPositionAndRotation(_spawnPoint, Quaternion.Euler(_spawnRotation));
 
-        _shootSystem = _weaponModel.GetComponentInChildren<ParticleSystem>(); //investigate if there is a better way to get this component
+        _gunTip = _weaponModel.GetComponentInChildren<ParticleSystem>();
+
+        foreach (AttackConfigScriptable attackCfg in _attackConfigs)
+        {
+            attackCfg.InitializeAttackConfig(_lookOrientation, _gunTip);
+        }
+
+        _currentAttackConfig = _attackConfigs[0]; //siempre la primera 
+        _currentAttackConfig._lastAttackTime = 0;
+        //_trailPool = new ObjectPool<TrailRenderer>(CreateTrail); //por hacer
     }
     public void SwapOut()
     {
+
+
         //delete weapon and other shit
     }
 
-    //encapsulate in AttackConfig children
-    public void Attack()
+    public void changeAttackConfig()
     {
-        if (Time.time > _attackConfig._fireRate + _lastAttackTime)
-        {
-            _lastAttackTime = Time.time;
-            _shootSystem.Play();
+        if (_attackConfigs.Length < 2) return;
 
-
-            Vector3 shootDirection = _shootSystem.transform.forward
-                + new Vector3(
-                    Random.Range(-_attackConfig._spread.x, _attackConfig._spread.x),
-                    Random.Range(-_attackConfig._spread.y, _attackConfig._spread.y),
-                    Random.Range(-_attackConfig._spread.z, _attackConfig._spread.z)
-                    );
-
-            shootDirection.Normalize();
-
-
-            if (Physics.Raycast(
-                _shootSystem.transform.position,
-                shootDirection,
-                 out RaycastHit hit,
-                 float.MaxValue,
-                 _attackConfig._hitMask
-                ))
-            {
-                _activeMonoBehaviour.StartCoroutine(
-                    PlayTrail(_shootSystem.transform.position, hit.point, hit)
-                    );
-            }
-            else
-            {
-                _activeMonoBehaviour.StartCoroutine(
-                    PlayTrail(_shootSystem.transform.position, _shootSystem.transform.position + (shootDirection * _trailConfig._missDistance), new RaycastHit())
-                    );
-            }
-        }
+        //switch attack config
     }
 
+    //encapsulate in AttackConfig children
+    public void Attack(bool inputHeld)
+    {
+        _currentAttackConfig.Attack(inputHeld);
+    }
+
+    /*
+    // no me gusta esto no lo borreis porque voy a ir copiando cosas
     private IEnumerator PlayTrail(Vector3 startPoint, Vector3 endPoint, RaycastHit hit)
     {
         TrailRenderer instance = _trailPool.Get();
@@ -116,6 +96,7 @@ public class WeaponScriptable : ScriptableObject
                 Mathf.Clamp01(1 - (remainingDistance / distance)));
             remainingDistance -= _trailConfig._simulationSpeed * Time.deltaTime;
             yield return null;
+
         }
 
         instance.transform.position = endPoint;
@@ -149,7 +130,7 @@ public class WeaponScriptable : ScriptableObject
         trail.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
 
         return trail;
-    }
+    }*/
 
 
 }

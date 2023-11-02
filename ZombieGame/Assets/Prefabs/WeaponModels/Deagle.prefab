@@ -60,6 +60,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5649214458527065863, guid: 681356890776d674ba1e8ac89fddefde, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.388
+      objectReference: {fileID: 0}
+    - target: {fileID: 5649214458527065863, guid: 681356890776d674ba1e8ac89fddefde, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.852
+      objectReference: {fileID: 0}
     - target: {fileID: 5668737097865011192, guid: 681356890776d674ba1e8ac89fddefde, type: 3}
       propertyPath: m_BoundingSphereOverride.w
       value: 0
