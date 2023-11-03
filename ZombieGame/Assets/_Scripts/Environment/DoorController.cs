@@ -10,6 +10,12 @@ public class DoorController : MonoBehaviour, IInteractable
     [SerializeField, Range(0, 180), Tooltip("How much the door will rotate, in degrees")] private float _degToTurn = 120f;
     [SerializeField, Tooltip("Total time it takes to open/close the door")] private float _openTime = 0.5f;
 
+    [SerializeField, Tooltip("Audio of the door locked")] private AudioClip _audioDoorLocked;
+    [SerializeField, Tooltip("Audio of the door opening")] private AudioClip _audioDoorOpen;
+    [SerializeField, Tooltip("Audio of the door closing")] private AudioClip _audioDoorClose;
+
+    private AudioSource audioSource;
+
     private Quaternion initialRotation;
     private Quaternion openRotation;
     private Quaternion actualRotation;
@@ -19,6 +25,8 @@ public class DoorController : MonoBehaviour, IInteractable
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         initialRotation = transform.rotation;
         actualRotation = transform.rotation;
 
@@ -37,13 +45,25 @@ public class DoorController : MonoBehaviour, IInteractable
     {
         if (_isBlocked)
         {
-            //play deny sound i guess
+            audioSource.clip = _audioDoorLocked;
+            audioSource.Play();
         }
         else
         {
             actualRotation = transform.rotation;
             isOpen = !isOpen;
             currentTime = _openTime;
+
+            if (isOpen)
+            {
+                audioSource.clip = _audioDoorOpen;
+                audioSource.Play();
+            }
+            else
+            {
+                audioSource.clip = _audioDoorClose;
+                audioSource.Play();
+            }
         }
     }
 
@@ -52,9 +72,18 @@ public class DoorController : MonoBehaviour, IInteractable
         _isBlocked = !_isBlocked;
     }
 
+    //This will only work if the Door is locked
+    public void InteractKeepingBlockedStatus()
+    {
+        if (!_isBlocked) Debug.Log("The door you are trying to open while maintaining blocked status is not blocked.");
+
+        ChangeBlockedStatus();
+        Interact();
+        ChangeBlockedStatus();
+    }
+
     private void Update()
     {
-        Debug.Log(_isBlocked);
         if (currentTime > 0.0f)
         {
             if (isOpen)
