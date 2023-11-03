@@ -10,17 +10,23 @@ public class DoorController : MonoBehaviour, IInteractable
     [SerializeField, Range(0, 180), Tooltip("How much the door will rotate, in degrees")] private float _degToTurn = 120f;
     [SerializeField, Tooltip("Total time it takes to open/close the door")] private float _openTime = 0.5f;
 
+    [SerializeField, Tooltip("Audio of the door locked")] private AudioClip _audioDoorLocked;
+    [SerializeField, Tooltip("Audio of the door opening")] private AudioClip _audioDoorOpen;
+    [SerializeField, Tooltip("Audio of the door closing")] private AudioClip _audioDoorClose;
+
+    private AudioSource audioSource;
+
     private Quaternion initialRotation;
     private Quaternion openRotation;
     private Quaternion actualRotation;
-    private AudioSource audioDoorlocked;
 
     private bool isOpen = false;
     private float currentTime = 0.0f;
 
     void Start()
     {
-        audioDoorlocked = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
+
         initialRotation = transform.rotation;
         actualRotation = transform.rotation;
 
@@ -39,13 +45,25 @@ public class DoorController : MonoBehaviour, IInteractable
     {
         if (_isBlocked)
         {
-            audioDoorlocked.Play();
+            audioSource.clip = _audioDoorLocked;
+            audioSource.Play();
         }
         else
         {
             actualRotation = transform.rotation;
             isOpen = !isOpen;
             currentTime = _openTime;
+
+            if (isOpen)
+            {
+                audioSource.clip = _audioDoorOpen;
+                audioSource.Play();
+            }
+            else
+            {
+                audioSource.clip = _audioDoorClose;
+                audioSource.Play();
+            }
         }
     }
 

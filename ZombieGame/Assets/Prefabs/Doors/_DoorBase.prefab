@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8457801170432650954}
   - component: {fileID: 900407272468163279}
   - component: {fileID: 2222864221022930631}
-  - component: {fileID: 5820270072042999120}
+  - component: {fileID: 9134096757269530835}
   m_Layer: 3
   m_Name: _DoorBase
   m_TagString: Untagged
@@ -125,6 +125,9 @@ MonoBehaviour:
   _opensOutwards: 0
   _degToTurn: 90
   _openTime: 0.5
+  _audioDoorLocked: {fileID: 8300000, guid: bf267f3523c12284dbc488df2375d6f8, type: 3}
+  _audioDoorOpen: {fileID: 8300000, guid: 52763d2508d6e6747bdb8455313ca1d0, type: 3}
+  _audioDoorClose: {fileID: 8300000, guid: a489b9da4f679c04a87b5fd4a4b6b528, type: 3}
 --- !u!114 &900407272468163279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,7 +178,7 @@ MonoBehaviour:
   _maxDestroyLevel: 1
   _destroyTime: 5
   _fadeDuration: 5
---- !u!82 &5820270072042999120
+--- !u!82 &9134096757269530835
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -185,8 +188,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: bf267f3523c12284dbc488df2375d6f8, type: 3}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
