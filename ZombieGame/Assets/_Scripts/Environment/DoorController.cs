@@ -13,12 +13,14 @@ public class DoorController : MonoBehaviour, IInteractable
     private Quaternion initialRotation;
     private Quaternion openRotation;
     private Quaternion actualRotation;
+    private AudioSource audioDoorlocked;
 
     private bool isOpen = false;
     private float currentTime = 0.0f;
 
     void Start()
     {
+        audioDoorlocked = GetComponent<AudioSource>();
         initialRotation = transform.rotation;
         actualRotation = transform.rotation;
 
@@ -37,7 +39,7 @@ public class DoorController : MonoBehaviour, IInteractable
     {
         if (_isBlocked)
         {
-            //play deny sound i guess
+            audioDoorlocked.Play();
         }
         else
         {
@@ -64,7 +66,6 @@ public class DoorController : MonoBehaviour, IInteractable
 
     private void Update()
     {
-        Debug.Log(_isBlocked);
         if (currentTime > 0.0f)
         {
             if (isOpen)

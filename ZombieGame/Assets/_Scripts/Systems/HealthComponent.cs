@@ -50,4 +50,29 @@ public class HealthComponent : MonoBehaviour
         OnHealthChange?.Invoke(_health, Vector3.zero); //attack pos unused
         if (_health > _maxHealth) _health = _maxHealth;
     }
+
+
+
+    // A partir de aqui todo esto son pruebas para ver que el HUD se updatea.
+
+    private float targetTime = 5.0f;
+
+    private void Update()
+    {
+
+        targetTime -= Time.deltaTime;
+        Debug.Log(targetTime);
+
+        if (targetTime <= 0.0f)
+        {
+            timerEnded();
+            targetTime = 5.0f;
+        }
+    }
+
+    private void timerEnded()
+    {
+        _health -= 10;
+        OnHealthChange?.Invoke(_health, Vector3.zero);
+    }
 }
