@@ -1,15 +1,15 @@
 using JetBrains.Annotations;
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GeneratorHandler : MonoBehaviour, IInteractable
 {
-    public DoorController controller;
+    public UnityEvent onGeneratorUsed;
+
     public void Interact()
     {
-        controller.ChangeBlockedStatus();
-        /*controller.Interact();
-        controller.ChangeBlockedStatus();*/
+        onGeneratorUsed?.Invoke();
     }
 
 }

@@ -52,6 +52,16 @@ public class DoorController : MonoBehaviour, IInteractable
         _isBlocked = !_isBlocked;
     }
 
+    //This will only work if the Door is locked
+    public void InteractKeepingBlockedStatus()
+    {
+        if (!_isBlocked) Debug.Log("The door you are trying to open while maintaining blocked status is not blocked.");
+
+        ChangeBlockedStatus();
+        Interact();
+        ChangeBlockedStatus();
+    }
+
     private void Update()
     {
         Debug.Log(_isBlocked);
