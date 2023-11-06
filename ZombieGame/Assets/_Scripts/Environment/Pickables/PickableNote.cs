@@ -7,11 +7,9 @@ public class PickableNote : PickableBase
     public UnityEvent<ScriptableNote> OnNotePick;
 
     [SerializeField]
-    private HandleActionMaps referencia;
     public override void Interact()
     {
         base.Interact();
-        //referencia.SwitchActionMap("UI");
         OnNotePick?.Invoke(_noteData);
     }
 }
