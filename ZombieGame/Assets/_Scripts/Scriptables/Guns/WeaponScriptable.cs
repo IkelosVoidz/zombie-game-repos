@@ -59,8 +59,6 @@ public class WeaponScriptable : ScriptableObject
     }
     public void SwapOut()
     {
-
-
         //delete weapon and other shit
     }
 

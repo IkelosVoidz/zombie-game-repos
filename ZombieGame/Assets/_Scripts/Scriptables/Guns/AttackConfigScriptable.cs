@@ -29,30 +29,7 @@ public class AttackConfigScriptable : ScriptableObject
                 Random.Range(-_spread.y, _spread.y),
                 Random.Range(-_spread.z, _spread.z)
                 );
-            Vector3 shootDirection = _lookOrientation.transform.forward + _lookOrientation.TransformDirection(spreadAmount);
 
-            shootDirection.Normalize();
-
-            if (Physics.Raycast( //el pew pew
-                GetRayCastOrigin(),
-                shootDirection,
-                 out RaycastHit hit,
-                 float.MaxValue,
-                 _hitMask
-                ))
-            {
-                if (hit.transform.gameObject.TryGetComponent(out HealthComponent attackedObjectHP))
-                {
-                    //will need to send the damage configuration here
-                    attackedObjectHP.TakeDamage(10, _lookOrientation.transform.forward); //this is very much a test
-                    Debug.Log("hit on object with health");
-                }
-                else Debug.Log("hit on object without health");
-            }
-            else
-            {
-                Debug.Log("MISS");
-            }
         }
     }
 
@@ -69,7 +46,27 @@ public class AttackConfigScriptable : ScriptableObject
 
         return origin;
     }
+
+    protected virtual bool ShootBullet(Vector3 spreadAmount, out RaycastHit hitInfo)
+    {
+        Vector3 shootDirection = _lookOrientation.transform.forward + _lookOrientation.TransformDirection(spreadAmount);
+
+        shootDirection.Normalize();
+
+        if (Physics.Raycast( //el pew pew
+            GetRayCastOrigin(),
+            shootDirection,
+             out RaycastHit hit,
+             float.MaxValue,
+             _hitMask
+            ))
+        {
+        }
+        hitInfo = hit;
+        return true;
+    }
 }
+
 
 public enum AttackType //will change 
 {
