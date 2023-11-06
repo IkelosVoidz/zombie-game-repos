@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Static class for methods that dont use monobehaviour functions
@@ -34,6 +34,28 @@ public static class Helpers
     {
         obj.SetActive(false);
         Object.Destroy(obj, delay);
+    }
+
+
+    static bool _uiIsOpen;
+    public static void OpenAndCloseUI(PlayerInput _playerInput)
+    {
+        if (!_uiIsOpen)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+            //referencia al componente player input de player
+            //player input . switch action mode to UI
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            //referencia al componente player input de player
+            //player input . switch action mode to Player
+        }
+        _uiIsOpen = !_uiIsOpen;
     }
 
 }

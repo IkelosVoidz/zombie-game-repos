@@ -7,7 +7,7 @@ using UnityEngine;
 /// <br></br>
 /// Slightly modified to modernize it and to fit our project better (as it was made in 2018 and a lot of things have been deprecated/improved since then)
 /// <br></br>
-/// Added : Object pooling to improve performance
+/// Added : Object pooling to improve performance (I know unity already has a built in object pooling solution, but i found it extremely confusing and prefered to make my own 
 /// <br></br>
 /// A way to tell which material we've hit on meshes with multiple materials
 /// <br></br>

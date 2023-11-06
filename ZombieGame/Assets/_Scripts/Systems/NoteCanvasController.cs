@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -13,6 +11,8 @@ public class NoteCanvasController : MonoBehaviour
     }
     public void ShowNoteCanvas(ScriptableNote note)
     {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         gameObject.SetActive(true);
         _text.SetText(note.noteContent);
         Time.timeScale = 0;
