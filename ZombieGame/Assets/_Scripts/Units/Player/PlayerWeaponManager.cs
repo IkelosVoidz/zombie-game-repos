@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Interactions;
 
 public class PlayerWeaponManager : MonoBehaviour
 {
@@ -14,6 +13,8 @@ public class PlayerWeaponManager : MonoBehaviour
 
     public WeaponScriptable _activeWeapon;
     [SerializeField] private Transform _lookOrientation;
+
+    private bool _attackHeld = false;
 
     private void Start()
     {
@@ -35,13 +36,17 @@ public class PlayerWeaponManager : MonoBehaviour
     {
         if (ctx.performed)
         {
-            if (ctx.interaction is HoldInteraction)
-            {
-                _activeWeapon.Attack(true);
-                Debug.Log("HOLD");
-            }
-            else
-                _activeWeapon.Attack(false);
+            _attackHeld = true;
+            _activeWeapon.Attack(false);
+        }
+        else if (ctx.canceled) _attackHeld = false;
+    }
+
+    private void Update()
+    {
+        if (_attackHeld)
+        {
+            _activeWeapon.Attack(true);
         }
     }
 
