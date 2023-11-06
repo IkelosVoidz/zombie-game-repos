@@ -39,8 +39,10 @@ public class Zombie : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(state);
         if(state != BUSY)
         {
+            
             switch (state)
             {
                 case SPAWN:
@@ -68,7 +70,7 @@ public class Zombie : MonoBehaviour
                     state = DIE;
                     break;
                 case 2:
-                    state = TAKE_DAMAGE;
+                    //state = TAKE_DAMAGE;
                     break;
                 case 3:
                     state = ATTACK;

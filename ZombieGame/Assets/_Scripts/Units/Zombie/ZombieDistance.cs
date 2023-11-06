@@ -4,5 +4,9 @@ using UnityEngine;
 
 public class ZombieDistance : Zombie
 {
+    public void testingThingsMaNiggaMAN()
+    {
+        Debug.Log("No se que hago aquí pero me llamo francisco");
+    }
 
 }

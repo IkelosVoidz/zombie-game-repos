@@ -53,26 +53,26 @@ public class HealthComponent : MonoBehaviour
 
 
 
-    // A partir de aqui todo esto son pruebas para ver que el HUD se updatea.
+    // A partir de aqui todo esto son pruebas para ver que el HUD se updatea. PUES VAYA MIERDA DE PRUEBAS POL
 
-    private float targetTime = 5.0f;
+    //private float targetTime = 5.0f;
 
-    private void Update()
-    {
+    //private void Update()
+    //{
 
-        targetTime -= Time.deltaTime;
-        //Debug.Log(targetTime);
+    //    targetTime -= Time.deltaTime;
+    //    //Debug.Log(targetTime);
 
-        if (targetTime <= 0.0f)
-        {
-            timerEnded();
-            targetTime = 5.0f;
-        }
-    }
+    //    if (targetTime <= 0.0f)
+    //    {
+    //        timerEnded();
+    //        targetTime = 5.0f;
+    //    }
+    //}
 
-    private void timerEnded()
-    {
-        _health -= 10;
-        OnHealthChange?.Invoke(_health, Vector3.zero);
-    }
+    //private void timerEnded()
+    //{
+    //    _health -= 10;
+    //    OnHealthChange?.Invoke(_health, Vector3.zero);
+    //}
 }

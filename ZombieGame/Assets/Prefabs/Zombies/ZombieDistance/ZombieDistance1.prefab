@@ -8,9 +8,61 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 720834563641228357, guid: 4bd75b0034695504fbaedfaed5ad38ea, type: 3}
+      propertyPath: OnObjectDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 720834563641228357, guid: 4bd75b0034695504fbaedfaed5ad38ea, type: 3}
+      propertyPath: OnHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 720834563641228357, guid: 4bd75b0034695504fbaedfaed5ad38ea, type: 3}
+      propertyPath: OnObjectDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6054291762866637263}
+    - target: {fileID: 720834563641228357, guid: 4bd75b0034695504fbaedfaed5ad38ea, type: 3}
+      propertyPath: OnHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6054291762866637263}
+    - target: {fileID: 720834563641228357, guid: 4bd75b0034695504fbaedfaed5ad38ea, type: 3}
+      propertyPath: OnObjectDeath.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Die
+      objectReference: {fileID: 0}
+    - target: {fileID: 720834563641228357, guid: 4bd75b0034695504fbaedfaed5ad38ea, type: 3}
+      propertyPath: OnHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TakeDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 720834563641228357, guid: 4bd75b0034695504fbaedfaed5ad38ea, type: 3}
+      propertyPath: OnObjectDeath.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Zombie, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 720834563641228357, guid: 4bd75b0034695504fbaedfaed5ad38ea, type: 3}
+      propertyPath: OnHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Zombie, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 720834563641228357, guid: 4bd75b0034695504fbaedfaed5ad38ea, type: 3}
+      propertyPath: OnObjectDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 720834563641228357, guid: 4bd75b0034695504fbaedfaed5ad38ea, type: 3}
+      propertyPath: OnHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1622436783490748499, guid: 4bd75b0034695504fbaedfaed5ad38ea, type: 3}
       propertyPath: m_Name
       value: ZombieDistance1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957505094043263240, guid: 4bd75b0034695504fbaedfaed5ad38ea, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957505094043263240, guid: 4bd75b0034695504fbaedfaed5ad38ea, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957505094043263240, guid: 4bd75b0034695504fbaedfaed5ad38ea, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8957505094043263240, guid: 4bd75b0034695504fbaedfaed5ad38ea, type: 3}
       propertyPath: m_LocalPosition.x
