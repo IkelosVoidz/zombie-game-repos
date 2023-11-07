@@ -15,7 +15,7 @@ public class PlayerInteract : MonoBehaviour
     private void FixedUpdate()
     {
         _ray = new(_lookOrientation.position, _lookOrientation.forward);
-        if (Physics.Raycast(_ray, out RaycastHit hit, _interactionRange, _interactLayerMask))
+        if (Physics.Raycast(_ray, out RaycastHit hit, _interactionRange, _interactLayerMask,QueryTriggerInteraction.Collide))
         {
             hit.transform.gameObject.TryGetComponent(out _newInteractable); //intentamos pillar el interactable de lo que sea que estamos mirando
 

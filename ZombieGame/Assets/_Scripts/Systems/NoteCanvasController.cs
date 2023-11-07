@@ -5,7 +5,7 @@ public class NoteCanvasController : MonoBehaviour
 {
     [SerializeField] private TMP_Text _text;
 
-    private void Awake()
+    private void Start()
     {
         HideCanvas();
     }
