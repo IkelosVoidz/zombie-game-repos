@@ -20,10 +20,11 @@ public class WeaponScriptable : ScriptableObject
 
     [Header("Weapon configurations")]
 
-    public AttackConfigScriptable[] _attackConfigs; //por si queremos hacer una arma que pueda hacer burst y full auto o algo asi
+    [SerializeField] private AttackConfigScriptable[] _attackConfigs; //por si queremos hacer una arma que pueda hacer burst y full auto o algo asi
     private AttackConfigScriptable _currentAttackConfig;
+    [SerializeField] private DamageConfigScriptable _damageConfig;
     [Tooltip("Only used if weapon is hitscan")]
-    public TrailConfigScriptable _trailConfig;
+    [SerializeField] private TrailConfigScriptable _trailConfig;
 
 
     //private variables
@@ -50,7 +51,7 @@ public class WeaponScriptable : ScriptableObject
 
         foreach (AttackConfigScriptable attackCfg in _attackConfigs)
         {
-            attackCfg.InitializeAttackConfig(_lookOrientation, _gunTip);
+            attackCfg.InitializeAttackConfig(_lookOrientation, _gunTip, _damageConfig);
         }
 
         _currentAttackConfig = _attackConfigs[0]; //siempre la primera 
