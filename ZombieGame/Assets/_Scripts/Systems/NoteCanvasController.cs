@@ -11,8 +11,7 @@ public class NoteCanvasController : MonoBehaviour
     }
     public void ShowNoteCanvas(ScriptableNote note)
     {
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
+        PlayerInputManager.Instance.HandleUiInputSwitch(true);
         gameObject.SetActive(true);
         _text.SetText(note.noteContent);
         Time.timeScale = 0;
@@ -20,6 +19,7 @@ public class NoteCanvasController : MonoBehaviour
 
     public void HideCanvas()
     {
+        PlayerInputManager.Instance.HandleUiInputSwitch(false);
         gameObject.SetActive(false);
         Time.timeScale = 1;
     }

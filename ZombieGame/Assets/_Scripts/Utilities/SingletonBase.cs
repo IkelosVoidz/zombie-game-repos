@@ -12,8 +12,8 @@ using UnityEngine;
 /// </summary>
 public abstract class StaticSingleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-    public static T Instance { get ; private set;}
-    protected virtual void Awake() => Instance = this as T;  //esto no lo entiendo pero funciona
+    public static T Instance { get; private set; }
+    protected virtual void Awake() => Instance = this as T;
     protected virtual void OnApplicationQuit()
     {
         Instance = null;
@@ -26,7 +26,7 @@ public abstract class StaticSingleton<T> : MonoBehaviour where T : MonoBehaviour
 /// Perfect for system classes which require stateful, persistent data.d
 /// Or audio sources where music plays through loading scenes, etc
 /// </summary>
-public abstract class PersistentSingleton<T> : StaticSingleton<T> where T: MonoBehaviour
+public abstract class PersistentSingleton<T> : StaticSingleton<T> where T : MonoBehaviour
 {
 
     protected override void Awake()
