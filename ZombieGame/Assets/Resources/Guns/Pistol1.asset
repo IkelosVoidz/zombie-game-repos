@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 0
   _name: Pistol
-  _modelPrefab: {fileID: 0}
-  _spawnPoint: {x: 0, y: 0, z: 0}
+  _modelPrefab: {fileID: 4673013182551234489, guid: bdd7cbfd395a18c4689443c5b35a67d1, type: 3}
+  _spawnPoint: {x: 0.752, y: -0.452, z: 0.636}
   _spawnRotation: {x: 0, y: 0, z: 0}
-  _attackConfigs: []
-  _damageConfig: {fileID: 0}
+  _attackConfigs:
+  - {fileID: 11400000, guid: 94500f0c07da0b4479229c84f4d30e75, type: 2}
+  _damageConfig: {fileID: 11400000, guid: 5b57b4fb99d6faf449c920e3e6d37221, type: 2}
   _trailConfig: {fileID: 0}

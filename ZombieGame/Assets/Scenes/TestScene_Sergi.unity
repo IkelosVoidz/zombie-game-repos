@@ -1180,7 +1180,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6692556219075006792, guid: 48517f81d27882d46b0491ba18f2ca43, type: 3}
   m_PrefabInstance: {fileID: 321978537}
   m_PrefabAsset: {fileID: 0}
---- !u!84 &1255108315
+--- !u!84 &1305685984
 RenderTexture:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2071,10 +2071,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4723506608299314351, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
+      propertyPath: _weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8345909c83e91474ab80f42c50552dc2, type: 2}
     - target: {fileID: 5956376493159188015, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 1255108315}
+      objectReference: {fileID: 1305685984}
     - target: {fileID: 7209713141820414086, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
       propertyPath: m_Name
       value: PlayerPrefab
