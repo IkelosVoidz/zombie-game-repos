@@ -11,7 +11,8 @@ public class PlayerCam : MonoBehaviour
     float xRotation;
     float yRotation;
 
-    private Vector2 look;
+    [HideInInspector]
+    public Vector2 look { get; private set; }
 
     public void OnLook(InputAction.CallbackContext ctx)
     {

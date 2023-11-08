@@ -37,7 +37,7 @@ public class PlayerWeaponManager : MonoBehaviour
         if (ctx.performed)
         {
             _attackHeld = true;
-            _activeWeapon.Attack(false);
+            //_activeWeapon.Attack(false);
         }
         else if (ctx.canceled) _attackHeld = false;
     }
@@ -57,7 +57,8 @@ public class PlayerWeaponManager : MonoBehaviour
 
     public void OnReload(InputAction.CallbackContext ctx) //R
     {
-
+        _activeWeapon.Reload();
+        //empezar 
     }
 
     public void OnSwapNextWeapon(InputAction.CallbackContext ctx) //ruedecilla raton abajo

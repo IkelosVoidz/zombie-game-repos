@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -16,9 +14,9 @@ public class Zombie : MonoBehaviour
 
     public int testState; //Fer Proves
 
-    [SerializeField]int state = 100;
+    [SerializeField] int state = 100;
 
-    [SerializeField] NavMeshAgent navMeshAgent;     
+    [SerializeField] NavMeshAgent navMeshAgent;
     [SerializeField] GameObject target;
     [SerializeField] Animator animator;
     [SerializeField] HealthComponent healthComponent;
@@ -40,9 +38,9 @@ public class Zombie : MonoBehaviour
     void Update()
     {
         Debug.Log(state);
-        if(state != BUSY)
+        if (state != BUSY)
         {
-            
+
             switch (state)
             {
                 case SPAWN:
@@ -77,7 +75,7 @@ public class Zombie : MonoBehaviour
                     break;
             }
             testState = 100;
-        } 
+        }
     }
 
     //Detecta si esta el Player  davant per atacarlo
@@ -122,7 +120,7 @@ public class Zombie : MonoBehaviour
     {
         //Animar Muerte
         navMeshAgent.speed = 0;
-        animator.Play("DIE"+Random.Range(1,6));
+        animator.Play("DIE" + Random.Range(1, 6));
         dead = true;
         state = BUSY;
     }

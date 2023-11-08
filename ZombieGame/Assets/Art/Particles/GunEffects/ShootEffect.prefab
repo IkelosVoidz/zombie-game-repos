@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4300533007854612}
   - component: {fileID: 198234346748616026}
   - component: {fileID: 199409127382122440}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ShootEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4910,7 +4910,7 @@ GameObject:
   - component: {fileID: 4094106582842296}
   - component: {fileID: 198515452120210940}
   - component: {fileID: 199338666435788112}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FlashHeadon
   m_TagString: Untagged
   m_Icon: {fileID: 0}

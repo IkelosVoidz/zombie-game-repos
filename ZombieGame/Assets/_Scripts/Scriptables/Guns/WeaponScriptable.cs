@@ -26,6 +26,8 @@ public class WeaponScriptable : ScriptableObject
     [Tooltip("Only used if weapon is hitscan")]
     [SerializeField] private TrailConfigScriptable _trailConfig;
 
+    Animation hola;
+
 
     //private variables
     private MonoBehaviour _activeMonoBehaviour;
@@ -70,10 +72,14 @@ public class WeaponScriptable : ScriptableObject
         //switch attack config
     }
 
-    //encapsulate in AttackConfig children
     public void Attack(bool inputHeld)
     {
         _currentAttackConfig.Attack(inputHeld);
+    }
+
+    public void Reload()
+    {
+
     }
 
     /*

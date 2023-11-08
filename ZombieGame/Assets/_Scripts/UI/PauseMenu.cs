@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
@@ -18,7 +16,8 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused) {
+            if (isPaused)
+            {
                 ResumeGame();
             }
             else
@@ -30,6 +29,7 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
+        PlayerInputManager.Instance.HandleUiInputSwitch(true);
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
@@ -37,6 +37,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
+        PlayerInputManager.Instance.HandleUiInputSwitch(false);
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
