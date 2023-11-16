@@ -1,5 +1,5 @@
 {
-    "name": "Controlls",
+    "name": "Controls",
     "maps": [
         {
             "name": "Player",
@@ -72,6 +72,15 @@
                     "name": "Slide",
                     "type": "Button",
                     "id": "af1b455a-319d-44f5-9c53-63b462effdd1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Reload",
+                    "type": "Button",
+                    "id": "310599e1-20b8-45c2-9f58-2591ccd7b5d8",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -373,6 +382,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Slide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "11ac9b7f-7d40-4c1b-ba93-ceb5b75370db",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Reload",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

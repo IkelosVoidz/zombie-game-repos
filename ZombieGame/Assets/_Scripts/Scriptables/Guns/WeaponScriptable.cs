@@ -99,7 +99,8 @@ public class WeaponScriptable : ScriptableObject
 
     public void Reload()
     {
-        _reloadConfig?.Reload();
+        if (_reloadConfig.CanReload())
+            _reloadConfig.Reload();
     }
 
     /*

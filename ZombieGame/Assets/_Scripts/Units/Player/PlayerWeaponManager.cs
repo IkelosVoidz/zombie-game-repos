@@ -68,7 +68,6 @@ public class PlayerWeaponManager : MonoBehaviour
     public void OnReload(InputAction.CallbackContext ctx) //R
     {
         _activeWeapon.Reload();
-        //empezar 
     }
 
     public void OnSwapNextWeapon(InputAction.CallbackContext ctx) //ruedecilla raton abajo
