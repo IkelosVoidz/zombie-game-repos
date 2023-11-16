@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -14,7 +15,13 @@ public class PlayerWeaponManager : MonoBehaviour
     public WeaponScriptable _activeWeapon;
     [SerializeField] private Transform _lookOrientation;
 
+
     private bool _attackHeld = false;
+
+    /// <summary>
+    /// Param1: AmmoData of the weapon being swapped IN
+    /// </summary>
+    public static event Action<AmmoData> OnWeaponSwap;
 
     private void Start()
     {
@@ -29,7 +36,10 @@ public class PlayerWeaponManager : MonoBehaviour
 
         //muy provisional
         _activeWeapon = weapon;
+
         weapon.SwapIn(_gunParent, _lookOrientation, this);
+        OnWeaponSwap.Invoke(weapon._reloadConfig._ammo); //todavia mas provisional que lo primero
+
     }
 
     public void OnFire(InputAction.CallbackContext ctx) //clic izquierdo
@@ -37,7 +47,7 @@ public class PlayerWeaponManager : MonoBehaviour
         if (ctx.performed)
         {
             _attackHeld = true;
-            //_activeWeapon.Attack(false);
+            _activeWeapon.Attack(false);
         }
         else if (ctx.canceled) _attackHeld = false;
     }

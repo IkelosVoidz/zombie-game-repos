@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class AttackConfigScriptable : ScriptableObject
@@ -10,8 +11,18 @@ public class AttackConfigScriptable : ScriptableObject
     public float _lastAttackTime;
 
     protected Transform _lookOrientation;
+    //same with this 
     protected ParticleSystem _gunTip;
     protected DamageConfigScriptable _damageConfig;
+    //will need to figure out how to make this work when its null 
+    protected ReloadConfigScriptable _reloadConfig;
+
+
+    //EVENTS
+    /// <summary>
+    /// When the active weapon shoots
+    /// </summary>
+    public static event Action<AmmoData> OnShoot;
 
     public virtual void Attack(bool inputHeld)
     {
@@ -20,6 +31,7 @@ public class AttackConfigScriptable : ScriptableObject
 
         _lastAttackTime = Time.time;
         _gunTip.Play();
+        OnShoot?.Invoke(_reloadConfig._ammo);
     }
 
 
@@ -28,11 +40,12 @@ public class AttackConfigScriptable : ScriptableObject
         return (Time.time > _fireRate + _lastAttackTime);
     }
 
-    public void InitializeAttackConfig(Transform lookOrientation, ParticleSystem gunTip, DamageConfigScriptable dmgCfg)
+    public void InitializeAttackConfig(Transform lookOrientation, ParticleSystem gunTip, DamageConfigScriptable dmgCfg, ReloadConfigScriptable reloadCfg)
     {
         _lookOrientation = lookOrientation;
         _gunTip = gunTip;
         _damageConfig = dmgCfg;
+        _reloadConfig = reloadCfg;
     }
 
     protected virtual void ApplyDamage(HealthComponent health, float distance, Vector3 attackDir)

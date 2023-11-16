@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Pool;
 
 /// <summary>
@@ -23,10 +24,9 @@ public class WeaponScriptable : ScriptableObject
     [SerializeField] private AttackConfigScriptable[] _attackConfigs; //por si queremos hacer una arma que pueda hacer burst y full auto o algo asi
     private AttackConfigScriptable _currentAttackConfig;
     [SerializeField] private DamageConfigScriptable _damageConfig;
+    [SerializeField] public ReloadConfigScriptable _reloadConfig; //sera privado pero es para probar cosas ahora
     [Tooltip("Only used if weapon is hitscan")]
     [SerializeField] private TrailConfigScriptable _trailConfig;
-
-    Animation hola;
 
 
     //private variables
@@ -39,7 +39,15 @@ public class WeaponScriptable : ScriptableObject
     private ParticleSystem _gunTip;
     private ObjectPool<TrailRenderer> _trailPool; //to handle destruction of trails to avoid performance problems
 
-    public void SwapIn(Transform parent, Transform lookOrientation, MonoBehaviour activeMonoBehaviour)
+
+    /// <summary>
+    /// When the selected weapon swaps in or out PARAM1 : wether its swaping in or not
+    /// </summary>
+    public static event Action<bool> OnSwap;
+
+
+
+    public Transform SwapIn(Transform parent, Transform lookOrientation, MonoBehaviour activeMonoBehaviour)
     {
         //habra que hacer animacion y tal aqui pero ya se hara
         _lookOrientation = lookOrientation;
@@ -53,16 +61,22 @@ public class WeaponScriptable : ScriptableObject
 
         foreach (AttackConfigScriptable attackCfg in _attackConfigs)
         {
-            attackCfg.InitializeAttackConfig(_lookOrientation, _gunTip, _damageConfig);
+            attackCfg.InitializeAttackConfig(_lookOrientation, _gunTip, _damageConfig, _reloadConfig);
         }
 
         _currentAttackConfig = _attackConfigs[0]; //siempre la primera 
         _currentAttackConfig._lastAttackTime = 0;
         //_trailPool = new ObjectPool<TrailRenderer>(CreateTrail); //por hacer
+
+
+        OnSwap?.Invoke(true);
+        return _weaponModel.transform; //necesitamos el pivot para hacer cosas
     }
+
     public void SwapOut()
     {
         //delete weapon and other shit
+        OnSwap?.Invoke(false);
     }
 
     public void changeAttackConfig()
@@ -74,12 +88,18 @@ public class WeaponScriptable : ScriptableObject
 
     public void Attack(bool inputHeld)
     {
-        _currentAttackConfig.Attack(inputHeld);
+        if (_reloadConfig.CanShoot())
+            _currentAttackConfig.Attack(inputHeld);
+    }
+
+    public bool CanReload()
+    {
+        return _reloadConfig.CanReload();
     }
 
     public void Reload()
     {
-
+        _reloadConfig?.Reload();
     }
 
     /*

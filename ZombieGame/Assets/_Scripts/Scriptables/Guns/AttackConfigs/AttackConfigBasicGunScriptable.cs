@@ -13,6 +13,7 @@ public class AttackConfigBasicGunScriptable : AttackConfigScriptable
 
     public override void Attack(bool inputHeld)
     {
+        Debug.Log(_gunTip.name);
         base.Attack(inputHeld);
         //esta lina solo se ejecutara pasado el cooldown
         ShootHitscanBullet();
@@ -20,8 +21,8 @@ public class AttackConfigBasicGunScriptable : AttackConfigScriptable
 
     public Vector3 GetRayCastOrigin() //habra que hacer que se pueda setear que salga del arma por si queremos hacer eso en algun momento
     {
-        Vector3 origin = _lookOrientation.position + _lookOrientation.forward *
-            Vector3.Distance(_lookOrientation.position, _gunTip.transform.position);
+        Vector3 origin = _lookOrientation.position;
+
 
         return origin;
     }

@@ -601,7 +601,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4149756127967824771}
-  - component: {fileID: 2351605637829171866}
   - component: {fileID: 955771425477852031}
   m_Layer: 6
   m_Name: FPSCam
@@ -625,14 +624,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4843818369686357168}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &2351605637829171866
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7594631221780522055}
-  m_Enabled: 1
 --- !u!20 &955771425477852031
 Camera:
   m_ObjectHideFlags: 0
@@ -1063,7 +1054,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camReference: {fileID: 4310408682279172002}
-  _weaponHolder: {fileID: 1088185097799468542}
   _step: 0.01
   _maxStepDistance: 0.06
   _rotationStep: 4

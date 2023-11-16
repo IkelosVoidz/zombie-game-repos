@@ -1,28 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
-using Unity.VisualScripting;
+using UnityEngine;
 
 public class HUD : MonoBehaviour
 {
-    private TMP_Text bulletText, healthText;
+    [SerializeField] TMP_Text bulletText, healthText;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        bulletText = GameObject.Find("Bullet/BulletText").GetComponent<TMPro.TextMeshProUGUI>();
-        healthText = GameObject.Find("Health/HealthText").GetComponent<TMPro.TextMeshProUGUI>();
+        AttackConfigScriptable.OnShoot += UpdateAmmoDisplay;
+        ReloadConfigScriptable.OnReloadEnd += UpdateAmmoDisplay;
+        PlayerWeaponManager.OnWeaponSwap += UpdateAmmoDisplay;
     }
+
+    private void OnDisable()
+    {
+        AttackConfigScriptable.OnShoot -= UpdateAmmoDisplay;
+        ReloadConfigScriptable.OnReloadEnd -= UpdateAmmoDisplay;
+        PlayerWeaponManager.OnWeaponSwap -= UpdateAmmoDisplay;
+    }
+
 
     public void onHealthChanged(int newHealth, Vector3 attackDirection)
     {
         healthText.text = $"Health: {newHealth}";
     }
 
-    public void changeBulletText(int actualMagazine, int totalMagazine)
+    public void UpdateAmmoDisplay(AmmoData ammo)
     {
-        bulletText.text = $"{actualMagazine} / {totalMagazine}";
+        Debug.Log("holis");
+        bulletText.text = $"{ammo._currentMagAmmo} / {ammo._currentAmmo}";
     }
 }

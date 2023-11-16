@@ -4,7 +4,7 @@ public class PlayerSwayAndBob : MonoBehaviour
 {
     private PlayerMovement _movementReference;
     [SerializeField] private PlayerCam _camReference;
-    [SerializeField] private Transform _weaponHolder;
+    private Transform _pivot;
 
     private Vector2 _move;
     private Vector2 _look;
@@ -37,7 +37,7 @@ public class PlayerSwayAndBob : MonoBehaviour
 
 
 
-        CompositePositionRotation();
+        //CompositePositionRotation();
     }
 
     private void GetInput()
@@ -67,9 +67,14 @@ public class PlayerSwayAndBob : MonoBehaviour
     void CompositePositionRotation()
     {
         //position
-        _weaponHolder.localPosition = Vector3.Lerp(_weaponHolder.localPosition, _swayPos, Time.deltaTime * _smoothPos);
+        _pivot.localPosition = Vector3.Lerp(_pivot.localPosition, _swayPos, Time.deltaTime * _smoothPos);
 
         //rotation
-        _weaponHolder.localRotation = Quaternion.Slerp(_weaponHolder.localRotation, Quaternion.Euler(_swayEulerRot), Time.deltaTime * _smoothRot);
+        _pivot.localRotation = Quaternion.Slerp(_pivot.localRotation, Quaternion.Euler(_swayEulerRot), Time.deltaTime * _smoothRot);
+    }
+
+    void setPivot(Transform pivot)
+    {
+        _pivot = pivot;
     }
 }
