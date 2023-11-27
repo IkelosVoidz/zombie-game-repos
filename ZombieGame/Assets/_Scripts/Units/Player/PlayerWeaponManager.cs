@@ -27,7 +27,7 @@ public class PlayerWeaponManager : MonoBehaviour
     {
 
         //probablemente acabe haciendo un string check porque habran multiples armas del mismo tipo supongo , la unica forma de diferenciarlas sera con string
-        WeaponScriptable weapon = _weapons.Find(weapon => weapon._type == _weapon); //mega super hiper provisional pero para tener un arma funcional para ver si funciona todo el resto
+        WeaponScriptable weapon = PlayerInventory.Instance.GetWeapon("Pistol");
         if (weapon == null)
         {
             Debug.LogError($"No WeaponScriptable found for WeaponType:{weapon}");

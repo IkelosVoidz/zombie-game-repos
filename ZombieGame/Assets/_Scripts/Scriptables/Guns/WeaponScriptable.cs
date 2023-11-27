@@ -8,11 +8,9 @@ using UnityEngine.Pool;
 /// Heavily modified to fit our project 
 /// </summary>
 [CreateAssetMenu(fileName = "Weapon", menuName = "Weapons/Weapon", order = 0)]
-public class WeaponScriptable : ScriptableObject
+public class WeaponScriptable : InventoryObjectSO
 {
     [Header("Weapon type properties")]
-    public WeaponType _type;
-    public string _name;
     public GameObject _modelPrefab;
 
     [Header("Weapon transform properties")]
@@ -45,7 +43,10 @@ public class WeaponScriptable : ScriptableObject
     /// </summary>
     public static event Action<bool> OnSwap;
 
-
+    public void OnValidate()
+    {
+        _type = "Weapon";
+    }
 
     public Transform SwapIn(Transform parent, Transform lookOrientation, MonoBehaviour activeMonoBehaviour)
     {
@@ -130,7 +131,6 @@ public class WeaponScriptable : ScriptableObject
         if (hit.collider != null)
         {
             //cositas!!!
-            Debug.Log("HIT!!!");
         }
 
         yield return new WaitForSeconds(_trailConfig._duration);

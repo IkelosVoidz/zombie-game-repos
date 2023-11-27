@@ -27,7 +27,6 @@ public class HUD : MonoBehaviour
 
     public void UpdateAmmoDisplay(AmmoData ammo)
     {
-        Debug.Log("holis");
         bulletText.text = $"{ammo._currentMagAmmo} / {ammo._currentAmmo}";
     }
 }

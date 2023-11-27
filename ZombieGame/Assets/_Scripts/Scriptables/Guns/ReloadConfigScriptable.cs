@@ -14,16 +14,6 @@ public class ReloadConfigScriptable : ScriptableObject
     /// </summary>
     public static event Action<AmmoData> OnReloadEnd;
 
-    public void OnEnable()
-    {
-        AttackConfigScriptable.OnShoot += DecreaseAmmo;
-    }
-
-    public void OnDisable()
-    {
-        AttackConfigScriptable.OnShoot -= DecreaseAmmo;
-    }
-
 
     public void Reload()
     {
@@ -46,7 +36,7 @@ public class ReloadConfigScriptable : ScriptableObject
         return _ammo._currentMagAmmo > 0;
     }
 
-    void DecreaseAmmo(AmmoData unused)
+    public void DecreaseAmmo()
     {
         _ammo._currentMagAmmo--;
     }

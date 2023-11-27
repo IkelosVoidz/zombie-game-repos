@@ -20,7 +20,6 @@ public class PostProcessOutlineCompositeRenderer : PostProcessEffectRenderer<Pos
         if (PostProcessOutlineRenderer.outlineRendererTexture != null)
         {
             sheet.properties.SetTexture("_OutlineTex", PostProcessOutlineRenderer.outlineRendererTexture);
-            // Debug.Log("Test2: " + context.camera.name);
 
         }
 

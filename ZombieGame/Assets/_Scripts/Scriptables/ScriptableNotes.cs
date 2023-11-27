@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Note")]
-public class ScriptableNote : ScriptableObject
+public class ScriptableNote : InventoryObjectSO
 {
-    [SerializeField,TextArea] public string noteContent;
+    [SerializeField, TextArea] public string noteContent;
 
 
 

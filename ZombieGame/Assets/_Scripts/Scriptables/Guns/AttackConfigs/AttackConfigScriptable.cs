@@ -26,11 +26,13 @@ public class AttackConfigScriptable : ScriptableObject
 
     public virtual void Attack(bool inputHeld)
     {
+
         if (!_fullAuto && inputHeld) return;
         if (!CanAttack()) return;
 
         _lastAttackTime = Time.time;
         _gunTip.Play();
+        _reloadConfig.DecreaseAmmo();
         OnShoot?.Invoke(_reloadConfig._ammo);
     }
 

@@ -959,12 +959,12 @@ GameObject:
   - component: {fileID: 8073661830880078394}
   - component: {fileID: 5732086630998300620}
   - component: {fileID: 7894292831705772912}
-  - component: {fileID: 6345090439832136569}
   - component: {fileID: 2211025947583759692}
   - component: {fileID: 2177550550681039284}
   - component: {fileID: 3037396867183766774}
   - component: {fileID: 4723506608299314351}
   - component: {fileID: 7588505309327768433}
+  - component: {fileID: 1286483280775475603}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1041,25 +1041,6 @@ MonoBehaviour:
   _crouchSpeed: 3.5
   _crouchYScale: 0.5
   _maxSlopeAngle: 80
---- !u!114 &6345090439832136569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9165193133554583056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35ce2b156e9e0074084b9d4c2cf4fba0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _camReference: {fileID: 4310408682279172002}
-  _step: 0.01
-  _maxStepDistance: 0.06
-  _rotationStep: 4
-  _maxRotationStep: 5
-  _smoothPos: 10
-  _smoothRot: 12
 --- !u!114 &2211025947583759692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1269,6 +1250,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 310599e1-20b8-45c2-9f58-2591ccd7b5d8
     m_ActionName: Player/Reload[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6621102e-d502-43ce-9234-c3592815511e
+    m_ActionName: Player/Scroll[/Mouse/scroll/y]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 99142163-ac70-4382-8bc9-3645e7a03694
+    m_ActionName: Player/Aim[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1338,3 +1327,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 605d303a7acf88048b08f96e928357d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1286483280775475603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9165193133554583056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21ba740ce22127e45a027f8412e4a5c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inventory:
+  - obj: {fileID: 11400000, guid: 8345909c83e91474ab80f42c50552dc2, type: 2}
+    amount: 1

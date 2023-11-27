@@ -33,7 +33,6 @@ public class PostProcessOutlineRenderer : PostProcessEffectRenderer<PostProcessO
         {
             outlineRendererTexture = new RenderTexture(Screen.width, Screen.height, 24);
             context.camera.targetTexture = outlineRendererTexture;
-            // Debug.Log("Test: " + context.camera.name);
         }
 
         context.command.BlitFullscreenTriangle(context.source, context.destination, sheet, 0);

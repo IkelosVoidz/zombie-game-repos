@@ -13,7 +13,6 @@ public class AttackConfigBasicGunScriptable : AttackConfigScriptable
 
     public override void Attack(bool inputHeld)
     {
-        Debug.Log(_gunTip.name);
         base.Attack(inputHeld);
         //esta lina solo se ejecutara pasado el cooldown
         ShootHitscanBullet();

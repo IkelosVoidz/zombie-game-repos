@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ada19bcaad3aea48927712223077507, type: 3}
   m_Name: Pistol1
   m_EditorClassIdentifier: 
-  _type: 0
   _name: Pistol
+  _type: Weapon
+  _description: Simple semi-automatic pistol
   _modelPrefab: {fileID: 4673013182551234489, guid: bdd7cbfd395a18c4689443c5b35a67d1, type: 3}
   _spawnPoint: {x: 0.557, y: -0.47, z: 0.827}
   _spawnRotation: {x: 0.00000010650592, y: 352.7118, z: -0.0000000067830936}
