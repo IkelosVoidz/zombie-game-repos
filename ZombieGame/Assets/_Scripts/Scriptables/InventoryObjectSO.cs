@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-
+[CreateAssetMenu(fileName = "InventoryObject", menuName = "InventoryObjectSO", order = 0)]
 public class InventoryObjectSO : ScriptableObject
 {
     [Header("Inventory Properties")]

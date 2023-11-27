@@ -1,18 +1,33 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class MissionManager : MonoBehaviour
+public class MissionManager : StaticSingleton<MissionManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    private SortedList<string, SortedList<int, Mission>> _missions;
+    [SerializeField] List<Mission> _missionsList;
+
+    public void Awake()
     {
-        
+        foreach (Mission mis in _missionsList)
+        {
+
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void CompleteObjective(int id)
     {
-        
+
     }
+
+    //class objectve completer and thats what events call
 }
+
+[Serializable]
+class Mission
+{
+    public string _name;
+    public string _description;
+    public List<MissonObjective> Objectives;
+}
+
