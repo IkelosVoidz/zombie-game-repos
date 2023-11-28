@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7139e1490ef78d942ab4f1763ff21ee2, type: 3}
-  m_Name: Pistol1ReloadCfg
+  m_Script: {fileID: 11500000, guid: 76078d530f7703345b3ab6752cac7402, type: 3}
+  m_Name: Second0
   m_EditorClassIdentifier: 
-  _maxAmmo: 100
-  _magSize: 9
-  _ammo:
-    _currentAmmo: 90
-    _currentMagAmmo: 9
-  _reloadTime: 1
+  _name: Main1
+  _description: 
+  _mission: Main
+  _order: 1
+  _completed: 0

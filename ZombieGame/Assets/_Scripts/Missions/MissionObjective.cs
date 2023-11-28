@@ -2,10 +2,12 @@
 using UnityEngine;
 
 [Serializable]
-public class MissonObjective : ScriptableObject
+[CreateAssetMenu(fileName = "MissionObjecive", menuName = "MissionObjective", order = 0)]
+public class MissionObjective : ScriptableObject
 {
     public string _name;
     public string _description;
+    public string _mission;
     public int _order;
     public bool _completed;
 
