@@ -1031,6 +1031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerHeight: 2
+  _playerObj: {fileID: 3857671966592976732}
   _walkSpeed: 7
   _sprintSpeed: 12
   _orientation: {fileID: 4513461268715996734}
@@ -1039,8 +1040,8 @@ MonoBehaviour:
   _jumpCooldown: 0.25
   _airMultiplier: 0.01
   _crouchSpeed: 3.5
-  _crouchYScale: 0.5
-  _maxSlopeAngle: 80
+  _crouchYScale: 0.2
+  _maxSlopeAngle: 40
 --- !u!114 &2211025947583759692
 MonoBehaviour:
   m_ObjectHideFlags: 0
