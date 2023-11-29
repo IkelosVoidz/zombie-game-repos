@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Player")]
     [SerializeField, Tooltip("")] private float _playerHeight;
+    [SerializeField, Tooltip("")] private Transform _playerObj;
     Rigidbody rb;
 
 
@@ -86,12 +87,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (ctx.performed && !_sprinting)
         {
-
             StartCoroutine(CrouchSmoothly(_crouchYScale, _crouchSpeed));
         }
-        else
-        {
-
+        else if (!ctx.performed && !_sprinting) {
             StartCoroutine(CrouchSmoothly(_startYScale, _walkSpeed));
         }
     }
@@ -102,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         _moveSpeed = _walkSpeed;
-        _startYScale = transform.localScale.y;
+        _startYScale = _playerObj.localScale.y;
 
     }
     private void Update()
@@ -197,35 +195,37 @@ public class PlayerMovement : MonoBehaviour
         return Vector3.ProjectOnPlane(moveDirection, _slopeHit.normal).normalized;
     }
 
-    //DEJAR APARTE
-
-    /*IEnumerator LerpSlide() {
-        float timeElapsed = 0;
-        while (timeElapsed < duration) {
-            Debug.Log("ES ESTE: " + rb.velocity);
-            float t = timeElapsed / duration;
-            rb.velocity = new Vector3(Mathf.Lerp(_smoothJumpVel.x, 0f, t), rb.velocity.y, Mathf.Lerp(_smoothJumpVel.z,0f, t));
-            timeElapsed += Time.deltaTime;
-            yield return null;
-        }
-    }
-    */
+    
 
     private IEnumerator CrouchSmoothly(float targetYScale, float targetMoveSpeed)
     {
         float duration = 0.2f;  // DURACION DE LA TRANSICION
-        Vector3 startScale = transform.localScale;
+        Vector3 startScale = _playerObj.localScale;
         float startTime = Time.time;
 
         while (Time.time < startTime + duration)
         {
             float t = (Time.time - startTime) / duration;
-            transform.localScale = Vector3.Lerp(startScale, new Vector3(startScale.x, targetYScale, startScale.z), t);
+            _playerObj.localScale = Vector3.Lerp(startScale, new Vector3(startScale.x, targetYScale, startScale.z), t);
             _moveSpeed = Mathf.Lerp(_moveSpeed, targetMoveSpeed, t);
             yield return null;
         }
 
-        transform.localScale = new Vector3(startScale.x, targetYScale, startScale.z); //(RIGID BODY.SCALE/2)
+        _playerObj.localScale = new Vector3(startScale.x, targetYScale, startScale.z); //(RIGID BODY.SCALE/2)
         _moveSpeed = targetMoveSpeed; //CROUCHING VELOCITY
     }
+
+    /*
+      private IEnumerator CrouchSmoothly(float targetYScale, float targetMoveSpeed)
+    {
+       
+        Vector3 startScale = _playerObj.localScale;
+        
+
+        // Asignar los valores finales de inmediato
+        _playerObj.localScale = new Vector3(startScale.x, targetYScale, startScale.z);
+        _moveSpeed = targetMoveSpeed;
+
+        yield return null;
+    }*/
 }
