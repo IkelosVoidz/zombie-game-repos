@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76078d530f7703345b3ab6752cac7402, type: 3}
   m_Name: Main0
   m_EditorClassIdentifier: 
-  _name: Main1
+  _name: Main0
   _description: 
   _mission: Main
-  _order: 1
+  _order: 0
   _completed: 0

@@ -25,8 +25,6 @@ public class PlayerWeaponManager : MonoBehaviour
 
     private void Start()
     {
-
-        //probablemente acabe haciendo un string check porque habran multiples armas del mismo tipo supongo , la unica forma de diferenciarlas sera con string
         WeaponScriptable weapon = PlayerInventory.Instance.GetWeapon("Pistol");
         if (weapon == null)
         {
@@ -38,7 +36,7 @@ public class PlayerWeaponManager : MonoBehaviour
         _activeWeapon = weapon;
 
         weapon.SwapIn(_gunParent, _lookOrientation, this);
-        OnWeaponSwap.Invoke(weapon._reloadConfig._ammo); //todavia mas provisional que lo primero
+        OnWeaponSwap?.Invoke(weapon._reloadConfig._ammo); //todavia mas provisional que lo primero
 
     }
 

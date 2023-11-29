@@ -15,6 +15,6 @@ MonoBehaviour:
   _maxAmmo: 100
   _magSize: 9
   _ammo:
-    _currentAmmo: 90
-    _currentMagAmmo: 9
+    _currentAmmo: 72
+    _currentMagAmmo: 2
   _reloadTime: 1

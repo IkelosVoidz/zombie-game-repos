@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class PlayerSwayAndBob : MonoBehaviour
 {
-    private PlayerMovement _movementReference;
+    [SerializeField] private PlayerMovement _movementReference;
     [SerializeField] private PlayerCam _camReference;
     private Transform _pivot;
+    private Vector3 _initalPosition;
 
     private Vector2 _move;
     private Vector2 _look;
@@ -24,9 +25,23 @@ public class PlayerSwayAndBob : MonoBehaviour
     [SerializeField] float _smoothRot = 12f;
 
 
-    private void Awake()
+    private void OnEnable()
     {
-        _movementReference = GetComponent<PlayerMovement>();
+        PlayerWeaponManager.OnWeaponSwap += WeaponSwapped;
+    }
+
+    private void WeaponSwapped(AmmoData obj)
+    {
+        Transform[] aux = GetComponentsInChildren<Transform>();
+        _pivot = aux[1];
+        _initalPosition = _pivot.localPosition;
+        Debug.Log(_pivot.name);
+        Debug.Log(_pivot.localPosition);
+    }
+
+    private void OnDisable()
+    {
+        PlayerWeaponManager.OnWeaponSwap -= WeaponSwapped;
     }
 
     private void Update()
@@ -37,7 +52,7 @@ public class PlayerSwayAndBob : MonoBehaviour
 
 
 
-        //CompositePositionRotation();
+        CompositePositionRotation();
     }
 
     private void GetInput()
@@ -66,15 +81,12 @@ public class PlayerSwayAndBob : MonoBehaviour
 
     void CompositePositionRotation()
     {
+        Debug.Log(_swayPos);
+        Debug.Log(_pivot.localPosition);
         //position
-        _pivot.localPosition = Vector3.Lerp(_pivot.localPosition, _swayPos, Time.deltaTime * _smoothPos);
+        _pivot.localPosition = Vector3.Lerp(_initalPosition, _initalPosition + _swayPos, Time.deltaTime * _smoothPos);
 
         //rotation
         _pivot.localRotation = Quaternion.Slerp(_pivot.localRotation, Quaternion.Euler(_swayEulerRot), Time.deltaTime * _smoothRot);
-    }
-
-    void setPivot(Transform pivot)
-    {
-        _pivot = pivot;
     }
 }

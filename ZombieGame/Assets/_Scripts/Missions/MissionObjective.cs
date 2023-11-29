@@ -21,7 +21,7 @@ public class MissionObjective : ScriptableObject
         //play radio message or whatever
     }
 
-    public virtual void OnUpdate() //de hecho creo que esto es mejor que se haga con eventos de c# a los que se suscriban los HIJOS solo
+    public virtual void OnUpdate() //que se llame o del mismo mission manager o usando eventos de c# en los HIJOS
     {
 
     }
