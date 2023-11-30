@@ -89,7 +89,7 @@ Transform:
   m_GameObject: {fileID: 3539413356222878574}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1.4, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -493,6 +493,10 @@ MonoBehaviour:
   swaySmoothCounteraction: 1
   rotationSwayMultiplier: 1
   positionSwayMultiplier: -1
+  _breathingSwayAmountA: 1
+  _breathingSwayAmountB: 1
+  _breathingSwayScale: 300
+  _breathingSwayLerpSpeed: 14
 --- !u!1 &5190409241023161681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,12 +1084,12 @@ MonoBehaviour:
   _sprintSpeed: 12
   _orientation: {fileID: 4513461268715996734}
   _groundDrag: 3
-  _jumpForce: 7
+  _jumpForce: 6
   _jumpCooldown: 0.25
   _airMultiplier: 0.01
   _crouchSpeed: 3.5
   _crouchYScale: 0.2
-  _maxSlopeAngle: 40
+  _maxSlopeAngle: 30
 --- !u!114 &2211025947583759692
 MonoBehaviour:
   m_ObjectHideFlags: 0
