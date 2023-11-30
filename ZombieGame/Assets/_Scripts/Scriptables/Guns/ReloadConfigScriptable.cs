@@ -23,7 +23,7 @@ public class ReloadConfigScriptable : ScriptableObject
 
         _ammo._currentMagAmmo += reloadAmount;
         _ammo._currentAmmo -= reloadAmount;
-        OnReloadEnd.Invoke(_ammo);
+        OnReloadEnd?.Invoke(_ammo);
     }
 
     public bool CanReload()

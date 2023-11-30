@@ -49,6 +49,27 @@ public class WeaponSway : MonoBehaviour
         Keyframe[] ks = new Keyframe[] { new Keyframe(0, 0, 0, 2), new Keyframe(1, 1) };
         swayCurve = new AnimationCurve(ks);
     }
+    private Vector3 LissajousCurve(float Time, float A, float B)
+    {
+        return new Vector3(Mathf.Sin(Time), A * Mathf.Sin(B * Time + Mathf.PI));
+    }
+
+    [Header("Breathing Animation")]
+    [SerializeField] float _breathingSwayAmountA = 1;
+    [SerializeField] float _breathingSwayAmountB = 1;
+    [SerializeField] float _breathingSwayScale = 300;
+    [SerializeField] float _breathingSwayLerpSpeed = 14;
+    private float swayTime;
+    private Vector3 swayPosition;
+    public void CalculateWeaponBreathing()
+    {
+        var targetPosition = LissajousCurve(swayTime, _breathingSwayAmountA, _breathingSwayAmountB) / _breathingSwayScale;
+        swayTime += Time.deltaTime;
+        if (swayTime > 6.3f) swayTime = 0;
+        swayPosition = Vector3.Lerp(swayPosition, targetPosition, Time.smoothDeltaTime * _breathingSwayLerpSpeed);
+
+        weaponTransform.localPosition = swayPosition;
+    }
 
     private void Update()
     {
@@ -60,5 +81,9 @@ public class WeaponSway : MonoBehaviour
 
         weaponTransform.localPosition = Vector3.Lerp(weaponTransform.localPosition, new Vector3(sway.x, sway.y, 0) * positionSwayMultiplier + initialPosition, swayCurve.Evaluate(Time.deltaTime * swaySmooth));
         weaponTransform.localRotation = Quaternion.Slerp(transform.localRotation, initialRotation * Quaternion.Euler(Mathf.Rad2Deg * rotationSwayMultiplier * new Vector3(-sway.y, sway.x, 0)), swayCurve.Evaluate(Time.deltaTime * swaySmooth));
+
+        //CalculateWeaponBreathing();
+        //Vector3(0.524999976,-0.430999994,0.861999989)
+        //Vector3(0,350.783813,0)
     }
 }

@@ -16,6 +16,7 @@ public class WeaponScriptable : InventoryObjectSO
     [Header("Weapon transform properties")]
     public Vector3 _spawnPoint;
     public Vector3 _spawnRotation;
+    public Vector3 _aimPosition;
 
     [Header("Weapon configurations")]
 

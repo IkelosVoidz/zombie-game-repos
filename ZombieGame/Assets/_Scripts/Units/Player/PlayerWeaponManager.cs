@@ -60,7 +60,6 @@ public class PlayerWeaponManager : MonoBehaviour
 
     public void OnAim(InputAction.CallbackContext ctx) //clic derecho
     {
-
     }
 
     public void OnReload(InputAction.CallbackContext ctx) //R
