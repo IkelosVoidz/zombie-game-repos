@@ -25,6 +25,7 @@ public class Zombie : MonoBehaviour
     [SerializeField] BoxCollider AttackTrigger;
 
     private bool hit = false;
+    private bool isAttacking = false;
     private bool dead = false;
     private float maxSpeed;
 
@@ -76,6 +77,7 @@ public class Zombie : MonoBehaviour
                     //state = TAKE_DAMAGE;
                     break;
                 case 3:
+                    
                     state = ATTACK;
                     break;
             }
@@ -86,26 +88,36 @@ public class Zombie : MonoBehaviour
     //Detecta si esta el Player  davant per atacarlo
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PLAYER") && !dead)
+        
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player") && !dead)
         {
-            if (hit)
+            if(hit && isAttacking)
             {
                 Debug.Log("Ha fet pupa!!");
+                isAttacking = false;
             }
-            else
+            if(!hit && !isAttacking)
             {
                 state = ATTACK;
+                isAttacking = true;
             }
-            
         }
     }
+
+
 
     //Detecta si el Player deixa d'estar a davant
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("PLAYER") && !dead)
+        if (other.CompareTag("Player") && !dead)
         {
             state = CHASE;
+            hit = false;
+            isAttacking = false;
         }
     }
 
@@ -157,7 +169,7 @@ public class Zombie : MonoBehaviour
 
     public void FootStepEvent()
     {
-        Debug.Log("Pasiot Zombie");
+        //Debug.Log("Pasiot Zombie");
         if (navMeshAgent.speed > 0)
             navMeshAgent.speed = 0;
         else
@@ -167,7 +179,10 @@ public class Zombie : MonoBehaviour
     public void FinishAnimEvent()
     {
         if (!dead)
+        {
+            isAttacking = false;
             ToChase();
+        }
         else
         {
             //Se queda muerto un saludo
