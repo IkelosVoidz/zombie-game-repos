@@ -37,7 +37,6 @@ public class PlayerWeaponManager : MonoBehaviour
 
         weapon.SwapIn(_gunParent, _lookOrientation, this);
         OnWeaponSwap?.Invoke(weapon._reloadConfig._ammo); //todavia mas provisional que lo primero
-
     }
 
     public void OnFire(InputAction.CallbackContext ctx) //clic izquierdo

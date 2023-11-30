@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class ObjectiveCompleter : MonoBehaviour
 {
-    [SerializeField] MissionObjective _missionToComplete;
-    void CompleteObjective()
+    [SerializeField] MissionObjective _objectiveToComplete;
+    public void CompleteObjective()
     {
-        MissionManager.Instance.CompleteObjective(_missionToComplete);
+        MissionManager.Instance.CompleteObjective(_objectiveToComplete);
     }
 }
