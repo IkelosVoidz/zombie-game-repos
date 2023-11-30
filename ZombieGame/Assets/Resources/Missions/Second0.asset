@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Second0
   _description: 
-  _mission: Second
+  _mission: 
   _order: 0
   _completed: 0

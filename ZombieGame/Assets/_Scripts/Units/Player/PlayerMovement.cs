@@ -97,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
     //---------------EVENT FUNCTIONS---------------//
     private void Start()
     {
+        Physics.gravity = new Vector3(0, -15, 0);
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         _moveSpeed = _walkSpeed;
@@ -132,16 +133,18 @@ public class PlayerMovement : MonoBehaviour
 
         if (OnSlope() && !_exitingSlope)
         {
-            rb.AddForce(GetSlopeMoveDirection() * _moveSpeed * 0f, ForceMode.Force);
-            if (rb.velocity.y > 0 || rb.velocity.y < 0)
+            Vector3 vel = new Vector3(GetSlopeMoveDirection().x * _moveSpeed * 1f, GetSlopeMoveDirection().y * _moveSpeed * 1f, GetSlopeMoveDirection().z * _moveSpeed * 1f);
+            rb.velocity = vel;
+            if (rb.velocity.y > 0)
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force);
+ 
         }
-
-        if (_grounded)
+        else if (_grounded)
         {
             Vector3 vel = new Vector3(moveDirection.x * _moveSpeed * 1f, rb.velocity.y, moveDirection.z * _moveSpeed * 1f);
             rb.velocity = vel;
         }
+
         else if (!_grounded)
         {
             rb.AddForce(moveDirection.normalized * _moveSpeed * 200f * _airMultiplier, ForceMode.Force); //ARREGLAR
@@ -177,7 +180,6 @@ public class PlayerMovement : MonoBehaviour
 
         rb.velocity = new Vector3(rb.velocity.x * 0.2f, 0f, rb.velocity.z * 0.2f);
         rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
-        Physics.gravity = new Vector3(0, -15, 0);
     }
 
     private bool OnSlope()
@@ -206,6 +208,7 @@ public class PlayerMovement : MonoBehaviour
         while (Time.time < startTime + duration)
         {
             float t = (Time.time - startTime) / duration;
+            rb.AddForce(Vector3.down * 1f, ForceMode.Impulse);
             _playerObj.localScale = Vector3.Lerp(startScale, new Vector3(startScale.x, targetYScale, startScale.z), t);
             _moveSpeed = Mathf.Lerp(_moveSpeed, targetMoveSpeed, t);
             yield return null;
@@ -214,18 +217,4 @@ public class PlayerMovement : MonoBehaviour
         _playerObj.localScale = new Vector3(startScale.x, targetYScale, startScale.z); //(RIGID BODY.SCALE/2)
         _moveSpeed = targetMoveSpeed; //CROUCHING VELOCITY
     }
-
-    /*
-      private IEnumerator CrouchSmoothly(float targetYScale, float targetMoveSpeed)
-    {
-       
-        Vector3 startScale = _playerObj.localScale;
-        
-
-        // Asignar los valores finales de inmediato
-        _playerObj.localScale = new Vector3(startScale.x, targetYScale, startScale.z);
-        _moveSpeed = targetMoveSpeed;
-
-        yield return null;
-    }*/
 }
