@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 720834563641228357}
   - component: {fileID: 1420778912839069105}
   - component: {fileID: 5293839876743215278}
+  - component: {fileID: 3594935290042589570}
   m_Layer: 0
   m_Name: ZombieBase1
   m_TagString: Untagged
@@ -166,6 +167,27 @@ MonoBehaviour:
   target: {fileID: 0}
   animator: {fileID: 1420778912839069105}
   healthComponent: {fileID: 720834563641228357}
+--- !u!65 &3594935290042589570
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622436783490748499}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.67, y: 1, z: 0.82}
+  m_Center: {x: 0, y: 1.23, z: 0.37}
 --- !u!1001 &6341382237693236276
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 
 public class Zombie : MonoBehaviour
@@ -20,7 +22,9 @@ public class Zombie : MonoBehaviour
     [SerializeField] GameObject target;
     [SerializeField] Animator animator;
     [SerializeField] HealthComponent healthComponent;
+    [SerializeField] BoxCollider AttackTrigger;
 
+    private bool hit = false;
     private bool dead = false;
     private float maxSpeed;
 
@@ -37,7 +41,7 @@ public class Zombie : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(state);
+        //Debug.Log(state);
         if (state != BUSY)
         {
 
@@ -62,6 +66,7 @@ public class Zombie : MonoBehaviour
                     break;
             }
 
+            //Aixo es per fer test desde l'inspector per veure les animacions
             switch (testState)
             {
                 case 1:
@@ -81,18 +86,26 @@ public class Zombie : MonoBehaviour
     //Detecta si esta el Player  davant per atacarlo
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PLAYER"))
+        if (other.CompareTag("PLAYER") && !dead)
         {
-            //state = ATTACK;
+            if (hit)
+            {
+                Debug.Log("Ha fet pupa!!");
+            }
+            else
+            {
+                state = ATTACK;
+            }
+            
         }
     }
 
     //Detecta si el Player deixa d'estar a davant
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("PLAYER"))
+        if (other.CompareTag("PLAYER") && !dead)
         {
-            //state = CHASE;
+            state = CHASE;
         }
     }
 
@@ -159,5 +172,10 @@ public class Zombie : MonoBehaviour
         {
             //Se queda muerto un saludo
         }
+    }
+
+    public void HitAnimEvent()
+    {
+        hit = !hit;
     }
 }
