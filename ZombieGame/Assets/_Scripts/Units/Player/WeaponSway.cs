@@ -24,6 +24,11 @@ public class WeaponSway : MonoBehaviour
     private Quaternion initialRotation;
     private Vector2 sway;
 
+
+    [Header("Script References")]
+    [SerializeField] private PlayerCam _camReference;
+    private Vector2 _look;
+
     private void OnEnable()
     {
         PlayerWeaponManager.OnWeaponSwap += WeaponSwapped;
@@ -71,13 +76,19 @@ public class WeaponSway : MonoBehaviour
         weaponTransform.localPosition = swayPosition;
     }
 
+    private void GetInput()
+    {
+        _look = _camReference.look;
+        _look *= swayAmount;
+    }
+
+
     private void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X") * swayAmount;
-        float mouseY = Input.GetAxis("Mouse Y") * swayAmount;
+        GetInput();
 
         sway = Vector2.MoveTowards(sway, Vector2.zero, swayCurve.Evaluate(Time.deltaTime * swaySmoothCounteraction * sway.magnitude * swaySmooth));
-        sway = Vector2.ClampMagnitude(new Vector2(mouseX, mouseY) + sway, maxSwayAmount);
+        sway = Vector2.ClampMagnitude(new Vector2(_look.x, _look.y) + sway, maxSwayAmount);
 
         weaponTransform.localPosition = Vector3.Lerp(weaponTransform.localPosition, new Vector3(sway.x, sway.y, 0) * positionSwayMultiplier + initialPosition, swayCurve.Evaluate(Time.deltaTime * swaySmooth));
         weaponTransform.localRotation = Quaternion.Slerp(transform.localRotation, initialRotation * Quaternion.Euler(Mathf.Rad2Deg * rotationSwayMultiplier * new Vector3(-sway.y, sway.x, 0)), swayCurve.Evaluate(Time.deltaTime * swaySmooth));
