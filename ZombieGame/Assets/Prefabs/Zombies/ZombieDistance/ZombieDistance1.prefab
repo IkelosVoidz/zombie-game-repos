@@ -135,11 +135,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   testState: 0
-  state: 100
   navMeshAgent: {fileID: 6284716056079378225}
   target: {fileID: 0}
   animator: {fileID: 371402987165081729}
   healthComponent: {fileID: 2058154784148795765}
+  AttackTrigger: {fileID: 0}
+  projectile: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!95 &371402987165081729 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 1420778912839069105, guid: 4bd75b0034695504fbaedfaed5ad38ea, type: 3}

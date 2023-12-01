@@ -6,21 +6,23 @@ using Random = UnityEngine.Random;
 
 public class Zombie : MonoBehaviour
 {
-    const int SPAWN = 0;
-    const int CHASE = 1;
-    const int ATTACK = 2;
-    const int TAKE_DAMAGE = 3;
-    const int DIE = 4;
-    const int DANCE = 5;
-    const int BUSY = 10;
+    protected const int SPAWN = 0;
+    protected const int CHASE = 1;
+    protected const int ATTACK = 2;
+    protected const int TAKE_DAMAGE = 3;
+    protected const int DIE = 4;
+    protected const int DANCE = 5;
+    protected const int BUSY = 10;
 
     public int testState; //Fer Proves
 
-    [SerializeField] int state = 100;
+    protected int state = 100;
 
-    [SerializeField] NavMeshAgent navMeshAgent;
-    [SerializeField] GameObject target;
-    [SerializeField] Animator animator;
+    //Hola ferran, he posat algunes coses en public pq en [SerializeField] es accesible desde el inspector pero no desde les clases que penjen.
+    //Protected es accesibler desde les clases q penjen pero no desde el inspector. Asi que he puesto public hasta q encontremos una solucion mas elengante.
+    public NavMeshAgent navMeshAgent;
+    public GameObject target;
+    public Animator animator;
     [SerializeField] HealthComponent healthComponent;
     [SerializeField] BoxCollider AttackTrigger;
 
@@ -40,7 +42,7 @@ public class Zombie : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         //Debug.Log(state);
         if (state != BUSY)
@@ -128,7 +130,7 @@ public class Zombie : MonoBehaviour
         animator.Play("Zombie_Walk");
     }
 
-    public void Attack()
+    virtual public void Attack()
     {
         navMeshAgent.speed = 0;
         animator.Play("ATTACK" + Random.Range(1, 6));
