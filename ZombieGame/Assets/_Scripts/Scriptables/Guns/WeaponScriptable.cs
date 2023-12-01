@@ -70,7 +70,6 @@ public class WeaponScriptable : InventoryObjectSO
         _currentAttackConfig._lastAttackTime = 0;
         //_trailPool = new ObjectPool<TrailRenderer>(CreateTrail); //por hacer
 
-
         OnSwap?.Invoke(true);
         return _weaponModel.transform; //necesitamos el pivot para hacer cosas
     }

@@ -332,6 +332,18 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: af1b455a-319d-44f5-9c53-63b462effdd1
     m_ActionName: Player/Slide[/Keyboard/c]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 310599e1-20b8-45c2-9f58-2591ccd7b5d8
+    m_ActionName: Player/Reload[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6621102e-d502-43ce-9234-c3592815511e
+    m_ActionName: Player/Scroll[/Mouse/scroll/y]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 99142163-ac70-4382-8bc9-3645e7a03694
+    m_ActionName: Player/Aim[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -493,6 +505,7 @@ MonoBehaviour:
   swaySmoothCounteraction: 1
   rotationSwayMultiplier: 1
   positionSwayMultiplier: -1
+  _camReference: {fileID: 4310408682279172002}
   _breathingSwayAmountA: 1
   _breathingSwayAmountB: 1
   _breathingSwayScale: 300
