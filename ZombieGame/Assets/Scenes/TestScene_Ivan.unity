@@ -128,27 +128,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9165193133554583056, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
   m_PrefabInstance: {fileID: 1557891279}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &48883460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 48883450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 835fd10b76ae9534b962a7cca93440f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnHealthChange:
-    m_PersistentCalls:
-      m_Calls: []
-  OnObjectDeath:
-    m_PersistentCalls:
-      m_Calls: []
-  _baseHealth: 100
-  _maxHealth: 100
-  _health: 0
 --- !u!1001 &184963429
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2867,10 +2846,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 253676492379813190, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 1663
-      objectReference: {fileID: 0}
     - target: {fileID: 1586176540707926322, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.010382
@@ -2914,7 +2889,7 @@ PrefabInstance:
     - target: {fileID: 5956376493159188015, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 1757437241}
+      objectReference: {fileID: 2127564445}
     - target: {fileID: 7209713141820414086, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
       propertyPath: m_Name
       value: PlayerPrefab
@@ -2922,10 +2897,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9165193133554583056, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 48883460}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
 --- !u!1 &1670882783
 GameObject:
@@ -3002,44 +2974,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1670882783}
   m_CullTransparentMesh: 1
---- !u!84 &1757437241
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 5
-  m_Width: 1920
-  m_Height: 1080
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 94
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_EnableRandomWrite: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
 --- !u!1 &1841917903
 GameObject:
   m_ObjectHideFlags: 0
@@ -3851,6 +3785,44 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: a2e44a9b149098648b9f9d7763110ca9, type: 2}
   m_BuildHeightMesh: 0
+--- !u!84 &2127564445
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 5
+  m_Width: 1920
+  m_Height: 1080
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 94
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_EnableRandomWrite: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
