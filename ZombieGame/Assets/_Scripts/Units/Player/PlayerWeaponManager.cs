@@ -4,11 +4,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerWeaponManager : MonoBehaviour
 {
+
+    [Header("References")]
     [SerializeField]
     private Transform _weaponParent;
     public Transform _weaponPivot;
     public Transform _weaponSwayPivot;
-    private Vector3 _weaponInitialPosition;
+    [SerializeField] Camera _viewCamera;
 
     public WeaponScriptable _activeWeapon;
     [SerializeField] private Transform _lookOrientation;
@@ -20,8 +22,11 @@ public class PlayerWeaponManager : MonoBehaviour
     public float _sightsOffset;
     public float _sightsOffsetDown;
     public float _aimingTime;
+    [Range(0, 100)] public float _aimingFOV;
+    private float _normalFOV;
     private Vector3 _weaponSwayPosition;
     private Vector3 _weaponSwayPositionVelocity;
+
 
 
 
@@ -31,6 +36,11 @@ public class PlayerWeaponManager : MonoBehaviour
     /// Param1: AmmoData of the weapon being swapped IN
     /// </summary>
     public static event Action<AmmoData> OnWeaponSwap;
+
+    private void Awake()
+    {
+        _normalFOV = _viewCamera.fieldOfView;
+    }
 
     private void Start()
     {
@@ -72,15 +82,20 @@ public class PlayerWeaponManager : MonoBehaviour
     {
         Vector3 targetPosition = transform.TransformPoint(_activeWeapon._spawnPoint);
         Vector3 targetRotation = _activeWeapon._spawnRotation;
+        float currentFOV = _viewCamera.fieldOfView;
+        float targetFOV = _normalFOV;
 
         if (_isAiming)
         {
             targetPosition = _lookOrientation.position + (_weaponPivot.position - _weaponSights.position) + (_lookOrientation.forward * _sightsOffset);
             targetRotation = Vector3.zero;
+            targetFOV = _aimingFOV;
         }
 
         Vector3 aux = _weaponPivot.position;
         aux = Vector3.SmoothDamp(aux, targetPosition, ref _weaponSwayPositionVelocity, _aimingTime);
+        currentFOV = Mathf.LerpAngle(currentFOV, targetFOV, Time.deltaTime * 10);
+        _viewCamera.fieldOfView = currentFOV;
 
         _weaponPivot.position = aux;
         _weaponPivot.localRotation = Quaternion.Euler(targetRotation);
@@ -114,7 +129,6 @@ public class PlayerWeaponManager : MonoBehaviour
 
         //_weaponSights = _weaponSwayPivot.GetComponentsInChildren<Transform>().FirstOrDefault(w => w.name == "AimSights");
         //_weaponPivot = aux.FirstOrDefault(w => w.name == "WeaponSwayPivot");
-        _weaponInitialPosition = _weaponPivot.position;
 
         OnWeaponSwap?.Invoke(_activeWeapon._reloadConfig._ammo); //provisional (no sera provisional vereis pq me va a dar pereza cambiarlo)
     }

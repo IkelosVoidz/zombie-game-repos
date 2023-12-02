@@ -478,6 +478,7 @@ MonoBehaviour:
   _weaponParent: {fileID: 1088185097799468542}
   _weaponPivot: {fileID: 0}
   _weaponSwayPivot: {fileID: 0}
+  _viewCamera: {fileID: 253676492379813190}
   _activeWeapon: {fileID: 0}
   _lookOrientation: {fileID: 3318755009727240464}
   _weaponSights: {fileID: 0}
@@ -485,6 +486,7 @@ MonoBehaviour:
   _sightsOffset: 0.8
   _sightsOffsetDown: 0.16
   _aimingTime: 0.16
+  _aimingFOV: 60
 --- !u!114 &7900635895839390882
 MonoBehaviour:
   m_ObjectHideFlags: 0
