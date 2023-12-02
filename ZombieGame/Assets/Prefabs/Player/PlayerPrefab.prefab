@@ -439,6 +439,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1088185097799468542}
+  - component: {fileID: 8554364124020312285}
   - component: {fileID: 7900635895839390882}
   m_Layer: 11
   m_Name: WeaponHolder
@@ -462,6 +463,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3318755009727240464}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8554364124020312285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4721665344748316780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ae1a2ce50a4594cb4aa19c3bb326af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponParent: {fileID: 1088185097799468542}
+  _weaponPivot: {fileID: 0}
+  _weaponSwayPivot: {fileID: 0}
+  _activeWeapon: {fileID: 0}
+  _lookOrientation: {fileID: 3318755009727240464}
+  _weaponSights: {fileID: 0}
+  _isAiming: 0
+  _sightsOffset: 0.8
+  _sightsOffsetDown: 0.16
+  _aimingTime: 0.16
 --- !u!114 &7900635895839390882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,6 +528,7 @@ MonoBehaviour:
   rotationSwayMultiplier: 1
   positionSwayMultiplier: -1
   _camReference: {fileID: 4310408682279172002}
+  _weaponManager: {fileID: 8554364124020312285}
   _breathingSwayAmountA: 1
   _breathingSwayAmountB: 2
   _breathingSwayScale: 150
@@ -1022,7 +1046,6 @@ GameObject:
   - component: {fileID: 2211025947583759692}
   - component: {fileID: 2177550550681039284}
   - component: {fileID: 3037396867183766774}
-  - component: {fileID: 4723506608299314351}
   - component: {fileID: 7588505309327768433}
   - component: {fileID: 1286483280775475603}
   m_Layer: 0
@@ -1161,7 +1184,7 @@ MonoBehaviour:
     m_ActionName: Player/Look[/Mouse/delta,/Pen/delta]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4723506608299314351}
+      - m_Target: {fileID: 8554364124020312285}
         m_TargetAssemblyTypeName: PlayerWeaponManager, Assembly-CSharp
         m_MethodName: OnFire
         m_Mode: 0
@@ -1297,7 +1320,7 @@ MonoBehaviour:
     m_ActionName: Player/Slide[/Keyboard/c]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4723506608299314351}
+      - m_Target: {fileID: 8554364124020312285}
         m_TargetAssemblyTypeName: PlayerWeaponManager, Assembly-CSharp
         m_MethodName: OnReload
         m_Mode: 0
@@ -1316,7 +1339,19 @@ MonoBehaviour:
     m_ActionId: 6621102e-d502-43ce-9234-c3592815511e
     m_ActionName: Player/Scroll[/Mouse/scroll/y]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8554364124020312285}
+        m_TargetAssemblyTypeName: PlayerWeaponManager, Assembly-CSharp
+        m_MethodName: OnAim
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 99142163-ac70-4382-8bc9-3645e7a03694
     m_ActionName: Player/Aim[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
@@ -1358,24 +1393,6 @@ MonoBehaviour:
   _maxSlideTime: 0.75
   _slideForce: 200
   _slideYScale: 0.2
---- !u!114 &4723506608299314351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9165193133554583056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80ae1a2ce50a4594cb4aa19c3bb326af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _weapon: 0
-  _gunParent: {fileID: 1088185097799468542}
-  _weapons:
-  - {fileID: 11400000, guid: 8345909c83e91474ab80f42c50552dc2, type: 2}
-  _activeWeapon: {fileID: 0}
-  _lookOrientation: {fileID: 3318755009727240464}
 --- !u!114 &7588505309327768433
 MonoBehaviour:
   m_ObjectHideFlags: 0

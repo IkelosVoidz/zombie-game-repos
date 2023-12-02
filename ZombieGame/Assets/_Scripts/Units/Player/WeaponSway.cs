@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 
 public class WeaponSway : MonoBehaviour
@@ -26,6 +25,7 @@ public class WeaponSway : MonoBehaviour
 
     [Header("Script References")]
     [SerializeField] private PlayerCam _camReference;
+    [SerializeField] private PlayerWeaponManager _weaponManager;
     private Vector2 _look;
 
     private void OnEnable()
@@ -35,10 +35,8 @@ public class WeaponSway : MonoBehaviour
 
     private void WeaponSwapped(AmmoData obj)
     {
-        Transform[] aux = GetComponentsInChildren<Transform>(); //una chapuza pero no hay otra forma de hacerlo
-        weaponTransform = aux.FirstOrDefault(w => w.name == "WeaponSwayPivot");
+        weaponTransform = _weaponManager._weaponSwayPivot;
     }
-
 
     private void OnDisable()
     {
@@ -52,6 +50,7 @@ public class WeaponSway : MonoBehaviour
         Keyframe[] ks = new Keyframe[] { new Keyframe(0, 0, 0, 2), new Keyframe(1, 1) };
         swayCurve = new AnimationCurve(ks);
     }
+
     private Vector3 LissajousCurve(float Time, float A, float B)
     {
         return new Vector3(Mathf.Sin(Time), A * Mathf.Sin(B * Time + Mathf.PI));
@@ -64,7 +63,7 @@ public class WeaponSway : MonoBehaviour
     [SerializeField] float _breathingSwayLerpSpeed = 14;
     private float swayTime;
     private Vector3 swayPosition;
-    public void CalculateWeaponBreathing()
+    private void CalculateWeaponBreathing()
     {
         var targetPosition = LissajousCurve(swayTime, _breathingSwayAmountA, _breathingSwayAmountB) / _breathingSwayScale;
         swayTime += Time.deltaTime;
@@ -72,6 +71,15 @@ public class WeaponSway : MonoBehaviour
         swayPosition = Vector3.Lerp(swayPosition, targetPosition, Time.smoothDeltaTime * _breathingSwayLerpSpeed);
 
         weaponTransform.localPosition = swayPosition;
+    }
+
+    private void CalculateWeaponSway()
+    {
+        sway = Vector2.MoveTowards(sway, Vector2.zero, swayCurve.Evaluate(Time.deltaTime * swaySmoothCounteraction * sway.magnitude * swaySmooth));
+        sway = Vector2.ClampMagnitude(new Vector2(_look.x, _look.y) + sway, maxSwayAmount);
+
+        weaponTransform.localPosition = Vector3.Lerp(weaponTransform.localPosition, new Vector3(sway.x, sway.y, 0) * positionSwayMultiplier, swayCurve.Evaluate(Time.deltaTime * swaySmooth));
+        weaponTransform.localRotation = Quaternion.Slerp(weaponTransform.localRotation, Quaternion.Euler(Mathf.Rad2Deg * rotationSwayMultiplier * new Vector3(-sway.y, sway.x, 0)), swayCurve.Evaluate(Time.deltaTime * swaySmooth));
     }
 
     private void GetInput()
@@ -84,15 +92,7 @@ public class WeaponSway : MonoBehaviour
     private void Update()
     {
         GetInput();
-
-        sway = Vector2.MoveTowards(sway, Vector2.zero, swayCurve.Evaluate(Time.deltaTime * swaySmoothCounteraction * sway.magnitude * swaySmooth));
-        sway = Vector2.ClampMagnitude(new Vector2(_look.x, _look.y) + sway, maxSwayAmount);
-
-        weaponTransform.localPosition = Vector3.Lerp(weaponTransform.localPosition, new Vector3(sway.x, sway.y, 0) * positionSwayMultiplier, swayCurve.Evaluate(Time.deltaTime * swaySmooth));
-        weaponTransform.localRotation = Quaternion.Slerp(weaponTransform.localRotation, Quaternion.Euler(Mathf.Rad2Deg * rotationSwayMultiplier * new Vector3(-sway.y, sway.x, 0)), swayCurve.Evaluate(Time.deltaTime * swaySmooth));
-
+        CalculateWeaponSway();
         CalculateWeaponBreathing();
-        //Vector3(0.524999976,-0.430999994,0.861999989)
-        //Vector3(0,350.783813,0)
     }
 }
