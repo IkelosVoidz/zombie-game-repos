@@ -1,8 +1,8 @@
+using System.Linq;
 using UnityEngine;
 
 public class WeaponSway : MonoBehaviour
 {
-    [SerializeField] public Transform weaponTransform;
 
     [Header("Sway Properties")]
     [SerializeField] private float swayAmount = 0.01f;
@@ -20,9 +20,8 @@ public class WeaponSway : MonoBehaviour
     [SerializeField] public float positionSwayMultiplier = -1f;
 
 
-    private Vector3 initialPosition;
-    private Quaternion initialRotation;
     private Vector2 sway;
+    private Transform weaponTransform;
 
 
     [Header("Script References")]
@@ -36,11 +35,10 @@ public class WeaponSway : MonoBehaviour
 
     private void WeaponSwapped(AmmoData obj)
     {
-        Transform[] aux = GetComponentsInChildren<Transform>();
-        weaponTransform = aux[1];
-        initialPosition = weaponTransform.localPosition;
-        initialRotation = weaponTransform.localRotation;
+        Transform[] aux = GetComponentsInChildren<Transform>(); //una chapuza pero no hay otra forma de hacerlo
+        weaponTransform = aux.FirstOrDefault(w => w.name == "WeaponSwayPivot");
     }
+
 
     private void OnDisable()
     {
@@ -90,10 +88,10 @@ public class WeaponSway : MonoBehaviour
         sway = Vector2.MoveTowards(sway, Vector2.zero, swayCurve.Evaluate(Time.deltaTime * swaySmoothCounteraction * sway.magnitude * swaySmooth));
         sway = Vector2.ClampMagnitude(new Vector2(_look.x, _look.y) + sway, maxSwayAmount);
 
-        weaponTransform.localPosition = Vector3.Lerp(weaponTransform.localPosition, new Vector3(sway.x, sway.y, 0) * positionSwayMultiplier + initialPosition, swayCurve.Evaluate(Time.deltaTime * swaySmooth));
-        weaponTransform.localRotation = Quaternion.Slerp(transform.localRotation, initialRotation * Quaternion.Euler(Mathf.Rad2Deg * rotationSwayMultiplier * new Vector3(-sway.y, sway.x, 0)), swayCurve.Evaluate(Time.deltaTime * swaySmooth));
+        weaponTransform.localPosition = Vector3.Lerp(weaponTransform.localPosition, new Vector3(sway.x, sway.y, 0) * positionSwayMultiplier, swayCurve.Evaluate(Time.deltaTime * swaySmooth));
+        weaponTransform.localRotation = Quaternion.Slerp(weaponTransform.localRotation, Quaternion.Euler(Mathf.Rad2Deg * rotationSwayMultiplier * new Vector3(-sway.y, sway.x, 0)), swayCurve.Evaluate(Time.deltaTime * swaySmooth));
 
-        //CalculateWeaponBreathing();
+        CalculateWeaponBreathing();
         //Vector3(0.524999976,-0.430999994,0.861999989)
         //Vector3(0,350.783813,0)
     }
