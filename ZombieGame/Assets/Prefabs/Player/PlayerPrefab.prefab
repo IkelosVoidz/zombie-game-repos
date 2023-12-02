@@ -474,7 +474,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9e58b8e379dc8458e1932e4cd5a68e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponTransform: {fileID: 0}
   swayAmount: 0.01
   maxSwayAmount: 0.1
   swaySmooth: 9
@@ -507,9 +506,9 @@ MonoBehaviour:
   positionSwayMultiplier: -1
   _camReference: {fileID: 4310408682279172002}
   _breathingSwayAmountA: 1
-  _breathingSwayAmountB: 1
-  _breathingSwayScale: 300
-  _breathingSwayLerpSpeed: 14
+  _breathingSwayAmountB: 2
+  _breathingSwayScale: 150
+  _breathingSwayLerpSpeed: 10
 --- !u!1 &5190409241023161681
 GameObject:
   m_ObjectHideFlags: 0
