@@ -143,7 +143,7 @@ public class Zombie : MonoBehaviour
         state = BUSY;
     }
 
-    public void Die()
+    virtual public void Die()
     {
         //Animar Muerte
         navMeshAgent.speed = 0;
