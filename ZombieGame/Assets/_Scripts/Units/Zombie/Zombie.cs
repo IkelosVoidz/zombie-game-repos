@@ -191,7 +191,7 @@ public class Zombie : MonoBehaviour
         }
     }
 
-    public void HitAnimEvent()
+    virtual public void HitAnimEvent()
     {
         hit = !hit;
     }

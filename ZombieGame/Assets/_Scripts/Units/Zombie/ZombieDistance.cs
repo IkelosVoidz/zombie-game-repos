@@ -30,16 +30,22 @@ public class ZombieDistance : Zombie
     {
         state = BUSY;
         navMeshAgent.speed = 0;
-        animator.Play("ATTACK" + Random.Range(4, 4));
+        animator.Play("ATTACK" + Random.Range(6, 6));
 
-        Vector3 throwPos = new Vector3(transform.position.x, transform.position.y+2,transform.position.z);
+        
+    }
+
+    public override void HitAnimEvent()
+    {
+        base.HitAnimEvent();
+        Vector3 throwPos = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
         transform.LookAt(target.transform);
         Debug.Log("Forward Direction: " + transform.forward);
 
-        Rigidbody rb = Instantiate(projectile,throwPos,Quaternion.identity).GetComponent<Rigidbody>();
+        Rigidbody rb = Instantiate(projectile, throwPos, Quaternion.identity).GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * 8f, ForceMode.Impulse);
         rb.AddForce(transform.up * 2f, ForceMode.Impulse);
-        
+
     }
 
 }
