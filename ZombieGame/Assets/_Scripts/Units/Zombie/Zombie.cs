@@ -132,6 +132,7 @@ public class Zombie : MonoBehaviour
 
     virtual public void Attack()
     {
+
         navMeshAgent.speed = 0;
         animator.Play("ATTACK" + Random.Range(1, 6));
         state = BUSY;

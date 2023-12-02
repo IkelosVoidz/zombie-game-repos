@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: 2227531222587488755}
   - component: {fileID: 4142171329647377186}
   - component: {fileID: 1113486439003376328}
+  - component: {fileID: 6533860015841232631}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -251,6 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerHeight: 2
+  _playerObj: {fileID: 0}
   _walkSpeed: 7
   _sprintSpeed: 12
   _orientation: {fileID: 5411456757662403627}
@@ -442,6 +444,18 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: af1b455a-319d-44f5-9c53-63b462effdd1
     m_ActionName: Player/Slide[/Keyboard/c]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 310599e1-20b8-45c2-9f58-2591ccd7b5d8
+    m_ActionName: Player/Reload[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6621102e-d502-43ce-9234-c3592815511e
+    m_ActionName: Player/Scroll[/Mouse/scroll/y]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 99142163-ac70-4382-8bc9-3645e7a03694
+    m_ActionName: Player/Aim[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -493,12 +507,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ae1a2ce50a4594cb4aa19c3bb326af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: 0
-  _gunParent: {fileID: 7046083595582642283}
-  _weapons:
-  - {fileID: 11400000, guid: 8345909c83e91474ab80f42c50552dc2, type: 2}
+  _weaponParent: {fileID: 0}
+  _weaponPivot: {fileID: 0}
+  _weaponSwayPivot: {fileID: 0}
+  _viewCamera: {fileID: 0}
   _activeWeapon: {fileID: 0}
   _lookOrientation: {fileID: 1786780782869078267}
+  _weaponSights: {fileID: 0}
+  _isAiming: 0
+  _sightsOffset: 0
+  _sightsOffsetDown: 0
+  _aimingTime: 0
+  _aimingFOV: 0
+--- !u!114 &6533860015841232631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2167065651827109592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 835fd10b76ae9534b962a7cca93440f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnHealthChange:
+    m_PersistentCalls:
+      m_Calls: []
+  OnObjectDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  _baseHealth: 100
+  _maxHealth: 100
+  _health: 0
 --- !u!1 &4944365162150985330
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,13 +11,18 @@ public class ProjectileScr : MonoBehaviour
 
         if (collision.gameObject.name=="Player")
         {
-            Debug.Log("Player");
         }
         else
         {
             Vector3 pos = new Vector3(this.transform.position.x, this.transform.position.y-0.2f, this.transform.position.z);
             GameObject RB = Instantiate(vomit,pos,Quaternion.identity);
-            Debug.Log("Suelo");
+        }
+
+        HealthComponent HC;
+        if (collision.gameObject.TryGetComponent<HealthComponent>(out HC))
+        {
+            HC.TakeDamage(1, new Vector3());
+            Debug.Log("DAÑOOOO");
         }
     }
 }

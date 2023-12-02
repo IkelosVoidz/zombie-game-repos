@@ -23,6 +23,12 @@ public class ZombieDistance : Zombie
         if (playerInAttackRange && state != BUSY)
             state = ATTACK;
 
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("ATTACK" + 6))
+        {
+            // Asegúrate de que el enemigo esté mirando hacia el objetivo
+            transform.LookAt(target.transform);
+        }
+
 
 
     }
