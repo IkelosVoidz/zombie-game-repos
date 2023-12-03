@@ -147,3 +147,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vomit: {fileID: 4901609603425124688, guid: d9e18335fb4e31646a1f121dc4d9d667, type: 3}
+  damage: 5
