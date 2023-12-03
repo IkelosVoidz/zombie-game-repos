@@ -43,8 +43,6 @@ public class WeaponSway : MonoBehaviour
         PlayerWeaponManager.OnWeaponSwap -= WeaponSwapped;
     }
 
-
-
     private void Reset()
     {
         Keyframe[] ks = new Keyframe[] { new Keyframe(0, 0, 0, 2), new Keyframe(1, 1) };

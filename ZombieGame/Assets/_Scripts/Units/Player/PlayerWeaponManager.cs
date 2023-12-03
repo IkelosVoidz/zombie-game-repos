@@ -6,30 +6,33 @@ public class PlayerWeaponManager : MonoBehaviour
 {
 
     [Header("References")]
-    [SerializeField]
-    private Transform _weaponParent;
-    public Transform _weaponPivot;
-    public Transform _weaponSwayPivot;
-    [SerializeField] Camera _viewCamera;
-
-    public WeaponScriptable _activeWeapon;
+    [SerializeField] private Transform _weaponParent;
+    [SerializeField] private Camera _viewCamera;
     [SerializeField] private Transform _lookOrientation;
 
+    [Space(10)]
+    //[HideInInspector] 
+    public Transform _weaponPivot;
+    //[HideInInspector] 
+    public Transform _weaponSwayPivot;
+    //[HideInInspector] 
+    public Transform _weaponRecoilPosition;
+    // [HideInInspector] 
+    public Transform _weaponRotationPoint;
+    //[HideInInspector] 
+    public WeaponScriptable _activeWeapon;
+    [Space(10)]
 
     [Header("Aiming parameters")]
-    public Transform _weaponSights;
-    public bool _isAiming;
-    public float _sightsOffset;
-    public float _sightsOffsetDown;
-    public float _aimingTime;
-    [Range(0, 100)] public float _aimingFOV;
+    [HideInInspector] private Transform _weaponSights;
+    [SerializeField] public bool _isAiming;
+    [SerializeField] private float _sightsOffset;
+    [SerializeField] private float _sightsOffsetDown;
+    [SerializeField] private float _aimingTime;
+    [Range(0, 100), SerializeField] private float _aimingFOV;
+
     private float _normalFOV;
-    private Vector3 _weaponSwayPosition;
-    private Vector3 _weaponSwayPositionVelocity;
-
-
-
-
+    private Vector3 _weaponAimPositionVelocity;
     private bool _attackHeld = false;
 
     /// <summary>
@@ -93,7 +96,7 @@ public class PlayerWeaponManager : MonoBehaviour
         }
 
         Vector3 aux = _weaponPivot.position;
-        aux = Vector3.SmoothDamp(aux, targetPosition, ref _weaponSwayPositionVelocity, _aimingTime);
+        aux = Vector3.SmoothDamp(aux, targetPosition, ref _weaponAimPositionVelocity, _aimingTime);
         currentFOV = Mathf.LerpAngle(currentFOV, targetFOV, Time.deltaTime * 10);
         _viewCamera.fieldOfView = currentFOV;
 
@@ -125,7 +128,9 @@ public class PlayerWeaponManager : MonoBehaviour
         //ya lo cambiare para entonces para que sea una cerca mirando si es null yy ya veremos si es muy poco eficiente y si hay lagazos al cambiar de arma, que va a ser un problema gordo de cojones
         _weaponPivot = aux[1];
         _weaponSwayPivot = aux[2];
-        _weaponSights = aux[7];
+        _weaponRecoilPosition = aux[2];
+        _weaponRotationPoint = aux[4];
+        _weaponSights = aux[9];
 
         //_weaponSights = _weaponSwayPivot.GetComponentsInChildren<Transform>().FirstOrDefault(w => w.name == "AimSights");
         //_weaponPivot = aux.FirstOrDefault(w => w.name == "WeaponSwayPivot");
