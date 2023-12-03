@@ -128,7 +128,7 @@ public class PlayerWeaponManager : MonoBehaviour
         //ya lo cambiare para entonces para que sea una cerca mirando si es null yy ya veremos si es muy poco eficiente y si hay lagazos al cambiar de arma, que va a ser un problema gordo de cojones
         _weaponPivot = aux[1];
         _weaponSwayPivot = aux[2];
-        _weaponRecoilPosition = aux[2];
+        _weaponRecoilPosition = aux[3];
         _weaponRotationPoint = aux[4];
         _weaponSights = aux[9];
 
