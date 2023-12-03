@@ -190,6 +190,46 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1105304961687440950, guid: e430c061e7389cc45a8c23c5109317b6, type: 3}
   m_PrefabInstance: {fileID: 1905196219}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &140746864 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4721665344748316780, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
+  m_PrefabInstance: {fileID: 8135489890870153800}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &140746867 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8554364124020312285, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
+  m_PrefabInstance: {fileID: 8135489890870153800}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140746864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ae1a2ce50a4594cb4aa19c3bb326af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &140746868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140746864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf06a6651156234c855e7cce23d28a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recoilPosition: {fileID: 0}
+  rotationPoint: {fileID: 0}
+  positionalRecoilSpeed: 8
+  rotationalRecoilSpeed: 8
+  positionalReturnSpeed: 18
+  rotationalReturnSpeed: 38
+  RecoilRotation: {x: 10, y: 5, z: 7}
+  RecoilKickBack: {x: 0.015, y: 0, z: -0.2}
+  RecoilRotationAim: {x: 10, y: 4, z: 6}
+  RecoilKickBackAim: {x: 0.015, y: 0, z: -0.2}
+  aiming: 0
+  _weaponManager: {fileID: 140746867}
 --- !u!1001 &165030239
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -340,6 +380,44 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1586176540707926322, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
   m_PrefabInstance: {fileID: 8135489890870153800}
   m_PrefabAsset: {fileID: 0}
+--- !u!84 &304991426
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 5
+  m_Width: 1920
+  m_Height: 1080
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 94
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_EnableRandomWrite: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!1001 &321978537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1751,44 +1829,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4539809468848953688, guid: 650ecc0cf0f66664090ed6d8ad852049, type: 3}
   m_PrefabInstance: {fileID: 1410178845}
   m_PrefabAsset: {fileID: 0}
---- !u!84 &1979822753
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 5
-  m_Width: 1920
-  m_Height: 1080
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 94
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_EnableRandomWrite: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
 --- !u!1001 &1991113857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2108,35 +2148,18 @@ PrefabInstance:
     - target: {fileID: 5956376493159188015, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 1979822753}
+      objectReference: {fileID: 304991426}
     - target: {fileID: 7209713141820414086, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
       propertyPath: m_Name
       value: PlayerPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 7900635895839390882, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
-      propertyPath: swaySmoothCounteraction
-      value: 0.344
-      objectReference: {fileID: 0}
-    - target: {fileID: 7900635895839390882, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
-      propertyPath: swayCurve.m_Curve.Array.data[0].time
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7900635895839390882, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
-      propertyPath: swayCurve.m_Curve.Array.data[0].value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7900635895839390882, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
-      propertyPath: swayCurve.m_Curve.Array.data[0].inSlope
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7900635895839390882, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
-      propertyPath: swayCurve.m_Curve.Array.data[0].outSlope
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4721665344748316780, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 140746868}
   m_SourcePrefab: {fileID: 100100000, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
