@@ -97,7 +97,16 @@ public class DoorController : MonoBehaviour, IInteractable
 
             currentTime -= Time.deltaTime;
         }
+        else
+        {
+            if (isOpen)
+            {
+                transform.rotation = openRotation;
+            }
+            else
+            {
+                transform.rotation = initialRotation;
+            }
+        }
     }
 }
-
-
