@@ -26,7 +26,6 @@ public class AttackConfigScriptable : ScriptableObject
 
     public virtual void Attack(bool inputHeld)
     {
-
         if (!_fullAuto && inputHeld) return;
         if (!CanAttack()) return;
 
