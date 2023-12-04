@@ -5,6 +5,7 @@ using UnityEngine;
 public class ProjectileScr : MonoBehaviour
 {
     [SerializeField] GameObject vomit;
+    [SerializeField] int damage;
     private void OnCollisionEnter(Collision collision)
     {
         Destroy(this.gameObject);
@@ -21,7 +22,7 @@ public class ProjectileScr : MonoBehaviour
         HealthComponent HC;
         if (collision.gameObject.TryGetComponent<HealthComponent>(out HC))
         {
-            HC.TakeDamage(1, new Vector3());
+            HC.TakeDamage(damage, new Vector3());
             Debug.Log("DAÑOOOO");
         }
     }

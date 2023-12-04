@@ -1076,8 +1076,9 @@ MonoBehaviour:
   _jumpCooldown: 0.25
   _airMultiplier: 0.01
   _crouchSpeed: 3.5
-  _crouchYScale: 0.2
-  _maxSlopeAngle: 30
+  _crouchRunSpeed: 5
+  _crouchYScale: 0.5
+  _maxSlopeAngle: 40
 --- !u!114 &2211025947583759692
 MonoBehaviour:
   m_ObjectHideFlags: 0
