@@ -36,8 +36,10 @@ public class PlayerMovement : MonoBehaviour
     [Header("Crouching")]
 
     [SerializeField, Tooltip("Speed at which the player will crouch")] private float _crouchSpeed;
+    [SerializeField, Tooltip("Speed at which the player will crouch")] private float _crouchRunSpeed;
     [SerializeField, Tooltip("")] private float _crouchYScale;
     private float _startYScale;
+    private bool crouching;
 
     [Header("Slope Handling")]
     [SerializeField, Tooltip("")] private float _maxSlopeAngle;
@@ -70,16 +72,25 @@ public class PlayerMovement : MonoBehaviour
     }
     public void OnSprint(InputAction.CallbackContext ctx)
     {
+        if (ctx.performed && crouching)
+        {
+            _moveSpeed = _crouchRunSpeed;
+        }
 
-        if (ctx.performed)
+        else if (ctx.performed)
         {
             _moveSpeed = _sprintSpeed;
             _sprinting = true;
         }
         else
         {
-            _moveSpeed = _walkSpeed;
-            _sprinting = false;
+            if (crouching)
+                _moveSpeed = _crouchSpeed;
+            else
+            {
+                _moveSpeed = _walkSpeed;
+                _sprinting = false;
+            }
         }
     }
 
@@ -87,10 +98,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (ctx.performed && !_sprinting)
         {
-            StartCoroutine(CrouchSmoothly(_crouchYScale, _crouchSpeed));
+            crouching = true;
+            StartCoroutine(CrouchSmoothly(_crouchYScale, _crouchSpeed,50f));
         }
         else if (!ctx.performed && !_sprinting) {
-            StartCoroutine(CrouchSmoothly(_startYScale, _walkSpeed));
+            crouching = false;
+            StartCoroutine(CrouchSmoothly(_startYScale, _walkSpeed,0f));
         }
     }
 
@@ -107,7 +120,9 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
 
-        _grounded = Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + 0.2f); //SI ESTOY EN EL AIRE grunded = FALSE
+        _grounded = Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + 0.2f);
+        if (crouching)
+            _grounded = true;
 
         SpeedControl();
         if (_grounded)
@@ -197,9 +212,8 @@ public class PlayerMovement : MonoBehaviour
         return Vector3.ProjectOnPlane(moveDirection, _slopeHit.normal).normalized;
     }
 
-    
 
-    private IEnumerator CrouchSmoothly(float targetYScale, float targetMoveSpeed)
+    private IEnumerator CrouchSmoothly(float targetYScale, float targetMoveSpeed,float force)
     {
         float duration = 0.2f;  // DURACION DE LA TRANSICION
         Vector3 startScale = _playerObj.localScale;
@@ -208,7 +222,7 @@ public class PlayerMovement : MonoBehaviour
         while (Time.time < startTime + duration)
         {
             float t = (Time.time - startTime) / duration;
-            rb.AddForce(Vector3.down * 1f, ForceMode.Impulse);
+            rb.AddForce(Vector3.down * force, ForceMode.Impulse);
             _playerObj.localScale = Vector3.Lerp(startScale, new Vector3(startScale.x, targetYScale, startScale.z), t);
             _moveSpeed = Mathf.Lerp(_moveSpeed, targetMoveSpeed, t);
             yield return null;
