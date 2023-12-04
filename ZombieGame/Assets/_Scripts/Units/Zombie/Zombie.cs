@@ -124,6 +124,11 @@ public class Zombie : MonoBehaviour
     }
 
     //----------------------[Public Methods]--------------------------
+
+    public bool isDead()
+    {
+       return dead;
+    }
     public void Chase()
     {
         navMeshAgent.destination = target.transform.position;

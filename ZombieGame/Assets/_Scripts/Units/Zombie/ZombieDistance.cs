@@ -29,17 +29,13 @@ public class ZombieDistance : Zombie
             transform.LookAt(target.transform);
         }
 
-
-
     }
 
     public override void Attack()
     {
         state = BUSY;
         navMeshAgent.speed = 0;
-        animator.Play("ATTACK" + Random.Range(6, 6));
-
-        
+        animator.Play("ATTACK" + Random.Range(6, 6));        
     }
 
     public override void HitAnimEvent()
