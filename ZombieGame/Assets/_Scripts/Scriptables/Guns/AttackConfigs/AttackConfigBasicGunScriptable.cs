@@ -11,11 +11,12 @@ public class AttackConfigBasicGunScriptable : AttackConfigScriptable
     protected Vector3 _spread = new Vector3(0.1f, 0.1f, 0.1f);
 
 
-    public override void Attack(bool inputHeld)
+    public override int Attack(bool inputHeld)
     {
-        base.Attack(inputHeld);
-        //esta lina solo se ejecutara pasado el cooldown
+        if (base.Attack(inputHeld) == -1) return -1;
+        //esta lina solo se ejecutara pasado el cooldown .... hehe, soy un mentiroso no es verdad esto
         ShootHitscanBullet();
+        return 0;
     }
 
     public Vector3 GetRayCastOrigin() //habra que hacer que se pueda setear que salga del arma por si queremos hacer eso en algun momento
@@ -36,6 +37,7 @@ public class AttackConfigBasicGunScriptable : AttackConfigScriptable
         Vector3 shootDirection = _lookOrientation.transform.forward + _lookOrientation.TransformDirection(CalculateSpread());
 
         shootDirection.Normalize();
+        Debug.Log(shootDirection);
 
         if (Physics.Raycast( //el pew pew
             GetRayCastOrigin(),
@@ -47,6 +49,7 @@ public class AttackConfigBasicGunScriptable : AttackConfigScriptable
         {
             HandleHitEffects(hit, shootDirection);
             //also SurfaceManager handle impact
+            Debug.Log("he hiteado algo");
         }
     }
 

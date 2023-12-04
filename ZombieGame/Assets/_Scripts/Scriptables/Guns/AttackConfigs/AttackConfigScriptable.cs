@@ -24,15 +24,16 @@ public class AttackConfigScriptable : ScriptableObject
     /// </summary>
     public static event Action<AmmoData> OnShoot;
 
-    public virtual void Attack(bool inputHeld)
+    public virtual int Attack(bool inputHeld)
     {
-        if (!_fullAuto && inputHeld) return;
-        if (!CanAttack()) return;
+        if (!_fullAuto && inputHeld) return -1;
+        if (!CanAttack()) return -1;
 
         _lastAttackTime = Time.time;
         _gunTip.Play();
         _reloadConfig.DecreaseAmmo();
         OnShoot?.Invoke(_reloadConfig._ammo);
+        return 0;
     }
 
 
