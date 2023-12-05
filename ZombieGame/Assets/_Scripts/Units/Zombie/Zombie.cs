@@ -31,6 +31,7 @@ public class Zombie : MonoBehaviour
     private bool isAttacking = false;
     private bool dead = false;
     private float maxSpeed;
+    protected bool isWalking = false;
 
     //----------------------[Private Methods]--------------------------//
 
@@ -46,9 +47,14 @@ public class Zombie : MonoBehaviour
     protected virtual void Update()
     {
         //Debug.Log(state);
-        if (state != BUSY && !dead)
-        {
 
+        if(isWalking)
+            navMeshAgent.destination = target.transform.position;
+
+        if ((state != BUSY) && !dead)
+        {
+            if (state != CHASE)
+                isWalking = false;
             switch (state)
             {
                 case SPAWN:
@@ -91,19 +97,24 @@ public class Zombie : MonoBehaviour
     //Detecta si esta el Player  davant per atacarlo
     private void OnTriggerEnter(Collider other)
     {
-        
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && !dead)
+        if (other.gameObject.name == "PlayerObj" && !dead)
         {
-            if(hit && isAttacking)
+            if (hit && isAttacking)
             {
                 Debug.Log("Ha fet pupa!!");
+                HealthComponent HC = other.GetComponentInParent<HealthComponent>();
+                if (HC is not null)
+                {
+                    Debug.Log("Daño al jugador");
+                    HC.TakeDamage(5, new Vector3());
+                }
                 isAttacking = false;
             }
-            if(!hit && !isAttacking)
+            if (!hit && !isAttacking)
             {
                 state = ATTACK;
                 isAttacking = true;
@@ -133,15 +144,27 @@ public class Zombie : MonoBehaviour
     public void Chase()
     {
         navMeshAgent.destination = target.transform.position;
-        animator.Play("Zombie_Walk");
+        state = BUSY;
+
+        Debug.Log(isWalking);
+        if (!isWalking)
+        {
+            isWalking = true;
+            animator.CrossFade("Zombie_Walk", 0.2f, -1, 0);
+        }
+        else
+        {
+            isWalking = true;
+            animator.Play("Zombie_Walk");
+        }
     }
 
     virtual public void Attack()
     {
-
-        navMeshAgent.speed = 0;
-        animator.Play("ATTACK" + Random.Range(1, 6));
         state = BUSY;
+        navMeshAgent.speed = 0;
+        //animator.Play("ATTACK" + Random.Range(1, 6));
+        animator.CrossFade("ATTACK" + Random.Range(1, 6), 0.2f, -1, 0);
     }
     public void TakeDamage()
     {
@@ -149,7 +172,8 @@ public class Zombie : MonoBehaviour
         {
             navMeshAgent.speed = 0;
             state = BUSY;
-            animator.Play("GET_HIT" + Random.Range(1, 3));
+            //animator.Play("GET_HIT" + Random.Range(1, 3));
+            animator.CrossFade("GET_HIT" + Random.Range(1, 3), 0.2f, -1, 0);
         }
        
     }
@@ -160,9 +184,10 @@ public class Zombie : MonoBehaviour
         {
             //Animar Muerte
             navMeshAgent.speed = 0;
-            animator.Play("DIE" + Random.Range(1, 6));
+            //animator.Play("DIE" + Random.Range(1, 6));
+            animator.CrossFade("DIE" + Random.Range(1, 6), 0.2f, -1, 0);
             dead = true;
-            Debug.Log("Estoy muelto diablo");
+            Debug.Log("Diablo mami me mato");
             state = BUSY;
         }
     }

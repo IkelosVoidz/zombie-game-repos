@@ -14,13 +14,15 @@ public class ZombieDistance : Zombie
 
     [SerializeField] LayerMask whatIsGround, whatIsPlayer;
 
+    private bool isShooting = false;
+
     protected override void Update()
     {
 
         base.Update();
 
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-        if (playerInAttackRange && state != BUSY)
+        if (playerInAttackRange && (state != BUSY || isWalking))
             state = ATTACK;
 
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("ATTACK" + 6))
@@ -34,8 +36,9 @@ public class ZombieDistance : Zombie
     public override void Attack()
     {
         state = BUSY;
+        isShooting = true;
         navMeshAgent.speed = 0;
-        animator.Play("ATTACK" + Random.Range(6, 6));        
+        animator.CrossFade("ATTACK6", 0.2f, -1, 0);
     }
 
     public override void HitAnimEvent()
@@ -54,28 +57,11 @@ public class ZombieDistance : Zombie
     public override void Die()
     {
         base.Die();
-        //this.transform.position = new Vector3(transform.position.x,-10.83f,transform.position.z);
         CapsuleCollider capsuleCollider = GetComponent<CapsuleCollider>();
-        //navMeshAgent.height = 0.1f;
-
-        //capsuleCollider.height = 0.1f;
         if(capsuleCollider!=null)
             Destroy(capsuleCollider);
 
-        //ESTO ES UN ASCO ME QUIERO MORIR NO SE EN QUE MOMENTO DIJE QUE SERIA BUENA IDEA METERME A UNA CARRERA DE PROGRAMACION. MAMA QUIERO SER CAMAREERO.
-
-        //float initialValue = navMeshAgent.baseOffset;
-        //float finalValue = navMeshAgent.baseOffset - 0.8f;
-
-        //navMeshAgent.baseOffset = Mathf.Lerp(navMeshAgent.baseOffset, finalValue, 0.1f * Time.deltaTime);
-
-        //Debug.Log(navMeshAgent.baseOffset);
-
-        //if (!transitionStarted)
-        //{
-        //    transitionStarted = true;
-        //    StartCoroutine(goDown());
-        //}
+        //ESTO ES UN ASCO ME QUIERO MORIR NO SE EN QUE MOMENTO DIJE QUE SERIA BUENA IDEA METERME A UNA CARRERA DE PROGRAMACION. MAMA QUIERO SER CAMAREEROOOOOOOOOOO
 
     }
 
