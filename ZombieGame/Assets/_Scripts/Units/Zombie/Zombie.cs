@@ -14,6 +14,7 @@ public class Zombie : MonoBehaviour
     protected const int DANCE = 5;
     protected const int BUSY = 10;
 
+
     public int testState; //Fer Proves
 
     protected int state = 100;
@@ -45,7 +46,7 @@ public class Zombie : MonoBehaviour
     protected virtual void Update()
     {
         //Debug.Log(state);
-        if (state != BUSY)
+        if (state != BUSY && !dead)
         {
 
             switch (state)
@@ -144,18 +145,26 @@ public class Zombie : MonoBehaviour
     }
     public void TakeDamage()
     {
-        navMeshAgent.speed = 0;
-        animator.Play("GET_HIT" + Random.Range(1, 3));
-        state = BUSY;
+        if (!dead)
+        {
+            navMeshAgent.speed = 0;
+            state = BUSY;
+            animator.Play("GET_HIT" + Random.Range(1, 3));
+        }
+       
     }
 
     virtual public void Die()
     {
-        //Animar Muerte
-        navMeshAgent.speed = 0;
-        animator.Play("DIE" + Random.Range(1, 6));
-        dead = true;
-        state = BUSY;
+        if (!dead)
+        {
+            //Animar Muerte
+            navMeshAgent.speed = 0;
+            animator.Play("DIE" + Random.Range(1, 6));
+            dead = true;
+            Debug.Log("Estoy muelto diablo");
+            state = BUSY;
+        }
     }
 
     public void Dance()
