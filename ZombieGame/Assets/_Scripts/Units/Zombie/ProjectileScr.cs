@@ -23,7 +23,6 @@ public class ProjectileScr : MonoBehaviour
         if (collision.gameObject.TryGetComponent<HealthComponent>(out HC))
         {
             HC.TakeDamage(damage, new Vector3());
-            Debug.Log("DAÑOOOO");
         }
     }
 }
