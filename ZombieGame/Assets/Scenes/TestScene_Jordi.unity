@@ -149,6 +149,44 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.077772215, y: 0.10725097, z: 0.001892128}
   m_Center: {x: -0.000062868, y: -0.00027099624, z: 0.0001536751}
+--- !u!84 &63066362
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 5
+  m_Width: 640
+  m_Height: 480
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 94
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_EnableRandomWrite: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!1001 &93196600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -268,7 +306,7 @@ PrefabInstance:
     - target: {fileID: 5956376493159188015, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 2111400870}
+      objectReference: {fileID: 63066362}
     - target: {fileID: 7209713141820414086, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
       propertyPath: m_Name
       value: PlayerPrefab
@@ -780,6 +818,11 @@ Transform:
   - {fileID: 562348976}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &750052062 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8922734842874828608, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
+  m_PrefabInstance: {fileID: 139671406}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &778330396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,10 +1115,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZombieBase1
       objectReference: {fileID: 0}
-    - target: {fileID: 1622436783490748499, guid: 4bd75b0034695504fbaedfaed5ad38ea, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 5293839876743215278, guid: 4bd75b0034695504fbaedfaed5ad38ea, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 750052062}
     - target: {fileID: 8957505094043263240, guid: 4bd75b0034695504fbaedfaed5ad38ea, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1481,44 +1524,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7209713141820414086, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
   m_PrefabInstance: {fileID: 139671406}
   m_PrefabAsset: {fileID: 0}
---- !u!84 &2111400870
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 5
-  m_Width: 640
-  m_Height: 480
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 94
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_EnableRandomWrite: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
 --- !u!1001 &2577403293227182261
 PrefabInstance:
   m_ObjectHideFlags: 0
