@@ -9,6 +9,7 @@ public class AttackConfigBasicGunScriptable : AttackConfigScriptable
     protected LayerMask _hitMask;
     [SerializeField]
     protected Vector3 _spread = new Vector3(0.1f, 0.1f, 0.1f);
+    public Animator what;
 
 
     public override int Attack(bool inputHeld)

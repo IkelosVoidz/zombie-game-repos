@@ -37,7 +37,6 @@ public class ProceduralCamRecoil : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log("holis");
         currentRotation = Vector3.Lerp(currentRotation, Vector3.zero, returnSpeed * Time.deltaTime);
         Rot = Vector3.Slerp(Rot, currentRotation, rotationSpeed * Time.fixedDeltaTime);
         transform.localRotation = Quaternion.Euler(Rot);
