@@ -10,6 +10,7 @@ public class AttackConfigBasicGunScriptable : AttackConfigScriptable
     [SerializeField]
     protected Vector3 _spread = new Vector3(0.1f, 0.1f, 0.1f);
     public Animator what;
+    public RuntimeAnimatorController controller;
 
 
     public override int Attack(bool inputHeld)

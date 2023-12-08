@@ -10,6 +10,7 @@ public class MissionManager : StaticSingleton<MissionManager>
 
     //using this list to display the missions on the inspector for ease of use (drag n drop objectives)
     [SerializeField] List<Mission> _missionsList;
+    [SerializeField] HUD _hud;
 
 
     //grabbing all objectives of all missions, reorganizing them , etc
@@ -20,10 +21,13 @@ public class MissionManager : StaticSingleton<MissionManager>
         _currentObjectives = new Dictionary<string, int>();
         foreach (Mission mis in _missionsList)
         {
+            int order = 0;
             SortedList<int, MissionObjective> mObjs = new SortedList<int, MissionObjective>();
             foreach (MissionObjective obj in mis.Objectives)
             {
+                obj._order = order;
                 mObjs.Add(obj._order, obj);
+                order++;
             }
             _missions.Add(mis._name, mObjs);
             //_completionList.Add(mis._name,//SortedList of objectives and its completion as its value)
@@ -75,6 +79,8 @@ public class MissionManager : StaticSingleton<MissionManager>
         return 0;
     }
 
+
+
     /// <summary>
     /// Updates the objective 'objective'
     /// <br></br>
@@ -101,7 +107,7 @@ public class MissionManager : StaticSingleton<MissionManager>
 public class Mission //: IComparable
 {
     public string _name;
-    public string _description;
+    [TextArea] public string _description;
     public List<MissionObjective> Objectives;
 
     /*public int CompareTo(object obj)

@@ -6,9 +6,9 @@ using UnityEngine;
 public class MissionObjective : ScriptableObject
 {
     public string _name;
-    public string _description;
+    [TextArea] public string _description;
     public string _mission;
-    public int _order;
+    [HideInInspector] public int _order;
     public bool _completed;
 
     public virtual void OnSelected()
