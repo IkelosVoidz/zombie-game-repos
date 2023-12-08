@@ -11,6 +11,11 @@ public class MissionObjective : ScriptableObject
     [HideInInspector] public int _order;
     public bool _completed;
 
+    private void Awake()
+    {
+        _completed = false;
+    }
+
     public virtual void OnSelected()
     {
         //play radio message or whatever

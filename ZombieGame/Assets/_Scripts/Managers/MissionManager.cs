@@ -34,6 +34,8 @@ public class MissionManager : StaticSingleton<MissionManager>
             _currentObjectives.Add(mis._name, 0); //setting the current objectives of all missions to 0
         }
 
+        _hud.InitializeMissions(_missions);
+
         //increible que keyvaluepair , tuple, y pair, sean cosas diferentes
         //debug del dictionary
         /*foreach (KeyValuePair<string, SortedList<int, MissionObjective>> otherMis in _missions)
@@ -64,8 +66,13 @@ public class MissionManager : StaticSingleton<MissionManager>
 
         obj._completed = true;
         obj.OnCompleted();
+
+        if ((_currentObjectives[obj._mission] + 1) > _missions[obj._mission].Count - 1) return -1;
+
         _currentObjectives[obj._mission]++;
-        _missions[objective._mission][objective._order].OnSelected();
+        _missions[objective._mission][objective._order + 1].OnSelected();
+
+        _hud.ChangeMissionDescription(_missions[objective._mission][objective._order + 1]);
 
         //notify UI & other things 
         //each "objective" tells the UI how to display itself, some objectives might require the player to obtain multiple instances of a thing (0/3) or of different things
