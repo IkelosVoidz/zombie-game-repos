@@ -48,7 +48,7 @@ public class Zombie : MonoBehaviour
     {
         //Debug.Log(state);
 
-        if(isWalking)
+        if(isWalking && target!=null)
             navMeshAgent.destination = target.transform.position;
 
         if ((state != BUSY) && !dead)
@@ -143,7 +143,8 @@ public class Zombie : MonoBehaviour
     }
     public void Chase()
     {
-        navMeshAgent.destination = target.transform.position;
+        if(target != null)
+            navMeshAgent.destination = target.transform.position;
         state = BUSY;
 
         Debug.Log(isWalking);
