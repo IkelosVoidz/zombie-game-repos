@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GetInsideTheHouse
   m_EditorClassIdentifier: 
   _name: GetInsideTheHouse
-  _description: Get inside the house of the scientists
+  _description: Get access to the scientists' house
   _mission: Inicial
-  _order: 0
+  _order: 1
   _completed: 0

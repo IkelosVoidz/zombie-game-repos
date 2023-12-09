@@ -8,5 +8,12 @@ public class TriggerDoSomething : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         onTriggerDoSomething?.Invoke();
+
+        BoxCollider[] boxColliders = GetComponents<BoxCollider>();
+
+        foreach (BoxCollider collider in boxColliders)
+        {
+            if (collider != null) collider.enabled = false;
+        }
     }
 }

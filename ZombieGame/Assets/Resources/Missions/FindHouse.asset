@@ -15,5 +15,5 @@ MonoBehaviour:
   _name: FindHouse
   _description: Find the house that the scientists used as a base
   _mission: Inicial
-  _order: 1
+  _order: 0
   _completed: 0
