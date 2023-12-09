@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76078d530f7703345b3ab6752cac7402, type: 3}
-  m_Name: OpenDoor
+  m_Name: GetInsideTheHouse
   m_EditorClassIdentifier: 
-  _name: OpenDoor
-  _description: Find the generator that opens the door of the house
+  _name: GetInsideTheHouse
+  _description: Get inside the house of the scientists
   _mission: Inicial
   _order: 0
   _completed: 0
