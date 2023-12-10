@@ -13,7 +13,13 @@ public class PlayerCam : MonoBehaviour
 
     [HideInInspector]
     public Vector2 look { get; private set; }
+    private void Awake()
+    {
+        //FALTA PULIR-HO
+        sensX = SettingsManager.Instance.sensi;
+        sensY = SettingsManager.Instance.sensi;
 
+    }
     public void OnLook(InputAction.CallbackContext ctx)
     {
         look = ctx.ReadValue<Vector2>();
