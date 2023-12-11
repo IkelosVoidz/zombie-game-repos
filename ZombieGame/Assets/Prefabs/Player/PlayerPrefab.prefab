@@ -454,7 +454,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  swaySmoothCounteraction: 0.344
+  swaySmoothCounteraction: 1
   rotationSwayMultiplier: 1
   positionSwayMultiplier: -1
   _camReference: {fileID: 1749718098017220480}

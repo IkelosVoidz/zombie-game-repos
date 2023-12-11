@@ -11,10 +11,10 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 6896083747798044463}
-    m_Position: {x: 400, y: 80, z: 0}
+    m_Position: {x: 570, y: -70, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -456425138047143298}
-    m_Position: {x: 425, y: 165, z: 0}
+    m_Position: {x: 250, y: 150, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -24,7 +24,7 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 270, y: -40, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 6896083747798044463}
+  m_DefaultState: {fileID: -456425138047143298}
 --- !u!1102 &-456425138047143298
 AnimatorState:
   serializedVersion: 6
@@ -33,7 +33,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SwapWeapon
-  m_Speed: 1
+  m_Speed: -1
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -47,7 +47,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 697b8889ad8a38c439842ee96f9cf3dc, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: Blend
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
