@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -49,7 +50,7 @@ public class WeaponScriptable : InventoryObjectSO
         _type = "Weapon";
     }
 
-    public Transform SwapIn(Transform parent, Transform lookOrientation, MonoBehaviour activeMonoBehaviour)
+    public Transform SwapIn(Transform parent, Transform lookOrientation, MonoBehaviour activeMonoBehaviour, ref Transform weaponPivot)
     {
         //habra que hacer animacion y tal aqui pero ya se hara
         _lookOrientation = lookOrientation;
@@ -57,7 +58,9 @@ public class WeaponScriptable : InventoryObjectSO
         //dinamico, no nos hace falta crear todas las armas en la escena, si queremos crear mas armas por alguna razon sera facilisimo
         _weaponModel = Instantiate(_modelPrefab);
         _weaponModel.transform.SetParent(parent, false);
-        _weaponModel.transform.SetLocalPositionAndRotation(_spawnPoint, Quaternion.Euler(_spawnRotation));
+        Transform[] aux = _weaponModel.transform.GetComponentsInChildren<Transform>();
+        weaponPivot = aux.FirstOrDefault(w => w.name == "WeaponParent");
+        _weaponModel.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
 
         _gunTip = _weaponModel.GetComponentInChildren<ParticleSystem>();
 
