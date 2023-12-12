@@ -21,6 +21,8 @@ public class PlayerWeaponManager : MonoBehaviour
     public Transform _weaponRotationPoint;
     //[HideInInspector] 
     public WeaponScriptable _activeWeapon;
+    //[HideInInspector] 
+    public Animator _weaponAnimator;
     [Space(10)]
 
     [Header("Aiming parameters")]
@@ -56,9 +58,8 @@ public class PlayerWeaponManager : MonoBehaviour
 
         //muy provisional
         _activeWeapon = weapon;
-
         weapon.SwapIn(_weaponParent, _lookOrientation, this, ref _weaponPivot);
-        WeaponSwap();
+        WeaponSwap(true);
     }
 
     public void OnFire(InputAction.CallbackContext ctx) //clic izquierdo
@@ -120,10 +121,11 @@ public class PlayerWeaponManager : MonoBehaviour
 
     }
 
-    public void WeaponSwap()
+    public void WeaponSwap(bool swapIn)
     {
         Transform[] aux; //= _weaponParent.GetComponentsInChildren<Transform>(); //una chapuza pero no hay otra forma de hacerlo
         //_weaponPivot = aux.FirstOrDefault(w => w.name == "WeaponParent");
+        _weaponAnimator = _weaponPivot.GetComponentInChildren<Animator>();
         aux = _weaponPivot.GetComponentsInChildren<Transform>();
         _weaponSwayPivot = aux[1];
         _weaponRecoilPosition = aux[4];
@@ -133,6 +135,8 @@ public class PlayerWeaponManager : MonoBehaviour
         //no se si el orden este se respeta, pero por ejemplo en el cuchillo que no va a tener efecto de particula ni mierda de _weapon sights esto va a petar como un puto campeon
         //ya lo cambiare para entonces para que sea una cerca mirando si es null yy ya veremos si es muy poco eficiente y si hay lagazos al cambiar de arma, que va a ser un problema gordo de cojones
         //_weaponPivot = aux[1];
+
+
         OnWeaponSwap?.Invoke(_activeWeapon._reloadConfig._ammo); //provisional (no sera provisional vereis pq me va a dar pereza cambiarlo)
     }
 

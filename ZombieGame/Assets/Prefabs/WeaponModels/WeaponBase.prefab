@@ -658,6 +658,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6487843703589423152}
   - component: {fileID: 1248195212514934930}
+  - component: {fileID: 3418149218068469497}
   m_Layer: 11
   m_Name: AnimationPivot
   m_TagString: Untagged
@@ -702,6 +703,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3418149218068469497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2561200149513278193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1316c88d9f0268848b7a4acd8936d004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2627530813658891770
 GameObject:
   m_ObjectHideFlags: 0
