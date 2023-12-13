@@ -82,6 +82,11 @@ public class DoorController : MonoBehaviour, IInteractable
         ChangeBlockedStatus();
     }
 
+    public bool IsOpen()
+    {
+        return isOpen;
+    }
+
     private void Update()
     {
         if (currentTime > 0.0f)
