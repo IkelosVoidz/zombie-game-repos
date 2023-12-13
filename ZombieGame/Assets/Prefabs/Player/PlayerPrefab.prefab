@@ -427,8 +427,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swayAmount: 0.01
-  maxSwayAmount: 0.1
-  swaySmooth: 0.1
+  maxSwayAmount: 0.06
+  swaySmooth: 2
   swayCurve:
     serializedVersion: 2
     m_Curve:
@@ -463,11 +463,11 @@ MonoBehaviour:
   _breathingSwayAmountB: 2
   _breathingSwayScale: 150
   _breathingSwayLerpSpeed: 10
-  speedCurve: 567
-  travelLimit: {x: 0.025, y: 0.025, z: 0.025}
+  speedCurve: 0
+  travelLimit: {x: 0.1, y: 0.01, z: 0.1}
   bobLimit: {x: 0.01, y: 0.01, z: 0.01}
-  bobExaggeration: 5.78
-  multiplier: {x: 10, y: 10, z: 10}
+  bobExaggeration: 1
+  multiplier: {x: 2, y: 2, z: 2}
 --- !u!114 &4381079452276973478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,7 +486,7 @@ MonoBehaviour:
   rotationalRecoilSpeed: 8
   positionalReturnSpeed: 18
   rotationalReturnSpeed: 38
-  RecoilRotation: {x: 10, y: 5, z: 7}
+  RecoilRotation: {x: 20, y: 10, z: 14}
   RecoilKickBack: {x: 0.015, y: 0, z: -0.2}
   RecoilRotationAim: {x: 10, y: 4, z: 6}
   RecoilKickBackAim: {x: 0.015, y: 0, z: -0.2}
