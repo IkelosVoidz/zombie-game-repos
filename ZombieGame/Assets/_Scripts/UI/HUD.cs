@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour
 {
     [SerializeField] TMP_Text bulletText, healthText, missionText;
+
+    [SerializeField] Image bloodSplatter;
 
     [Header("Ammo")]
     [SerializeField] TextMeshProUGUI magazineAmmoUI;
@@ -40,12 +43,22 @@ public class HUD : MonoBehaviour
     private void Awake()
     {
         missionText.text = "";
+
+        onHealthChanged(90, Vector3.one);
     }
 
 
     public void onHealthChanged(int newHealth, Vector3 attackDirection)
     {
         healthText.text = $"Health: {newHealth}";
+
+
+        newHealth = Mathf.Clamp(newHealth, 0, 100);
+        Color auxColor = bloodSplatter.color;
+
+
+        auxColor.a = -(newHealth / 100f) + 1f;
+        bloodSplatter.color = auxColor;
     }
 
     public void UpdateAmmoDisplay(AmmoData ammo)
