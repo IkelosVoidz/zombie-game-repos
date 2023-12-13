@@ -9,8 +9,10 @@ public class PlayerWeaponManager : MonoBehaviour
     [SerializeField] private Transform _weaponParent;
     [SerializeField] private Camera _viewCamera;
     [SerializeField] private Transform _lookOrientation;
+    [SerializeField] private PlayerMovement _movement;
 
     [Space(10)]
+    [Header("Pivot References")]
     //[HideInInspector] 
     public Transform _weaponPivot;
     //[HideInInspector] 
@@ -27,7 +29,7 @@ public class PlayerWeaponManager : MonoBehaviour
 
     [Header("Aiming parameters")]
     [HideInInspector] private Transform _weaponSights;
-    [SerializeField] public bool _isAiming;
+    [SerializeField] public bool IsAiming { get; private set; }
     [SerializeField] private float _sightsOffset;
     [SerializeField] private float _sightsOffsetDown;
     [SerializeField] private float _aimingTime;
@@ -36,7 +38,7 @@ public class PlayerWeaponManager : MonoBehaviour
     private float _normalFOV;
     private Vector3 _weaponAimPositionVelocity;
     private bool _attackHeld = false;
-    private bool _isReloading = false;
+    [HideInInspector] public bool IsReloading { get; private set; } = false;
 
     /// <summary>
     /// Param1: AmmoData of the weapon being swapped IN
@@ -75,7 +77,7 @@ public class PlayerWeaponManager : MonoBehaviour
 
     public void OnFire(InputAction.CallbackContext ctx) //clic izquierdo
     {
-        if (!_isReloading)
+        if (!IsReloading && !_movement.IsSprinting)
         {
             if (ctx.performed)
             {
@@ -84,6 +86,7 @@ public class PlayerWeaponManager : MonoBehaviour
             }
             else if (ctx.canceled) _attackHeld = false;
         }
+        else _attackHeld = false;
     }
 
     private void Update()
@@ -96,6 +99,12 @@ public class PlayerWeaponManager : MonoBehaviour
         CalculateAiming();
     }
 
+    public void CancelAiming()
+    {
+        //perhaps i should add a can aim false here
+        IsAiming = false;
+    }
+
     void CalculateAiming() //esto me ha costado el triple de lo que deberia haberme costado, no pretendais entenderlo, ni yo lo entiendo
     {
         Vector3 targetPosition = transform.TransformPoint(_activeWeapon._spawnPoint);
@@ -103,7 +112,7 @@ public class PlayerWeaponManager : MonoBehaviour
         float currentFOV = _viewCamera.fieldOfView;
         float targetFOV = _normalFOV;
 
-        if (_isAiming)
+        if (IsAiming)
         {
             targetPosition = _lookOrientation.position + (_weaponPivot.position - _weaponSights.position) + (_lookOrientation.forward * _sightsOffset);
             targetRotation = Vector3.zero;
@@ -121,19 +130,19 @@ public class PlayerWeaponManager : MonoBehaviour
 
     public void OnAim(InputAction.CallbackContext ctx) //clic derecho
     {
-        if (!_isReloading)
+        if (!IsReloading && !_movement.IsSprinting)
         {
-            if (ctx.performed) _isAiming = true;
-            else if (ctx.canceled) _isAiming = false;
+            if (ctx.performed) IsAiming = true;
+            else if (ctx.canceled) IsAiming = false;
         }
     }
 
     public void OnReload(InputAction.CallbackContext ctx) //R
     {
-        if (_activeWeapon.CanReload() && !_isReloading)
+        if (_activeWeapon.CanReload() && !IsReloading)
         {
-            _isAiming = false;
-            _isReloading = true;
+            IsAiming = false;
+            IsReloading = true;
             _weaponAnimator.SetTrigger("Reload");
         }
     }
@@ -141,7 +150,7 @@ public class PlayerWeaponManager : MonoBehaviour
     void OnReloadEnd()
     {
         _activeWeapon.Reload();
-        _isReloading = false;
+        IsReloading = false;
     }
 
     public void OnSwapNextWeapon(InputAction.CallbackContext ctx) //ruedecilla raton abajo
@@ -151,9 +160,9 @@ public class PlayerWeaponManager : MonoBehaviour
 
     public void WeaponSwap(bool swapIn)
     {
-        _isReloading = false;
+        IsReloading = false;
         Transform[] aux; //= _weaponParent.GetComponentsInChildren<Transform>(); //una chapuza pero no hay otra forma de hacerlo
-        //_weaponPivot = aux.FirstOrDefault(w => w.name == "WeaponParent");
+                         //_weaponPivot = aux.FirstOrDefault(w => w.name == "WeaponParent");
         _weaponAnimator = _weaponPivot.GetComponentInChildren<Animator>();
         aux = _weaponPivot.GetComponentsInChildren<Transform>();
         _weaponSwayPivot = aux[1];

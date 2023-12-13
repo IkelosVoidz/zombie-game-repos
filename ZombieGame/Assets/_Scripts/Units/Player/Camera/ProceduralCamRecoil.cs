@@ -44,7 +44,7 @@ public class ProceduralCamRecoil : MonoBehaviour
 
     void Update()
     {
-        aiming = _weaponManager._isAiming;
+        aiming = _weaponManager.IsAiming;
     }
 
     public void Fire(AmmoData unused)

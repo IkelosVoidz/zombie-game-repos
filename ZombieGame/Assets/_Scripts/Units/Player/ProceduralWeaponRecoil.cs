@@ -62,7 +62,7 @@ public class ProceduralWeaponRecoil : MonoBehaviour
 
     private void Update()
     {
-        aiming = _weaponManager._isAiming;
+        aiming = _weaponManager.IsAiming;
     }
 
 

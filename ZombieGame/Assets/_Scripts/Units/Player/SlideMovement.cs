@@ -27,7 +27,7 @@ public class SlideMovement : MonoBehaviour
 
     public void OnSlide(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && (_player._moveAxis.x != 0 || _player._moveAxis.y != 0) && _player._sprinting)
+        if (ctx.performed && (_player._moveAxis.x != 0 || _player._moveAxis.y != 0) && _player.IsSprinting)
         {
             StartSlide();
         }

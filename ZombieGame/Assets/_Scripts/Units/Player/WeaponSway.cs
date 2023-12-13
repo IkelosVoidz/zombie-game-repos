@@ -26,6 +26,7 @@ public class WeaponSway : MonoBehaviour
     [Header("Script References")]
     [SerializeField] private PlayerCam _camReference;
     [SerializeField] private PlayerWeaponManager _weaponManager;
+    [SerializeField] private PlayerMovement _movement;
     private Vector2 _look;
 
     private void OnEnable()

@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Tooltip("Reference to the transform that determines the orientation of the player")] private Transform _orientation;
     //private Transform _lookOrientation;
     [SerializeField, Tooltip("")] private float _groundDrag;
-    bool _grounded;
+    public bool IsGrounded { get; private set; }
 
     public Vector2 _moveAxis { get; private set; }
     Vector3 moveDirection;
@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Tooltip("Speed at which the player will crouch")] private float _crouchRunSpeed;
     [SerializeField, Tooltip("")] private float _crouchYScale;
     private float _startYScale;
-    private bool crouching;
+    public bool IsCrouching { get; private set; }
 
     [Header("Slope Handling")]
     [SerializeField, Tooltip("")] private float _maxSlopeAngle;
@@ -47,9 +47,10 @@ public class PlayerMovement : MonoBehaviour
     private bool _exitingSlope;
 
 
+    [Header("Script References")]
+    [SerializeField] private PlayerWeaponManager _weapons;
 
-
-    public bool _sprinting { get; private set; }
+    public bool IsSprinting { get; private set; }
 
     private Vector3 _airMoveDirection;
 
@@ -61,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void OnJump(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && _grounded)
+        if (ctx.performed && IsGrounded)
         {
             Jump();
         }
@@ -72,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void OnSprint(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && crouching)
+        if (ctx.performed && IsCrouching)
         {
             _moveSpeed = _crouchRunSpeed;
         }
@@ -80,30 +81,32 @@ public class PlayerMovement : MonoBehaviour
         else if (ctx.performed)
         {
             _moveSpeed = _sprintSpeed;
-            _sprinting = true;
+            IsSprinting = true;
+            _weapons.CancelAiming();
         }
         else
         {
-            if (crouching)
+            if (IsCrouching)
                 _moveSpeed = _crouchSpeed;
             else
             {
                 _moveSpeed = _walkSpeed;
-                _sprinting = false;
+                IsSprinting = false;
             }
         }
     }
 
     public void OnCrouch(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && !_sprinting)
+        if (ctx.performed && !IsSprinting)
         {
-            crouching = true;
-            StartCoroutine(CrouchSmoothly(_crouchYScale, _crouchSpeed,50f));
+            IsCrouching = true;
+            StartCoroutine(CrouchSmoothly(_crouchYScale, _crouchSpeed, 50f));
         }
-        else if (!ctx.performed && !_sprinting) {
-            crouching = false;
-            StartCoroutine(CrouchSmoothly(_startYScale, _walkSpeed,0f));
+        else if (!ctx.performed && !IsSprinting)
+        {
+            IsCrouching = false;
+            StartCoroutine(CrouchSmoothly(_startYScale, _walkSpeed, 0f));
         }
     }
 
@@ -120,12 +123,12 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
 
-        _grounded = Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + 0.2f);
-        if (crouching)
-            _grounded = true;
+        IsGrounded = Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + 0.2f);
+        if (IsCrouching)
+            IsGrounded = true;
 
         SpeedControl();
-        if (_grounded)
+        if (IsGrounded)
         {
             rb.drag = _groundDrag;
         }
@@ -152,15 +155,15 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = vel;
             if (rb.velocity.y > 0)
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force);
- 
+
         }
-        else if (_grounded)
+        else if (IsGrounded)
         {
             Vector3 vel = new Vector3(moveDirection.x * _moveSpeed * 1f, rb.velocity.y, moveDirection.z * _moveSpeed * 1f);
             rb.velocity = vel;
         }
 
-        else if (!_grounded)
+        else if (!IsGrounded)
         {
             rb.AddForce(moveDirection.normalized * _moveSpeed * 200f * _airMultiplier, ForceMode.Force); //ARREGLAR
         }
@@ -213,7 +216,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    private IEnumerator CrouchSmoothly(float targetYScale, float targetMoveSpeed,float force)
+    private IEnumerator CrouchSmoothly(float targetYScale, float targetMoveSpeed, float force)
     {
         float duration = 0.2f;  // DURACION DE LA TRANSICION
         Vector3 startScale = _playerObj.localScale;
