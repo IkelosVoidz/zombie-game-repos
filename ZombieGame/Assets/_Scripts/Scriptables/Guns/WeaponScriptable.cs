@@ -103,8 +103,7 @@ public class WeaponScriptable : InventoryObjectSO
 
     public void Reload()
     {
-        if (_reloadConfig.CanReload())
-            _reloadConfig.Reload();
+        _reloadConfig.Reload();
     }
 
     /*

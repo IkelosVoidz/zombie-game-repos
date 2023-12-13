@@ -36,6 +36,7 @@ public class PlayerWeaponManager : MonoBehaviour
     private float _normalFOV;
     private Vector3 _weaponAimPositionVelocity;
     private bool _attackHeld = false;
+    private bool _isReloading = false;
 
     /// <summary>
     /// Param1: AmmoData of the weapon being swapped IN
@@ -45,6 +46,16 @@ public class PlayerWeaponManager : MonoBehaviour
     private void Awake()
     {
         _normalFOV = _viewCamera.fieldOfView;
+    }
+
+    private void OnEnable()
+    {
+        GunAnimEvents.OnReloadAnimEnd += OnReloadEnd;
+    }
+
+    private void OnDisable()
+    {
+        GunAnimEvents.OnReloadAnimEnd -= OnReloadEnd;
     }
 
     private void Start()
@@ -64,12 +75,15 @@ public class PlayerWeaponManager : MonoBehaviour
 
     public void OnFire(InputAction.CallbackContext ctx) //clic izquierdo
     {
-        if (ctx.performed)
+        if (!_isReloading)
         {
-            _attackHeld = true;
-            _activeWeapon.Attack(false);
+            if (ctx.performed)
+            {
+                _attackHeld = true;
+                _activeWeapon.Attack(false);
+            }
+            else if (ctx.canceled) _attackHeld = false;
         }
-        else if (ctx.canceled) _attackHeld = false;
     }
 
     private void Update()
@@ -107,13 +121,27 @@ public class PlayerWeaponManager : MonoBehaviour
 
     public void OnAim(InputAction.CallbackContext ctx) //clic derecho
     {
-        if (ctx.performed) _isAiming = true;
-        else if (ctx.canceled) _isAiming = false;
+        if (!_isReloading)
+        {
+            if (ctx.performed) _isAiming = true;
+            else if (ctx.canceled) _isAiming = false;
+        }
     }
 
     public void OnReload(InputAction.CallbackContext ctx) //R
     {
+        if (_activeWeapon.CanReload() && !_isReloading)
+        {
+            _isAiming = false;
+            _isReloading = true;
+            _weaponAnimator.SetTrigger("Reload");
+        }
+    }
+
+    void OnReloadEnd()
+    {
         _activeWeapon.Reload();
+        _isReloading = false;
     }
 
     public void OnSwapNextWeapon(InputAction.CallbackContext ctx) //ruedecilla raton abajo
@@ -123,6 +151,7 @@ public class PlayerWeaponManager : MonoBehaviour
 
     public void WeaponSwap(bool swapIn)
     {
+        _isReloading = false;
         Transform[] aux; //= _weaponParent.GetComponentsInChildren<Transform>(); //una chapuza pero no hay otra forma de hacerlo
         //_weaponPivot = aux.FirstOrDefault(w => w.name == "WeaponParent");
         _weaponAnimator = _weaponPivot.GetComponentInChildren<Animator>();

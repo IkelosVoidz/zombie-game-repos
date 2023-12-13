@@ -1,18 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class GunAnimEvents : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static event Action OnReloadAnimEnd;
+    public void ReloadAnimEndEvent()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        OnReloadAnimEnd?.Invoke();
     }
 }
