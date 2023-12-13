@@ -428,7 +428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swayAmount: 0.01
   maxSwayAmount: 0.1
-  swaySmooth: 9
+  swaySmooth: 0.1
   swayCurve:
     serializedVersion: 2
     m_Curve:
@@ -463,6 +463,11 @@ MonoBehaviour:
   _breathingSwayAmountB: 2
   _breathingSwayScale: 150
   _breathingSwayLerpSpeed: 10
+  speedCurve: 567
+  travelLimit: {x: 0.025, y: 0.025, z: 0.025}
+  bobLimit: {x: 0.01, y: 0.01, z: 0.01}
+  bobExaggeration: 5.78
+  multiplier: {x: 10, y: 10, z: 10}
 --- !u!114 &4381079452276973478
 MonoBehaviour:
   m_ObjectHideFlags: 0

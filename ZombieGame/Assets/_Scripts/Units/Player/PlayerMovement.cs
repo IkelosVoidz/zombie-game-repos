@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Player")]
     [SerializeField, Tooltip("")] private float _playerHeight;
     [SerializeField, Tooltip("")] private Transform _playerObj;
-    Rigidbody rb;
+    [HideInInspector] public Rigidbody rb { get; private set; }
 
 
     [Header("Movement/Sprint")]
