@@ -94,13 +94,15 @@ public class Zombie : MonoBehaviour
         }
     }
 
-    //Detecta si esta el Player  davant per atacarlo
+
     private void OnTriggerEnter(Collider other)
     {
+        
     }
 
     private void OnTriggerStay(Collider other)
     {
+        Debug.Log("Romper");
         if (other.gameObject.name == "PlayerObj" && !dead)
         {
             if (hit && isAttacking)
@@ -119,6 +121,9 @@ public class Zombie : MonoBehaviour
                 state = ATTACK;
                 isAttacking = true;
             }
+        }
+        else if (other.CompareTag("Door") && !dead){
+            Debug.Log("Romper");
         }
     }
 
@@ -147,7 +152,7 @@ public class Zombie : MonoBehaviour
             navMeshAgent.destination = target.transform.position;
         state = BUSY;
 
-        Debug.Log(isWalking);
+        //Debug.Log(isWalking);
         if (!isWalking)
         {
             isWalking = true;
