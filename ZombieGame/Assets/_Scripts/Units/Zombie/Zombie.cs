@@ -94,21 +94,16 @@ public class Zombie : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("Collision");
-    }
-
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Romper");
+        
     }
 
     private void OnTriggerStay(Collider other)
     {
-   
-        if ((other.gameObject.name == "PlayerObj" || other.CompareTag("Door")) && !dead)
+        Debug.Log("Romper");
+        if (other.gameObject.name == "PlayerObj" && !dead)
         {
             if (hit && isAttacking)
             {
@@ -127,7 +122,9 @@ public class Zombie : MonoBehaviour
                 isAttacking = true;
             }
         }
-        
+        else if (other.CompareTag("Door") && !dead){
+            Debug.Log("Romper");
+        }
     }
 
 
