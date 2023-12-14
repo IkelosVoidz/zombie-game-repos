@@ -21,8 +21,7 @@ public class PlayerCam : MonoBehaviour
     private void Start()
     {
         //FALTA PULIR-HO
-        sensX = SettingsManager.Instance.sensi;
-        sensY = SettingsManager.Instance.sensi;
+        ChangeSensi();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -39,5 +38,10 @@ public class PlayerCam : MonoBehaviour
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
         lookOrientation.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+    }
+    public void ChangeSensi()
+    {
+        sensX = SettingsManager.Instance.sensi;
+        sensY = SettingsManager.Instance.sensi;
     }
 }

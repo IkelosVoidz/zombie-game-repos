@@ -1,14 +1,19 @@
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
+
+    [SerializeField] private GameObject _options;
+
+    [SerializeField] private Slider _sensitivity;
 
     public bool isPaused;
     // Start is called before the first frame update
     void Start()
     {
         pauseMenu.SetActive(false);
+        _options.SetActive(false);
     }
 
     // Update is called once per frame
@@ -26,7 +31,6 @@ public class PauseMenu : MonoBehaviour
             }
         }
     }
-
     public void PauseGame()
     {
         PlayerInputManager.Instance.HandleUiInputSwitch(true);
@@ -42,4 +46,25 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         isPaused = false;
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+    
+    public void SensitivityChanged()
+    {
+        SettingsManager.Instance.sensi = _sensitivity.value;
+    }
+
+    private void OnEnable()
+    {
+        _sensitivity.onValueChanged.AddListener(delegate { SensitivityChanged(); });
+    }
+
+    private void OnDisable()
+    {
+        _sensitivity.onValueChanged.RemoveAllListeners();
+    }
+    
 }
