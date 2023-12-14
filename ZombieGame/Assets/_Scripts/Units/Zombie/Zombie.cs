@@ -48,7 +48,7 @@ public class Zombie : MonoBehaviour
     {
         //Debug.Log(state);
 
-        if(isWalking && target!=null)
+        if (isWalking && target != null)
             navMeshAgent.destination = target.transform.position;
 
         if ((state != BUSY) && !dead)
@@ -86,7 +86,7 @@ public class Zombie : MonoBehaviour
                     //state = TAKE_DAMAGE;
                     break;
                 case 3:
-                    
+
                     state = ATTACK;
                     break;
             }
@@ -94,16 +94,21 @@ public class Zombie : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Collision");
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
-        
+        Debug.Log("Romper");
     }
 
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log("Romper");
-        if (other.gameObject.name == "PlayerObj" && !dead)
+
+        if ((other.gameObject.name == "PlayerObj" || other.CompareTag("Door")) && !dead)
         {
             if (hit && isAttacking)
             {
@@ -122,9 +127,7 @@ public class Zombie : MonoBehaviour
                 isAttacking = true;
             }
         }
-        else if (other.CompareTag("Door") && !dead){
-            Debug.Log("Romper");
-        }
+
     }
 
 
@@ -144,11 +147,11 @@ public class Zombie : MonoBehaviour
 
     public bool isDead()
     {
-       return dead;
+        return dead;
     }
     public void Chase()
     {
-        if(target != null)
+        if (target != null)
             navMeshAgent.destination = target.transform.position;
         state = BUSY;
 
@@ -181,7 +184,7 @@ public class Zombie : MonoBehaviour
             //animator.Play("GET_HIT" + Random.Range(1, 3));
             animator.CrossFade("GET_HIT" + Random.Range(1, 3), 0.2f, -1, 0);
         }
-       
+
     }
 
     virtual public void Die()
