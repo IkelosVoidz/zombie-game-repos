@@ -26,6 +26,7 @@ public class Zombie : MonoBehaviour
     public Animator animator;
     [SerializeField] HealthComponent healthComponent;
     [SerializeField] BoxCollider AttackTrigger;
+    [SerializeField] CapsuleCollider Collider;
 
     private bool hit = false;
     private bool isAttacking = false;
@@ -75,22 +76,6 @@ public class Zombie : MonoBehaviour
                     Dance();
                     break;
             }
-
-            //Aixo es per fer test desde l'inspector per veure les animacions
-            switch (testState)
-            {
-                case 1:
-                    state = DIE;
-                    break;
-                case 2:
-                    //state = TAKE_DAMAGE;
-                    break;
-                case 3:
-
-                    state = ATTACK;
-                    break;
-            }
-            testState = 100;
         }
     }
 
@@ -108,7 +93,7 @@ public class Zombie : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
 
-        if ((other.gameObject.name == "PlayerObj" || other.CompareTag("Door")) && !dead)
+        if ((other.gameObject.name == "PlayerObj" || (other.CompareTag("Door") && !other.gameObject.GetComponent<DoorController>().IsOpen())) && !dead)
         {
             if (hit && isAttacking)
             {
@@ -198,6 +183,7 @@ public class Zombie : MonoBehaviour
             dead = true;
             Debug.Log("Diablo mami me mato");
             state = BUSY;
+            Collider.enabled = false;
         }
     }
 
