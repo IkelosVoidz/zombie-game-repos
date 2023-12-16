@@ -38,6 +38,13 @@ public class VomitScr : MonoBehaviour
         {
             sistema.Stop();
         }
+        destroyObj();
+    }
+
+    IEnumerator destroyObj()
+    {
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
     }
     private void OnTriggerStay(Collider other)
     {
