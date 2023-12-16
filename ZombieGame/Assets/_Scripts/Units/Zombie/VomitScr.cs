@@ -47,7 +47,7 @@ public class VomitScr : MonoBehaviour
             HealthComponent HC = other.GetComponentInParent<HealthComponent>();
             Debug.Log(other.name);
 
-            if (HC is not null)
+            if (HC is not null && other.name=="PlayerObj")
             {
                 Debug.Log("Daño al jugador");
                 HC.TakeDamage(damage, new Vector3());
