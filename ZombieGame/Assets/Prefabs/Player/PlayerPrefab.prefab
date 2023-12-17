@@ -486,10 +486,10 @@ MonoBehaviour:
   rotationalRecoilSpeed: 8
   positionalReturnSpeed: 18
   rotationalReturnSpeed: 38
-  RecoilRotation: {x: 20, y: 10, z: 14}
-  RecoilKickBack: {x: 0.015, y: 0, z: -0.2}
-  RecoilRotationAim: {x: 10, y: 4, z: 6}
-  RecoilKickBackAim: {x: 0.015, y: 0, z: -0.2}
+  RecoilRotation: {x: 200, y: 10, z: 50}
+  RecoilKickBack: {x: 0.15, y: 0, z: -0.7}
+  RecoilRotationAim: {x: 90, y: 8, z: 10}
+  RecoilKickBackAim: {x: 0.1, y: 0, z: -0.3}
   aiming: 0
   _weaponManager: {fileID: 8554364124020312285}
 --- !u!1 &5190409241023161681
