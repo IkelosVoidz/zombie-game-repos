@@ -77,7 +77,7 @@ public class PlayerWeaponManager : MonoBehaviour
 
     public void OnFire(InputAction.CallbackContext ctx) //clic izquierdo
     {
-        if (!IsReloading && !_movement.IsSprinting)
+        if (!IsReloading) //&& !_movement.IsSprinting)
         {
             if (ctx.performed)
             {
