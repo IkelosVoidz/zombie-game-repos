@@ -1088,8 +1088,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerHeight: 2
   _playerObj: {fileID: 3857671966592976732}
-  _walkSpeed: 7
-  _sprintSpeed: 12
+  _walkSpeed: 6
+  _sprintSpeed: 9
   _orientation: {fileID: 4513461268715996734}
   _groundDrag: 3
   _jumpForce: 6
