@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 468626906046683999}
   - component: {fileID: 299558621231669374}
-  - component: {fileID: 1605456672581405538}
+  - component: {fileID: 9094324508708315813}
   m_Layer: 0
   m_Name: TriggerDoSomething
   m_TagString: Untagged
@@ -54,7 +54,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.915863, y: 1, z: 17.52826}
   m_Center: {x: 1.9579315, y: 0, z: -6.891815}
---- !u!114 &1605456672581405538
+--- !u!114 &9094324508708315813
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -63,21 +63,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1059512748492482207}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af4a399e4cf836f49acd159e322a5de5, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b2ac58c69ca29044870bff0550601c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onTriggerDoSomething:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ObjectiveCompleter, Assembly-CSharp
-        m_MethodName: CompleteObjective
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []

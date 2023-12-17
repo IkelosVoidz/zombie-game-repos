@@ -6458,18 +6458,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4381079452276973478, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
-      propertyPath: RecoilRotation.x
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4381079452276973478, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
-      propertyPath: RecoilRotation.y
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4381079452276973478, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
-      propertyPath: RecoilRotation.z
-      value: 14
-      objectReference: {fileID: 0}
     - target: {fileID: 5956376493159188015, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
       propertyPath: m_TargetTexture
       value: 
@@ -6477,46 +6465,6 @@ PrefabInstance:
     - target: {fileID: 7209713141820414086, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
       propertyPath: m_Name
       value: PlayerPrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 7900635895839390882, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
-      propertyPath: speedCurve
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7900635895839390882, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
-      propertyPath: swaySmooth
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7900635895839390882, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
-      propertyPath: multiplier.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7900635895839390882, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
-      propertyPath: multiplier.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7900635895839390882, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
-      propertyPath: multiplier.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7900635895839390882, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
-      propertyPath: maxSwayAmount
-      value: 0.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 7900635895839390882, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
-      propertyPath: travelLimit.x
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7900635895839390882, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
-      propertyPath: travelLimit.y
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 7900635895839390882, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
-      propertyPath: travelLimit.z
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7900635895839390882, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
-      propertyPath: bobExaggeration
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

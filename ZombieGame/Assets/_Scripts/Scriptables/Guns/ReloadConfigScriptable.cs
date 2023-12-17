@@ -17,12 +17,13 @@ public class ReloadConfigScriptable : ScriptableObject
 
     public void Reload()
     {
-        int maxReloadAmount = Mathf.Min(_magSize, _ammo._currentAmmo);
-        int avaliableBulletsInCurrentMag = _magSize - _ammo._currentMagAmmo;
-        int reloadAmount = Mathf.Min(maxReloadAmount, avaliableBulletsInCurrentMag);
+        //int maxReloadAmount = Mathf.Min(_magSize, _ammo._currentAmmo);
+        //int avaliableBulletsInCurrentMag = _magSize - _ammo._currentMagAmmo;
+        //int reloadAmount = Mathf.Min(maxReloadAmount, avaliableBulletsInCurrentMag);
 
-        _ammo._currentMagAmmo += reloadAmount;
-        _ammo._currentAmmo -= reloadAmount;
+        _ammo._currentMagAmmo = _magSize;
+        //_ammo._currentMagAmmo += reloadAmount;
+        //_ammo._currentAmmo -= reloadAmount;
         OnReloadEnd?.Invoke(_ammo);
     }
 
