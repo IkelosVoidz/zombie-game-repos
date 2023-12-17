@@ -58,6 +58,9 @@ public class HUD : MonoBehaviour
 
 
         auxColor.a = -(newHealth / 100f) + 1f;
+        auxColor.r = 0.2f;
+        auxColor.g = 0f;
+        auxColor.b = 0f;
         bloodSplatter.color = auxColor;
     }
 
