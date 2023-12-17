@@ -2667,6 +2667,10 @@ PrefabInstance:
       value: Timer
       objectReference: {fileID: 0}
     - target: {fileID: 5631089384011830981, guid: de95f85367c99474e8eeac8f0abb7fad, type: 3}
+      propertyPath: _remainingTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5631089384011830981, guid: de95f85367c99474e8eeac8f0abb7fad, type: 3}
       propertyPath: onTimerEnded.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}

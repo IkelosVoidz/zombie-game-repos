@@ -37,7 +37,10 @@ public class HealthComponent : MonoBehaviour
     {
         _health -= dmg;
         OnHealthChange?.Invoke(_health, attackDirection);
-        if (_health <= 0) OnObjectDeath?.Invoke(this.transform.position, attackDirection);
+        if (_health <= 0)
+        {
+            OnObjectDeath?.Invoke(this.transform.position, attackDirection);
+        }
     }
 
     /// <summary>
