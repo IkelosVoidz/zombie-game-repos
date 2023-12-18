@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 900407272468163279}
   - component: {fileID: 2222864221022930631}
   - component: {fileID: 9134096757269530835}
+  - component: {fileID: -5228056774042789204}
   m_Layer: 3
   m_Name: _DoorBase
   m_TagString: Untagged
@@ -274,3 +275,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!208 &-5228056774042789204
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6216398600482075729}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.67300004, y: 1.4100001, z: 0.069000006}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.674, y: 1.406, z: -0.032}
+  m_TimeToStationary: 0.5
