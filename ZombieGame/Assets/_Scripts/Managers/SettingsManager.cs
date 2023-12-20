@@ -7,6 +7,7 @@ public class SettingsManager : PersistentSingleton<SettingsManager>
     public float sensi;
     public float fov;
     public float aimSens;
+    public bool changed;
 
 
 }

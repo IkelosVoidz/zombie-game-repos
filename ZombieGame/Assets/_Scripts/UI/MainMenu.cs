@@ -25,6 +25,7 @@ public class MainMenu : MonoBehaviour
     {
         //Debug.Log(_sensitivity.value);
         SettingsManager.Instance.sensi=_sensitivity.value;
+        SettingsManager.Instance.changed = true;
     }
 
     private void OnEnable()

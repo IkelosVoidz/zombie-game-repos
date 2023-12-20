@@ -41,7 +41,10 @@ public class PlayerCam : MonoBehaviour
     }
     public void ChangeSensi()
     {
-        sensX = SettingsManager.Instance.sensi;
-        sensY = SettingsManager.Instance.sensi;
+        if (SettingsManager.Instance.changed)
+        {
+            sensX = SettingsManager.Instance.sensi;
+            sensY = SettingsManager.Instance.sensi;
+        }
     }
 }
