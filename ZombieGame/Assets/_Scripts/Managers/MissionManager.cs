@@ -14,9 +14,9 @@ public class MissionManager : StaticSingleton<MissionManager>
 
 
     //grabbing all objectives of all missions, reorganizing them , etc
-    protected override void Awake()
+    protected void Start()
     {
-        base.Awake(); //singleton creation
+        //base.Awake(); //singleton creation
         _missions = new Dictionary<string, SortedList<int, MissionObjective>>();
         _currentObjectives = new Dictionary<string, int>();
         foreach (Mission mis in _missionsList)
