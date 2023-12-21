@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    [SerializeField] TMP_Text bulletText, healthText, missionText;
+    [SerializeField] TMP_Text healthText, missionText;
 
-    [SerializeField] Image bloodSplatter;
+    [SerializeField] Image bloodSplatter, bloodHit;
 
     [Header("Ammo")]
     [SerializeField] TextMeshProUGUI magazineAmmoUI;
@@ -25,6 +25,8 @@ public class HUD : MonoBehaviour
     [SerializeField] Image tacticalUI;
     [SerializeField] TextMeshProUGUI tacticalAmountUI;
 
+    private bool _damageTaken = false;
+    private int _health = 100;
 
     private void OnEnable()
     {
@@ -44,29 +46,26 @@ public class HUD : MonoBehaviour
     {
         missionText.text = "";
 
-        onHealthChanged(90, Vector3.one);
+        OnHealthChanged(100, Vector3.one);
     }
 
 
-    public void onHealthChanged(int newHealth, Vector3 attackDirection)
+    public void OnHealthChanged(int newHealth, Vector3 attackDirection)
     {
-        healthText.text = $"Health: {newHealth}";
+        if (newHealth < _health)
+        {
+            _damageTaken = true;
+            bloodHit.color = new Color(bloodHit.color.r, bloodHit.color.g, bloodHit.color.b, 0.5f);
+        }
 
-
-        newHealth = Mathf.Clamp(newHealth, 0, 100);
-        Color auxColor = bloodSplatter.color;
-
-
-        auxColor.a = -(newHealth / 100f) + 1f;
-        auxColor.r = 0.2f;
-        auxColor.g = 0f;
-        auxColor.b = 0f;
-        bloodSplatter.color = auxColor;
+        _health = Mathf.Clamp(newHealth, 0, 100);
+        
+        healthText.text = $"Health: {_health}";
+        bloodSplatter.color = new Color(bloodSplatter.color.r, bloodSplatter.color.g, 0f, -(_health / 100f) + 1f);
     }
 
     public void UpdateAmmoDisplay(AmmoData ammo)
     {
-        bulletText.text = $"{ammo._currentMagAmmo} / {ammo._currentAmmo}";
         magazineAmmoUI.text = $"{ammo._currentMagAmmo}";
         totalAmmoUI.text = $"{ammo._currentAmmo}";
     }
@@ -80,4 +79,18 @@ public class HUD : MonoBehaviour
     {
         missionText.text = $"{obj._description}";
     }
+
+    private void Update()
+    {
+        if (_damageTaken)
+        {
+            if (bloodHit.color.a == 0f) _damageTaken = false;
+            else
+            {
+                float newAlphaValue = bloodHit.color.a - Time.deltaTime;
+                bloodHit.color = new Color(bloodHit.color.r, bloodHit.color.g, bloodHit.color.b, Math.Clamp(newAlphaValue, 0f, 1f));
+            }
+        }
+    }
 }
+
