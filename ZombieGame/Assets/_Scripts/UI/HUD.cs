@@ -61,7 +61,7 @@ public class HUD : MonoBehaviour
         _health = Mathf.Clamp(newHealth, 0, 100);
         
         healthText.text = $"Health: {_health}";
-        bloodSplatter.color = new Color(bloodSplatter.color.r, bloodSplatter.color.g, 0f, -(_health / 100f) + 1f);
+        bloodSplatter.color = new Color(bloodSplatter.color.r, bloodSplatter.color.g, bloodSplatter.color.b, -(_health / 100f) + 1f);
     }
 
     public void UpdateAmmoDisplay(AmmoData ammo)
