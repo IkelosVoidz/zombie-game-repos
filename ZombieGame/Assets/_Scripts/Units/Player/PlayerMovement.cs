@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Script References")]
     [SerializeField] private PlayerWeaponManager _weapons;
 
-    public bool IsSprinting { get; private set; }
+    public bool IsSprinting {get; private set;}
 
     private Vector3 _airMoveDirection;
 
@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void OnJump(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && IsGrounded)
+        if (ctx.performed && IsGrounded && !IsCrouching)
         {
             Jump();
         }
@@ -118,7 +118,6 @@ public class PlayerMovement : MonoBehaviour
         rb.freezeRotation = true;
         _moveSpeed = _walkSpeed;
         _startYScale = _playerObj.localScale.y;
-
     }
     private void Update()
     {
