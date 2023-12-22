@@ -105,7 +105,7 @@ public class ZombieSpawnController : MonoBehaviour
         yield return new WaitForSeconds(_waveCoolDown);
         inCooldown = false;
 
-        _currentZombiesPerWave *= 2;
+        _currentZombiesPerWave = Mathf.CeilToInt(_currentZombiesPerWave * 1.12f);
         StartNextWave();
     }
 }
