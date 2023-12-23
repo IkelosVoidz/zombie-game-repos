@@ -15,9 +15,10 @@ MonoBehaviour:
   _attackType: 0
   _fireRate: 0.25
   _fullAuto: 0
-  _lastAttackTime: 28.135092
+  _lastAttackTime: 44.92334
   _hitMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  _spread: {x: 0.1, y: 0.1, z: 0.1}
+  _spread: {x: 0, y: 0, z: 0}
   what: {fileID: 0}
+  controller: {fileID: 0}
