@@ -24,6 +24,7 @@ public class PlayerCam : MonoBehaviour
         ChangeSensi();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        SettingsManager.Instance.changed = true;
     }
     private void Update()
     {

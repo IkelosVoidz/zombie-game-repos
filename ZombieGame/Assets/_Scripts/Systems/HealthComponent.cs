@@ -50,8 +50,8 @@ public class HealthComponent : MonoBehaviour
     public void Heal(int healAmount)
     {
         _health += healAmount;
-        OnHealthChange?.Invoke(_health, Vector3.zero); //attack pos unused
         if (_health > _maxHealth) _health = _maxHealth;
+        OnHealthChange?.Invoke(_health, Vector3.zero); //attack pos unused
     }
 
 

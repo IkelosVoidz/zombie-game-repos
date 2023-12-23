@@ -177,12 +177,13 @@ public class Zombie : MonoBehaviour
         if (!dead)
         {
             //Animar Muerte
+            state = BUSY;
             navMeshAgent.speed = 0;
             //animator.Play("DIE" + Random.Range(1, 6));
             animator.CrossFade("DIE" + Random.Range(1, 6), 0.2f, -1, 0);
             dead = true;
             Debug.Log("Diablo mami me mato");
-            state = BUSY;
+            
             Collider.enabled = false;
         }
     }

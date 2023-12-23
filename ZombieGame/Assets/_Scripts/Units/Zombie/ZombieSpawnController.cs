@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
 public class ZombieSpawnController : MonoBehaviour
 {
     [SerializeField, Tooltip("")] private GameObject _zombiePrefab;
+    [SerializeField, Tooltip("")] private GameObject _zombiePrefab2;
+    [SerializeField, Tooltip("")] private GameObject _zombiePrefab3;
 
     [SerializeField, Tooltip("")] private GameObject _target;
 
@@ -52,8 +54,9 @@ public class ZombieSpawnController : MonoBehaviour
             Vector3 spawnOffset = new Vector3(Random.Range(-1f,1f),0f,Random.Range(-1f,1f));
             Vector3 spawnPosition = transform.position + spawnOffset;
 
+            GameObject selectedZombiePrefab = GetRandomZombiePrefab();
 
-            var zombie = Instantiate(_zombiePrefab, spawnPosition, Quaternion.identity);
+            var zombie = Instantiate(selectedZombiePrefab, spawnPosition, Quaternion.identity);
 
             Zombie zombieScript = zombie.GetComponent<Zombie>();
             zombieScript.target = _target; //ASIGNO EL TARGET QUE TIENE EL ZOMBIE
@@ -99,13 +102,20 @@ public class ZombieSpawnController : MonoBehaviour
 
     }
 
+    private GameObject GetRandomZombiePrefab()
+    {
+        List<GameObject> zombiePrefabs = new List<GameObject> { _zombiePrefab, _zombiePrefab2, _zombiePrefab3 };
+        int randomIndex = Random.Range(0, zombiePrefabs.Count);
+        return zombiePrefabs[randomIndex];
+    }
+
     private IEnumerator WaveCoolDown()
     {
         inCooldown = true;
         yield return new WaitForSeconds(_waveCoolDown);
         inCooldown = false;
 
-        _currentZombiesPerWave *= 2;
+        _currentZombiesPerWave = Mathf.CeilToInt(_currentZombiesPerWave * 1.12f);
         StartNextWave();
     }
 }

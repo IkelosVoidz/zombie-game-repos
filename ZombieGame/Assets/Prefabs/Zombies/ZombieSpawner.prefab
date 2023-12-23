@@ -151,7 +151,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _zombiePrefab: {fileID: 1622436783490748499, guid: 4bd75b0034695504fbaedfaed5ad38ea, type: 3}
-  _initialZombiesPerWave: 5
+  _zombiePrefab2: {fileID: 5388220361478589197, guid: 0d64bdbb4708163408468996417dc8d3, type: 3}
+  _zombiePrefab3: {fileID: 4147259481493615465, guid: b97398b43ffd28c45abe8ff4e3ed944b, type: 3}
+  _target: {fileID: 0}
+  _initialZombiesPerWave: 2
   _spawnDelay: 0.5
   _currentWave: 0
   _waveCoolDown: 10

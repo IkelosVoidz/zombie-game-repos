@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 4142171329647377186}
   - component: {fileID: 1113486439003376328}
   - component: {fileID: 6533860015841232631}
+  - component: {fileID: 7902921330750747060}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -261,8 +262,10 @@ MonoBehaviour:
   _jumpCooldown: 0.25
   _airMultiplier: 0.01
   _crouchSpeed: 3.5
+  _crouchRunSpeed: 0
   _crouchYScale: 0.5
   _maxSlopeAngle: 80
+  _weapons: {fileID: 0}
 --- !u!114 &617032224958209753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -508,13 +511,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponParent: {fileID: 0}
+  _viewCamera: {fileID: 0}
+  _lookOrientation: {fileID: 1786780782869078267}
+  _movement: {fileID: 0}
   _weaponPivot: {fileID: 0}
   _weaponSwayPivot: {fileID: 0}
-  _viewCamera: {fileID: 0}
+  _weaponRecoilPosition: {fileID: 0}
+  _weaponRotationPoint: {fileID: 0}
   _activeWeapon: {fileID: 0}
-  _lookOrientation: {fileID: 1786780782869078267}
-  _weaponSights: {fileID: 0}
-  _isAiming: 0
+  _weaponAnimator: {fileID: 0}
   _sightsOffset: 0
   _sightsOffsetDown: 0
   _aimingTime: 0
@@ -540,6 +545,18 @@ MonoBehaviour:
   _baseHealth: 100
   _maxHealth: 100
   _health: 0
+--- !u!114 &7902921330750747060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2167065651827109592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e2fdc58626ec2542951ee598bc70154, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4944365162150985330
 GameObject:
   m_ObjectHideFlags: 0
