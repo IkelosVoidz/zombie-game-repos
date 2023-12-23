@@ -60,7 +60,7 @@ public class HUD : MonoBehaviour
 
         _health = Mathf.Clamp(newHealth, 0, 100);
         
-        healthText.text = $"Health: {_health}";
+        //healthText.text = $"Health: {_health}";
         bloodSplatter.color = new Color(bloodSplatter.color.r, bloodSplatter.color.g, bloodSplatter.color.b, -(_health / 100f) + 1f);
     }
 
