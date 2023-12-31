@@ -155,10 +155,7 @@ public class SurfaceManager : StaticSingleton<SurfaceManager>
         {
             if (spawnObjectEffect.Probability > Random.value)
             {
-                ObjectPool pool = ObjectPool.CreateInstance(spawnObjectEffect.Prefab.GetComponent<PoolableObject>(), DefaultPoolSizes);
-
-                PoolableObject instance = pool.GetObject(HitPoint + HitNormal * 0.001f, Quaternion.LookRotation(HitNormal));
-
+                GameObject instance = ObjectPoolingManager.Instance.SpawnObject(spawnObjectEffect.Prefab, HitPoint + HitNormal * 0.001f, Quaternion.LookRotation(HitNormal));
                 instance.transform.forward = HitNormal;
                 if (spawnObjectEffect.RandomizeRotation)
                 {
@@ -175,13 +172,13 @@ public class SurfaceManager : StaticSingleton<SurfaceManager>
 
         foreach (PlayAudioEffect playAudioEffect in SurfaceEffect.PlayAudioEffects)
         {
-            AudioClip clip = playAudioEffect.AudioClips[Random.Range(0, playAudioEffect.AudioClips.Count)];
-            ObjectPool pool = ObjectPool.CreateInstance(playAudioEffect.AudioSourcePrefab.GetComponent<PoolableObject>(), DefaultPoolSizes);
-            AudioSource audioSource = pool.GetObject().GetComponent<AudioSource>();
+            /*AudioClip clip = playAudioEffect.AudioClips[Random.Range(0, playAudioEffect.AudioClips.Count)];
+            //ObjectPool pool = ObjectPool.CreateInstance(playAudioEffect.AudioSourcePrefab.GetComponent<PoolableObject>(), DefaultPoolSizes);
+            //AudioSource audioSource = pool.GetObject().GetComponent<AudioSource>();
 
             audioSource.transform.position = HitPoint;
             audioSource.PlayOneShot(clip, SoundOffset * Random.Range(playAudioEffect.VolumeRange.x, playAudioEffect.VolumeRange.y));
-            StartCoroutine(DisableAudioSource(audioSource, clip.length));
+            StartCoroutine(DisableAudioSource(audioSource, clip.length));*/
         }
     }
 

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Renderer))]
-public class FadeOutDecal : PoolableObject
+public class FadeOutDecal : MonoBehaviour
 {
     [SerializeField]
     private float VisibileDuration = 3;
@@ -27,7 +27,7 @@ public class FadeOutDecal : PoolableObject
         yield return new WaitForSeconds(VisibileDuration);
 
         float time = 0;
-        while(time < 1)
+        while (time < 1)
         {
             transform.localScale = Vector3.Lerp(InitialScale, Vector3.zero, time);
             time += Time.deltaTime / FadeDuration;

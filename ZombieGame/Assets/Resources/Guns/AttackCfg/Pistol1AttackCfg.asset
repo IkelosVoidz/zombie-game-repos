@@ -22,3 +22,4 @@ MonoBehaviour:
   _spread: {x: 0, y: 0, z: 0}
   what: {fileID: 0}
   controller: {fileID: 0}
+  bulletImpactType: {fileID: 11400000, guid: 64ba721151cfe3844ba98b319d0459b9, type: 2}

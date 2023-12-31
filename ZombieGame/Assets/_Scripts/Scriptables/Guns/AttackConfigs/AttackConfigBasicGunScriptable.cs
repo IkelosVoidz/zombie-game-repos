@@ -11,6 +11,7 @@ public class AttackConfigBasicGunScriptable : AttackConfigScriptable
     protected Vector3 _spread = new Vector3(0.1f, 0.1f, 0.1f);
     public Animator what;
     public RuntimeAnimatorController controller;
+    [SerializeField] ImpactType bulletImpactType;
 
 
     public override int Attack(bool inputHeld)
@@ -57,6 +58,7 @@ public class AttackConfigBasicGunScriptable : AttackConfigScriptable
 
     protected virtual void HandleHitEffects(RaycastHit hitInfo, Vector3 attackDir)
     {
+        SurfaceManager.Instance.HandleImpact(hitInfo.collider.gameObject, hitInfo.point, hitInfo.normal, bulletImpactType, hitInfo.triangleIndex);
         if (hitInfo.transform.TryGetComponent(out HealthComponent health))
             ApplyDamage(health, hitInfo.distance, attackDir);
     }
