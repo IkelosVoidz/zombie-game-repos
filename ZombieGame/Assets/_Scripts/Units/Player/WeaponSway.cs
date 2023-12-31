@@ -7,6 +7,7 @@ public class WeaponSway : MonoBehaviour
     [Header("Sway Properties")]
     [SerializeField] private float swayAmount = 0.01f;
     [SerializeField] public float maxSwayAmount = 0.1f;
+    private float _currentMaxSwayAmount;
     [SerializeField] public float swaySmooth = 9f;
     [SerializeField] public AnimationCurve swayCurve;
 
@@ -23,6 +24,8 @@ public class WeaponSway : MonoBehaviour
     private Vector2 sway;
     private Transform weaponTransform;
 
+    [Header("State")]
+    [SerializeField] private bool _aiming;
 
     [Header("Script References")]
     [SerializeField] private PlayerCam _camReference;
@@ -76,8 +79,12 @@ public class WeaponSway : MonoBehaviour
 
     private void CalculateWeaponSway()
     {
+        // we dont want it to sway that much when aiming
+        if (_aiming) _currentMaxSwayAmount = maxSwayAmount / 2;
+        else _currentMaxSwayAmount = maxSwayAmount;
+
         sway = Vector2.MoveTowards(sway, Vector2.zero, swayCurve.Evaluate(Time.deltaTime * swaySmoothCounteraction * sway.magnitude * swaySmooth));
-        sway = Vector2.ClampMagnitude(new Vector2(_look.x, _look.y) + sway, maxSwayAmount);
+        sway = Vector2.ClampMagnitude(new Vector2(_look.x, _look.y) + sway, _currentMaxSwayAmount);
 
         weaponTransform.localPosition = Vector3.Lerp(weaponTransform.localPosition, (new Vector3(sway.x, sway.y, 0) * positionSwayMultiplier) + bobPosition, swayCurve.Evaluate(Time.deltaTime * swaySmooth));
         weaponTransform.localRotation = Quaternion.Slerp(weaponTransform.localRotation, Quaternion.Euler(Mathf.Rad2Deg * rotationSwayMultiplier * new Vector3(-sway.y, sway.x, 0)) * Quaternion.Euler(bobEulerRotation), swayCurve.Evaluate(Time.deltaTime * swaySmooth));
@@ -100,6 +107,7 @@ public class WeaponSway : MonoBehaviour
 
     private void Update()
     {
+        _aiming = _weaponManager.IsAiming;
         GetInput();
         BobOffset();
         BobRotation();
@@ -115,6 +123,7 @@ public class WeaponSway : MonoBehaviour
     float curveCos { get => Mathf.Cos(speedCurve); }
 
     public Vector3 travelLimit = Vector3.one * 0.025f;
+    private Vector3 currentTravelLimit;
     public Vector3 bobLimit = Vector3.one * 0.01f;
     Vector3 bobPosition;
 
@@ -122,22 +131,28 @@ public class WeaponSway : MonoBehaviour
 
     [Header("Bob Rotation")]
     public Vector3 multiplier;
+    public Vector3 currentMultiplier;
     Vector3 bobEulerRotation;
 
     void BobOffset()
     {
+        if (_aiming) currentTravelLimit = travelLimit / 3;
+        else currentTravelLimit = travelLimit;
         speedCurve += Time.deltaTime * (_movement.IsGrounded ? _movement.rb.velocity.magnitude : 1f) + 0.01f;
 
-        bobPosition.x = (curveCos * bobLimit.x * (_movement.IsGrounded ? 1 : 0)) - (_move.x * travelLimit.x);
-        bobPosition.y = (curveSin * bobLimit.y) - (_movement.rb.velocity.y * travelLimit.y);
-        bobPosition.z = -(_move.y * travelLimit.z);
+        bobPosition.x = (curveCos * bobLimit.x * (_movement.IsGrounded ? 1 : 0)) - (_move.x * currentTravelLimit.x);
+        bobPosition.y = (curveSin * bobLimit.y) - (_movement.rb.velocity.y * currentTravelLimit.y);
+        bobPosition.z = -(_move.y * currentTravelLimit.z);
     }
 
     void BobRotation()
     {
-        bobEulerRotation.x = (_move != Vector2.zero ? multiplier.x * (Mathf.Sin(2 * speedCurve)) : multiplier.x * (Mathf.Sin(2 * speedCurve) / 2));
-        bobEulerRotation.y = (_move != Vector2.zero ? multiplier.y * curveCos : 0);
-        bobEulerRotation.z = (_move != Vector2.zero ? multiplier.z * curveCos * _move.x : 0);
+        if (_aiming) currentMultiplier = Vector3.one * 0.1f;
+        else currentMultiplier = multiplier;
+
+        bobEulerRotation.x = (_move != Vector2.zero ? currentMultiplier.x * (Mathf.Sin(2 * speedCurve)) : currentMultiplier.x * (Mathf.Sin(2 * speedCurve) / 2));
+        bobEulerRotation.y = (_move != Vector2.zero ? currentMultiplier.y * curveCos : 0);
+        bobEulerRotation.z = (_move != Vector2.zero ? currentMultiplier.z * curveCos * _move.x : 0);
     }
 
 }

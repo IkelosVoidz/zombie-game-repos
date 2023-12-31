@@ -24,7 +24,8 @@ public class WeaponScriptable : InventoryObjectSO
     [SerializeField] private AttackConfigScriptable[] _attackConfigs; //por si queremos hacer una arma que pueda hacer burst y full auto o algo asi
     private AttackConfigScriptable _currentAttackConfig;
     [SerializeField] private DamageConfigScriptable _damageConfig;
-    [SerializeField] public ReloadConfigScriptable _reloadConfig; //sera privado pero es para probar cosas ahora
+    [SerializeField] public ReloadConfigScriptable _reloadConfig; //sera privado pero es para probar cosas ahora (se va a quedar asi al final pq que pereza)
+    [SerializeField] public RecoilStatsConfigScriptable _recoilStatsConfig;
     [Tooltip("Only used if weapon is hitscan")]
     [SerializeField] private TrailConfigScriptable _trailConfig;
 

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Ammo Config")]
+[CreateAssetMenu(fileName = "ReloadConfigCFG", menuName = "Weapons/AmmoConfig", order = 0)]
 public class ReloadConfigScriptable : ScriptableObject
 {
     [SerializeField] int _maxAmmo;

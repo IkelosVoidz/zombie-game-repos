@@ -7,23 +7,6 @@ public class ProceduralWeaponRecoil : MonoBehaviour
     public Transform rotationPoint;
     [Space(10)]
 
-    [Header("Speed Settings")]
-    public float positionalRecoilSpeed = 8f;
-    public float rotationalRecoilSpeed = 8f;
-    [Space(10)]
-
-    public float positionalReturnSpeed = 18f;
-    public float rotationalReturnSpeed = 38f;
-    [Space(10)]
-
-    [Header("Amount Settings:")]
-    public Vector3 RecoilRotation = new Vector3(10, 5, 7);
-    public Vector3 RecoilKickBack = new Vector3(0.015f, 0f, -0.2f);
-    [Space(10)]
-    public Vector3 RecoilRotationAim = new Vector3(10, 4, 6);
-    public Vector3 RecoilKickBackAim = new Vector3(0.015f, 0f, -0.2f);
-    [Space(10)]
-
     Vector3 rotationalRecoil;
     Vector3 positionalRecoil;
     Vector3 Rot;
@@ -32,6 +15,7 @@ public class ProceduralWeaponRecoil : MonoBehaviour
 
     [Header("Script References")]
     [SerializeField] private PlayerWeaponManager _weaponManager;
+    RecoilStatsConfigScriptable _recoilStats;
 
     private void OnEnable()
     {
@@ -43,20 +27,22 @@ public class ProceduralWeaponRecoil : MonoBehaviour
     {
         recoilPosition = _weaponManager._weaponRecoilPosition;
         rotationPoint = _weaponManager._weaponRotationPoint;
+        _recoilStats = _weaponManager._activeWeapon._recoilStatsConfig;
     }
 
     private void OnDisable()
     {
         AttackConfigScriptable.OnShoot -= Fire;
+        PlayerWeaponManager.OnWeaponSwap -= WeaponSwapped;
     }
 
     private void FixedUpdate()
     {
-        rotationalRecoil = Vector3.Lerp(rotationalRecoil, Vector3.zero, rotationalReturnSpeed * Time.deltaTime);
-        positionalRecoil = Vector3.Lerp(positionalRecoil, Vector3.zero, positionalReturnSpeed * Time.deltaTime);
+        rotationalRecoil = Vector3.Lerp(rotationalRecoil, Vector3.zero, _recoilStats.rotationalReturnSpeed * Time.deltaTime);
+        positionalRecoil = Vector3.Lerp(positionalRecoil, Vector3.zero, _recoilStats.positionalReturnSpeed * Time.deltaTime);
 
-        recoilPosition.localPosition = Vector3.Slerp(recoilPosition.localPosition, positionalRecoil, positionalRecoilSpeed * Time.fixedDeltaTime);
-        Rot = Vector3.Slerp(Rot, rotationalRecoil, rotationalRecoilSpeed * Time.fixedDeltaTime);
+        recoilPosition.localPosition = Vector3.Slerp(recoilPosition.localPosition, positionalRecoil, _recoilStats.positionalRecoilSpeed * Time.fixedDeltaTime);
+        Rot = Vector3.Slerp(Rot, rotationalRecoil, _recoilStats.rotationalRecoilSpeed * Time.fixedDeltaTime);
         rotationPoint.localRotation = Quaternion.Euler(Rot);
     }
 
@@ -70,14 +56,14 @@ public class ProceduralWeaponRecoil : MonoBehaviour
     {
         if (aiming)
         {
-            rotationalRecoil += new Vector3(-RecoilRotationAim.x, Random.Range(-RecoilRotationAim.y, RecoilRotationAim.y), Random.Range(-RecoilRotationAim.z, RecoilRotationAim.z));
-            positionalRecoil += new Vector3(Random.Range(-RecoilKickBackAim.x, RecoilKickBackAim.x), Random.Range(-RecoilKickBackAim.y, RecoilKickBackAim.y), RecoilKickBackAim.z);
+            rotationalRecoil += new Vector3(-_recoilStats.RecoilRotationAim.x, Random.Range(-_recoilStats.RecoilRotationAim.y, _recoilStats.RecoilRotationAim.y), Random.Range(-_recoilStats.RecoilRotationAim.z, _recoilStats.RecoilRotationAim.z));
+            positionalRecoil += new Vector3(Random.Range(-_recoilStats.RecoilKickBackAim.x, _recoilStats.RecoilKickBackAim.x), Random.Range(-_recoilStats.RecoilKickBackAim.y, _recoilStats.RecoilKickBackAim.y), _recoilStats.RecoilKickBackAim.z);
 
         }
         else
         {
-            rotationalRecoil += new Vector3(-RecoilRotation.x, Random.Range(-RecoilRotation.y, RecoilRotation.y), Random.Range(-RecoilRotation.z, RecoilRotation.z));
-            positionalRecoil += new Vector3(Random.Range(-RecoilKickBack.x, RecoilKickBack.x), Random.Range(-RecoilKickBack.y, RecoilKickBack.y), RecoilKickBack.z);
+            rotationalRecoil += new Vector3(-_recoilStats.RecoilRotation.x, Random.Range(-_recoilStats.RecoilRotation.y, _recoilStats.RecoilRotation.y), Random.Range(-_recoilStats.RecoilRotation.z, _recoilStats.RecoilRotation.z));
+            positionalRecoil += new Vector3(Random.Range(-_recoilStats.RecoilKickBack.x, _recoilStats.RecoilKickBack.x), Random.Range(-_recoilStats.RecoilKickBack.y, _recoilStats.RecoilKickBack.y), _recoilStats.RecoilKickBack.z);
         }
     }
 }

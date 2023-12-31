@@ -8,6 +8,7 @@ public class PlayerWeaponManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform _weaponParent;
     [SerializeField] private Camera _viewCamera;
+    [SerializeField] private Camera _outlineCamera;
     [SerializeField] private Transform _lookOrientation;
     [SerializeField] private PlayerMovement _movement;
 
@@ -123,6 +124,7 @@ public class PlayerWeaponManager : MonoBehaviour
         aux = Vector3.SmoothDamp(aux, targetPosition, ref _weaponAimPositionVelocity, _aimingTime);
         currentFOV = Mathf.LerpAngle(currentFOV, targetFOV, Time.deltaTime * 10);
         _viewCamera.fieldOfView = currentFOV;
+        _outlineCamera.fieldOfView = currentFOV;
 
         _weaponPivot.position = aux;
         _weaponPivot.localRotation = Quaternion.Euler(targetRotation);
