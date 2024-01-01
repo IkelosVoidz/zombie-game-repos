@@ -40,7 +40,6 @@ public class AttackConfigBasicGunScriptable : AttackConfigScriptable
         Vector3 shootDirection = _lookOrientation.transform.forward + _lookOrientation.TransformDirection(CalculateSpread());
 
         shootDirection.Normalize();
-        Debug.Log(shootDirection);
 
         if (Physics.Raycast( //el pew pew
             GetRayCastOrigin(),
@@ -51,8 +50,6 @@ public class AttackConfigBasicGunScriptable : AttackConfigScriptable
             ))
         {
             HandleHitEffects(hit, shootDirection);
-            //also SurfaceManager handle impact
-            Debug.Log("he hiteado algo");
         }
     }
 

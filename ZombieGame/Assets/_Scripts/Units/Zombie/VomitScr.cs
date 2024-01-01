@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class VomitScr : MonoBehaviour
@@ -20,8 +19,8 @@ public class VomitScr : MonoBehaviour
     {
         if (!canDamage)
         {
-            time +=Time.deltaTime;
-            if(time > 1f)
+            time += Time.deltaTime;
+            if (time > 1f)
             {
                 canDamage = true;
                 time = 0;
@@ -52,9 +51,9 @@ public class VomitScr : MonoBehaviour
         {
             canDamage = false;
             HealthComponent HC = other.GetComponentInParent<HealthComponent>();
-            Debug.Log(other.name);
+            //Debug.Log(other.name);
 
-            if (HC is not null && other.name=="PlayerObj")
+            if (HC is not null && other.name == "PlayerObj")
             {
                 Debug.Log("Daño al jugador");
                 HC.TakeDamage(damage, new Vector3());
@@ -65,6 +64,6 @@ public class VomitScr : MonoBehaviour
 
             //}
         }
-        
+
     }
 }

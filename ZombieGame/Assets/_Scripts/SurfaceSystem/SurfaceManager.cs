@@ -24,7 +24,7 @@ public class SurfaceManager : StaticSingleton<SurfaceManager>
 
     public void HandleImpact(GameObject HitObject, Vector3 HitPoint, Vector3 HitNormal, ImpactType Impact, int TriangleIndex)
     {
-        if (HitObject.TryGetComponent<Terrain>(out Terrain terrain))
+        if (HitObject.TryGetComponent(out Terrain terrain))
         {
             List<TextureAlpha> activeTextures = GetActiveTexturesFromTerrain(terrain, HitPoint);
             foreach (TextureAlpha activeTexture in activeTextures)
@@ -52,7 +52,7 @@ public class SurfaceManager : StaticSingleton<SurfaceManager>
                 }
             }
         }
-        else if (HitObject.TryGetComponent<Renderer>(out Renderer renderer))
+        else if (HitObject.TryGetComponent(out Renderer renderer))
         {
             Texture activeTexture = GetActiveTextureFromRenderer(renderer, TriangleIndex);
 
@@ -115,37 +115,41 @@ public class SurfaceManager : StaticSingleton<SurfaceManager>
         if (Renderer.TryGetComponent<MeshFilter>(out MeshFilter meshFilter))
         {
             Mesh mesh = meshFilter.mesh;
-
-            if (mesh.subMeshCount > 1)
+            if (mesh.isReadable)
             {
-                int[] hitTriangleIndices = new int[]
-                {
-                    mesh.triangles[TriangleIndex * 3],
-                    mesh.triangles[TriangleIndex * 3 + 1],
-                    mesh.triangles[TriangleIndex * 3 + 2]
-                };
 
-                for (int i = 0; i < mesh.subMeshCount; i++)
+                if (mesh.subMeshCount > 1)
                 {
-                    int[] submeshTriangles = mesh.GetTriangles(i);
-                    for (int j = 0; j < submeshTriangles.Length; j += 3)
+                    int[] hitTriangleIndices = new int[]
                     {
-                        if (submeshTriangles[j] == hitTriangleIndices[0]
-                            && submeshTriangles[j + 1] == hitTriangleIndices[1]
-                            && submeshTriangles[j + 2] == hitTriangleIndices[2])
+                        mesh.triangles[TriangleIndex * 3],
+                        mesh.triangles[TriangleIndex * 3 + 1],
+                        mesh.triangles[TriangleIndex * 3 + 2]
+                    };
+
+                    for (int i = 0; i < mesh.subMeshCount; i++)
+                    {
+                        int[] submeshTriangles = mesh.GetTriangles(i);
+                        for (int j = 0; j < submeshTriangles.Length; j += 3)
                         {
-                            return Renderer.sharedMaterials[i].mainTexture;
+                            if (submeshTriangles[j] == hitTriangleIndices[0]
+                                && submeshTriangles[j + 1] == hitTriangleIndices[1]
+                                && submeshTriangles[j + 2] == hitTriangleIndices[2])
+                            {
+                                return Renderer.sharedMaterials[i].mainTexture;
+                            }
                         }
                     }
                 }
+                else
+                {
+                    return Renderer.sharedMaterial.mainTexture;
+                }
             }
-            else
-            {
-                return Renderer.sharedMaterial.mainTexture;
-            }
+
         }
 
-        Debug.LogError($"{Renderer.name} has no MeshFilter! Using default impact effect instead of texture-specific one because we'll be unable to find the correct texture!");
+        //Debug.LogError($"{Renderer.name} has no MeshFilter! Using default impact effect instead of texture-specific one because we'll be unable to find the correct texture!");
         return null;
     }
 

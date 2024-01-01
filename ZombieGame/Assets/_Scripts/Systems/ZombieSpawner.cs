@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ZombieSpawn : MonoBehaviour
@@ -11,14 +9,14 @@ public class ZombieSpawn : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.tag);
-        if (other.gameObject==player)
+        //Debug.Log(other.tag);
+        if (other.gameObject == player)
         {
             InvokeRepeating("EnemySpawner", 1f, repeatCycle);
             Destroy(gameObject, 10f);
             gameObject.GetComponent<BoxCollider>().enabled = false;
         }
-        Debug.Log("nombre: "+ other.gameObject.tag);
+        //Debug.Log("nombre: "+ other.gameObject.tag);
     }
 
     void EnemySpawner()
