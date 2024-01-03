@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80497dd652889ce4db01f3f593bd3f1c, type: 3}
   m_Name: WoodSurface
   m_EditorClassIdentifier: 
-  ImpactTypeEffects: []
+  ImpactTypeEffects:
+  - ImpactType: {fileID: 11400000, guid: 64ba721151cfe3844ba98b319d0459b9, type: 2}
+    SurfaceEffect: {fileID: 11400000, guid: c57587a434d743d4086782e2bd3f4a99, type: 2}

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6bfb393cf8c3cb45a7ed6dbf225ada7, type: 3}
-  m_Name: SpawnWoodHitEffect
+  m_Name: SpawnFleshHitEffect
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 9155866403502112577, guid: f745fb36ce9685849b95f28b2b6a0b8a, type: 3}
+  Prefab: {fileID: 2176168328480074742, guid: 67fa226733e14f049809a2e02d90699d, type: 3}
   Probability: 1
   RandomizeRotation: 0
   RandomizedRotationMultiplier: {x: 0, y: 0, z: 0}

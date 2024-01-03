@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: WoodSurfaceEffect
   m_EditorClassIdentifier: 
   SpawnObjectEffects:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 04d2fdfd35389834480520f48bb7d71d, type: 2}
   PlayAudioEffects: []

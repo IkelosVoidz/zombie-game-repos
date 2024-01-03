@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6bfb393cf8c3cb45a7ed6dbf225ada7, type: 3}
-  m_Name: SpawnWoodHitEffect
+  m_Script: {fileID: 11500000, guid: 80497dd652889ce4db01f3f593bd3f1c, type: 3}
+  m_Name: FleshSurface
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 9155866403502112577, guid: f745fb36ce9685849b95f28b2b6a0b8a, type: 3}
-  Probability: 1
-  RandomizeRotation: 0
-  RandomizedRotationMultiplier: {x: 0, y: 0, z: 0}
+  ImpactTypeEffects:
+  - ImpactType: {fileID: 11400000, guid: 64ba721151cfe3844ba98b319d0459b9, type: 2}
+    SurfaceEffect: {fileID: 11400000, guid: 9ada53084264bc541b623c938550bd07, type: 2}

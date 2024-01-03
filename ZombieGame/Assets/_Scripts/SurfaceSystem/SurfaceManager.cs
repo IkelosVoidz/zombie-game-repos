@@ -24,6 +24,8 @@ public class SurfaceManager : StaticSingleton<SurfaceManager>
 
     public void HandleImpact(GameObject HitObject, Vector3 HitPoint, Vector3 HitNormal, ImpactType Impact, int TriangleIndex)
     {
+        SkinnedMeshRenderer skMeshRenderer = null;
+
         if (HitObject.TryGetComponent(out Terrain terrain))
         {
             List<TextureAlpha> activeTextures = GetActiveTexturesFromTerrain(terrain, HitPoint);
@@ -78,6 +80,35 @@ public class SurfaceManager : StaticSingleton<SurfaceManager>
                 }
             }
         }
+        else if (skMeshRenderer = HitObject.GetComponentInChildren<SkinnedMeshRenderer>()) //afegit aquesta peça de codi per els nostres zombies
+        {
+            if (skMeshRenderer != null)
+            {
+                Texture activeTexture = GetActiveTextureFromSkinnedMeshRenderer(skMeshRenderer, TriangleIndex);
+
+                SurfaceType surfaceType = Surfaces.Find(surface => surface.Albedo == activeTexture);
+                if (surfaceType != null)
+                {
+                    foreach (Surface.SurfaceImpactTypeEffect typeEffect in surfaceType.Surface.ImpactTypeEffects)
+                    {
+                        if (typeEffect.ImpactType == Impact)
+                        {
+                            PlayEffects(HitPoint, HitNormal, typeEffect.SurfaceEffect, 1);
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (Surface.SurfaceImpactTypeEffect typeEffect in DefaultSurface.ImpactTypeEffects)
+                    {
+                        if (typeEffect.ImpactType == Impact)
+                        {
+                            PlayEffects(HitPoint, HitNormal, typeEffect.SurfaceEffect, 1);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private List<TextureAlpha> GetActiveTexturesFromTerrain(Terrain Terrain, Vector3 HitPoint)
@@ -109,6 +140,26 @@ public class SurfaceManager : StaticSingleton<SurfaceManager>
 
         return activeTextures;
     }
+    private Texture GetActiveTextureFromSkinnedMeshRenderer(SkinnedMeshRenderer Renderer, int TriangleIndex)
+    {
+        Mesh mesh = Renderer.sharedMesh;
+        if (mesh.isReadable)
+        {
+
+            if (mesh.subMeshCount > 1)
+            {
+                return Renderer.sharedMaterials[0].mainTexture;
+            }
+            else
+            {
+                return Renderer.sharedMaterial.mainTexture;
+            }
+        }
+
+        //Debug.LogError($"{Renderer.name} has no MeshFilter! Using default impact effect instead of texture-specific one because we'll be unable to find the correct texture!");
+        return null;
+    }
+
 
     private Texture GetActiveTextureFromRenderer(Renderer Renderer, int TriangleIndex)
     {
