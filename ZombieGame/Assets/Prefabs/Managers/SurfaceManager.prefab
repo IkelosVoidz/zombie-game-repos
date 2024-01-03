@@ -45,8 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Surfaces:
-  - Albedo: {fileID: 2800000, guid: a08960dd6e8274e7f8fca616e09c48ed, type: 3}
-    Surface: {fileID: 11400000, guid: eca47171fb602304b9dae2ef6189ee06, type: 2}
   - Albedo: {fileID: 2800000, guid: 966cf6398289d054592e01c08d5880f7, type: 3}
     Surface: {fileID: 11400000, guid: b49c976c918e2864b9a4533860852417, type: 2}
   - Albedo: {fileID: 2800000, guid: 862297ff71c7f3e479996c3c8f21b942, type: 3}

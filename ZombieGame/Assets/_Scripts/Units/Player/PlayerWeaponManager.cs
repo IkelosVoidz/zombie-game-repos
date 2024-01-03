@@ -149,6 +149,15 @@ public class PlayerWeaponManager : MonoBehaviour
         }
     }
 
+    public void OnMelee(InputAction.CallbackContext ctx) // V pero se va a cambiar
+    {
+        if (!IsReloading)
+        {
+            CancelAiming();
+
+        }
+    }
+
     void OnReloadEnd()
     {
         _activeWeapon.Reload();

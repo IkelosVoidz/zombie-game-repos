@@ -148,7 +148,7 @@ public class SurfaceManager : StaticSingleton<SurfaceManager>
 
             if (mesh.subMeshCount > 1)
             {
-                return Renderer.sharedMaterials[0].mainTexture;
+                return Renderer.sharedMaterials[0].mainTexture; //chapuza pero esq si no no funcionaria con nuestros zombies
             }
             else
             {
