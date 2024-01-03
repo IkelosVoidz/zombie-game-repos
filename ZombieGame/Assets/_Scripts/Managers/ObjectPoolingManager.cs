@@ -1,12 +1,42 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+public enum PoolType
+{
+    Particles,
+    GameObject,
+    AudioSources,
+    None,
+}
 
 public class ObjectPoolingManager : StaticSingleton<ObjectPoolingManager>
 {
     public List<ObjectPool> ObjectPools = new List<ObjectPool>();
 
-    public GameObject SpawnObject(GameObject objectToSpawn, Vector3 spawnPosition, Quaternion spawnRotation)
+    private GameObject _objectPoolEmptyHolder;
+    private GameObject _particleEmpty;
+    private GameObject _gameObjectEmpty;
+    private GameObject _audioSourceEmpty;
+
+    private void Awake()
+    {
+        base.Awake();
+        SetupEmpties();
+    }
+
+    private void SetupEmpties()
+    {
+        _objectPoolEmptyHolder = new GameObject("Pooled Objects");
+        _objectPoolEmptyHolder.transform.SetParent(this.transform);
+        _particleEmpty = new GameObject("Particle Effects");
+        _particleEmpty.transform.SetParent(_objectPoolEmptyHolder.transform);
+        _audioSourceEmpty = new GameObject("Audio Sources");
+        _audioSourceEmpty.transform.SetParent(_objectPoolEmptyHolder.transform);
+        _gameObjectEmpty = new GameObject("GameObjects");
+        _gameObjectEmpty.transform.SetParent(_objectPoolEmptyHolder.transform);
+    }
+
+    public GameObject SpawnObject(GameObject objectToSpawn, Vector3 spawnPosition, Quaternion spawnRotation, PoolType type = PoolType.None)
     {
         ObjectPool pool = ObjectPools.Find(p => p.LookupString == objectToSpawn.name);
 
@@ -19,7 +49,13 @@ public class ObjectPoolingManager : StaticSingleton<ObjectPoolingManager>
         GameObject spawnableObj = pool.AvaliableObjects.FirstOrDefault();
         if (spawnableObj == null)
         {
+            GameObject parent = SetParentObject(type);
             spawnableObj = Instantiate(objectToSpawn, spawnPosition, spawnRotation);
+
+            if (parent != null)
+            {
+                spawnableObj.transform.SetParent(parent.transform);
+            }
         }
         else
         {
@@ -44,6 +80,23 @@ public class ObjectPoolingManager : StaticSingleton<ObjectPoolingManager>
         {
             obj.SetActive(false);
             pool.AvaliableObjects.Add(obj);
+        }
+    }
+
+    private GameObject SetParentObject(PoolType poolType)
+    {
+        switch (poolType)
+        {
+            case PoolType.Particles:
+                return _particleEmpty;
+            case PoolType.GameObject:
+                return _gameObjectEmpty;
+            case PoolType.AudioSources:
+                return _audioSourceEmpty;
+            case PoolType.None:
+                return null;
+            default:
+                return null;
         }
     }
 }

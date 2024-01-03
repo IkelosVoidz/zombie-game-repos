@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 870d87e35a8705e4ba75bda295f1c65b, type: 3}
-  m_Name: TestSurfaceEffect
+  m_Script: {fileID: 11500000, guid: e6bfb393cf8c3cb45a7ed6dbf225ada7, type: 3}
+  m_Name: SpawnStoneHitEffect
   m_EditorClassIdentifier: 
-  SpawnObjectEffects:
-  - {fileID: 11400000, guid: a80e886213c00ae45805b0d8c59f86fc, type: 2}
-  - {fileID: 11400000, guid: 637a2c0607e8daa4597b5980a91e1356, type: 2}
-  PlayAudioEffects: []
+  Prefab: {fileID: 4584968578018511634, guid: d72bc753fc3fba1499efd37a3553b80e, type: 3}
+  Probability: 1
+  RandomizeRotation: 0
+  RandomizedRotationMultiplier: {x: 0, y: 0, z: 0}

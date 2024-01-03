@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6bfb393cf8c3cb45a7ed6dbf225ada7, type: 3}
-  m_Name: TestSOEffect
+  m_Name: SpawnStoneDecal
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 3938256402628085662, guid: 5ce5eaf3fca558d4f8ba6d13e07c9ac5, type: 3}
+  Prefab: {fileID: 2090328602246638996, guid: 7cd52e0ab0fc102419a0819d71b555a9, type: 3}
   Probability: 1
   RandomizeRotation: 0
   RandomizedRotationMultiplier: {x: 0, y: 0, z: 0}

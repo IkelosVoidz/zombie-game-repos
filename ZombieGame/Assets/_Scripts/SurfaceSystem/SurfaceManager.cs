@@ -159,7 +159,7 @@ public class SurfaceManager : StaticSingleton<SurfaceManager>
         {
             if (spawnObjectEffect.Probability > Random.value)
             {
-                GameObject instance = ObjectPoolingManager.Instance.SpawnObject(spawnObjectEffect.Prefab, HitPoint + HitNormal * 0.001f, Quaternion.LookRotation(HitNormal));
+                GameObject instance = ObjectPoolingManager.Instance.SpawnObject(spawnObjectEffect.Prefab, HitPoint + HitNormal * 0.001f, Quaternion.LookRotation(HitNormal), PoolType.Particles);
                 instance.transform.forward = HitNormal;
                 if (spawnObjectEffect.RandomizeRotation)
                 {
