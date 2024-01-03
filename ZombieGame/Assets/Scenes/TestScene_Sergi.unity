@@ -515,44 +515,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1105304961687440950, guid: b151188355bd8ac4889ab59999cc349b, type: 3}
   m_PrefabInstance: {fileID: 1996139194}
   m_PrefabAsset: {fileID: 0}
---- !u!84 &443539643
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 5
-  m_Width: 640
-  m_Height: 480
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 94
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_EnableRandomWrite: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
 --- !u!1001 &454309286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1439,6 +1401,44 @@ MonoBehaviour:
   fov: 0
   aimSens: 0
   changed: 0
+--- !u!84 &1225282935
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 5
+  m_Width: 640
+  m_Height: 480
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 94
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_EnableRandomWrite: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!4 &1345115095 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8291142590066072805, guid: f37de53785c49824996305271a9451c3, type: 3}
@@ -4837,7 +4837,7 @@ Transform:
   m_GameObject: {fileID: 6780778386768638177}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.924, y: 1.16, z: -5.821472}
+  m_LocalPosition: {x: -20.74, y: 1.16, z: -5.821472}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5748,7 +5748,7 @@ PrefabInstance:
     - target: {fileID: 5956376493159188015, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 443539643}
+      objectReference: {fileID: 1225282935}
     - target: {fileID: 7209713141820414086, guid: cff275e075c1bbd4a9034669c350514a, type: 3}
       propertyPath: m_Name
       value: PlayerPrefab
@@ -6023,7 +6023,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7692195730581005424}
-  - component: {fileID: 8634396080020311319}
   m_Layer: 0
   m_Name: Rig
   m_TagString: Untagged
@@ -6031,38 +6030,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &8634396080020311319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8634396080020311318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2d8418b0b9634b1892b0268dd9c2743, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boneShape: 1
-  drawBones: 1
-  drawTripods: 0
-  boneSize: 1
-  tripodSize: 1
-  boneColor: {r: 0, g: 0, b: 1, a: 0.5}
-  m_Transforms:
-  - {fileID: 7692195730581005424}
-  - {fileID: 7299884068329810287}
-  - {fileID: 7968201444559684712}
-  - {fileID: 4614144484933361539}
-  - {fileID: 581298545245141763}
-  - {fileID: 8622562603263356605}
-  - {fileID: 6271967855930969600}
-  - {fileID: 7671451007565480449}
-  - {fileID: 726040678983349824}
-  - {fileID: 8961191090045481419}
-  - {fileID: 1002003023695079533}
-  - {fileID: 3281441078049396300}
-  - {fileID: 3253950653030140861}
 --- !u!1 &8649157306068764597
 GameObject:
   m_ObjectHideFlags: 0

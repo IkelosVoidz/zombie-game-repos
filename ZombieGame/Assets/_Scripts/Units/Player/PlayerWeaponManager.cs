@@ -40,6 +40,7 @@ public class PlayerWeaponManager : MonoBehaviour
     private Vector3 _weaponAimPositionVelocity;
     private bool _attackHeld = false;
     [HideInInspector] public bool IsReloading { get; private set; } = false;
+    [HideInInspector] public bool IsMeleeing { get; private set; } = false;
 
     /// <summary>
     /// Param1: AmmoData of the weapon being swapped IN
@@ -54,11 +55,15 @@ public class PlayerWeaponManager : MonoBehaviour
     private void OnEnable()
     {
         GunAnimEvents.OnReloadAnimEnd += OnReloadEnd;
+        GunAnimEvents.OnMeleeAnimHit += OnMeleeHit;
+        GunAnimEvents.OnMeleeAnimEnd += OnMeleeEnd;
     }
 
     private void OnDisable()
     {
         GunAnimEvents.OnReloadAnimEnd -= OnReloadEnd;
+        GunAnimEvents.OnMeleeAnimHit -= OnMeleeHit;
+        GunAnimEvents.OnMeleeAnimEnd -= OnMeleeEnd;
     }
 
     private void Start()
@@ -78,7 +83,7 @@ public class PlayerWeaponManager : MonoBehaviour
 
     public void OnFire(InputAction.CallbackContext ctx) //clic izquierdo
     {
-        if (!IsReloading) //&& !_movement.IsSprinting)
+        if (!IsReloading && !IsMeleeing) //&& !_movement.IsSprinting)
         {
             if (ctx.performed)
             {
@@ -132,7 +137,7 @@ public class PlayerWeaponManager : MonoBehaviour
 
     public void OnAim(InputAction.CallbackContext ctx) //clic derecho
     {
-        if (!IsReloading && !_movement.IsSprinting)
+        if (!IsReloading && !_movement.IsSprinting && !IsMeleeing)
         {
             if (ctx.performed) IsAiming = true;
             else if (ctx.canceled) IsAiming = false;
@@ -141,21 +146,53 @@ public class PlayerWeaponManager : MonoBehaviour
 
     public void OnReload(InputAction.CallbackContext ctx) //R
     {
-        if (_activeWeapon.CanReload() && !IsReloading)
+        if (ctx.performed)
         {
-            IsAiming = false;
-            IsReloading = true;
-            _weaponAnimator.SetTrigger("Reload");
+            if (_activeWeapon.CanReload() && !IsReloading && !IsMeleeing)
+            {
+                IsAiming = false;
+                IsReloading = true;
+                _weaponAnimator.SetTrigger("Reload");
+            }
         }
     }
 
     public void OnMelee(InputAction.CallbackContext ctx) // V pero se va a cambiar
     {
-        if (!IsReloading)
+        if (ctx.performed)
         {
-            CancelAiming();
+            if (!IsReloading && !IsMeleeing)
+            {
+                CancelAiming();
+                IsMeleeing = true;
+                _weaponAnimator.SetTrigger("Melee");
 
+            }
         }
+    }
+
+    void OnMeleeHit()
+    {
+        Debug.Log("MELEE");
+
+        if (Physics.Raycast(
+            _lookOrientation.position,
+            _lookOrientation.forward,
+             out RaycastHit hit,
+             float.MaxValue
+            ))
+        {
+            if (hit.transform.TryGetComponent(out HealthComponent health))
+            {
+                health.TakeDamage(5, _lookOrientation.forward);
+            }
+        }
+    }
+
+    void OnMeleeEnd()
+    {
+        Debug.Log("MELEE END");
+        IsMeleeing = false;
     }
 
     void OnReloadEnd()
