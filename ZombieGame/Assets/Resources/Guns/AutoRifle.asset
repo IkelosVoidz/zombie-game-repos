@@ -12,13 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ada19bcaad3aea48927712223077507, type: 3}
   m_Name: AutoRifle
   m_EditorClassIdentifier: 
-  _name: 
-  _type: 
+  _name: Rifle
+  _type: Weapon
   _description: 
-  _modelPrefab: {fileID: 0}
-  _spawnPoint: {x: 0, y: 0, z: 0}
-  _spawnRotation: {x: 0, y: 0, z: 0}
-  _attackConfigs: []
-  _damageConfig: {fileID: 0}
-  _reloadConfig: {fileID: 0}
+  _modelPrefab: {fileID: 2827600753582903373, guid: bb1c0840efd12eb4daf2d304fbf2e547, type: 3}
+  _spawnPoint: {x: 0.165, y: -0.277, z: 0.126}
+  _spawnRotation: {x: 359.9232, y: 353.6011, z: 358.61926}
+  _aimPosition: {x: 0, y: 0, z: 0}
+  _attackConfigs:
+  - {fileID: 11400000, guid: e809d410696534648b3fdc0bdff73363, type: 2}
+  _damageConfig: {fileID: 11400000, guid: 5b57b4fb99d6faf449c920e3e6d37221, type: 2}
+  _reloadConfig: {fileID: 11400000, guid: 8f9427224668f7b43b28a5bded011356, type: 2}
+  _recoilStatsConfig: {fileID: 11400000, guid: 887085e7fe88bf5498f6c7cde2f522d4, type: 2}
   _trailConfig: {fileID: 0}

@@ -51,6 +51,14 @@ public class WeaponScriptable : InventoryObjectSO
         _type = "Weapon";
     }
 
+    private void OnEnable()
+    {
+    }
+
+    private void OnDisable()
+    {
+    }
+
     public Transform SwapIn(Transform parent, Transform lookOrientation, MonoBehaviour activeMonoBehaviour, ref Transform weaponPivot)
     {
         //habra que hacer animacion y tal aqui pero ya se hara
@@ -81,6 +89,7 @@ public class WeaponScriptable : InventoryObjectSO
     public void SwapOut()
     {
         //delete weapon and other shit
+        Destroy(_weaponModel);
         OnSwap?.Invoke(false);
     }
 

@@ -6,6 +6,15 @@ public class GunAnimEvents : MonoBehaviour
     public static event Action OnReloadAnimEnd;
     public static event Action OnMeleeAnimHit;
     public static event Action OnMeleeAnimEnd;
+    public static event Action OnSwapAnimEnd;
+
+    private Animator anim;
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
+
+
     public void ReloadAnimEndEvent()
     {
         OnReloadAnimEnd?.Invoke();
@@ -19,5 +28,13 @@ public class GunAnimEvents : MonoBehaviour
     public void OnMeleeEnd()
     {
         OnMeleeAnimEnd?.Invoke();
+    }
+
+    public void OnSwapEnd()
+    {
+        if (anim.GetCurrentAnimatorStateInfo(0).speed == 1)
+        {
+            OnSwapAnimEnd?.Invoke();
+        }
     }
 }

@@ -41,6 +41,11 @@ public class PlayerWeaponManager : MonoBehaviour
     private bool _attackHeld = false;
     [HideInInspector] public bool IsReloading { get; private set; } = false;
     [HideInInspector] public bool IsMeleeing { get; private set; } = false;
+    [Space(10)]
+    [Header("Loadout")]
+    [SerializeField] private WeaponScriptable _primary;
+    [SerializeField] private WeaponScriptable _secondary;
+
 
     /// <summary>
     /// Param1: AmmoData of the weapon being swapped IN
@@ -56,29 +61,35 @@ public class PlayerWeaponManager : MonoBehaviour
     {
         GunAnimEvents.OnReloadAnimEnd += OnReloadEnd;
         GunAnimEvents.OnMeleeAnimHit += OnMeleeHit;
-        GunAnimEvents.OnMeleeAnimEnd += OnMeleeEnd;
+        GunAnimEvents.OnSwapAnimEnd += OnSwapOutAnimEnd;
     }
 
     private void OnDisable()
     {
         GunAnimEvents.OnReloadAnimEnd -= OnReloadEnd;
         GunAnimEvents.OnMeleeAnimHit -= OnMeleeHit;
-        GunAnimEvents.OnMeleeAnimEnd -= OnMeleeEnd;
+        GunAnimEvents.OnSwapAnimEnd += OnSwapOutAnimEnd;
     }
 
     private void Start()
     {
-        WeaponScriptable weapon = PlayerInventory.Instance.GetWeapon("Pistol");
-        if (weapon == null)
+        _primary = PlayerInventory.Instance.GetWeapon(_primary._name);
+        _secondary = PlayerInventory.Instance.GetWeapon(_secondary._name);
+        if (_primary == null)
         {
-            Debug.LogError($"No WeaponScriptable found for WeaponType:{weapon}");
+            Debug.LogError($"No WeaponScriptable found for WeaponType:{_primary}");
+            return;
+        }
+        if (_secondary == null)
+        {
+            Debug.LogError($"No WeaponScriptable found for WeaponType:{_secondary}");
             return;
         }
 
         //muy provisional
-        _activeWeapon = weapon;
-        weapon.SwapIn(_weaponParent, _lookOrientation, this, ref _weaponPivot);
-        WeaponSwap(true);
+        _primary.SwapIn(_weaponParent, _lookOrientation, this, ref _weaponPivot);
+        _activeWeapon = _primary;
+        WeaponSwap();
     }
 
     public void OnFire(InputAction.CallbackContext ctx) //clic izquierdo
@@ -133,6 +144,15 @@ public class PlayerWeaponManager : MonoBehaviour
 
         _weaponPivot.position = aux;
         _weaponPivot.localRotation = Quaternion.Euler(targetRotation);
+
+        //Vector3(0.165000007,-0.27700001,0.126000002)
+        //Vector3(359.923187,353.601105,358.619263)
+
+        //Vector3(0.0149999997,-0.057,-0.123000003) R
+        //Vector3(1.06721707e-07,182.475143,50.9622498)
+
+        //Vector3(-0.0936999992,-0.0460000001,0.221799999) L 
+        //Vector3(22.9388847,257.630127,240.924545)
     }
 
     public void OnAim(InputAction.CallbackContext ctx) //clic derecho
@@ -206,7 +226,7 @@ public class PlayerWeaponManager : MonoBehaviour
 
     }
 
-    public void WeaponSwap(bool swapIn)
+    public void WeaponSwap()
     {
         IsReloading = false;
         Transform[] aux; //= _weaponParent.GetComponentsInChildren<Transform>(); //una chapuza pero no hay otra forma de hacerlo
@@ -214,9 +234,12 @@ public class PlayerWeaponManager : MonoBehaviour
         _weaponAnimator = _weaponPivot.GetComponentInChildren<Animator>();
         aux = _weaponPivot.GetComponentsInChildren<Transform>();
         _weaponSwayPivot = aux[1];
-        _weaponRecoilPosition = aux[4];
-        _weaponRotationPoint = aux[5];
-        _weaponSights = aux[10];
+        for (int i = 3; i < aux.Length; i++)
+        {
+            if (aux[i].name == "WeaponPosition") _weaponRecoilPosition = aux[i];
+            else if (aux[i].name == "RotationPoint") _weaponRotationPoint = aux[i];
+            else if (aux[i].name == "AimSights") _weaponSights = aux[i];
+        }
 
         //no se si el orden este se respeta, pero por ejemplo en el cuchillo que no va a tener efecto de particula ni mierda de _weapon sights esto va a petar como un puto campeon
         //ya lo cambiare para entonces para que sea una cerca mirando si es null yy ya veremos si es muy poco eficiente y si hay lagazos al cambiar de arma, que va a ser un problema gordo de cojones
@@ -229,5 +252,40 @@ public class PlayerWeaponManager : MonoBehaviour
     public void OnSwapPrevWeapon(InputAction.CallbackContext ctx) //ruedecilla raton arriba
     {
 
+    }
+
+    public void OnSwapToPrimary(InputAction.CallbackContext ctx)
+    {
+        if (_activeWeapon != _primary && !IsReloading && !IsMeleeing)
+        {
+            CancelAiming();
+            _weaponAnimator.SetTrigger("Swap"); //swaps out current weapon 
+        }
+    }
+    public void OnSwapToSecondary(InputAction.CallbackContext ctx)
+    {
+        if (_activeWeapon != _secondary && !IsReloading && !IsMeleeing)
+        {
+            CancelAiming();
+            _weaponAnimator.SetTrigger("Swap"); //swaps out current weapon 
+        }
+    }
+
+    public void OnSwapOutAnimEnd()
+    {
+        if (_activeWeapon == _primary)
+        {
+            _activeWeapon.SwapOut();
+            _secondary.SwapIn(_weaponParent, _lookOrientation, this, ref _weaponPivot);
+            _activeWeapon = _secondary;
+            WeaponSwap(); //will play swap in animation
+        }
+        else if (_activeWeapon == _secondary)
+        {
+            _activeWeapon.SwapOut();
+            _primary.SwapIn(_weaponParent, _lookOrientation, this, ref _weaponPivot);
+            _activeWeapon = _primary;
+            WeaponSwap(); //will play swap in animation
+        }
     }
 }

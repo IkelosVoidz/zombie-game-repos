@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a8b8e05fa5cd0d46a9e5c20d1a32bfc, type: 3}
+  m_Name: RifleAttackCfg
+  m_EditorClassIdentifier: 
+  _attackType: 1
+  _fireRate: 0.25
+  _fullAuto: 1
+  _lastAttackTime: 0
+  _hitMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  _spread: {x: 0, y: 0, z: 0}
+  what: {fileID: 0}
+  controller: {fileID: 0}
+  bulletImpactType: {fileID: 11400000, guid: 64ba721151cfe3844ba98b319d0459b9, type: 2}

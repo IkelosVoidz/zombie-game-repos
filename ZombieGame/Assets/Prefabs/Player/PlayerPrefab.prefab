@@ -415,6 +415,8 @@ MonoBehaviour:
   _sightsOffsetDown: 0.16
   _aimingTime: 0.13
   _aimingFOV: 60
+  _primary: {fileID: 11400000, guid: 8345909c83e91474ab80f42c50552dc2, type: 2}
+  _secondary: {fileID: 11400000, guid: 8345909c83e91474ab80f42c50552dc2, type: 2}
 --- !u!114 &7900635895839390882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1340,6 +1342,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: d4e9035c-08a9-4e3d-909e-48dcba5ce0ec
     m_ActionName: Player/Melee[/Keyboard/v]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8554364124020312285}
+        m_TargetAssemblyTypeName: PlayerWeaponManager, Assembly-CSharp
+        m_MethodName: OnSwapToPrimary
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5a5feafa-5fe8-47fd-9472-38ca03eff562
+    m_ActionName: Player/SwapPrimary[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8554364124020312285}
+        m_TargetAssemblyTypeName: PlayerWeaponManager, Assembly-CSharp
+        m_MethodName: OnSwapToSecondary
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: caee2b09-345b-4b59-a1da-f2e29de0e1d0
+    m_ActionName: Player/SwapSecondary[/Keyboard/2]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
