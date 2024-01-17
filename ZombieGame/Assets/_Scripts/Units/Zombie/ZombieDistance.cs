@@ -54,17 +54,6 @@ public class ZombieDistance : Zombie
 
     }
 
-    public override void Die()
-    {
-        base.Die();
-        CapsuleCollider capsuleCollider = GetComponent<CapsuleCollider>();
-        if(capsuleCollider!=null)
-            Destroy(capsuleCollider);
-
-        //ESTO ES UN ASCO ME QUIERO MORIR NO SE EN QUE MOMENTO DIJE QUE SERIA BUENA IDEA METERME A UNA CARRERA DE PROGRAMACION. MAMA QUIERO SER CAMAREEROOOOOOOOOOO
-
-    }
-
     IEnumerator goDown()
     {
         float finalValue = navMeshAgent.baseOffset - 0.8f;

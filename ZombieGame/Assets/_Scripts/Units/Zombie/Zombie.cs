@@ -184,7 +184,7 @@ public class Zombie : MonoBehaviour
             dead = true;
             Debug.Log("Diablo mami me mato");
             
-            Collider.enabled = false;
+            //Collider.enabled = false;
         }
     }
 
