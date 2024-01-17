@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class ZombieSpawnController : MonoBehaviour
@@ -28,7 +29,7 @@ public class ZombieSpawnController : MonoBehaviour
 
 
     private List<Zombie> _currentZombiesAlive;
-
+    private float _multiplier;
 
 
 
@@ -36,7 +37,7 @@ public class ZombieSpawnController : MonoBehaviour
     {
         _currentZombiesAlive = new List<Zombie>();
         _currentZombiesPerWave = _initialZombiesPerWave;
-
+        _multiplier = 1.09f;
         StartNextWave();
     }
 
@@ -115,7 +116,12 @@ public class ZombieSpawnController : MonoBehaviour
         yield return new WaitForSeconds(_waveCoolDown);
         inCooldown = false;
 
-        _currentZombiesPerWave = Mathf.CeilToInt(_currentZombiesPerWave * 1.12f);
+        _currentZombiesPerWave = Mathf.CeilToInt(_currentZombiesPerWave * _multiplier);
         StartNextWave();
+    }
+
+    public void ChangeSpawn() {
+        Debug.Log("SPAWN MODIFICADO");
+        _multiplier = 1.15f;
     }
 }
