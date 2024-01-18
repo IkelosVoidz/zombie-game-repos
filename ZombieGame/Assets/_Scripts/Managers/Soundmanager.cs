@@ -9,7 +9,7 @@ public class SoundManager : PersistentSingleton<SoundManager>
     [SerializeField, Range(0.0001f, 1)] private float _masterVolume;
     [SerializeField, Range(0.0001f, 1)] private float _soundFXVolume;
     [SerializeField, Range(0.0001f, 1)] private float _MusicVolume;
-    public void PlaySoundFXClipAtPoint(AudioClip audioClip, Transform spawnTransform, float volume)
+    public void PlaySoundFXClip(AudioClip audioClip, Transform spawnTransform, float volume)
     {
         //spawn in audiosource
         GameObject g = ObjectPoolingManager.Instance.SpawnObject(_effectsSource.gameObject, spawnTransform.position, spawnTransform.rotation, PoolType.AudioSources);
@@ -27,7 +27,7 @@ public class SoundManager : PersistentSingleton<SoundManager>
         Destroy(audioSource.gameObject, clipLength);
     }
 
-    public void PlayRandomSoundFXClipAtPoint(AudioClip[] audioClip, Transform spawnTransform, float volume)
+    public void PlayRandomSoundFXClip(AudioClip[] audioClip, Transform spawnTransform, float volume)
     {
         int rand = Random.Range(0, audioClip.Length);
 
