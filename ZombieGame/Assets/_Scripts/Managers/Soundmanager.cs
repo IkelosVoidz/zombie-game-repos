@@ -1,33 +1,42 @@
 using UnityEngine;
-
+using UnityEngine.Audio;
 public class SoundManager : PersistentSingleton<SoundManager>
 {
     [SerializeField] private AudioSource _musicSource, _effectsSource;
-    /*// Start is called before the first frame update
-    
-    public void PlaySound(AudioClip clip)
-    {
-        _effectsSource.PlayOneShot(clip);
-    }
+    [SerializeField] private AudioMixer _audioMixer;
 
-    //hay que implementar esto de forma dinamica, es decir, que se vayan creando AudioSources en posicion
-   //porque si no solo se puede reproducir un audio a la vez
-    public void PlaySoundAtPoint(AudioClip clip, Vector3 point) 
-    {
-
-    }
-
-    public void ChangeMasterVolume(float value) //que se llame desde un menu de opciones o algo asi 
-    {
-        AudioListener.volume = value;
-    }*/
-
+    //provisional, esto seran los sliders en el menu de opciones
+    [SerializeField, Range(0.0001f, 1)] private float _masterVolume;
+    [SerializeField, Range(0.0001f, 1)] private float _soundFXVolume;
+    [SerializeField, Range(0.0001f, 1)] private float _MusicVolume;
     public void PlaySoundFXClipAtPoint(AudioClip audioClip, Transform spawnTransform, float volume)
     {
         //spawn in audiosource
-        AudioSource audioSource = Instantiate(_effectsSource, spawnTransform);
+        GameObject g = ObjectPoolingManager.Instance.SpawnObject(_effectsSource.gameObject, spawnTransform.position, spawnTransform.rotation, PoolType.AudioSources);
+        AudioSource audioSource = g.GetComponent<AudioSource>();
+
         //asign audio clip
         audioSource.clip = audioClip;
+        //assign volume
+        audioSource.volume = volume;
+        //play sound
+        audioSource.Play();
+
+        //get length of sound FX clip
+        float clipLength = audioSource.clip.length;
+        Destroy(audioSource.gameObject, clipLength);
+    }
+
+    public void PlayRandomSoundFXClipAtPoint(AudioClip[] audioClip, Transform spawnTransform, float volume)
+    {
+        int rand = Random.Range(0, audioClip.Length);
+
+        //spawn in audiosource
+        GameObject g = ObjectPoolingManager.Instance.SpawnObject(_effectsSource.gameObject, spawnTransform.position, spawnTransform.rotation, PoolType.AudioSources);
+        AudioSource audioSource = g.GetComponent<AudioSource>();
+
+        //asign audio clip
+        audioSource.clip = audioClip[rand];
         //assign volume
         audioSource.volume = volume;
         //play sound
@@ -35,6 +44,31 @@ public class SoundManager : PersistentSingleton<SoundManager>
         //get length of sound FX clip
         float clipLength = audioSource.clip.length;
         Destroy(audioSource.gameObject, clipLength);
+    }
+
+
+    //ULTRA MEGA PROVISIONAL DIOS NO ME PEGUEN
+    private void Update()
+    {
+        SetMasterVolume(_masterVolume);
+        SetSoundFXVolume(_soundFXVolume);
+        SetMusicVolume(_MusicVolume);
+    }
+
+    public void SetMasterVolume(float level)
+    {
+        _audioMixer.SetFloat("MasterVolume", Mathf.Log10(level) * 20);
+        //magia matematica para hacer que sea lineal y no logaritmico
+    }
+
+    public void SetSoundFXVolume(float level)
+    {
+        _audioMixer.SetFloat("SoundFXVolume", Mathf.Log10(level) * 20);
+    }
+
+    public void SetMusicVolume(float level)
+    {
+        _audioMixer.SetFloat("MusicVolume", Mathf.Log10(level) * 20);
     }
 
 }
