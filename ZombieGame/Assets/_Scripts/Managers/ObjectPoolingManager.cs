@@ -83,6 +83,21 @@ public class ObjectPoolingManager : StaticSingleton<ObjectPoolingManager>
         }
     }
 
+    public void ReturnObjectToPool(GameObject obj, float delay)
+    {
+        string realName = obj.name.Substring(0, obj.name.Length - 7);
+        ObjectPool pool = ObjectPools.Find(p => p.LookupString == realName);
+        if (pool == null)
+        {
+            Debug.LogWarning("Tying to release an object that hasnt been pooled" + obj.name);
+        }
+        else
+        {
+            obj.SetActive(false);
+            pool.AvaliableObjects.Add(obj);
+        }
+    }
+
     private GameObject SetParentObject(PoolType poolType)
     {
         switch (poolType)

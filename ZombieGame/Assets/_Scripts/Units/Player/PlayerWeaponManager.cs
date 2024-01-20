@@ -1,5 +1,8 @@
 using System;
+using System.Collections;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 using UnityEngine.InputSystem;
 
 public class PlayerWeaponManager : MonoBehaviour
@@ -14,6 +17,7 @@ public class PlayerWeaponManager : MonoBehaviour
 
     [Space(10)]
     [Header("Pivot References")]
+    public Transform[] _weaponChildrenHierarchy;
     //[HideInInspector] 
     public Transform _weaponPivot;
     //[HideInInspector] 
@@ -73,6 +77,8 @@ public class PlayerWeaponManager : MonoBehaviour
 
     private void Start()
     {
+        //player inventory is okay to be a singleton because this isnt a multiplayer game
+        //if it was, this wouldnt only not work , but also be dangerous for cheats & such
         _primary = PlayerInventory.Instance.GetWeapon(_primary._name);
         _secondary = PlayerInventory.Instance.GetWeapon(_secondary._name);
         if (_primary == null)
@@ -87,14 +93,14 @@ public class PlayerWeaponManager : MonoBehaviour
         }
 
         //muy provisional
-        _primary.SwapIn(_weaponParent, _lookOrientation, this, ref _weaponPivot);
+        _weaponChildrenHierarchy = _primary.SwapIn(_weaponParent, _lookOrientation, this);
         _activeWeapon = _primary;
         WeaponSwap();
     }
 
     public void OnFire(InputAction.CallbackContext ctx) //clic izquierdo
     {
-        if (!IsReloading && !IsMeleeing) //&& !_movement.IsSprinting)
+        if (!IsReloading && !IsMeleeing) //&& !_movement.IsSprinting) 
         {
             if (ctx.performed)
             {
@@ -118,7 +124,6 @@ public class PlayerWeaponManager : MonoBehaviour
 
     public void CancelAiming()
     {
-        //perhaps i should add a can aim false here
         IsAiming = false;
     }
 
@@ -144,6 +149,8 @@ public class PlayerWeaponManager : MonoBehaviour
 
         _weaponPivot.position = aux;
         _weaponPivot.localRotation = Quaternion.Euler(targetRotation);
+
+        //no me acuerdo que es todo esto pero me da miedo borrarlo por si lo necesito en algun momento 
 
         //Vector3(0.165000007,-0.27700001,0.126000002)
         //Vector3(359.923187,353.601105,358.619263)
@@ -177,7 +184,7 @@ public class PlayerWeaponManager : MonoBehaviour
         }
     }
 
-    public void OnMelee(InputAction.CallbackContext ctx) // V pero se va a cambiar
+    public void OnMelee(InputAction.CallbackContext ctx) // V pero se va a cambiar (no se va a cambiar hehe)
     {
         if (ctx.performed)
         {
@@ -199,7 +206,7 @@ public class PlayerWeaponManager : MonoBehaviour
             _lookOrientation.position,
             _lookOrientation.forward,
              out RaycastHit hit,
-             float.MaxValue
+             3.0f
             ))
         {
             if (hit.transform.TryGetComponent(out HealthComponent health))
@@ -226,28 +233,48 @@ public class PlayerWeaponManager : MonoBehaviour
 
     }
 
+
+    //this function gathers all the transforms and components this manager needs of each weapon to function correctly  
     public void WeaponSwap()
     {
-        IsReloading = false;
-        Transform[] aux; //= _weaponParent.GetComponentsInChildren<Transform>(); //una chapuza pero no hay otra forma de hacerlo
-                         //_weaponPivot = aux.FirstOrDefault(w => w.name == "WeaponParent");
+        _weaponPivot = _weaponChildrenHierarchy.FirstOrDefault(w => w.name == "WeaponParent");
+
+
+        //not only did i have to reset the weights for some reason but i also had to wait one frame for it because
+        //the weapon actually instantiates with the correct weights but they are set to 0 at some unknown point in the execution process of the engine
+        StartCoroutine("ResetRigWeights");
+
+        Transform[] aux;
         _weaponAnimator = _weaponPivot.GetComponentInChildren<Animator>();
         aux = _weaponPivot.GetComponentsInChildren<Transform>();
         _weaponSwayPivot = aux[1];
-        for (int i = 3; i < aux.Length; i++)
+        for (int i = 3; i < aux.Length; i++) //not very effective, i know , but i simply have no choice due to how the weapon system is coded
         {
             if (aux[i].name == "WeaponPosition") _weaponRecoilPosition = aux[i];
             else if (aux[i].name == "RotationPoint") _weaponRotationPoint = aux[i];
             else if (aux[i].name == "AimSights") _weaponSights = aux[i];
         }
 
-        //no se si el orden este se respeta, pero por ejemplo en el cuchillo que no va a tener efecto de particula ni mierda de _weapon sights esto va a petar como un puto campeon
-        //ya lo cambiare para entonces para que sea una cerca mirando si es null yy ya veremos si es muy poco eficiente y si hay lagazos al cambiar de arma, que va a ser un problema gordo de cojones
-        //_weaponPivot = aux[1];
-
-
         OnWeaponSwap?.Invoke(_activeWeapon._reloadConfig._ammo); //provisional (no sera provisional vereis pq me va a dar pereza cambiarlo)
     }
+
+
+    private IEnumerator ResetRigWeights()
+    {
+        yield return 0;
+
+        Rig[] rigs = _weaponChildrenHierarchy.Select(x => x.GetComponent<Rig>()).Where(r => r != null).ToArray();
+        foreach (Rig r in rigs)
+        {
+            r.weight = 1.0f;
+            TwoBoneIKConstraint ik = r.GetComponentInChildren<TwoBoneIKConstraint>();
+            ik.weight = 1.0f;
+            ik.data.targetPositionWeight = 1.0f;
+            ik.data.targetRotationWeight = 1.0f;
+            ik.data.hintWeight = 1.0f;
+        }
+    }
+
 
     public void OnSwapPrevWeapon(InputAction.CallbackContext ctx) //ruedecilla raton arriba
     {
@@ -276,16 +303,16 @@ public class PlayerWeaponManager : MonoBehaviour
         if (_activeWeapon == _primary)
         {
             _activeWeapon.SwapOut();
-            _secondary.SwapIn(_weaponParent, _lookOrientation, this, ref _weaponPivot);
+            _weaponChildrenHierarchy = _secondary.SwapIn(_weaponParent, _lookOrientation, this);
             _activeWeapon = _secondary;
-            WeaponSwap(); //will play swap in animation
+            WeaponSwap();
         }
         else if (_activeWeapon == _secondary)
         {
             _activeWeapon.SwapOut();
-            _primary.SwapIn(_weaponParent, _lookOrientation, this, ref _weaponPivot);
+            _weaponChildrenHierarchy = _primary.SwapIn(_weaponParent, _lookOrientation, this);
             _activeWeapon = _primary;
-            WeaponSwap(); //will play swap in animation
+            WeaponSwap();
         }
     }
 }

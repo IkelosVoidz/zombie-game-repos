@@ -43,7 +43,9 @@ public class SoundManager : PersistentSingleton<SoundManager>
         audioSource.Play();
         //get length of sound FX clip
         float clipLength = audioSource.clip.length;
-        Destroy(audioSource.gameObject, clipLength);
+
+        //ObjectPoolingManager.Instance.ReturnObjectToPool(g); 
+        Destroy(audioSource.gameObject, clipLength); //CANVIAR
     }
 
 

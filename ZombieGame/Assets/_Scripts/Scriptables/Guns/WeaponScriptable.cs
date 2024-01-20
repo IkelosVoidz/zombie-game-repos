@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.Pool;
 
 /// <summary>
 /// Very loosely based on LLamAcademy's "ScriptableObject-Based Gun system on unity" series 
@@ -38,7 +36,6 @@ public class WeaponScriptable : InventoryObjectSO
     /// Position of where the bullets should come out, also the ParticleSystem responsible of creating the muzzle flash
     /// </summary>
     private ParticleSystem _gunTip;
-    private ObjectPool<TrailRenderer> _trailPool; //to handle destruction of trails to avoid performance problems
 
 
     /// <summary>
@@ -59,16 +56,15 @@ public class WeaponScriptable : InventoryObjectSO
     {
     }
 
-    public Transform SwapIn(Transform parent, Transform lookOrientation, MonoBehaviour activeMonoBehaviour, ref Transform weaponPivot)
+    public Transform[] SwapIn(Transform parent, Transform lookOrientation, MonoBehaviour activeMonoBehaviour)
     {
-        //habra que hacer animacion y tal aqui pero ya se hara
         _lookOrientation = lookOrientation;
         _activeMonoBehaviour = activeMonoBehaviour;
         //dinamico, no nos hace falta crear todas las armas en la escena, si queremos crear mas armas por alguna razon sera facilisimo
         _weaponModel = Instantiate(_modelPrefab);
         _weaponModel.transform.SetParent(parent, false);
         Transform[] aux = _weaponModel.transform.GetComponentsInChildren<Transform>();
-        weaponPivot = aux.FirstOrDefault(w => w.name == "WeaponParent");
+
         _weaponModel.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
 
         _gunTip = _weaponModel.GetComponentInChildren<ParticleSystem>();
@@ -83,7 +79,7 @@ public class WeaponScriptable : InventoryObjectSO
         //_trailPool = new ObjectPool<TrailRenderer>(CreateTrail); //por hacer
 
         OnSwap?.Invoke(true);
-        return _weaponModel.transform; //necesitamos el pivot para hacer cosas
+        return aux; //necesitamos el pivot para hacer cosas
     }
 
     public void SwapOut()

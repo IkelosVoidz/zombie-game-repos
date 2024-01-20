@@ -36,5 +36,9 @@ public class GunAnimEvents : MonoBehaviour
         {
             OnSwapAnimEnd?.Invoke();
         }
+        else
+        {
+            Debug.Log("hola");
+        }
     }
 }
