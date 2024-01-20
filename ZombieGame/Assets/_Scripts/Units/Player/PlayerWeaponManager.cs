@@ -264,9 +264,10 @@ public class PlayerWeaponManager : MonoBehaviour
     }
 
 
+    //this is the stupidest thing i have ever had to do but it works
     private IEnumerator ResetRigWeights()
     {
-        yield return 0;
+        yield return new WaitForEndOfFrame();
 
         Rig[] rigs = _weaponChildrenHierarchy.Select(x => x.GetComponent<Rig>()).Where(r => r != null).ToArray();
         foreach (Rig r in rigs)
@@ -278,6 +279,8 @@ public class PlayerWeaponManager : MonoBehaviour
             ik.data.targetRotationWeight = 1.0f;
             ik.data.hintWeight = 1.0f;
         }
+
+        _weaponChildrenHierarchy[0].gameObject.SetActive(true);
     }
 
 

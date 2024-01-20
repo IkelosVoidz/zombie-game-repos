@@ -16,8 +16,8 @@ MonoBehaviour:
   _type: Weapon
   _description: 
   _modelPrefab: {fileID: 2827600753582903373, guid: bb1c0840efd12eb4daf2d304fbf2e547, type: 3}
-  _spawnPoint: {x: 0.165, y: -0.277, z: 0.126}
-  _spawnRotation: {x: 359.9232, y: 353.6011, z: 358.61926}
+  _spawnPoint: {x: 0.242, y: -0.236, z: 0.217}
+  _spawnRotation: {x: 0.0047395006, y: 358.22803, z: 0.31185606}
   _aimPosition: {x: 0, y: 0, z: 0}
   _attackConfigs:
   - {fileID: 11400000, guid: e809d410696534648b3fdc0bdff73363, type: 2}

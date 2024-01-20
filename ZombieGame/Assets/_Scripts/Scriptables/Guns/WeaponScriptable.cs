@@ -62,6 +62,7 @@ public class WeaponScriptable : InventoryObjectSO
         _activeMonoBehaviour = activeMonoBehaviour;
         //dinamico, no nos hace falta crear todas las armas en la escena, si queremos crear mas armas por alguna razon sera facilisimo
         _weaponModel = Instantiate(_modelPrefab);
+        _weaponModel.SetActive(false); //fix for a bug in which the weapon appears for a single frame on screen before the swap_in animation plays
         _weaponModel.transform.SetParent(parent, false);
         Transform[] aux = _weaponModel.transform.GetComponentsInChildren<Transform>();
 
