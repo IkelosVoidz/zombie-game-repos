@@ -405,6 +405,8 @@ MonoBehaviour:
   _outlineCamera: {fileID: 5956376493159188015}
   _lookOrientation: {fileID: 3318755009727240464}
   _movement: {fileID: 7894292831705772912}
+  _meleeImpactType: {fileID: 11400000, guid: 64ba721151cfe3844ba98b319d0459b9, type: 2}
+  _weaponChildrenHierarchy: []
   _weaponPivot: {fileID: 0}
   _weaponSwayPivot: {fileID: 0}
   _weaponRecoilPosition: {fileID: 0}
@@ -415,7 +417,7 @@ MonoBehaviour:
   _sightsOffsetDown: 0.16
   _aimingTime: 0.13
   _aimingFOV: 60
-  _primary: {fileID: 11400000, guid: 8345909c83e91474ab80f42c50552dc2, type: 2}
+  _primary: {fileID: 11400000, guid: 2781e32440bb80444b57c46b79c0c765, type: 2}
   _secondary: {fileID: 11400000, guid: 8345909c83e91474ab80f42c50552dc2, type: 2}
 --- !u!114 &7900635895839390882
 MonoBehaviour:
@@ -1438,6 +1440,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inventory:
+  - obj: {fileID: 11400000, guid: 2781e32440bb80444b57c46b79c0c765, type: 2}
+    amount: 1
   - obj: {fileID: 11400000, guid: 8345909c83e91474ab80f42c50552dc2, type: 2}
     amount: 1
 --- !u!114 &8473270960496278255

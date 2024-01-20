@@ -14,6 +14,7 @@ public class PlayerWeaponManager : MonoBehaviour
     [SerializeField] private Camera _outlineCamera;
     [SerializeField] private Transform _lookOrientation;
     [SerializeField] private PlayerMovement _movement;
+    [SerializeField] private ImpactType _meleeImpactType;
 
     [Space(10)]
     [Header("Pivot References")]
@@ -65,6 +66,7 @@ public class PlayerWeaponManager : MonoBehaviour
     {
         GunAnimEvents.OnReloadAnimEnd += OnReloadEnd;
         GunAnimEvents.OnMeleeAnimHit += OnMeleeHit;
+        GunAnimEvents.OnMeleeAnimEnd += OnMeleeEnd;
         GunAnimEvents.OnSwapAnimEnd += OnSwapOutAnimEnd;
     }
 
@@ -72,7 +74,8 @@ public class PlayerWeaponManager : MonoBehaviour
     {
         GunAnimEvents.OnReloadAnimEnd -= OnReloadEnd;
         GunAnimEvents.OnMeleeAnimHit -= OnMeleeHit;
-        GunAnimEvents.OnSwapAnimEnd += OnSwapOutAnimEnd;
+        GunAnimEvents.OnMeleeAnimEnd -= OnMeleeEnd;
+        GunAnimEvents.OnSwapAnimEnd -= OnSwapOutAnimEnd;
     }
 
     private void Start()
@@ -209,6 +212,8 @@ public class PlayerWeaponManager : MonoBehaviour
              3.0f
             ))
         {
+
+            SurfaceManager.Instance.HandleImpact(hit.collider.gameObject, hit.point, hit.normal, _meleeImpactType, hit.triangleIndex);
             if (hit.transform.TryGetComponent(out HealthComponent health))
             {
                 health.TakeDamage(5, _lookOrientation.forward);
