@@ -178,7 +178,7 @@ public class PlayerWeaponManager : MonoBehaviour
     {
         if (ctx.performed)
         {
-            if (_activeWeapon.CanReload() && !IsReloading && !IsMeleeing)
+            if (_activeWeapon.CanReload() && !IsReloading && !IsMeleeing && !_attackHeld)
             {
                 IsAiming = false;
                 IsReloading = true;

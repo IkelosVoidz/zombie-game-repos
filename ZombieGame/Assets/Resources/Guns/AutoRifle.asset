@@ -21,7 +21,7 @@ MonoBehaviour:
   _aimPosition: {x: 0, y: 0, z: 0}
   _attackConfigs:
   - {fileID: 11400000, guid: e809d410696534648b3fdc0bdff73363, type: 2}
-  _damageConfig: {fileID: 11400000, guid: 5b57b4fb99d6faf449c920e3e6d37221, type: 2}
-  _reloadConfig: {fileID: 11400000, guid: 8f9427224668f7b43b28a5bded011356, type: 2}
-  _recoilStatsConfig: {fileID: 11400000, guid: 887085e7fe88bf5498f6c7cde2f522d4, type: 2}
+  _damageConfig: {fileID: 11400000, guid: 34b38f3073fe08642a36ef327ce5d2e7, type: 2}
+  _reloadConfig: {fileID: 11400000, guid: 6ad2fa1e77dae9f408d3de957d19257f, type: 2}
+  _recoilStatsConfig: {fileID: 11400000, guid: 1b5321dab00f71d43b52497f3c4649c5, type: 2}
   _trailConfig: {fileID: 0}

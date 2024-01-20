@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7139e1490ef78d942ab4f1763ff21ee2, type: 3}
-  m_Name: Pistol1ReloadCfg
+  m_Name: RifleReloadCfg
   m_EditorClassIdentifier: 
-  _maxAmmo: 300
-  _magSize: 9
+  _maxAmmo: 500
+  _magSize: 25
   _ammo:
-    _currentAmmo: 300
-    _currentMagAmmo: 5
+    _currentAmmo: 500
+    _currentMagAmmo: 10
   _reloadTime: 1

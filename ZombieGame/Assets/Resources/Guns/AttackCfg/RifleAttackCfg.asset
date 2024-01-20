@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: RifleAttackCfg
   m_EditorClassIdentifier: 
   _attackType: 1
-  _fireRate: 0.25
+  _fireRate: 0.13
   _fullAuto: 1
-  _lastAttackTime: 0
+  _lastAttackTime: 17.430378
   _hitMask:
     serializedVersion: 2
     m_Bits: 4294967295
