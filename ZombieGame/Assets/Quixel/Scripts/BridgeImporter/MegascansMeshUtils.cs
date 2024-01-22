@@ -25,7 +25,7 @@ namespace Quixel
                 bool setupLODs = EditorPrefs.GetBool("QuixelDefaultSetupLOD", true);
                 prefabData.setupLODs = (importLODs && setupLODs); //Only do LOD setup if lower lods were imported and LOD grouping is enabled.
 
-                //get mesh components from the current object. Also, meshComps.Count can give us the number of variations ;)
+                //get mesh components from the current object. Also, meshComps.Count can give transform the number of variations ;)
                 JArray meshComps = (JArray)assetJson["meshList"];
 
                 JArray lodList = (JArray)assetJson["lodList"];
