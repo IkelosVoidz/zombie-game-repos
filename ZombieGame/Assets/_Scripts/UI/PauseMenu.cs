@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 public class PauseMenu : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         _options.SetActive(false);
+        _sensitivity.value = SettingsManager.Instance.sensi;
     }
 
     // Update is called once per frame
