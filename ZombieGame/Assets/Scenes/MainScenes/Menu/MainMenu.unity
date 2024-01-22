@@ -155,6 +155,7 @@ MonoBehaviour:
   sensi: 0
   fov: 0
   aimSens: 0
+  changed: 0
 --- !u!4 &96211511
 Transform:
   m_ObjectHideFlags: 0
@@ -513,6 +514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sensitivity: {fileID: 927344865}
   _options: {fileID: 2048511690}
+  _menu: {fileID: 746727692}
 --- !u!114 &927344865 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3397200558162941893, guid: ca70356903e4a444da19553106c70b8f, type: 3}
