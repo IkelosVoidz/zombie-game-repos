@@ -33,6 +33,9 @@ public class Zombie : MonoBehaviour
     private float maxSpeed;
     protected bool isWalking = false;
 
+
+    [SerializeField] SpriteRenderer sr;
+
     //----------------------[Private Methods]--------------------------//
 
     void Start()
@@ -186,12 +189,14 @@ public class Zombie : MonoBehaviour
 
 
             FadeAndDestroyMesh[] destroyMesh = GetComponentsInChildren<FadeAndDestroyMesh>();
+            sr.enabled = false;
 
             foreach (FadeAndDestroyMesh m in destroyMesh)
             {
                 m.StartFade(5.0f, 3.0f);
             }
 
+            Destroy(this.gameObject, 5 + 3); //chapuza, pero me estoy quedando sin tiempo
         }
     }
 

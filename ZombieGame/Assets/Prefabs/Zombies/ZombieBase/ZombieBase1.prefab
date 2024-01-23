@@ -172,6 +172,7 @@ MonoBehaviour:
   healthComponent: {fileID: 720834563641228357}
   AttackTrigger: {fileID: 0}
   Collider: {fileID: 2516623149684291501}
+  sr: {fileID: 5308099204822596439}
 --- !u!65 &3594935290042589570
 BoxCollider:
   m_ObjectHideFlags: 0
