@@ -8,12 +8,11 @@ public class MinimapZoomIn : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        _minimap.SetCameraHeightAndFarClip(_camHeight, _camFarPlaneClip);
-        _minimap.SetCameraSize(_camZoom);
+        _minimap.SetCameraZoomParameters(_camZoom, _camHeight, _camFarPlaneClip);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        _minimap.ResetValues();
+        _minimap.ResetCameraZoomParameters();
     }
 }

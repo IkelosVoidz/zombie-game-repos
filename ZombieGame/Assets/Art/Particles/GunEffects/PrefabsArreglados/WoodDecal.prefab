@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 230093635846801397}
   - component: {fileID: 6500806075963410218}
   - component: {fileID: 7430500505574327918}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: WoodDecal
   m_TagString: Untagged
   m_Icon: {fileID: 0}

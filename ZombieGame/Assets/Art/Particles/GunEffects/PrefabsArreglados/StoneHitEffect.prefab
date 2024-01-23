@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1929579570476789593}
   - component: {fileID: 6976978647519373312}
   - component: {fileID: 7059254083395685679}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Dust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4738,7 +4738,7 @@ GameObject:
   - component: {fileID: 1718169363635745231}
   - component: {fileID: 8895815444018483742}
   - component: {fileID: 9107977935389013607}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: ImpactDebris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9475,7 +9475,7 @@ GameObject:
   - component: {fileID: 6709338042857200717}
   - component: {fileID: 2783910906401757525}
   - component: {fileID: 4865837472655084145}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: StoneHitEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,7 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-
-[RequireComponent(typeof(MeshRenderer))]
 public class FadeAndDestroyMesh : MonoBehaviour
 {
     private float _duration = 0f;
@@ -10,7 +8,14 @@ public class FadeAndDestroyMesh : MonoBehaviour
     private void OnEnable()
     {
         Renderer renderer = GetComponent<Renderer>();
-        _materials = renderer.materials;
+
+        if (renderer != null)
+            _materials = renderer.materials;
+        else
+        {
+            renderer = GetComponent<SkinnedMeshRenderer>();
+            _materials = renderer.materials;
+        }
     }
 
     public void StartFade(float delay, float fadeTime)

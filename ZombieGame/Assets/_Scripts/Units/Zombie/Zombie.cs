@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -182,9 +181,17 @@ public class Zombie : MonoBehaviour
             //animator.Play("DIE" + Random.Range(1, 6));
             animator.CrossFade("DIE" + Random.Range(1, 6), 0.2f, -1, 0);
             dead = true;
-            Debug.Log("Diablo mami me mato");
-            
-            //Collider.enabled = false;
+            //Debug.Log("Diablo mami me mato");
+            Collider.enabled = false;
+
+
+            FadeAndDestroyMesh[] destroyMesh = GetComponentsInChildren<FadeAndDestroyMesh>();
+
+            foreach (FadeAndDestroyMesh m in destroyMesh)
+            {
+                m.StartFade(5.0f, 3.0f);
+            }
+
         }
     }
 

@@ -46,7 +46,7 @@ public class AttackConfigBasicGunScriptable : AttackConfigScriptable
             shootDirection,
              out RaycastHit hit,
              float.MaxValue,
-             _hitMask
+             _hitMask, QueryTriggerInteraction.Ignore
             ))
         {
             HandleHitEffects(hit, shootDirection);

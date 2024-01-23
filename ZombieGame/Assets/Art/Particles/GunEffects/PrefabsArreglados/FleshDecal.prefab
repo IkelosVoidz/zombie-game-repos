@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3230759727732705371}
   - component: {fileID: 1209092856377886383}
   - component: {fileID: 9168656802216568036}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: FleshDecal
   m_TagString: Untagged
   m_Icon: {fileID: 0}

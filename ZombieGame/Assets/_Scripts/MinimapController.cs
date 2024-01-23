@@ -1,5 +1,4 @@
 using DG.Tweening;
-
 using UnityEngine;
 
 
@@ -24,31 +23,27 @@ public class MinimapController : MonoBehaviour
         transform.DOLocalMoveY(_newHeight, 1);
         transform.eulerAngles = new Vector3(90, 0, -_target.eulerAngles.y);
     }
-    public void SetCameraSize(float size)
+    public void SetCameraZoomParameters(float size, float height, float farClip)
     {
         _size = _cam.orthographicSize;
+        _newHeight = height; //in update
         DOTween.To(() => _size, x => _size = x, size, 1).OnUpdate(() =>
         {
             _cam.orthographicSize = _size;
-        });
-    }
-
-    public void SetCameraHeightAndFarClip(float height, float farClip)
-    {
-        _newHeight = height;
-
-        _farClip = _cam.farClipPlane;
-        DOTween.To(() => _farClip, x => _farClip = x, farClip, 0.5f).OnUpdate(() =>
+        }).OnComplete(() =>
         {
-            _cam.farClipPlane = _farClip;
+            _cam.farClipPlane = farClip;
         });
     }
-
-
-    public void ResetValues()
+    public void ResetCameraZoomParameters()
     {
-        SetCameraHeightAndFarClip(_defaultHeight, _defaultFarClip);
-        SetCameraSize(_defaultSize);
+        _size = _cam.orthographicSize;
+        _cam.farClipPlane = _defaultFarClip;
+        _newHeight = _defaultHeight; //in update
+        DOTween.To(() => _size, x => _size = x, _defaultSize, 1).OnUpdate(() =>
+        {
+            _cam.orthographicSize = _size;
+        });
     }
 
 }
