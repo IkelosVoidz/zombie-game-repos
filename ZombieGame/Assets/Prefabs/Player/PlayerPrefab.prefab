@@ -753,9 +753,7 @@ MonoBehaviour:
   _minimap: {fileID: 8110066645432117858}
   _playerIcon: {fileID: 1331396938280868256}
   _iconsVisible: []
-  _iconsNearby:
-  - {fileID: 0}
-  - {fileID: 0}
+  _iconsNearby: []
   _visibleIconsLayerMask:
     serializedVersion: 2
     m_Bits: 8329
@@ -1722,12 +1720,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3445320285924093095, guid: 717193233d8f28a4eb7aa4b042046f6c, type: 3}
+      propertyPath: _zoomedSize
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3445320285924093095, guid: 717193233d8f28a4eb7aa4b042046f6c, type: 3}
       propertyPath: _defaultSize
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3445320285924093095, guid: 717193233d8f28a4eb7aa4b042046f6c, type: 3}
       propertyPath: _neverDisable
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3445320285924093095, guid: 717193233d8f28a4eb7aa4b042046f6c, type: 3}
+      propertyPath: _zoomedHeight
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4332194300845760701, guid: 717193233d8f28a4eb7aa4b042046f6c, type: 3}
       propertyPath: m_Name
@@ -1827,15 +1833,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8982182396721708896, guid: 717193233d8f28a4eb7aa4b042046f6c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 150
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8982182396721708896, guid: 717193233d8f28a4eb7aa4b042046f6c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8982182396721708896, guid: 717193233d8f28a4eb7aa4b042046f6c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.808075
+      value: 0.58
       objectReference: {fileID: 0}
     - target: {fileID: 8982182396721708896, guid: 717193233d8f28a4eb7aa4b042046f6c, type: 3}
       propertyPath: m_LocalRotation.w

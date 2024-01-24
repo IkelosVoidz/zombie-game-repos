@@ -387,6 +387,14 @@ PrefabInstance:
       propertyPath: _defaultSize
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 3445320285924093095, guid: 717193233d8f28a4eb7aa4b042046f6c, type: 3}
+      propertyPath: _zoomedHeight
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 3445320285924093095, guid: 717193233d8f28a4eb7aa4b042046f6c, type: 3}
+      propertyPath: _defaultHeight
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4332194300845760701, guid: 717193233d8f28a4eb7aa4b042046f6c, type: 3}
       propertyPath: m_Name
       value: MinimapIcon(Zombie)
@@ -493,7 +501,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8982182396721708896, guid: 717193233d8f28a4eb7aa4b042046f6c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8982182396721708896, guid: 717193233d8f28a4eb7aa4b042046f6c, type: 3}
       propertyPath: m_LocalRotation.w

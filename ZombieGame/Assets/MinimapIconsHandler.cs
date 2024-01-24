@@ -48,8 +48,8 @@ public class MinimapIconsHandler : MonoBehaviour
         }
         if (_minimap._zoomedIn)
         {
-            iconNearby.gameObject.transform.DOScale(iconNearby.gameObject.gameObject.GetComponent<MinimapIconStats>()._zoomedSize, 1.0f);
-            iconNearby.gameObject.transform.DOLocalMoveY(_minimap._newHeight, 1.0f);
+            iconNearby.gameObject.transform.DOScale(iconNearby.gameObject.GetComponent<MinimapIconStats>()._zoomedSize, 1.0f);
+            iconNearby.gameObject.transform.DOLocalMoveY(iconNearby.gameObject.GetComponent<MinimapIconStats>()._zoomedHeight, 1.0f);
         }
     }
 
@@ -71,8 +71,8 @@ public class MinimapIconsHandler : MonoBehaviour
     {
         foreach (SpriteRenderer icon in _iconsNearby)
         {
-            icon.gameObject.transform.DOScale(icon.gameObject.gameObject.GetComponent<MinimapIconStats>()._zoomedSize, 1.0f);
-            icon.gameObject.transform.DOLocalMoveY(height, 1.0f);
+            icon.gameObject.transform.DOScale(icon.gameObject.GetComponent<MinimapIconStats>()._zoomedSize, 1.0f);
+            icon.gameObject.transform.DOLocalMoveY(icon.gameObject.GetComponent<MinimapIconStats>()._zoomedHeight, 1.0f);
         }
     }
 
