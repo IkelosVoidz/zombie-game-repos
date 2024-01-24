@@ -94,6 +94,7 @@ public class Zombie : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        //Aixo s'aguanta d'un fil nois a la que canviem com funciona el player o les portes aixo peta espectacularment
 
         if ((other.gameObject.name == "PlayerObj" || (other.CompareTag("Door") && !other.gameObject.GetComponent<DoorController>().IsOpen())) && !dead)
         {
