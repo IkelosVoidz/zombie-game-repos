@@ -7,10 +7,12 @@ public class VomitScr : MonoBehaviour
     [SerializeField] int damage = 1;
     private bool canDamage = true;
     private float time = 0;
+    public ParticleSystem vomit;
 
     void Start()
     {
-        StartCoroutine(selfDestroy());
+        vomit.Play();
+        StartCoroutine("selfDestroy");
     }
 
     // Update is called once per frame
@@ -28,22 +30,24 @@ public class VomitScr : MonoBehaviour
         }
     }
 
+    /*private void OnParticleSystemStopped()
+    {
+        ObjectPoolingManager.Instance.ReturnObjectToPool(gameObject);
+    }*/
+
 
     IEnumerator selfDestroy()
     {
         yield return new WaitForSeconds(5);
-        ParticleSystem[] sistemasDeParticulas = GetComponentsInChildren<ParticleSystem>();
-        foreach (ParticleSystem sistema in sistemasDeParticulas)
-        {
-            sistema.Stop();
-        }
-        destroyObj();
+        vomit.Stop();
+        ObjectPoolingManager.Instance.ReturnObjectToPool(gameObject);
+        //StartCoroutine("destroyObj");
     }
 
     IEnumerator destroyObj()
     {
         yield return new WaitForSeconds(1);
-        Destroy(gameObject);
+
     }
     private void OnTriggerStay(Collider other)
     {
@@ -64,6 +68,5 @@ public class VomitScr : MonoBehaviour
 
             //}
         }
-
     }
 }

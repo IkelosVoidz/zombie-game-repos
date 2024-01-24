@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ZombieDistance : Zombie
@@ -48,29 +46,11 @@ public class ZombieDistance : Zombie
         transform.LookAt(target.transform);
         Debug.Log("Forward Direction: " + transform.forward);
 
-        Rigidbody rb = Instantiate(projectile, throwPos, Quaternion.identity).GetComponent<Rigidbody>();
+
+
+        //Rigidbody rb = Instantiate(projectile, throwPos, Quaternion.identity).GetComponent<Rigidbody>();
+        Rigidbody rb = ObjectPoolingManager.Instance.SpawnObject(projectile, throwPos, Quaternion.identity, PoolType.GameObject).GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * 8f, ForceMode.Impulse);
         rb.AddForce(transform.up * 2f, ForceMode.Impulse);
-
     }
-
-    IEnumerator goDown()
-    {
-        float finalValue = navMeshAgent.baseOffset - 0.8f;
-        bool transition = false;
-        while (!transition)
-        {
-            navMeshAgent.baseOffset = Mathf.Lerp(navMeshAgent.baseOffset, finalValue, 0.7f * Time.deltaTime);
-
-            Debug.Log(navMeshAgent.baseOffset);
-
-            if (Mathf.Approximately(navMeshAgent.baseOffset, finalValue))
-            {
-               transition = true;
-            }
-
-            yield return null;
-        }
-    }
-
 }
