@@ -190,6 +190,8 @@ public class Zombie : MonoBehaviour
 
 
             FadeAndDestroyMesh[] destroyMesh = GetComponentsInChildren<FadeAndDestroyMesh>();
+
+            sr.gameObject.GetComponent<MinimapIconStats>()._disabled = true;
             sr.enabled = false;
 
             foreach (FadeAndDestroyMesh m in destroyMesh)
@@ -197,7 +199,7 @@ public class Zombie : MonoBehaviour
                 m.StartFade(5.0f, 3.0f);
             }
 
-            Destroy(this.gameObject, 5 + 3); //chapuza, pero me estoy quedando sin tiempo
+            Destroy(gameObject, 5 + 3); //chapuza, pero me estoy quedando sin tiempo
         }
     }
 
