@@ -381,7 +381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3445320285924093095, guid: 717193233d8f28a4eb7aa4b042046f6c, type: 3}
       propertyPath: _zoomedSize
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3445320285924093095, guid: 717193233d8f28a4eb7aa4b042046f6c, type: 3}
       propertyPath: _defaultSize

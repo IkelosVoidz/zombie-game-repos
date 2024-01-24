@@ -21,7 +21,9 @@ public class MinimapController : MonoBehaviour
 
     private void Update()
     {
-        transform.DOMove(new Vector3(_target.position.x, _target.position.y + _newHeight, _target.position.z), 1);
+        //transform.DOMove(new Vector3(_target.position.x, _target.position.y + _newHeight, _target.position.z), 1);
+
+        transform.position = Vector3.Slerp(transform.position, new Vector3(_target.position.x, _target.position.y + _newHeight, _target.position.z), 0.1f);
         transform.eulerAngles = new Vector3(90, 0, -_target.eulerAngles.y);
     }
     public void SetCameraZoomParameters(float size, float height, float farClip)

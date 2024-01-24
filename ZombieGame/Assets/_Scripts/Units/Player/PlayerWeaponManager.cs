@@ -203,7 +203,7 @@ public class PlayerWeaponManager : MonoBehaviour
 
     void OnMeleeHit()
     {
-        Debug.Log("MELEE");
+        //Debug.Log("MELEE");
 
         if (Physics.Raycast(
             _lookOrientation.position,
@@ -223,7 +223,7 @@ public class PlayerWeaponManager : MonoBehaviour
 
     void OnMeleeEnd()
     {
-        Debug.Log("MELEE END");
+        //Debug.Log("MELEE END");
         IsMeleeing = false;
     }
 

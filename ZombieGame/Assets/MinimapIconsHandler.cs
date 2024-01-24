@@ -24,6 +24,25 @@ public class MinimapIconsHandler : MonoBehaviour
         AddPermanentIcon(_playerIcon);
     }
 
+    private void OnEnable()
+    {
+        Zombie.OnZombieDeath += OnIconDestroyed;
+    }
+
+    private void OnDisable()
+    {
+        Zombie.OnZombieDeath -= OnIconDestroyed;
+    }
+
+    void OnIconDestroyed(SpriteRenderer icon)
+    {
+        if (_iconsNearby.Contains(icon))
+        {
+            _iconsNearby.Remove(icon);
+            _iconsVisible.Remove(icon);
+        }
+    }
+
 
     public void AddPermanentIcon(SpriteRenderer icon)
     {
@@ -55,14 +74,14 @@ public class MinimapIconsHandler : MonoBehaviour
 
     private void Update()
     {
-        foreach (SpriteRenderer icon in _iconsNearby) //if icons get destroyed they need to be removed from the list, as c# lists allow null objects to be in them (for some reason)
+        /*foreach (SpriteRenderer icon in _iconsNearby) //if icons get destroyed they need to be removed from the list, as c# lists allow null objects to be in them (for some reason)
         {
             if (icon == null)
             {
                 _iconsNearby.Remove(icon);
                 _iconsVisible.Remove(icon);
             }
-        }
+        }*/
     }
 
 
@@ -130,7 +149,7 @@ public class MinimapIconsHandler : MonoBehaviour
         SpriteRenderer iconNearby;
         if ((iconNearby = other.gameObject.GetComponentInChildren<SpriteRenderer>()) == null)
         {
-            Debug.LogError("Doesnt have a sprite renderer and it should");
+            Debug.Log("Doesnt have a sprite renderer and it should, actually nevermind there is a case where it doesnt have a sprite renderer ");
             return;
         }
 
@@ -141,7 +160,7 @@ public class MinimapIconsHandler : MonoBehaviour
             iconNearby.enabled = false;
             _iconsNearby.Remove(iconNearby);
         }
-        iconNearby.gameObject.transform.DOScale(other.gameObject.GetComponent<MinimapIconStats>()._defaultSize, 1.0f);
-        iconNearby.gameObject.transform.DOLocalMoveY(other.gameObject.GetComponent<MinimapIconStats>()._defaultHeight, 1.0f);
+        iconNearby.gameObject.transform.DOScale(other.gameObject.GetComponentInChildren<MinimapIconStats>()._defaultSize, 1.0f);
+        iconNearby.gameObject.transform.DOLocalMoveY(other.gameObject.GetComponentInChildren<MinimapIconStats>()._defaultHeight, 1.0f);
     }
 }

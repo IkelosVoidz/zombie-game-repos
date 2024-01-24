@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -35,6 +36,7 @@ public class Zombie : MonoBehaviour
 
 
     [SerializeField] SpriteRenderer sr;
+    public static event Action<SpriteRenderer> OnZombieDeath;
 
     //----------------------[Private Methods]--------------------------//
 
@@ -42,7 +44,7 @@ public class Zombie : MonoBehaviour
     {
         maxSpeed = navMeshAgent.speed;
         float time = Random.Range(2.0f, 5.0f);
-        Debug.Log(time);
+        //Debug.Log(time);
         Invoke("ToChase", time);
     }
 
@@ -89,7 +91,7 @@ public class Zombie : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Romper");
+        //Debug.Log("Romper");
     }
 
     private void OnTriggerStay(Collider other)
@@ -100,11 +102,11 @@ public class Zombie : MonoBehaviour
         {
             if (hit && isAttacking)
             {
-                Debug.Log("Ha fet pupa!!");
+                //Debug.Log("Ha fet pupa!!");
                 HealthComponent HC = other.GetComponentInParent<HealthComponent>();
                 if (HC is not null)
                 {
-                    Debug.Log("Daño al jugador");
+                    // Debug.Log("Daño al jugador");
                     HC.TakeDamage(5, new Vector3());
                 }
                 isAttacking = false;
@@ -194,11 +196,13 @@ public class Zombie : MonoBehaviour
             sr.gameObject.GetComponent<MinimapIconStats>()._disabled = true;
             sr.enabled = false;
 
+
             foreach (FadeAndDestroyMesh m in destroyMesh)
             {
                 m.StartFade(5.0f, 3.0f);
             }
 
+            OnZombieDeath?.Invoke(this.sr);
             Destroy(gameObject, 5 + 3); //chapuza, pero me estoy quedando sin tiempo
         }
     }

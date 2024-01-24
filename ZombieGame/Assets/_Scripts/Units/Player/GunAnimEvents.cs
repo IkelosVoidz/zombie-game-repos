@@ -38,7 +38,7 @@ public class GunAnimEvents : MonoBehaviour
         }
         else
         {
-            Debug.Log("hola");
+            //Debug.Log("hola");
         }
     }
 }
