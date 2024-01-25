@@ -8,7 +8,8 @@ public class SoundManager : PersistentSingleton<SoundManager>
     //provisional, esto seran los sliders en el menu de opciones
     [SerializeField, Range(0.0001f, 1)] private float _masterVolume;
     [SerializeField, Range(0.0001f, 1)] private float _soundFXVolume;
-    [SerializeField, Range(0.0001f, 1)] private float _MusicVolume;
+    [SerializeField, Range(0.0001f, 1)] private float _musicVolume;
+    [SerializeField, Range(0.0001f, 1)] private float _ambienceVolume;
     public void PlaySoundFXClip(AudioClip audioClip, Transform spawnTransform, float volume)
     {
         //spawn in audiosource
@@ -54,7 +55,8 @@ public class SoundManager : PersistentSingleton<SoundManager>
     {
         SetMasterVolume(_masterVolume);
         SetSoundFXVolume(_soundFXVolume);
-        SetMusicVolume(_MusicVolume);
+        SetMusicVolume(_musicVolume);
+        SetAmbienceVolume(_ambienceVolume);
     }
 
     public void SetMasterVolume(float level)
@@ -71,6 +73,11 @@ public class SoundManager : PersistentSingleton<SoundManager>
     public void SetMusicVolume(float level)
     {
         _audioMixer.SetFloat("MusicVolume", Mathf.Log10(level) * 20);
+    }
+
+    public void SetAmbienceVolume(float level)
+    {
+        _audioMixer.SetFloat("AmbienceVolume", Mathf.Log10(level) * 20);
     }
 
 }
