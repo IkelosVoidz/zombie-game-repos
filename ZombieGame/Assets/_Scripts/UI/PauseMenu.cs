@@ -13,10 +13,6 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private Slider _soundFXSlider;
     [SerializeField] private Slider _ambienceSlider;
 
-
-    private Camera _mainCamera;
-
-
     public static event Action OnSensitivityChanged;
 
     public bool isPaused;
@@ -78,16 +74,19 @@ public class PauseMenu : MonoBehaviour
     private void OnEnable()
     {
         _sensitivity.onValueChanged.AddListener(delegate { SensitivityChanged(); });
-        _masterSlider.onValueChanged.AddListener(delegate { SensitivityChanged(); });
-        _musicSlider.onValueChanged.AddListener(delegate { SensitivityChanged(); });
-        _soundFXSlider.onValueChanged.AddListener(delegate { SensitivityChanged(); });
-        _ambienceSlider.onValueChanged.AddListener(delegate { SensitivityChanged(); });
+        _masterSlider.onValueChanged.AddListener(delegate { SoundManager.Instance.SetMasterVolume(_masterSlider.value); });
+        _musicSlider.onValueChanged.AddListener(delegate { SoundManager.Instance.SetMusicVolume(_musicSlider.value); });
+        _soundFXSlider.onValueChanged.AddListener(delegate { SoundManager.Instance.SetSoundFXVolume(_soundFXSlider.value); ; });
+        _ambienceSlider.onValueChanged.AddListener(delegate { SoundManager.Instance.SetAmbienceVolume(_ambienceSlider.value); });
     }
 
     private void OnDisable()
     {
         _sensitivity.onValueChanged.RemoveAllListeners();
-
+        _masterSlider.onValueChanged.RemoveAllListeners();
+        _musicSlider.onValueChanged.RemoveAllListeners();
+        _soundFXSlider.onValueChanged.RemoveAllListeners();
+        _ambienceSlider.onValueChanged.RemoveAllListeners();
     }
 
 
