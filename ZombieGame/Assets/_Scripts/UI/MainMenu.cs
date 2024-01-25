@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -40,13 +39,12 @@ public class MainMenu : MonoBehaviour
     public void SensitivityChanged()
     {
         //Debug.Log(_sensitivity.value);
-        SettingsManager.Instance.sensi=_sensitivity.value;
-        SettingsManager.Instance.changed = true;
+        SettingsManager.Instance.sensi = _sensitivity.value;
     }
 
     private void OnEnable()
     {
-       _sensitivity.onValueChanged.AddListener(delegate { SensitivityChanged(); });
+        _sensitivity.onValueChanged.AddListener(delegate { SensitivityChanged(); });
     }
 
     private void OnDisable()

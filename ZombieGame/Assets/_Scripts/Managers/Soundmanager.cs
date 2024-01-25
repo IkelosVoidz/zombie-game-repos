@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 public class SoundManager : PersistentSingleton<SoundManager>
 {
     [SerializeField] private AudioSource _musicSource, _effectsSource;
@@ -10,6 +11,40 @@ public class SoundManager : PersistentSingleton<SoundManager>
     [SerializeField, Range(0.0001f, 1)] private float _soundFXVolume;
     [SerializeField, Range(0.0001f, 1)] private float _musicVolume;
     [SerializeField, Range(0.0001f, 1)] private float _ambienceVolume;
+
+
+    public void InitializeVolume(GameObject optionsMenu)
+    {
+
+
+        SetMasterVolume(_masterVolume);
+        SetSoundFXVolume(_soundFXVolume);
+        SetMusicVolume(_musicVolume);
+        SetAmbienceVolume(_ambienceVolume);
+
+        Slider[] sliders = optionsMenu.GetComponentsInChildren<Slider>();
+
+        foreach (Slider sl in sliders)
+        {
+            if (sl.name == "MasterSlider")
+            {
+                sl.value = _masterVolume;
+            }
+            else if (sl.name == "MusicSlider")
+            {
+                sl.value = _musicVolume;
+            }
+            else if (sl.name == "SFXSlider")
+            {
+                sl.value = _soundFXVolume;
+            }
+            else if (sl.name == "AmbienceSlider")
+            {
+                sl.value = _ambienceVolume;
+            }
+        }
+    }
+
     public void PlaySoundFXClip(AudioClip audioClip, Transform spawnTransform, float volume)
     {
         //spawn in audiosource
@@ -49,34 +84,37 @@ public class SoundManager : PersistentSingleton<SoundManager>
         Destroy(audioSource.gameObject, clipLength); //CANVIAR
     }
 
-
-    //ULTRA MEGA PROVISIONAL DIOS NO ME PEGUEN
     private void Update()
     {
-        SetMasterVolume(_masterVolume);
+        /*SetMasterVolume(_masterVolume);
         SetSoundFXVolume(_soundFXVolume);
         SetMusicVolume(_musicVolume);
-        SetAmbienceVolume(_ambienceVolume);
+        SetAmbienceVolume(_ambienceVolume);*/
     }
 
     public void SetMasterVolume(float level)
     {
+        _masterVolume = level;
         _audioMixer.SetFloat("MasterVolume", Mathf.Log10(level) * 20);
         //magia matematica para hacer que sea lineal y no logaritmico
     }
 
     public void SetSoundFXVolume(float level)
     {
+        _soundFXVolume = level;
         _audioMixer.SetFloat("SoundFXVolume", Mathf.Log10(level) * 20);
     }
 
     public void SetMusicVolume(float level)
     {
+
+        _musicVolume = level;
         _audioMixer.SetFloat("MusicVolume", Mathf.Log10(level) * 20);
     }
 
     public void SetAmbienceVolume(float level)
     {
+        _ambienceVolume = level;
         _audioMixer.SetFloat("AmbienceVolume", Mathf.Log10(level) * 20);
     }
 

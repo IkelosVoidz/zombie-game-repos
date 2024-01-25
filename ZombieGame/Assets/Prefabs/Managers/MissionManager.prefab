@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8139798443299733721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7520341884711234839}
+  - component: {fileID: 4718744094486181502}
+  m_Layer: 0
+  m_Name: MissionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7520341884711234839
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8139798443299733721}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4718744094486181502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8139798443299733721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aeb4340c1447024f9a9f5331ffc5100, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _missionsList:
+  - _name: Inicial
+    _description: Recupera la investigacion de los cientificos
+    Objectives:
+    - {fileID: 11400000, guid: 026a1886b18ecfd45a08f126bfed50b7, type: 2}
+    - {fileID: 11400000, guid: e941df91a0d884a4f923902121c59c8c, type: 2}
+    - {fileID: 11400000, guid: edfcf386bafdaf94da6d5333e5af8335, type: 2}
+    - {fileID: 11400000, guid: 6fde11b47aa6f2545b765532a0015dcb, type: 2}
+    - {fileID: 11400000, guid: f35faecc17313e54d9d17fe5cd492126, type: 2}
+    - {fileID: 11400000, guid: 0e591c736ea3e224892ea1d27684c867, type: 2}
+  _hud: {fileID: 0}

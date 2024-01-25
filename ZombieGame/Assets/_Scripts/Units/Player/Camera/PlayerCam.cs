@@ -18,13 +18,24 @@ public class PlayerCam : MonoBehaviour
     {
         look = ctx.ReadValue<Vector2>();
     }
+
+
+    private void OnEnable()
+    {
+        PauseMenu.OnSensitivityChanged += ChangeSensi;
+    }
+
+    private void OnDisable()
+    {
+        PauseMenu.OnSensitivityChanged -= ChangeSensi;
+    }
+
     private void Start()
     {
         //FALTA PULIR-HO
-        ChangeSensi();
+        //ChangeSensi();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        SettingsManager.Instance.changed = true;
     }
     private void Update()
     {
@@ -42,10 +53,7 @@ public class PlayerCam : MonoBehaviour
     }
     public void ChangeSensi()
     {
-        if (SettingsManager.Instance.changed)
-        {
-            sensX = SettingsManager.Instance.sensi;
-            sensY = SettingsManager.Instance.sensi;
-        }
+        sensX = SettingsManager.Instance.sensi;
+        sensY = SettingsManager.Instance.sensi;
     }
 }

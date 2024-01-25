@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 public class PauseMenu : MonoBehaviour
 {
@@ -8,6 +8,16 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject _options;
 
     [SerializeField] private Slider _sensitivity;
+    [SerializeField] private Slider _masterSlider;
+    [SerializeField] private Slider _musicSlider;
+    [SerializeField] private Slider _soundFXSlider;
+    [SerializeField] private Slider _ambienceSlider;
+
+
+    private Camera _mainCamera;
+
+
+    public static event Action OnSensitivityChanged;
 
     public bool isPaused;
     // Start is called before the first frame update
@@ -16,6 +26,9 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         _options.SetActive(false);
         _sensitivity.value = SettingsManager.Instance.sensi;
+        OnSensitivityChanged?.Invoke();
+
+        SoundManager.Instance.InitializeVolume(_options); //no tocar
     }
 
     // Update is called once per frame
@@ -55,20 +68,28 @@ public class PauseMenu : MonoBehaviour
     {
         Application.Quit();
     }
-    
+
     public void SensitivityChanged()
     {
         SettingsManager.Instance.sensi = _sensitivity.value;
+        OnSensitivityChanged?.Invoke();
     }
 
     private void OnEnable()
     {
         _sensitivity.onValueChanged.AddListener(delegate { SensitivityChanged(); });
+        _masterSlider.onValueChanged.AddListener(delegate { SensitivityChanged(); });
+        _musicSlider.onValueChanged.AddListener(delegate { SensitivityChanged(); });
+        _soundFXSlider.onValueChanged.AddListener(delegate { SensitivityChanged(); });
+        _ambienceSlider.onValueChanged.AddListener(delegate { SensitivityChanged(); });
     }
 
     private void OnDisable()
     {
         _sensitivity.onValueChanged.RemoveAllListeners();
+
     }
-    
+
+
+
 }
