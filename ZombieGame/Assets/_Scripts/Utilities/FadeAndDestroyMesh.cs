@@ -13,7 +13,7 @@ public class FadeAndDestroyMesh : MonoBehaviour
             _materials = renderer.materials;
         else
         {
-            renderer = GetComponent<SkinnedMeshRenderer>();
+            renderer = GetComponentInChildren<SkinnedMeshRenderer>();
             _materials = renderer.materials;
         }
     }
