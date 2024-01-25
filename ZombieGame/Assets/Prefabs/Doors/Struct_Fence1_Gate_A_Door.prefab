@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: _openTime
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: -8457801170432650954, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
+      propertyPath: _audioDoorOpen
+      value: 
+      objectReference: {fileID: 8300000, guid: e9c01dea5efbc3f42951717ce3f27266, type: 3}
     - target: {fileID: -5800393602354169661, guid: 2de86674fe409de45a0e5a229b24aa31, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

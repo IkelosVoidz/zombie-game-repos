@@ -45,8 +45,7 @@ public class DoorController : MonoBehaviour, IInteractable
     {
         if (_isBlocked)
         {
-            audioSource.clip = _audioDoorLocked;
-            audioSource.Play();
+            SoundManager.Instance.PlaySoundFXClip(_audioDoorLocked, transform, 3);
         }
         else
         {
@@ -56,13 +55,11 @@ public class DoorController : MonoBehaviour, IInteractable
 
             if (isOpen)
             {
-                audioSource.clip = _audioDoorOpen;
-                audioSource.Play();
+                SoundManager.Instance.PlaySoundFXClip(_audioDoorOpen, transform, 1);
             }
             else
             {
-                audioSource.clip = _audioDoorClose;
-                audioSource.Play();
+                SoundManager.Instance.PlaySoundFXClip(_audioDoorClose, transform, 1);
             }
         }
     }

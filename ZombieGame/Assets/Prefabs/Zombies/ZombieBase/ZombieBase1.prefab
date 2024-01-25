@@ -172,6 +172,15 @@ MonoBehaviour:
   healthComponent: {fileID: 720834563641228357}
   AttackTrigger: {fileID: 0}
   Collider: {fileID: 2516623149684291501}
+  GruntsSFX:
+  - {fileID: 8300000, guid: b47b502a5f5961e488863aed93a9527a, type: 3}
+  - {fileID: 8300000, guid: 465bb9230cb2acb4cace04ccf168d636, type: 3}
+  DeathsSFX:
+  - {fileID: 8300000, guid: 370f9fc565a58b349a373892c1eeb642, type: 3}
+  - {fileID: 8300000, guid: dc9048a4bed02b84789d5e3675c862af, type: 3}
+  - {fileID: 8300000, guid: fac297741ec60744ca2c72511d86931e, type: 3}
+  AttackSFX: {fileID: 8300000, guid: 136c93ef47e79c24b8add31ccf992b84, type: 3}
+  HitSFX: {fileID: 8300000, guid: 95dc086337b903743a70db17e0f9311b, type: 3}
   sr: {fileID: 2449964873945441987}
 --- !u!65 &3594935290042589570
 BoxCollider:
