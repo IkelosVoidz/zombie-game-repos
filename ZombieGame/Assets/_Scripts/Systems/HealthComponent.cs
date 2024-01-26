@@ -20,6 +20,8 @@ public class HealthComponent : MonoBehaviour
     [SerializeField] private int _maxHealth = 100;
     [Tooltip("Current Health of the object, READ ONLY!!!")]
     [SerializeField] private int _health = 0;
+    [Tooltip("Wether or not this health component will apply the damage taken or not")]
+    [SerializeField] public bool _disabled;
 
     private void Start()
     {
@@ -35,6 +37,9 @@ public class HealthComponent : MonoBehaviour
     /// <param name="attackerPos">Position of the actor that inflicts the damage</param>
     public void TakeDamage(int dmg, Vector3 attackDirection) //muy provisional esto 
     {
+        if (_disabled) return;
+
+
         _health -= dmg;
         OnHealthChange?.Invoke(_health, attackDirection);
         if (_health <= 0)
@@ -49,6 +54,9 @@ public class HealthComponent : MonoBehaviour
     /// <param name="healAmount">The amount that this object will heal</param>
     public void Heal(int healAmount)
     {
+        if (_disabled) return;
+
+
         _health += healAmount;
         if (_health > _maxHealth) _health = _maxHealth;
         OnHealthChange?.Invoke(_health, Vector3.zero); //attack pos unused

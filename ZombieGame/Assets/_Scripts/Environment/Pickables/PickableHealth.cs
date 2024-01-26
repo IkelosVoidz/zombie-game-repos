@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 
 public class PickableHealth : PickableBase
 {
-    /// <summary>
-    /// Will add ammo to the player
-    /// </summary>
+    public static event Action OnHealthPickup;
+
     public override void Interact()
     {
+        OnHealthPickup?.Invoke();
         base.Interact();
     }
 }

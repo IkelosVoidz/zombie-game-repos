@@ -1,17 +1,10 @@
-﻿using System.Collections;
-using UnityEditor;
-using UnityEngine;
+﻿using System;
 
-namespace Assets._Scripts.Environment.Pickables
+public class PickableAmmo : PickableBase
 {
-    public class PickableAmmo : PickableBase
+    public static event Action OnAmmoPickup;
+    public override void Interact()
     {
-        /// <summary>
-        /// Will heal the player
-        /// </summary>
-        public override void Interact()
-        {
-            base.Interact();
-        }
+        base.Interact();
     }
 }

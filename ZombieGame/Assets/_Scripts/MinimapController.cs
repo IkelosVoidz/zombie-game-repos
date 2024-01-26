@@ -37,7 +37,7 @@ public class MinimapController : MonoBehaviour
             _cam.orthographicSize = _size;
         }).OnComplete(() =>
         {
-            _cam.farClipPlane = farClip;
+            if (_zoomedIn == true) _cam.farClipPlane = farClip;
         });
     }
     public void ResetCameraZoomParameters()
