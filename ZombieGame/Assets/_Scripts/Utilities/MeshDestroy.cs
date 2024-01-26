@@ -79,7 +79,8 @@ public class MeshDestroy : MonoBehaviour
             parts[i].GameObject.GetComponent<Rigidbody>().AddForceAtPosition(destroyForce, transform.position);
         }
 
-        gameObject.HideAndDestroyAfterDelay(1);
+        //(gameObject, _destroyTime + _fadeDuration + 1.0f);
+        gameObject.HideAndDestroyAfterDelay(1.0f);
     }
 
     private PartMesh GenerateMesh(PartMesh original, Plane plane, bool left)

@@ -16,5 +16,5 @@ MonoBehaviour:
   _magSize: 25
   _ammo:
     _currentAmmo: 500
-    _currentMagAmmo: 10
+    _currentMagAmmo: 25
   _reloadTime: 1
