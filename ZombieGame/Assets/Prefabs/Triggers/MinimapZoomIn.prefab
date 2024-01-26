@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abedbe2b5ab15a44789f077b2dd9d572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camHeight: -4
+  _camHeight: 2
   _camZoom: 10
-  _camFarPlaneClip: 7
+  _camFarPlaneClip: 8
   _minimap: {fileID: 0}
 --- !u!65 &7286755801757033075
 BoxCollider:

@@ -6,6 +6,7 @@ public interface IInteractable
     /// Reference to the game object on which this Interface is implemented on
     /// </summary>
     GameObject gameObject { get; }
+
     void Interact();
 
     void OnSelect()

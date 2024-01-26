@@ -12,19 +12,42 @@ public class ReloadConfigScriptable : ScriptableObject
     /// <summary>
     /// When the active weapon reloads
     /// </summary>
-    public static event Action<AmmoData> OnReloadEnd;
+    public static event Action<AmmoData> OnAmmoChanged;
 
+
+    private void OnEnable()
+    {
+        PickableAmmo.OnAmmoPickup += AmmoPickup;
+    }
+
+    private void OnDisable()
+    {
+        PickableAmmo.OnAmmoPickup -= AmmoPickup;
+    }
+
+    void AmmoPickup()
+    {
+        int ammoToGain = (int)(0.2f * _maxAmmo);
+
+        if (ammoToGain > _maxAmmo)
+        {
+            _ammo._currentAmmo = _maxAmmo;
+        }
+        else _ammo._currentAmmo += ammoToGain;
+
+        OnAmmoChanged?.Invoke(_ammo);
+    }
 
     public void Reload()
     {
-        //int maxReloadAmount = Mathf.Min(_magSize, _ammo._currentAmmo);
-        //int avaliableBulletsInCurrentMag = _magSize - _ammo._currentMagAmmo;
-        //int reloadAmount = Mathf.Min(maxReloadAmount, avaliableBulletsInCurrentMag);
+        int maxReloadAmount = Mathf.Min(_magSize, _ammo._currentAmmo);
+        int avaliableBulletsInCurrentMag = _magSize - _ammo._currentMagAmmo;
+        int reloadAmount = Mathf.Min(maxReloadAmount, avaliableBulletsInCurrentMag);
 
-        _ammo._currentMagAmmo = _magSize;
-        //_ammo._currentMagAmmo += reloadAmount;
-        //_ammo._currentAmmo -= reloadAmount;
-        OnReloadEnd?.Invoke(_ammo);
+        //_ammo._currentMagAmmo = _magSize;
+        _ammo._currentMagAmmo += reloadAmount;
+        _ammo._currentAmmo -= reloadAmount;
+        OnAmmoChanged?.Invoke(_ammo);
     }
 
     public bool CanReload()

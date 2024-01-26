@@ -27,11 +27,13 @@ public class MinimapIconsHandler : MonoBehaviour
     private void OnEnable()
     {
         Zombie.OnZombieDeath += OnIconDestroyed;
+        PickableBase.OnPickablePicked += OnIconDestroyed;
     }
 
     private void OnDisable()
     {
         Zombie.OnZombieDeath -= OnIconDestroyed;
+        PickableBase.OnPickablePicked -= OnIconDestroyed;
     }
 
     void OnIconDestroyed(SpriteRenderer icon)

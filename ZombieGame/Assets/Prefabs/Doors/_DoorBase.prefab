@@ -128,6 +128,7 @@ MonoBehaviour:
   _audioDoorLocked: {fileID: 8300000, guid: bf267f3523c12284dbc488df2375d6f8, type: 3}
   _audioDoorOpen: {fileID: 8300000, guid: 0d62cbe590610494e8698c32c52b0994, type: 3}
   _audioDoorClose: {fileID: 8300000, guid: 44f7dabc3a7764d44a239e38bfa6eb32, type: 3}
+  <_affectChildren>k__BackingField: 1
 --- !u!114 &900407272468163279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +162,7 @@ MonoBehaviour:
   _baseHealth: 10
   _maxHealth: 100
   _health: 10
+  _disabled: 0
 --- !u!114 &2222864221022930631
 MonoBehaviour:
   m_ObjectHideFlags: 0

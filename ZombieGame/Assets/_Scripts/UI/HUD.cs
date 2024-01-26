@@ -31,14 +31,14 @@ public class HUD : MonoBehaviour
     private void OnEnable()
     {
         AttackConfigScriptable.OnShoot += UpdateAmmoDisplay;
-        ReloadConfigScriptable.OnReloadEnd += UpdateAmmoDisplay;
+        ReloadConfigScriptable.OnAmmoChanged += UpdateAmmoDisplay;
         PlayerWeaponManager.OnWeaponSwap += UpdateAmmoDisplay;
     }
 
     private void OnDisable()
     {
         AttackConfigScriptable.OnShoot -= UpdateAmmoDisplay;
-        ReloadConfigScriptable.OnReloadEnd -= UpdateAmmoDisplay;
+        ReloadConfigScriptable.OnAmmoChanged -= UpdateAmmoDisplay;
         PlayerWeaponManager.OnWeaponSwap -= UpdateAmmoDisplay;
     }
 
@@ -59,7 +59,7 @@ public class HUD : MonoBehaviour
         }
 
         _health = Mathf.Clamp(newHealth, 0, 100);
-        
+
         //healthText.text = $"Health: {_health}";
         bloodSplatter.color = new Color(bloodSplatter.color.r, bloodSplatter.color.g, bloodSplatter.color.b, -(_health / 100f) + 1f);
     }

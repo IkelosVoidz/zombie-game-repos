@@ -1,11 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class FuseBox : MonoBehaviour, IInteractable
 {
     [SerializeField] bool _isPoweredOn = false;
+
+    [SerializeField] bool _outlineAffectChildren;
+
+    private void Awake()
+    {
+
+    }
 
     public UnityEvent onFuseBoxUsedPoweredOff;
     public UnityEvent onFuseBoxUsedPoweredOn;
