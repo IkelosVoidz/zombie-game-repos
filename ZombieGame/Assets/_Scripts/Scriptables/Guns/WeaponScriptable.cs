@@ -24,6 +24,7 @@ public class WeaponScriptable : InventoryObjectSO
     [SerializeField] private DamageConfigScriptable _damageConfig;
     [SerializeField] public ReloadConfigScriptable _reloadConfig; //sera privado pero es para probar cosas ahora (se va a quedar asi al final pq que pereza)
     [SerializeField] public RecoilStatsConfigScriptable _recoilStatsConfig;
+    [SerializeField] public AudioConfigScriptable _audioConfig;
     [Tooltip("Only used if weapon is hitscan")]
     [SerializeField] private TrailConfigScriptable _trailConfig;
 
@@ -99,8 +100,27 @@ public class WeaponScriptable : InventoryObjectSO
 
     public void Attack(bool inputHeld)
     {
-        if (_reloadConfig.CanShoot())
-            _currentAttackConfig.Attack(inputHeld);
+        if (_reloadConfig.CanShoot() && _currentAttackConfig.CanAttack())
+        {
+            if (inputHeld && !_currentAttackConfig._fullAuto)
+            {
+                _currentAttackConfig.Attack(inputHeld);
+            }
+            else if (inputHeld && _currentAttackConfig._fullAuto)
+            {
+                _currentAttackConfig.Attack(inputHeld);
+                SoundManager.Instance.Play2DRandomSoundFXClip(_audioConfig._fireSounds, 0.3f);
+            }
+            else
+            {
+                _currentAttackConfig.Attack(inputHeld);
+                SoundManager.Instance.Play2DRandomSoundFXClip(_audioConfig._fireSounds, 0.3f);
+            }
+        }
+        else if (!_reloadConfig.CanShoot() && !_currentAttackConfig.CanAttack())
+        {
+            SoundManager.Instance.Play2DSoundFXClip(_audioConfig._emptyClip, 0.8f);
+        }
     }
 
     public bool CanReload()

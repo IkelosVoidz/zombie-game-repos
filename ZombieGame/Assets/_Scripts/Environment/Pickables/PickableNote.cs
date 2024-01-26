@@ -4,6 +4,8 @@ using UnityEngine.Events;
 public class PickableNote : PickableBase
 {
     [SerializeField] private ScriptableNote _noteData;
+
+
     public UnityEvent<ScriptableNote> OnNotePick;
 
     [SerializeField]

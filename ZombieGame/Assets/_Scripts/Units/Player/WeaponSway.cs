@@ -34,6 +34,10 @@ public class WeaponSway : MonoBehaviour
     private Vector2 _look;
     private Vector2 _move;
 
+
+    [SerializeField] private AudioClip[] _leftFootsteps;
+    [SerializeField] private AudioClip[] _rightFootsteps;
+
     private void OnEnable()
     {
         PlayerWeaponManager.OnWeaponSwap += WeaponSwapped;
@@ -134,10 +138,39 @@ public class WeaponSway : MonoBehaviour
     public Vector3 currentMultiplier;
     Vector3 bobEulerRotation;
 
+    bool left = false;
+
     void BobOffset()
     {
         if (_aiming) currentTravelLimit = travelLimit / 3;
         else currentTravelLimit = travelLimit;
+
+        // Use the sine wave phase to determine left and right extremes
+        float sineWavePhase = Mathf.Sin(speedCurve);
+
+        // Check if the player is on the ground and moving
+        if (_movement.IsGrounded && _movement.rb.velocity.magnitude > 0.1f)
+        {
+            // Trigger left footstep sound when the viewmodel is on the left
+            if (sineWavePhase < 0 && !left)
+            {
+                // Play left footstep sound here
+                SoundManager.Instance.PlayRandomSoundFXClip(_leftFootsteps, _movement.transform, 0.2f);
+                Debug.Log("Left");
+                left = true;
+            }
+
+            // Trigger right footstep sound when the viewmodel is on the right
+            if (sineWavePhase > 0 && left)
+            {
+                // Play right footstep sound here
+                SoundManager.Instance.PlayRandomSoundFXClip(_rightFootsteps, _movement.transform, 0.2f);
+                Debug.Log("Right");
+                left = false;
+            }
+        }
+
+
         speedCurve += Time.deltaTime * (_movement.IsGrounded ? _movement.rb.velocity.magnitude : 1f) + 0.01f;
 
         bobPosition.x = (curveCos * bobLimit.x * (_movement.IsGrounded ? 1 : 0)) - (_move.x * currentTravelLimit.x);

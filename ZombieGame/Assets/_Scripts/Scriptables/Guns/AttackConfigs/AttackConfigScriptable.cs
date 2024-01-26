@@ -37,7 +37,7 @@ public class AttackConfigScriptable : ScriptableObject
     }
 
 
-    protected virtual bool CanAttack()
+    public virtual bool CanAttack()
     {
         return (Time.time > _fireRate + _lastAttackTime);
     }

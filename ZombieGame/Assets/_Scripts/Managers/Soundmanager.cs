@@ -1,9 +1,10 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 public class SoundManager : PersistentSingleton<SoundManager>
 {
-    [SerializeField] private AudioSource _musicSource, _effectsSource;
+    [SerializeField] private AudioSource _musicSource, _effectsSource, _2DeffectsSource;
     [SerializeField] private AudioMixer _audioMixer;
 
     //provisional, esto seran los sliders en el menu de opciones
@@ -60,7 +61,58 @@ public class SoundManager : PersistentSingleton<SoundManager>
 
         //get length of sound FX clip
         float clipLength = audioSource.clip.length;
-        Destroy(audioSource.gameObject, clipLength);
+        StartCoroutine(ReturnObjectToPool(clipLength, g));
+    }
+
+    public void Play2DRandomSoundFXClip(AudioClip[] clips, float volume)
+    {
+        int rand = Random.Range(0, clips.Length);
+
+        //spawn in audiosource
+        GameObject g = ObjectPoolingManager.Instance.SpawnObject(_2DeffectsSource.gameObject, Vector3.zero, Quaternion.identity, PoolType.AudioSources);
+        AudioSource audioSource = g.GetComponent<AudioSource>();
+
+        //asign audio clip
+        audioSource.clip = clips[rand];
+        //assign volume
+        audioSource.volume = volume;
+        //play sound
+        audioSource.Play();
+        //get length of sound FX clip
+        float clipLength = audioSource.clip.length;
+
+        //ObjectPoolingManager.Instance.ReturnObjectToPool(g); 
+        //Destroy(audioSource.gameObject, clipLength); //CANVIAR
+        StartCoroutine(ReturnObjectToPool(clipLength, g));
+    }
+
+    public void Play2DSoundFXClip(AudioClip audioClip, float volume)
+    {
+        //spawn in audiosource
+        GameObject g = ObjectPoolingManager.Instance.SpawnObject(_2DeffectsSource.gameObject, Vector3.zero, Quaternion.identity, PoolType.AudioSources); ;
+        AudioSource audioSource = g.GetComponent<AudioSource>();
+
+        //asign audio clip
+        audioSource.clip = audioClip;
+        //assign volume
+        audioSource.volume = volume;
+        //play sound
+        audioSource.Play();
+
+        //get length of sound FX clip
+        float clipLength = audioSource.clip.length;
+        // Destroy(audioSource.gameObject, clipLength);
+
+
+        StartCoroutine(ReturnObjectToPool(clipLength, g));
+    }
+
+
+    IEnumerator ReturnObjectToPool(float time, GameObject obj)
+    {
+        yield return new WaitForSeconds(time);
+
+        ObjectPoolingManager.Instance.ReturnObjectToPool(obj);
     }
 
     public void PlayRandomSoundFXClip(AudioClip[] audioClip, Transform spawnTransform, float volume)
@@ -81,7 +133,8 @@ public class SoundManager : PersistentSingleton<SoundManager>
         float clipLength = audioSource.clip.length;
 
         //ObjectPoolingManager.Instance.ReturnObjectToPool(g); 
-        Destroy(audioSource.gameObject, clipLength); //CANVIAR
+        //Destroy(audioSource.gameObject, clipLength); //CANVIAR
+        StartCoroutine(ReturnObjectToPool(clipLength, g));
     }
 
     private void Update()

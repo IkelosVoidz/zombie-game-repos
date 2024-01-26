@@ -17,3 +17,4 @@ MonoBehaviour:
   _mission: Inicial
   _order: 3
   _completed: 0
+  _completeObj: {fileID: 8300000, guid: bf15e702d6c830c48b199937d15d10d2, type: 3}

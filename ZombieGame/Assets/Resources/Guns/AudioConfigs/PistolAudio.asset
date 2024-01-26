@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3dda9dfe4e417c48a9ea140983985f9, type: 3}
+  m_Name: PistolAudio
+  m_EditorClassIdentifier: 
+  _fireSounds:
+  - {fileID: 8300000, guid: ea418f308ac776844ace6321009c4aaa, type: 3}
+  _emptyClip: {fileID: 8300000, guid: fa302de093bea4a4a82c2568a2a4ebff, type: 3}
+  _reloadMagDrop: {fileID: 8300000, guid: 288201c397208dc49bd45f225923eff3, type: 3}
+  _reloadMagInsert: {fileID: 8300000, guid: 15c3b23326c0962478d884f853e7a05a, type: 3}
+  _reloadGunChamber: {fileID: 8300000, guid: 147e5303246f03f40b754d6ff0214006, type: 3}

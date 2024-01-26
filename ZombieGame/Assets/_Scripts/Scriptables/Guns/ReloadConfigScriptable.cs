@@ -25,6 +25,8 @@ public class ReloadConfigScriptable : ScriptableObject
 
     private void OnDisable()
     {
+        _ammo._currentMagAmmo = _magSize;
+        _ammo._currentAmmo = _maxAmmo;
         PickableAmmo.OnAmmoPickup -= AmmoPickup;
     }
 
@@ -32,7 +34,7 @@ public class ReloadConfigScriptable : ScriptableObject
     {
         int ammoToGain = (int)(0.2f * _maxAmmo);
 
-        if (ammoToGain > _maxAmmo)
+        if ((_ammo._currentAmmo + ammoToGain) > _maxAmmo)
         {
             _ammo._currentAmmo = _maxAmmo;
         }

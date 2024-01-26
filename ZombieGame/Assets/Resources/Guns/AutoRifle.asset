@@ -24,4 +24,5 @@ MonoBehaviour:
   _damageConfig: {fileID: 11400000, guid: 34b38f3073fe08642a36ef327ce5d2e7, type: 2}
   _reloadConfig: {fileID: 11400000, guid: 6ad2fa1e77dae9f408d3de957d19257f, type: 2}
   _recoilStatsConfig: {fileID: 11400000, guid: 1b5321dab00f71d43b52497f3c4649c5, type: 2}
+  _audioConfig: {fileID: 11400000, guid: 552573a80f862f544a204cfb8f22777f, type: 2}
   _trailConfig: {fileID: 0}

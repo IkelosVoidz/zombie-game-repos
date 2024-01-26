@@ -16,4 +16,5 @@ MonoBehaviour:
   _description: Get access to the scientists' house
   _mission: Inicial
   _order: 1
-  _completed: 0
+  _completed: 1
+  _completeObj: {fileID: 8300000, guid: bf15e702d6c830c48b199937d15d10d2, type: 3}
