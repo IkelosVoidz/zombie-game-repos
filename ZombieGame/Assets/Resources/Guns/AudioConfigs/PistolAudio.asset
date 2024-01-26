@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PistolAudio
   m_EditorClassIdentifier: 
   _fireSounds:
-  - {fileID: 8300000, guid: ea418f308ac776844ace6321009c4aaa, type: 3}
+  - {fileID: 8300000, guid: 003dbc735a3e23148868f6cd085b0a70, type: 3}
   _emptyClip: {fileID: 8300000, guid: fa302de093bea4a4a82c2568a2a4ebff, type: 3}
-  _reloadMagDrop: {fileID: 8300000, guid: 288201c397208dc49bd45f225923eff3, type: 3}
-  _reloadMagInsert: {fileID: 8300000, guid: 15c3b23326c0962478d884f853e7a05a, type: 3}
-  _reloadGunChamber: {fileID: 8300000, guid: 147e5303246f03f40b754d6ff0214006, type: 3}
+  _reloadMagDrop: {fileID: 8300000, guid: 9ad8167eb16c27f4ea2a70eea7c31070, type: 3}
+  _reloadMagInsert: {fileID: 8300000, guid: 1a322f2bcf17208498798b772256d321, type: 3}
+  _reloadGunChamber: {fileID: 8300000, guid: ced3bf60e1042e844ae3e7fd06500060, type: 3}

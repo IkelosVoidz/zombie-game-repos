@@ -570,6 +570,36 @@ MonoBehaviour:
   _camReference: {fileID: 1749718098017220480}
   _weaponManager: {fileID: 8554364124020312285}
   _movement: {fileID: 7894292831705772912}
+  _leftFootsteps:
+  - {fileID: 8300000, guid: b6c8ca54fe7e9c544b66f1f3e49d2fbd, type: 3}
+  - {fileID: 8300000, guid: 46b6136015851094ba20f97a0db49e7b, type: 3}
+  - {fileID: 8300000, guid: 4701e942bd51aa14e83e66f2b32d9dfa, type: 3}
+  - {fileID: 8300000, guid: 0910a01b98d181f49acfd8eabb40f9b0, type: 3}
+  - {fileID: 8300000, guid: 4745d1eafa62e684b8a67b31c833f18c, type: 3}
+  - {fileID: 8300000, guid: 462fba2b7768bca4ca5b52b2fae2d64d, type: 3}
+  - {fileID: 8300000, guid: 5552d4de21a0158448757711847777f7, type: 3}
+  - {fileID: 8300000, guid: a00e8685b2137c94e9e094af47a3a0f6, type: 3}
+  - {fileID: 8300000, guid: 0ef449b351d27454eb17764c57d8f3fd, type: 3}
+  - {fileID: 8300000, guid: c1457c3620b7b444f9dea88b03204fd9, type: 3}
+  - {fileID: 8300000, guid: e860bbff83a077a4e8e53a891137353b, type: 3}
+  - {fileID: 8300000, guid: 8372d82d4abdfea4f9517bfe4560c2fc, type: 3}
+  - {fileID: 8300000, guid: f77832105ecb49749b387c34ab58aefa, type: 3}
+  - {fileID: 8300000, guid: 3f3ad329b89dd8a4d8c27a28de26a363, type: 3}
+  _rightFootsteps:
+  - {fileID: 8300000, guid: a1447fefc8865ad4890a9434e981f244, type: 3}
+  - {fileID: 8300000, guid: 7d6fc1a811bf2c346a99bd6c524134e6, type: 3}
+  - {fileID: 8300000, guid: b2ba7f7fb918528458a388e703875a94, type: 3}
+  - {fileID: 8300000, guid: 9703f6510f0ca4e46aba74cf555721cb, type: 3}
+  - {fileID: 8300000, guid: 4f3d4fef74aa32c4e8d6950f7c167837, type: 3}
+  - {fileID: 8300000, guid: 85aa5ee65e0661049a30059e09d7924e, type: 3}
+  - {fileID: 8300000, guid: 1a31b8765290a03429215a900fb42a9f, type: 3}
+  - {fileID: 8300000, guid: b4f0b1bf86b2d9e42b32882a62dc192f, type: 3}
+  - {fileID: 8300000, guid: 721ef09e03b54474e90f316f48323fe8, type: 3}
+  - {fileID: 8300000, guid: 5dbddfdf641857e448aff4a571d2cba4, type: 3}
+  - {fileID: 8300000, guid: 97ead61f9d1bd0942af23ae719c997be, type: 3}
+  - {fileID: 8300000, guid: cd805d9cd60abd44795e10e6d72b8801, type: 3}
+  - {fileID: 8300000, guid: 4a045b7c20f0c8148872c89bfa48c37f, type: 3}
+  - {fileID: 8300000, guid: f9c7f68b350332a459e6f5f02edbbab1, type: 3}
   _breathingSwayAmountA: 1
   _breathingSwayAmountB: 2
   _breathingSwayScale: 150
@@ -1189,6 +1219,7 @@ GameObject:
   - component: {fileID: 1286483280775475603}
   - component: {fileID: 8473270960496278255}
   - component: {fileID: 5222426977066710059}
+  - component: {fileID: 3420537645169550772}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1673,6 +1704,19 @@ MonoBehaviour:
   _health: 0
   _disabled: 0
 --- !u!114 &5222426977066710059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9165193133554583056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e2fdc58626ec2542951ee598bc70154, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _godMode: 0
+--- !u!114 &3420537645169550772
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
