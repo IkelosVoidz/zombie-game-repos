@@ -17,6 +17,9 @@ public class ReloadConfigScriptable : ScriptableObject
 
     private void OnEnable()
     {
+        _ammo._currentMagAmmo = _magSize;
+        _ammo._currentAmmo = _maxAmmo;
+
         PickableAmmo.OnAmmoPickup += AmmoPickup;
     }
 
