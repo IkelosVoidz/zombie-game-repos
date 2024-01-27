@@ -4,11 +4,14 @@ using UnityEngine.SceneManagement;
 
 public class PotionHandler : MonoBehaviour, IInteractable
 {
+    [SerializeField] AudioClip startPotionMaker;
+
     public UnityEvent onPotionMakerUsed;
     public UnityEvent onPotionMakerEnded;
 
     public void Interact()
     {
+        SoundManager.Instance.PlaySoundFXClip(startPotionMaker, transform, .7f);
         onPotionMakerUsed?.Invoke();
     }
 
