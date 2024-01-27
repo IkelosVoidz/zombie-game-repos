@@ -119,7 +119,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64400de87746cf6428c92249a469cb08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <_affectChildren>k__BackingField: 0
+  _pickupSound:
+  - {fileID: 8300000, guid: 0ef89339d517f6c47aaaa67f3310e081, type: 3}
+  - {fileID: 8300000, guid: fbae761a8cc2db7498a00cd1ba0907b8, type: 3}
+  - {fileID: 8300000, guid: 1605f6823ed227546aa5a113a6874282, type: 3}
+  - {fileID: 8300000, guid: 51fe096b9a1d4a2468b6743bee23ab76, type: 3}
+  - {fileID: 8300000, guid: 3025eabaf0d05db48a839cfdffae0118, type: 3}
 --- !u!1001 &3024066772300821065
 PrefabInstance:
   m_ObjectHideFlags: 0

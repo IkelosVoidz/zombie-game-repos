@@ -10,6 +10,9 @@ public class PlayerInteract : MonoBehaviour
     private IInteractable _newInteractable;
 
 
+    [SerializeField] private AudioClip[] _interactSounds;
+
+
     private Ray _ray; //for debug purposes
 
     private void FixedUpdate()
@@ -37,7 +40,12 @@ public class PlayerInteract : MonoBehaviour
     {
         if (ctx.performed)
         {
-            _interactable?.Interact();
+            if (_interactable != null)
+            {
+                SoundManager.Instance.Play2DRandomSoundFXClip(_interactSounds, 0.5f);
+                _interactable.Interact();
+            }
+
         }
     }
 

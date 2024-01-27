@@ -44,7 +44,7 @@ public class HealthComponent : MonoBehaviour
         OnHealthChange?.Invoke(_health, attackDirection);
         if (_health <= 0)
         {
-            OnObjectDeath?.Invoke(this.transform.position, attackDirection);
+            OnObjectDeath?.Invoke(transform.position, attackDirection);
         }
     }
 
@@ -59,7 +59,7 @@ public class HealthComponent : MonoBehaviour
 
         _health += healAmount;
         if (_health > _maxHealth) _health = _maxHealth;
-        OnHealthChange?.Invoke(_health, Vector3.zero); //attack pos unused
+        //OnHealthChange?.Invoke(_health, Vector3.zero); //attack pos unused
     }
 
 

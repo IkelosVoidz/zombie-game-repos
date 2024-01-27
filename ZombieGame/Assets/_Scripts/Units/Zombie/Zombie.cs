@@ -112,7 +112,7 @@ public class Zombie : MonoBehaviour
                 {
                     // Debug.Log("Daño al jugador");
                     HC.TakeDamage(5, new Vector3());
-                    SoundManager.Instance.PlaySoundFXClip(AttackSFX, transform, 1);
+                    SoundManager.Instance.PlaySoundFXClip(AttackSFX, transform, .3f);
                 }
                 isAttacking = false;
             }
@@ -170,7 +170,7 @@ public class Zombie : MonoBehaviour
         //animator.Play("ATTACK" + Random.Range(1, 6));
         animator.CrossFade("ATTACK" + Random.Range(1, 6), 0.2f, -1, 0);
 
-        
+
     }
     public void TakeDamage()
     {
@@ -210,7 +210,7 @@ public class Zombie : MonoBehaviour
             }
 
             OnZombieDeath?.Invoke(this.sr);
-            SoundManager.Instance.PlayRandomSoundFXClip(DeathsSFX, transform, 1.0f);
+            SoundManager.Instance.PlayRandomSoundFXClip(DeathsSFX, transform, .3f);
 
             Destroy(gameObject, 5 + 3); //chapuza, pero me estoy quedando sin tiempo
 

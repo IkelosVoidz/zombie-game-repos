@@ -1219,7 +1219,6 @@ GameObject:
   - component: {fileID: 1286483280775475603}
   - component: {fileID: 8473270960496278255}
   - component: {fileID: 5222426977066710059}
-  - component: {fileID: 3420537645169550772}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1611,6 +1610,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 136
   _lookOrientation: {fileID: 3318755009727240464}
+  _interactSounds: []
 --- !u!114 &3037396867183766774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1672,9 +1672,9 @@ MonoBehaviour:
   OnHealthChange:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: HUD, Assembly-CSharp
-        m_MethodName: OnHealthChanged
+      - m_Target: {fileID: 5222426977066710059}
+        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+        m_MethodName: OnPlayerHurt
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1716,19 +1716,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _godMode: 0
---- !u!114 &3420537645169550772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9165193133554583056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e2fdc58626ec2542951ee598bc70154, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _godMode: 0
+  _hurtSounds:
+  - {fileID: 8300000, guid: f6596958d84c70a4b9786ffdfe70fce1, type: 3}
+  - {fileID: 8300000, guid: 6eae4a3cfee8a7248b8472b5968d9108, type: 3}
+  - {fileID: 8300000, guid: 21a8dd7983fe7aa46bab8ad0d7330b6d, type: 3}
+  - {fileID: 8300000, guid: 0a235d1e68abe6c46a0e8542c39be546, type: 3}
+  - {fileID: 8300000, guid: ccb54eeb0a9bf484fa11b69b0316053f, type: 3}
+  - {fileID: 8300000, guid: a3744dc6bc681d94d9d7272db49bc6a5, type: 3}
+  - {fileID: 8300000, guid: 9eafdb135e1f3e94b8bc6681bbae2fb0, type: 3}
+  - {fileID: 8300000, guid: 957267eccc223104ea90584aef5d809c, type: 3}
+  - {fileID: 8300000, guid: b53ddb08d2927e2448ef5055670dedaa, type: 3}
+  - {fileID: 8300000, guid: 7e4040995c22c8a47b8bd3596e6f2db0, type: 3}
+  _heartSound: {fileID: 8300000, guid: 6966b429600334043ade980f088951c1, type: 3}
 --- !u!1001 &6805155815204719771
 PrefabInstance:
   m_ObjectHideFlags: 0

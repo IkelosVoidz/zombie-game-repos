@@ -98,7 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b152e9777148b5e4fafdde30836219c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pickupSound: {fileID: 8300000, guid: e737ff3d574d6f445adb7d4472c10181, type: 3}
+  _pickupSound:
+  - {fileID: 8300000, guid: e737ff3d574d6f445adb7d4472c10181, type: 3}
   _noteData: {fileID: 0}
   OnNotePick:
     m_PersistentCalls:
