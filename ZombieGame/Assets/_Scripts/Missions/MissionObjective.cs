@@ -29,7 +29,7 @@ public class MissionObjective : ScriptableObject
     {
         //play radio message or whatever
 
-        SoundManager.Instance.Play2DSoundFXClip(_completeObj, 1f);
+        SoundManager.Instance.Play2DSoundFXClip(_completeObj, .3f);
     }
 
     public virtual void OnUpdate() //que se llame o del mismo mission manager o usando eventos de c# en los HIJOS

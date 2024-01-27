@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isPoweredOn: 0
-  _outlineAffectChildren: 1
+  clickFuseBox: {fileID: 8300000, guid: 7e35daf99a4ef334485e6b9a8be7a84d, type: 3}
   onFuseBoxUsedPoweredOff:
     m_PersistentCalls:
       m_Calls:
@@ -176,7 +176,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  <_affectChildren>k__BackingField: 0
 --- !u!114 &3322299706902993982
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,16 +4,14 @@ using UnityEngine.Events;
 public class FuseBox : MonoBehaviour, IInteractable
 {
     [SerializeField] bool _isPoweredOn = false;
-
-    private void Awake()
-    {
-
-    }
+    [SerializeField] AudioClip clickFuseBox;
 
     public UnityEvent onFuseBoxUsedPoweredOff;
     public UnityEvent onFuseBoxUsedPoweredOn;
     public void Interact()
     {
+        SoundManager.Instance.PlaySoundFXClip(clickFuseBox, transform, 1f);
+
         if (_isPoweredOn)
         {
             onFuseBoxUsedPoweredOn?.Invoke();

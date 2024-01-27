@@ -325,6 +325,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5360fba514b7fa469604146e40a3818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startEngine: {fileID: 8300000, guid: b6a6ce7c386627740baf8d07e59bc0ee, type: 3}
+  onGeneratorUsed:
+    m_PersistentCalls:
+      m_Calls: []
+  oneTime: 0
 --- !u!65 &5146717745023224833
 BoxCollider:
   m_ObjectHideFlags: 0

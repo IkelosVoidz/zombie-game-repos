@@ -2054,6 +2054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40904ead9d6eeaa47abd60cb9cd9e535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPotionMaker: {fileID: 8300000, guid: 17dbe1c3f77060448adc10b6ee772cfd, type: 3}
   onPotionMakerUsed:
     m_PersistentCalls:
       m_Calls:
