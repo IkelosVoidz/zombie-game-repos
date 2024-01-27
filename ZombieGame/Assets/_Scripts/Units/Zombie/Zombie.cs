@@ -112,7 +112,6 @@ public class Zombie : MonoBehaviour
                 {
                     // Debug.Log("Daño al jugador");
                     HC.TakeDamage(5, new Vector3());
-                    SoundManager.Instance.PlaySoundFXClip(AttackSFX, transform, .3f);
                 }
                 isAttacking = false;
             }
@@ -259,5 +258,8 @@ public class Zombie : MonoBehaviour
     virtual public void HitAnimEvent()
     {
         hit = !hit;
+        SoundManager.Instance.PlaySoundFXClip(AttackSFX, transform, .3f);
+
+        Debug.Log("hola del zombie:" + name);
     }
 }

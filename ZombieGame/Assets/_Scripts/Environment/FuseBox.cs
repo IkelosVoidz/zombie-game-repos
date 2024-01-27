@@ -5,8 +5,6 @@ public class FuseBox : MonoBehaviour, IInteractable
 {
     [SerializeField] bool _isPoweredOn = false;
 
-    [SerializeField] bool _outlineAffectChildren;
-
     private void Awake()
     {
 
