@@ -52,6 +52,11 @@ public class PlayerWeaponManager : MonoBehaviour
     [SerializeField] private WeaponScriptable _secondary;
 
 
+
+    [SerializeField] private AudioClip[] _interactSounds;
+    [SerializeField] private AudioClip _switchWeapon;
+
+
     /// <summary>
     /// Param1: AmmoData of the weapon being swapped IN
     /// </summary>
@@ -242,6 +247,9 @@ public class PlayerWeaponManager : MonoBehaviour
     //this function gathers all the transforms and components this manager needs of each weapon to function correctly  
     public void WeaponSwap()
     {
+        SoundManager.Instance.Play2DRandomSoundFXClip(_interactSounds, 0.5f);
+        SoundManager.Instance.Play2DSoundFXClip(_switchWeapon, 1f);
+
         _weaponPivot = _weaponChildrenHierarchy.FirstOrDefault(w => w.name == "WeaponParent");
 
 

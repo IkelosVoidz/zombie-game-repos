@@ -12,29 +12,33 @@ public class AudioConfigScriptable : ScriptableObject
 
     private void OnEnable()
     {
-
+        GunAnimEvents.OnChamberAnim += OnReloadChamber;
+        GunAnimEvents.OnMagDropAnim += OnReloadMagDropped;
+        GunAnimEvents.OnMagInsertAnim += OnReloadMagInsert;
     }
 
 
     private void OnDisable()
     {
-
+        GunAnimEvents.OnChamberAnim -= OnReloadChamber;
+        GunAnimEvents.OnMagDropAnim -= OnReloadMagDropped;
+        GunAnimEvents.OnMagInsertAnim -= OnReloadMagInsert;
     }
 
 
     void OnReloadMagDropped()
     {
-
+        SoundManager.Instance.Play2DSoundFXClip(_reloadMagDrop, 1f);
     }
 
     void OnReloadMagInsert()
     {
-
+        SoundManager.Instance.Play2DSoundFXClip(_reloadMagInsert, 1f);
     }
 
     void OnReloadChamber()
     {
-
+        SoundManager.Instance.Play2DSoundFXClip(_reloadGunChamber, 1f);
     }
 
 }

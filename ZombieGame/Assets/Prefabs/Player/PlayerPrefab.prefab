@@ -524,6 +524,10 @@ MonoBehaviour:
   _aimingFOV: 60
   _primary: {fileID: 11400000, guid: 2781e32440bb80444b57c46b79c0c765, type: 2}
   _secondary: {fileID: 11400000, guid: 8345909c83e91474ab80f42c50552dc2, type: 2}
+  _interactSounds:
+  - {fileID: 8300000, guid: bdfe12538d7aacc4e83fc1d7be072bfa, type: 3}
+  - {fileID: 8300000, guid: d85a766242f05bc4a914693ba790dd84, type: 3}
+  _switchWeapon: {fileID: 8300000, guid: 527b0318d8f0ee64e9fa865d300c2090, type: 3}
 --- !u!114 &7900635895839390882
 MonoBehaviour:
   m_ObjectHideFlags: 0
