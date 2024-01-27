@@ -10,6 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c8dd8707b5f3ca48ad2ee547673561e, type: 3}
-  m_Name: NotaPol
+  m_Name: Note4
   m_EditorClassIdentifier: 
-  noteContent: 'Pol pon puertas y instalate la maquina virtual '
+  _name: 
+  _type: 
+  _description: 
+  noteContent: I can't believe what's happening here. The island used to be a place
+    of hope and progress, but now it's infested with monsters. I wonder if we'll
+    ever make it back home.

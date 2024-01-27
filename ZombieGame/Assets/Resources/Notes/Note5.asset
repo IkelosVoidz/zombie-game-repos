@@ -10,6 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c8dd8707b5f3ca48ad2ee547673561e, type: 3}
-  m_Name: NotaRamon
+  m_Name: Note5
   m_EditorClassIdentifier: 
-  noteContent: Ramon mamon macarron marron lloron tapon y nalgon.
+  _name: 
+  _type: 
+  _description: 
+  noteContent: We've managed to isolate a promising strain of the virus. It seems
+    to hold potential for developing an effective antidote. If we can continue our
+    research, there may be a light at the end of this dark tunnel.

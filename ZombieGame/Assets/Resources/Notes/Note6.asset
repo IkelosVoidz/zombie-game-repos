@@ -10,6 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c8dd8707b5f3ca48ad2ee547673561e, type: 3}
-  m_Name: NotaIvan
+  m_Name: Note6
   m_EditorClassIdentifier: 
-  noteContent: Ivan deja el lol que eres mas malo que el hambre
+  _name: 
+  _type: 
+  _description: 
+  noteContent: There is one last hope. The cure for this devastating virus is located
+    in the antidote machine, situated in one of the rooms of the house. It was our
+    salvation, I hope it ends this before they end us.

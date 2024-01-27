@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c8dd8707b5f3ca48ad2ee547673561e, type: 3}
   m_Name: Note1
   m_EditorClassIdentifier: 
-  noteContent: 'Que mires Gus
-
-'
+  _name: 
+  _type: 
+  _description: 
+  noteContent: Exciting news! Successful trials show a promising compound for reversing
+    zombification. Further testing required, but a breakthrough may be imminent.

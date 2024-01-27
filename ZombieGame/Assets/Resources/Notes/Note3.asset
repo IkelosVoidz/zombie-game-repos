@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c8dd8707b5f3ca48ad2ee547673561e, type: 3}
-  m_Name: Note2
+  m_Name: Note3
   m_EditorClassIdentifier: 
   _name: 
   _type: 
   _description: 
-  noteContent: The virus is evolving at an alarming rate. Our attempts to contain
-    it seem to be growing less effective by the day. We need to find a cure before
-    it's too late.
+  noteContent: The situation on the island is becoming increasingly chaotic. We've
+    lost contact with the outside world and supplies are dwindling. Keep your guard
+    up and stick together.
