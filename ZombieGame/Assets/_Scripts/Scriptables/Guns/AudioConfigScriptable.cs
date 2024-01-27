@@ -28,17 +28,17 @@ public class AudioConfigScriptable : ScriptableObject
 
     void OnReloadMagDropped()
     {
-        SoundManager.Instance.Play2DSoundFXClip(_reloadMagDrop, 1f);
+        SoundManager.Instance.Play2DSoundFXClip(_reloadMagDrop, .6f);
     }
 
     void OnReloadMagInsert()
     {
-        SoundManager.Instance.Play2DSoundFXClip(_reloadMagInsert, 1f);
+        SoundManager.Instance.Play2DSoundFXClip(_reloadMagInsert, .6f);
     }
 
     void OnReloadChamber()
     {
-        SoundManager.Instance.Play2DSoundFXClip(_reloadGunChamber, 1f);
+        SoundManager.Instance.Play2DSoundFXClip(_reloadGunChamber, .6f);
     }
 
 }

@@ -109,12 +109,12 @@ public class WeaponScriptable : InventoryObjectSO
             else if (inputHeld && _currentAttackConfig._fullAuto)
             {
                 _currentAttackConfig.Attack(inputHeld);
-                SoundManager.Instance.Play2DRandomSoundFXClip(_audioConfig._fireSounds, 0.3f);
+                SoundManager.Instance.Play2DRandomSoundFXClip(_audioConfig._fireSounds, 0.2f);
             }
             else
             {
                 _currentAttackConfig.Attack(inputHeld);
-                SoundManager.Instance.Play2DRandomSoundFXClip(_audioConfig._fireSounds, 0.3f);
+                SoundManager.Instance.Play2DRandomSoundFXClip(_audioConfig._fireSounds, 0.2f);
             }
         }
         else if (!_reloadConfig.CanShoot() && !_currentAttackConfig.CanAttack())

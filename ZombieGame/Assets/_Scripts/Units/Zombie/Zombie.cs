@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -61,9 +60,9 @@ public class Zombie : MonoBehaviour
 
         time += Time.deltaTime;
 
-        if (time >= timeBetweenGrunts) 
+        if (time >= timeBetweenGrunts)
         {
-            SoundManager.Instance.PlayRandomSoundFXClip(GruntsSFX, transform, 1f);
+            if (!dead) SoundManager.Instance.PlayRandomSoundFXClip(GruntsSFX, transform, 1f);
 
             timeBetweenGrunts = Random.Range(3, 6);
             time = 0f;
