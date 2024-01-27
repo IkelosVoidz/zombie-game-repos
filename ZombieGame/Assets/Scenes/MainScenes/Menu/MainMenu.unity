@@ -153,9 +153,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensi: 0
-  fov: 0
-  aimSens: 0
-  changed: 0
 --- !u!4 &96211511
 Transform:
   m_ObjectHideFlags: 0
@@ -526,6 +523,10 @@ MonoBehaviour:
   _sensitivity: {fileID: 927344865}
   _options: {fileID: 2048511690}
   _menu: {fileID: 746727692}
+  _masterSlider: {fileID: 0}
+  _musicSlider: {fileID: 0}
+  _soundFXSlider: {fileID: 0}
+  _ambienceSlider: {fileID: 0}
 --- !u!114 &927344865 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3397200558162941893, guid: ca70356903e4a444da19553106c70b8f, type: 3}
@@ -1075,9 +1076,17 @@ PrefabInstance:
       value: SoundManager
       objectReference: {fileID: 0}
     - target: {fileID: 7857561264618418540, guid: 50583d8b2801477419c05aa06a935441, type: 3}
+      propertyPath: _musicVolume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857561264618418540, guid: 50583d8b2801477419c05aa06a935441, type: 3}
       propertyPath: _optionsMenu
       value: 
       objectReference: {fileID: 2048511690}
+    - target: {fileID: 7857561264618418540, guid: 50583d8b2801477419c05aa06a935441, type: 3}
+      propertyPath: _soundFXVolume
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
