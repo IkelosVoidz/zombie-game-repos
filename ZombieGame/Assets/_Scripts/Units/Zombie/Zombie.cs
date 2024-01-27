@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -36,7 +37,8 @@ public class Zombie : MonoBehaviour
     private float maxSpeed;
     protected bool isWalking = false;
 
-    Timer timer;
+    protected float time = 0f;
+    protected int timeBetweenGrunts = 3;
 
 
     [SerializeField] SpriteRenderer sr;
@@ -56,6 +58,16 @@ public class Zombie : MonoBehaviour
     protected virtual void Update()
     {
         //Debug.Log(state);
+
+        time += Time.deltaTime;
+
+        if (time >= timeBetweenGrunts) 
+        {
+            SoundManager.Instance.PlayRandomSoundFXClip(GruntsSFX, transform, 1f);
+
+            timeBetweenGrunts = Random.Range(3, 6);
+            time = 0f;
+        }
 
         if (isWalking && target != null)
             navMeshAgent.destination = target.transform.position;
