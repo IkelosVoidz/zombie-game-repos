@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://c4t06kclim7p3"
+path="res://.godot/imported/Winter Sunday.otf-c33a6edc2b263a6f3442ad2403d2e8fe.fontdata"
+
+[deps]
+
+source_file="res://MOTORS/zombie-game-repos/ZombieGame/Assets/Art/Fonts/Winter Sunday.otf"
+dest_files=["res://.godot/imported/Winter Sunday.otf-c33a6edc2b263a6f3442ad2403d2e8fe.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}
